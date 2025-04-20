@@ -1,0 +1,114 @@
+#C stop:first-child {
+    animation: blue1 300s infinite alternate ease-in-out;
+}
+#C stop:last-child {
+    animation: blue2 600s infinite alternate ease-in-out;
+}
+#D stop:first-child {
+    animation: red1 60s infinite alternate ease-in-out;
+}
+#D stop:last-child {
+    animation: red2 120s infinite alternate ease-in-out;
+}
+#E stop:first-child {
+    animation: green1 180s infinite alternate ease-in-out;
+}
+#E stop:last-child {
+    animation: green2 360s infinite alternate ease-in-out;
+}
+#A stop:first-child {
+    animation: stopColor1 8s infinite alternate ease-in-out;
+}
+#A stop:last-child {
+    animation: stopColor2 8s infinite alternate ease-in-out;
+}
+#Z {
+    /* animation: scale1 0.6s alternate ease-in-out; */
+    transform-origin: center;
+    opacity: 1;
+}
+.logo:hover .animated-z {
+    transform: scale(0) !important;
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease !important;
+}
+.logo:hover .animated-w {
+    transform: rotateY(180deg);
+    transition: transform 0.6s ease;
+    transform-origin: center;
+}
+.logo:hover .l1 {
+    opacity: 0;
+}
+@keyframes scale1 {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes blue1 {
+    0% {
+        stop-color: #ffed00;
+    }
+    100% {
+        stop-color: #00fff7;
+    }
+}
+@keyframes blue2 {
+    0% {
+        stop-color: #312783;
+    }
+    100% {
+        stop-color: #7300ff;
+    }
+}
+@keyframes red1 {
+    0% {
+        stop-color: #e6007e;
+    }
+    100% {
+        stop-color: #f8a5c2;
+    }
+}
+@keyframes red2 {
+    0% {
+        stop-color: #009fe3;
+    }
+    100% {
+        stop-color: #00e6d3;
+    }
+}
+@keyframes green1 {
+    0% {
+        stop-color: #009640;
+    }
+    100% {
+        stop-color: #00ff55;
+    }
+}
+@keyframes green2 {
+    0% {
+        stop-color: #e30613;
+    }
+    100% {
+        stop-color: #ff5500;
+    }
+}
+@keyframes stopColor1 {
+    0% {
+        stop-color: #ffed00;
+    }
+    100% {
+        stop-color: #00fff7;
+    }
+}
+@keyframes stopColor2 {
+    0% {
+        stop-color: #e30613;
+    }
+    100% {
+        stop-color: #7300ff;
+    }
+}

@@ -1,0 +1,115 @@
+.logo {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    margin: 117px;
+    margin: 27px;
+    box-shadow: inset 1px 1px 1px rgba(0, 0, 0, 0.35);
+    background-color: $nav-bg-black;
+    position: absolute;
+    left: 0px;
+    z-index: 102;
+    .my-logo {
+        position: absolute;
+        width: 64px;
+    }
+    .dropShadow {
+        filter: drop-shadow(4px 4px 4px 8px rgba(255, 255, 255, 10.25));
+    }
+
+    .l1 {
+        z-index: 10;
+        opacity: 0;
+        opacity: 0.7;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.35));
+        .black-content_icon {
+            @include drop-shadow(1px 1px rgba(0, 0, 0, 0));
+        }
+        .red-bg_icon {
+            fill: $shp-text-red-h1;
+        }
+    }
+    .red-bg_icon {
+        fill: $shp-text-red-h1;
+    }
+    .black-content_icon {
+        fill: $nav-bg-black;
+    }
+    .hover-line {
+        height: 5px;
+        position: absolute;
+        z-index: 100;
+        top: 51px;
+        display: none;
+    }
+    .p1 {
+        width: 12px;
+        margin-left: 68px;
+        animation: showLine 0.3s ease-in-out;
+    }
+    .p2 {
+        width: 12px;
+        animation: showLine 0.3s ease-in-out;
+        margin-left: 80px;
+        border-bottom: 2px solid $nav-bg-black;
+        left: 0;
+    }
+    .p3 {
+        max-width: 86px;
+        width: 100%;
+        animation: showLine 0.3s ease-in-out;
+        left: 0;
+        margin-left: 92px;
+    }
+    .nav-title {
+        @include nav-title;
+        color: $nav-bg-black;
+        padding-left: 68px;
+        letter-spacing: 1.35px;
+    }
+    @keyframes showLine {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+        }
+    }
+    &:hover {
+        .my-logo {
+            .red-bg_icon {
+                fill: transparent;
+            }
+            .black-content_icon {
+                @include drop-shadow(2px 2px rgba(0, 0, 0, 0.25));
+            }
+        }
+        .typo-logo {
+            box-shadow: inset 1px 1px 1px rgba(40, 45, 48, 0.05);
+            background-color: $shp-text-red-h1;
+            .black-content_icon {
+                @include drop-shadow(1px 1px rgba(0, 0, 0, 0.25));
+            }
+            .red-bg_icon {
+                fill: transparent;
+            }
+        }
+        .hover-line {
+            display: block;
+        }
+        .p1,
+        .p3 {
+            border-bottom: 2px solid $shp-text-red-h1;
+        }
+    }
+    &:active {
+        .my-logo,
+        .typo-logo {
+            background-color: #fff;
+        }
+        .red-bg_icon {
+            fill: transparent;
+        }
+    }
+}

@@ -1,0 +1,134 @@
+/* sidebar */
+
+.sidebar {
+    width: 117px;
+    min-height: calc(726px - 0px);
+
+    height: 100%;
+    background-color: $nav-bg-black;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-between;
+    padding-left: 26px;
+    padding-right: 26px;
+    position: fixed;
+    top: 0px;
+    z-index: 99;
+    box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    .side-nav {
+        position: relative;
+        left: 0;
+        width: 64px;
+        height: 316px;
+        .side-icon {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 20px;
+            border-radius: 7px;
+            background-color: #ff0101;
+            box-sizing: border-box;
+            border: 2px solid $nav-bg-black;
+            .red-content_icon {
+                fill: #ff0101;
+            }
+            .white-bg_icon {
+                fill: $text-white;
+            }
+            &:hover {
+                box-shadow: 2px 2px 2px 0px rgba(255, 1, 1, 0.25);
+                position: relative;
+                transform: scale(1.03);
+                transition: all 0.275s ease-in-out;
+                background-color: #282d30;
+
+                .red-content_icon {
+                    animation: sport-icon 0.45s linear;
+                    fill: #282d30;
+                    opacity: 0;
+                }
+                .white-bg_icon {
+                    fill: #ff0101;
+                    @include drop-shadow(1.5px 1.5px rgba(0, 0, 0, 1));
+                }
+            }
+            &:active {
+                box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.35);
+                position: relative;
+                transform: scale(1);
+                transition: none;
+                background-color: #ff0101;
+
+                .red-content_icon {
+                    animation: sport-icon-V2 0.3s linear;
+                    fill: #fff;
+                    @include drop-shadow(1px 1px rgba(0, 0, 0, 0.35));
+                    opacity: 1;
+                }
+                .white-bg_icon {
+                    fill: #ff0101;
+                    fill: blue;
+                    opacity: 0;
+                    box-shadow: inset 5px 5px gold;
+                }
+            }
+            @keyframes sport-icon {
+                from {
+                    fill: #282d30;
+                    opacity: 1;
+                }
+
+                to {
+                    fill: transparent;
+                    opacity: 0;
+                }
+            }
+            @keyframes typo-logo {
+                from {
+                    fill: #ff0101;
+                    opacity: 1;
+                }
+
+                to {
+                    fill: transparent;
+                    opacity: 0;
+                }
+            }
+            @keyframes sport-icon-V2 {
+                from {
+                    fill: #282d30;
+                    opacity: 1;
+                }
+
+                to {
+                    fill: #fff;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .copyright {
+        position: absolute;
+        width: 24px;
+        min-height: 186px;
+        height: calc(100vh - 522px);
+        max-height: calc(50vh - 266px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+
+        bottom: 20px;
+        // background: #1fbc00;
+        left: 42px;
+
+        .vertical-text {
+            text-align: left;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            // text-align: right;
+
+            @include side-copyright;
+        }
+    }
+}

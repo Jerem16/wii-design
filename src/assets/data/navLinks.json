@@ -1,0 +1,27 @@
+[
+    {
+        "id": "homeLink",
+        "label": "Accueil",
+        "path": "/",
+        "title": "Aller à la page d'accueil"
+    },
+    {
+        "id": "performanceLink",
+        "label": "Performance",
+        "path": "/performance-comparison",
+        "title": "Analyse des performances"
+    },
+    {
+        "id": "networkLink",
+        "label": "Réseau",
+        "path": "/network-comparison",
+        "title": "Analyse des requêtes réseau"
+    },
+
+    {
+        "id": "communityLink",
+        "label": "Communauté",
+        "path": "/community",
+        "title": "Accéder à la communauté"
+    }
+]

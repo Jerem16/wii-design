@@ -1,0 +1,26 @@
+[
+    {
+        "id": "relaxIcon",
+        "name": "RelaxIcon",
+        "alt": "Icône de relaxation",
+        "title": "Relaxation"
+    },
+    {
+        "id": "natationIcon",
+        "name": "NatationIcon",
+        "alt": "Icône de natation",
+        "title": "Natation"
+    },
+    {
+        "id": "cyclistIcon",
+        "name": "CyclistIcon",
+        "alt": "Icône de cyclisme",
+        "title": "Cyclisme"
+    },
+    {
+        "id": "musculationIcon",
+        "name": "MusculationIcon",
+        "alt": "Icône de musculation",
+        "title": "Musculation"
+    }
+]

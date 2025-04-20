@@ -1,0 +1,142 @@
+"use client";
+
+import React, { useEffect } from "react";
+import dynamic from "next/dynamic";
+
+const MyLogo = () => {
+    useEffect(() => {
+        const z = document.getElementById("Z");
+        z.style.transform = "scale(0)"; // Initialisation de l'échelle à 0
+        z.style.opacity = "0"; // Optionnel : rend l'élément invisible au début
+
+        setTimeout(() => {
+            z.style.transition =
+                "transform 0.6s ease-in-out, opacity 0.6s ease-in-out"; // Animation de la transformation et de l'opacité
+            z.style.transform = "scale(1)"; // Applique l'échelle à 1 pour l'animation
+            z.style.opacity = "1"; // Fait apparaître l'élément avec opacité
+        }, 100); // Retarde l'animation après un petit délai (100ms)
+    }, []);
+    return (
+        <div className="my-logo l2">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 470">
+                <defs>
+                    <linearGradient
+                        id="A"
+                        x1="127"
+                        y1="127"
+                        x2="382"
+                        y2="382"
+                        href="#I"
+                    >
+                        <stop offset="0" stopColor="#ffed00" />
+                        <stop offset="1" stopColor="#009fe3" />
+                    </linearGradient>
+
+                    <linearGradient
+                        id="C"
+                        x1="0"
+                        y1="470"
+                        x2="470"
+                        y2="0"
+                        href="#I"
+                    >
+                        <stop offset="0" stopColor="#009640" />
+                        <stop offset="1" stopColor="#312783" />
+                    </linearGradient>
+                    <linearGradient
+                        id="D"
+                        x1="0"
+                        y1="0"
+                        x2="470"
+                        y2="470"
+                        href="#I"
+                    >
+                        <stop offset="0" stopColor="#312783" />
+                        <stop offset="1" stopColor="#e30613" />
+                    </linearGradient>
+                    <linearGradient
+                        id="E"
+                        x1="470"
+                        y1="0"
+                        x2="0"
+                        y2="470"
+                        href="#I"
+                    >
+                        <stop offset="0" stopColor="#e30613" />
+                        <stop offset="1" stopColor="#009640" />
+                    </linearGradient>
+                    <path
+                        id="Z"
+                        opacity=".5"
+                        d="M235 470L0 235 235 0 470 235z"
+                        className="animated-z"
+                    />
+                    <path
+                        id="W"
+                        className="animated-w"
+                        d="M397.2-.7l-62.8 206-50-170.4C278 13.8 258.8-.7 236.8-.7h-1.7-1.7c-22 0-41.3 14.5-47.5 35.6l-50 170.4L73-.7H.2l90.1 294.6c6.1 19.8 24.2 33.2 45.1 33.2 22.5 0 42.4-14.9 48.8-36.5l50.9-173.8L286 290.6c6.5 21.6 26.3 36.5 48.8 36.5 20.9 0 39-13.4 45.1-33.2L470-.7h-72.8z"
+                    />
+                    <path
+                        id="T"
+                        d="M415.1 397.5v48.3h12v-39.3a3.01 3.01 0 0 1 3-3h21.1c3.4 0 5.9 2.7 5.9 5.9v36.2h12v-36.1c0-10-8.1-18.2-18.2-18.2h0-30.2c-2.9.3-5.6 2.8-5.6 6.2h0zm-60.4 12.1v18.3c0 10 8.1 18 18 18h18.2v-12h-18.3c-3.2 0-5.9-2.7-5.9-5.9v-18.4c0-3.2 2.7-5.9 5.9-5.9H391c3.2 0 5.9 2.7 5.9 5.9V452c0 3.4-2.7 6.1-6 6.1h-.1-24.1v12h24.2c10 0 18-8.1 18-18v-42.5c0-10-8.1-18-18-18h-18.3c-9.9 0-17.9 7.9-17.9 18h0zm-18.1-18h12V446h-12v-54.4zm0-27.2h12v12h-12v-12zm-12.1 39.2v-12h-27.2c-8.3 0-15.1 6.7-15.2 15v.2h0c0 8.3 6.7 15.1 15 15.2h.2 15.2c3.4 0 6.1 2.7 6.1 6v.1h0c0 3.4-2.7 6.1-6 6.1h-.1-72.4c-3.4 0-6.1-2.7-6.1-6v-.1-18.2c0-3.4 2.7-6.1 6-6.1h.1 18.2c3.4 0 6.1 2.7 6.1 6v.1h0c0 3.4-2.7 6.1-6 6.1h-.1-18.2v12h18c10 0 18-8.1 18-18h0c0-10-8.1-18-18-18h-18.3c-9.8 0-18 8.1-18 18v18.4c0 9.8 8.1 18 18 18h72.7c9.8 0 18-8.1 18-18v-.4c0-9.8-8.1-18-18-18h-15.2a3.01 3.01 0 0 1-3-3h0a3.01 3.01 0 0 1 3-3h27.2v-.4h0zm-120.8-39.2v63.3c0 3.4-2.7 6.1-6 6.1h-.1-18.2c-3.4 0-6.1-2.7-6.1-6v-.1-18.2c0-3.4 2.7-6.1 6-6.1h.1 18.2v-12h-18.2c-10 0-18.2 8.1-18.2 18.2h0v18.2c0 10 8.1 18.2 18.2 18.2h18.2c10 0 18.2-8.1 18.2-18.2h0v-63.4h-12 0zm-54.5 48.3h-14.4c-3.4 0-6.1 2.7-6.1 6v.1h0c0 3.4 2.7 6.1 6 6.1h.1 14.4c3.4 0 6.1-2.7 6.1-6v-.1h0a6.06 6.06 0 0 0-6.1-6.1zm-38.4-21.1h12V446h-12v-54.4zm0-27.2h12v12h-12v-12zm-24.3 27.2h12V446h-12v-54.4zm0-27.2h12v12h-12v-12zm-28.3 62.1l-9.7-29.4c-1.1-3.4-4.2-5.7-7.8-5.7h0c-3.6 0-6.9 2.4-7.8 5.9l-8.2 28.3-10.4-34.1h-12L17 440.4c.9 3.2 4 5.5 7.4 5.5h0c3.8 0 7-2.4 8.1-6.1l8.5-29 9.7 29.2c1.1 3.5 4.4 5.8 8 5.8h.1c3.5 0 6.5-2.3 7.4-5.5l14.3-48.7h-12l-10.3 34.9z"
+                    />
+                    <filter id="H">
+                        <feGaussianBlur stdDeviation="3" result="A" />
+                        <feMerge>
+                            <feMergeNode in="A" />
+                            <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                    </filter>
+                    <linearGradient id="I" gradientUnits="userSpaceOnUse" />
+                </defs>
+                <use
+                    href="#Z"
+                    fill="url(#A)"
+                    style={{ mixBlendMode: "screen" }}
+                    filter="url(#H)"
+                />
+                <g filter="drop-shadow(1px 2px 8px rgba(0, 0, 0, 0.25))">
+                    <use
+                        href="#W"
+                        fill="url(#E)"
+                        style={{ mixBlendMode: "screen" }}
+                        filter="url(#H)"
+                    />
+                    <use
+                        href="#W"
+                        x="3"
+                        fill="url(#D)"
+                        style={{ mixBlendMode: "screen" }}
+                    />
+                    <use
+                        href="#W"
+                        x="1.5"
+                        y="1.5"
+                        fill="url(#C)"
+                        style={{ mixBlendMode: "screen" }}
+                        filter="url(#H)"
+                    />
+                    <use
+                        href="#T"
+                        x="3"
+                        fill="url(#C)"
+                        style={{ mixBlendMode: "screen" }}
+                    />
+                    <use
+                        href="#T"
+                        x="1.5"
+                        y="1.5"
+                        fill="url(#D)"
+                        style={{ mixBlendMode: "screen" }}
+                    />
+                    <use
+                        href="#T"
+                        fill="url(#E)"
+                        style={{ mixBlendMode: "screen" }}
+                    />
+                </g>
+            </svg>
+        </div>
+    );
+};
+export default dynamic(() => Promise.resolve(React.memo(MyLogo)));
