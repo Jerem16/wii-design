@@ -13,11 +13,7 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "incremental": true,
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ],
+        "baseUrl": ".", // 👈 nécessaire pour que "paths" fonctionne
         "paths": {
             "@/*": ["./src/*"],
             "@components/*": ["src/components/*"],
@@ -27,8 +23,19 @@
             "@data/*": ["src/assets/data/*"],
             "@app/*": ["app/*"],
             "@svg/*": ["src/components/svg_Icon/*"]
-        }
+        },
+        "plugins": [
+            {
+                "name": "next"
+            }
+        ]
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/layout.tsx"],
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        ".next/types/**/*.ts",
+        "app/layout.tsx"
+    ],
     "exclude": ["node_modules"]
 }

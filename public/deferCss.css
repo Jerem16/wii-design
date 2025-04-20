@@ -23,7 +23,6 @@
     animation: stopColor2 8s infinite alternate ease-in-out;
 }
 #Z {
-    /* animation: scale1 0.6s alternate ease-in-out; */
     transform-origin: center;
     opacity: 1;
 }
@@ -37,8 +36,14 @@
     transition: transform 0.6s ease;
     transform-origin: center;
 }
+.l1 {
+    animation: opacityTide 32s infinite alternate linear 4s;
+    opacity: 1;
+    /* background: #ff0202; */
+}
 .logo:hover .l1 {
-    opacity: 0;
+    animation: opacityLogo2 1s linear;
+    opacity: 1;
 }
 @keyframes scale1 {
     0% {
@@ -46,6 +51,79 @@
     }
     100% {
         transform: scale(1);
+    }
+}
+@keyframes opacityTide {
+    /* Cycle 1 */
+    0% {
+      opacity: 1; /* marée haute */
+    }
+    8% {
+      opacity: 0.7;
+    }
+    14% {
+      opacity: 0.4;
+    }
+    20% {
+      opacity: 0.15; /* marée basse */
+    }
+    25% {
+      opacity: 0.2;
+    }
+    30% {
+      opacity: 0.6; /* étale */
+    }
+  
+    /* Cycle 2 */
+    38% {
+      opacity: 1; /* haute mer */
+    }
+    45% {
+      opacity: 0.5;
+    }
+    52% {
+      opacity: 0.2; /* basse mer */
+    }
+    57% {
+      opacity: 0.3;
+    }
+    63% {
+      opacity: 0.5;
+    }
+    68% {
+      opacity: 0.8; /* remontée lente */
+    }
+  
+    /* Cycle 3 */
+    75% {
+      opacity: 1; /* pleine mer */
+    }
+    82% {
+      opacity: 0.6;
+    }
+    88% {
+      opacity: 0.2; /* descend + vite */
+    }
+    92% {
+      opacity: 0.1; /* mini marée */
+    }
+    96% {
+      opacity: 0.5;
+    }
+    100% {
+      opacity: 1; /* retour marée haute */
+    }
+  }
+  
+@keyframes opacityLogo2 {
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
 @keyframes blue1 {
