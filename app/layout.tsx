@@ -24,7 +24,6 @@ export default function RootLayout({
                     href="./deferCss.css"
                     fetchPriority="low"
                 />
-                <link rel="manifest" href="/manifest.json" />
             </head>
             <body id="top">
                 <NavInterface />

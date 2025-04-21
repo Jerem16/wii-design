@@ -44,29 +44,18 @@ const MetaData = {
                 type: "image/png"
             },
             {
-                url: "img/favicon/icons/logo.svg",
+                url: "img/favicon/icons/favicon-152x152.png",
                 sizes: "152x152",
-                type: "image/svg+xml"
-            },
-            {
-                url: "img/favicon/icons/logo.svg",
-                sizes: "180x180",
-                type: "image/svg+xml"
+                type: "image/png"
             },
             {
                 url: "img/favicon/icons/favicon-120x120.png",
                 sizes: "120x120",
                 type: "image/png"
-            },
-            {
-                url: "img/favicon/icons/favicon-152x152.png",
-                sizes: "152x152",
-                type: "image/png"
             }
         ],
 
         icon: [
-            // { url: "img/favicon/icons/logo.svg", type: "image/svg+xml" },
             { url: "img/favicon/icons/logo.svg", type: "image/svg+xml" },
             {
                 url: "img/favicon/icons/favicon-16x16.png",
@@ -79,6 +68,11 @@ const MetaData = {
                 type: "image/png"
             },
             {
+                url: "img/favicon/icons/favicon-48x48.png",
+                sizes: "48x48",
+                type: "image/png"
+            },
+            {
                 url: "img/favicon/icons/android-chrome-192x192.png",
                 sizes: "192x192",
                 type: "image/png"
@@ -87,11 +81,6 @@ const MetaData = {
                 url: "img/favicon/icons/android-chrome-512x512.png",
                 sizes: "512x512",
                 type: "image/png"
-            },
-            {
-                url: "img/favicon/icons/logo.svg",
-                sizes: "48x48",
-                type: "image/svg+xml"
             }
         ]
     },

@@ -36,6 +36,6 @@
         "**/*.tsx",
         ".next/types/**/*.ts",
         "app/layout.tsx"
-    ],
+, "src/components/99-Svg_Icon/SvgUse.jsx"    ],
     "exclude": ["node_modules"]
 }

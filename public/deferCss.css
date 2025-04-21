@@ -22,16 +22,18 @@
 #A stop:last-child {
     animation: stopColor2 8s infinite alternate ease-in-out;
 }
-#Z {
+.logoBG {
     transform-origin: center;
-    opacity: 1;
-}
-.logo:hover .animated-z {
-    transform: scale(0) !important;
+    animation: scale1 0.6s linear forwards;
     opacity: 0;
-    transition: transform 0.6s ease, opacity 0.6s ease !important;
 }
-.logo:hover .animated-w {
+.logo:hover .logoBG {
+    transform-origin: center;
+    transform: scale(0);
+
+    animation: scale0 0.5s linear backwards;
+}
+.logo:hover .logoW {
     transform: rotateY(180deg);
     transition: transform 0.6s ease;
     transform-origin: center;
@@ -48,73 +50,85 @@
 @keyframes scale1 {
     0% {
         transform: scale(0);
+        opacity: 0;
     }
     100% {
+        opacity: 1;
         transform: scale(1);
+    }
+}
+@keyframes scale0 {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
     }
 }
 @keyframes opacityTide {
     /* Cycle 1 */
     0% {
-      opacity: 1; /* marée haute */
+        opacity: 1; /* marée haute */
     }
     8% {
-      opacity: 0.7;
+        opacity: 0.7;
     }
     14% {
-      opacity: 0.4;
+        opacity: 0.4;
     }
     20% {
-      opacity: 0.15; /* marée basse */
+        opacity: 0.15; /* marée basse */
     }
     25% {
-      opacity: 0.2;
+        opacity: 0.2;
     }
     30% {
-      opacity: 0.6; /* étale */
+        opacity: 0.6; /* étale */
     }
-  
+
     /* Cycle 2 */
     38% {
-      opacity: 1; /* haute mer */
+        opacity: 1; /* haute mer */
     }
     45% {
-      opacity: 0.5;
+        opacity: 0.5;
     }
     52% {
-      opacity: 0.2; /* basse mer */
+        opacity: 0.2; /* basse mer */
     }
     57% {
-      opacity: 0.3;
+        opacity: 0.3;
     }
     63% {
-      opacity: 0.5;
+        opacity: 0.5;
     }
     68% {
-      opacity: 0.8; /* remontée lente */
+        opacity: 0.8; /* remontée lente */
     }
-  
+
     /* Cycle 3 */
     75% {
-      opacity: 1; /* pleine mer */
+        opacity: 1; /* pleine mer */
     }
     82% {
-      opacity: 0.6;
+        opacity: 0.6;
     }
     88% {
-      opacity: 0.2; /* descend + vite */
+        opacity: 0.2; /* descend + vite */
     }
     92% {
-      opacity: 0.1; /* mini marée */
+        opacity: 0.1; /* mini marée */
     }
     96% {
-      opacity: 0.5;
+        opacity: 0.5;
     }
     100% {
-      opacity: 1; /* retour marée haute */
+        opacity: 1; /* retour marée haute */
     }
-  }
-  
+}
+
 @keyframes opacityLogo2 {
     0% {
         opacity: 0;
