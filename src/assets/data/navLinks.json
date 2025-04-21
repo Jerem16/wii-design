@@ -6,22 +6,28 @@
         "title": "Aller à la page d'accueil"
     },
     {
-        "id": "performanceLink",
-        "label": "Performance",
-        "path": "/performance-comparison",
-        "title": "Analyse des performances"
+        "id": "servicesLink",
+        "label": "Services",
+        "path": "/services",
+        "title": "Découvrir tous les services proposés"
     },
     {
-        "id": "networkLink",
-        "label": "Réseau",
-        "path": "/network-comparison",
-        "title": "Analyse des requêtes réseau"
+        "id": "achievementsLink",
+        "label": "Réalisations",
+        "path": "/achievements",
+        "title": "Nos réalisations"
     },
-
     {
-        "id": "communityLink",
-        "label": "Communauté",
-        "path": "/community",
-        "title": "Accéder à la communauté"
+        "id": "aboutLink",
+        "label": "À propos",
+        "path": "/about",
+        "title": "Parcours, méthode de travail, avis clients"
+    },
+    {
+        "id": "contactLink",
+        "label": "Contact",
+        "path": "/contact",
+        "title": "Contacter Wii-Design"
     }
 ]
+

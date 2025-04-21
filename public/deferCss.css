@@ -78,11 +78,17 @@
     14% {
         opacity: 0.4;
     }
+    19% {
+        opacity: 0.22; /* marée basse */
+    }
     20% {
-        opacity: 0.15; /* marée basse */
+        opacity: 0.2; /* marée basse */
+    }
+    21% {
+        opacity: 0.22; /* marée basse */
     }
     25% {
-        opacity: 0.2;
+        opacity: 0.36;
     }
     30% {
         opacity: 0.6; /* étale */
@@ -96,7 +102,7 @@
         opacity: 0.5;
     }
     52% {
-        opacity: 0.2; /* basse mer */
+        opacity: 0.25; /* basse mer */
     }
     57% {
         opacity: 0.3;
@@ -118,8 +124,14 @@
     88% {
         opacity: 0.2; /* descend + vite */
     }
+    91% {
+        opacity: 0.225; /* mini marée */
+    }
     92% {
-        opacity: 0.1; /* mini marée */
+        opacity: 0.2; /* mini marée */
+    }
+    93% {
+        opacity: 0.225; /* mini marée */
     }
     96% {
         opacity: 0.5;

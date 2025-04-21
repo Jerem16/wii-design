@@ -12,3 +12,120 @@ Fonctionnalités personnalisées : connexion API, services tiers, systèmes de r
 Je vous propose un accompagnement complet, de la maquette au déploiement (GitHub Actions, Docker, AWS Amplify), pour une mise en ligne fluide et sécurisée.
 
 Besoin d'une refonte ou d'une maintenance web ? J’optimise les performances, la sécurité et l’UX de votre site existant, avec un référencement naturel renforcé.
+
+
+#MAIN-MENU
+1. Accueil
+
+    Introduction, ton positionnement, ton CTA principal (devis / contact / RDV)
+
+🔹 2. Services
+
+Découpe claire avec des blocs ou onglets, par exemple :
+🧱Développement web	🎨Design UX/UI	⚙️Performance & SEO	🚀DevOps & Déploiement	🤝Conseil & Accompagnement
+
+Chaque bloc pourrait mener vers un détail de service (via page dédiée ou un accordéon / modale).
+🔹 3. Réalisations / Portfolio
+
+    Présentation de tes projets (avec filtres par techno, domaine, etc.)
+
+🔹 4. À propos
+
+    Ton parcours, ta vision du métier, pourquoi « Wii-Design », soft-skills, formations, etc.
+
+🔹 5. Processus de travail
+
+    Étapes de collaboration avec toi : brief > maquettes > dev > tests > livraison
+
+🔹 6. Témoignages / Avis
+
+    Retours de clients ou collaborateurs
+
+🔹 7. Blog / Ressources (optionnel mais très bon pour ton SEO)
+
+    Partage de tes connaissances (React, DevOps, design, etc.)
+
+🔹 8. Contact
+
+    Formulaire / lien vers Google Calendar / réseaux sociaux / e-mail pro
+
+🔹 9. Mentions légales & CGV
+
+    Obligatoire si tu fais des prestations facturées
+
+
+#SIDE-BAR
+
+🧠 1. Cadrage & Stratégie
+
+    L’étape de fondation du projet.
+
+    Identification des besoins & objectifs
+
+    Audit / analyse concurrentielle
+
+    Cahier des charges & spécifications
+
+    User stories, personas
+
+    Planning, MVP, roadmap
+
+🧩 2. UX/UI Design
+
+    Concevoir une interface efficace, esthétique et intuitive.
+
+    Wireframes, maquettes (Figma)
+
+    Prototypage interactif
+
+    Tests utilisateurs
+
+    Accessibilité (WCAG)
+
+    Responsive mobile-first
+
+⚙️ 3. Développement Web
+
+    L’implémentation technique.
+
+    Front-end avec React / Next.js / Tailwind
+
+    Intégration d’API / back-end
+
+    Fonctionnalités spécifiques (authentification, messagerie, réservation…)
+
+🚀 4. Performance & SEO
+
+    Rendre le site rapide, visible et éco-conçu.
+
+    Optimisation Lighthouse & Core Web Vitals
+
+    Balises SEO, structure sémantique
+
+    Accessibilité clavier / screen reader
+
+    Green IT
+
+🛠️ 5. DevOps & Déploiement
+
+    Mettre le projet en ligne, proprement.
+
+    CI/CD avec GitHub Actions
+
+    Dockerisation
+
+    Déploiement AWS Amplify / CloudFront
+
+    Versioning Git
+
+🤝 6. Suivi & Accompagnement
+
+    Après la mise en ligne : tu restes présent.
+
+    Conseils marketing / contenus
+
+    Tutos clients / prise en main
+
+    Maintenance / évolutions
+
+    Suivi Agile / itérations
