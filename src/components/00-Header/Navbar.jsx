@@ -4,17 +4,11 @@ import Logo from "./Logo";
 import NavLink from "./NavLink";
 import navLinks from "../../assets/data/navLinks.json";
 
-/**
- * Navbar component that renders the main navigation bar with links and a logo.
- * @component
- * @returns {JSX.Element} The rendered Navbar component
- */
 const Navbar = () => {
     return (
         <header className="nav-bar">
             <Logo />
             <div className="gr-nav"></div>
-            {/* <div className="link-button hover-none"></div> */}
             <section className="link-group">
                 {navLinks.map((link) => (
                     <NavLink
@@ -25,7 +19,6 @@ const Navbar = () => {
                     />
                 ))}
             </section>{" "}
-            {/* <span className="link-button hover-none"></span> */}
         </header>
     );
 };

@@ -1,11 +1,16 @@
 /* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
 import MetaData from "./MetaData.js"
-
+import localFont from "next/font/local";
 import "./globals.css";
 import "@assets/styles/main.scss"
 import NavInterface from "@components/00-Header/NavInterface.jsx"
-
+export const Roboto = localFont({
+    src: "/fonts/Roboto.woff2",
+    variable: "--Roboto",
+    weight: "100 900",
+    display: "swap", 
+});
 export const metadata : Metadata  = MetaData ;
 
 export default function RootLayout({
@@ -25,7 +30,7 @@ export default function RootLayout({
                     fetchPriority="low"
                 />
             </head>
-            <body id="top">
+            <body className={`${Roboto.variable}`} id="top">
                 <NavInterface />
                 <main>
                     {children}

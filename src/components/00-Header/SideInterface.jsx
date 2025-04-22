@@ -7,16 +7,7 @@ import CyclistIcon from "../99-Svg_Icon/CyclistIcon";
 import MusculationIcon from "../99-Svg_Icon/MusculationIcon";
 import sideIcons from "../../assets/data/sideIcons.json";
 
-/**
- * SideInterface component that renders the side navigation with icons.
- * @component
- * @param {Object} props - Component props
- * @param {string} [props.id] - The ID for the side interface (optional)
- * @param {string} [props.name] - The name of the side interface (optional)
- * @param {string} [props.title] - The title for the link (optional)
- * @param {string} [props.alt] - The alt text for the icons (optional)
- * @returns {JSX.Element} The rendered SideInterface component
- */
+
 const SideInterface = ({ id, name, title, alt }) => {
     const iconComponents = {
         RelaxIcon: RelaxIcon,
