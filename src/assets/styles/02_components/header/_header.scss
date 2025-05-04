@@ -6,12 +6,13 @@
     height: 90px;
     height: 85px;
     background-color: $nav-bg-black;
+    // background: #40ff00;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 10px;
     padding: 10px 29px 0 29px;
     position: fixed;
+    // left: 0;
     z-index: 100;
     align-self: center;
     .link-group,
@@ -22,7 +23,6 @@
         box-sizing: content-box;
         background-color: black;
         border-bottom: 2px solid rgba(255, 0, 0, 10.25);
-        // box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
         display: flex;
         align-items: center;
         justify-content: space-around;
@@ -34,7 +34,6 @@
             position: relative;
             z-index: 102;
             top: 0;
-            // max-width: 250px;
             background-color: $nav-bg-black;
             width: calc(25% - 0px);
             border-left: 2px solid $shp-text-black-h1;
@@ -47,7 +46,6 @@
             justify-content: center;
             &:hover {
                 z-index: 101;
-                // height: 84px;
                 box-shadow: 0px 2px 4px rgba(255, 1, 1, 0.25);
                 position: relative;
                 background: transparent;
@@ -63,7 +61,6 @@
                 @include nav-link;
                 width: fit-content;
                 text-align: center;
-                // border: 1px solid #ffffff;
             }
         }
     }

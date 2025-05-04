@@ -11,7 +11,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <SideInterface />
-            <Copyright string={"Copyright-wii-design.com-"} year={2024} />
+            {/* <Copyright string={"Copyright-wii-design.com-"} year={2024} /> */}
         </div>
     );
 };

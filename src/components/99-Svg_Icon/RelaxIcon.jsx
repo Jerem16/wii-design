@@ -1,4 +1,6 @@
 import React from "react";
+import SvgDefBG2 from "./SvgDefBG2";
+import SvgDefBG3 from "./SvgDefBG3";
 const RelaxIcon = () => {
     return (
         <div className="side-icon">
@@ -14,6 +16,8 @@ const RelaxIcon = () => {
                 viewBox="0 0 64 64"
                 xmlSpace="preserve"
             >
+                <SvgDefBG2 />
+                <SvgDefBG3 />
                 <path
                     className="white-bg_icon"
                     d="M58,0H6C2.7,0,0,2.7,0,6v52c0,3.3,2.7,6,6,6h52c3.3,0,6-2.7,6-6V6C64,2.7,61.3,0,58,0z M32,14c2.2,0,4,1.8,4,4

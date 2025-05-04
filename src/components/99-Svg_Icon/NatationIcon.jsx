@@ -1,4 +1,6 @@
 import React from "react";
+import SvgDefBG2 from "./SvgDefBG2";
+import SvgDefBG3 from "./SvgDefBG3";
 const NatationIcon = () => {
     return (
         <div className="side-icon">
@@ -14,6 +16,8 @@ const NatationIcon = () => {
                 viewBox="0 0 64 64"
                 xmlSpace="preserve"
             >
+                <SvgDefBG2 />
+                <SvgDefBG3 />
                 <path
                     className="red-content_icon"
                     d="M29.3,26.7L25,31c0.4,0.2,0.7,0.4,1,0.5c0.5,0.3,0.8,0.5,1.5,0.5s1-0.2,1.5-0.5c0.6-0.4,1.4-0.9,2.9-0.9

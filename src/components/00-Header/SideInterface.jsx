@@ -6,14 +6,23 @@ import NatationIcon from "../99-Svg_Icon/NatationIcon";
 import CyclistIcon from "../99-Svg_Icon/CyclistIcon";
 import MusculationIcon from "../99-Svg_Icon/MusculationIcon";
 import sideIcons from "../../assets/data/sideIcons.json";
-
+import Compass from "../99-Svg_Icon/sideBar/Compass";
+import Design from "../../components/99-Svg_Icon/sideBar/Design";
+import Development from "../99-Svg_Icon/sideBar/Development";
+import DevOps from "../99-Svg_Icon/sideBar/DevOps";
+import PerfSeo from "../99-Svg_Icon/sideBar/PerfSeo";
+import StrategicFramework from "../99-Svg_Icon/sideBar/StrategicFramework";
+import SupportFollow from "../99-Svg_Icon/sideBar/SupportFollow";
 
 const SideInterface = ({ id, name, title, alt }) => {
     const iconComponents = {
-        RelaxIcon: RelaxIcon,
-        NatationIcon: NatationIcon,
-        CyclistIcon: CyclistIcon,
-        MusculationIcon: MusculationIcon
+        StrategicFramework: StrategicFramework,
+        Design: Design,
+        Development: Development,
+        DevOps: DevOps,
+        PerfSeo: PerfSeo,
+
+        SupportFollow: SupportFollow
     };
 
     return (

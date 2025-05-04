@@ -16,6 +16,7 @@ const Copyright = ({ year, string }) => {
                 {string}
                 {year}
             </p>
+            <span></span>
         </footer>
     );
 };

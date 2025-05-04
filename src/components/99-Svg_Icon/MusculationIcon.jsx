@@ -1,4 +1,6 @@
 import React from "react";
+import SvgDefBG2 from "./SvgDefBG2";
+import SvgDefBG3 from "./SvgDefBG3";
 const MusculationIcon = () => {
     return (
         <div className="side-icon">
@@ -14,6 +16,8 @@ const MusculationIcon = () => {
                 viewBox="0 0 64 64"
                 xmlSpace="preserve"
             >
+                <SvgDefBG2 />
+                <SvgDefBG3 />
                 <path
                     className="red-content_icon"
                     d="M45.7,36.6l2.3-2.3L45.7,32L40,37.7L26.3,24l5.7-5.7L29.7,16l-2.3,2.3L25.1,16l-3.4,3.4l-2.3-2.3l-2.3,2.3
@@ -26,6 +30,7 @@ const MusculationIcon = () => {
 	l2.3,2.3l-2.3,2.3l-2.3-2.3L38.9,48l-2.3-2.3L34.3,48L32,45.7l5.7-5.7L24,26.3L18.3,32L16,29.7l2.3-2.3L16,25.1l3.4-3.4l-2.3-2.3
 	l2.3-2.3l2.3,2.3l3.4-3.4l2.3,2.3l2.3-2.3l2.3,2.3L26.3,24L40,37.7l5.7-5.7l2.3,2.3l-2.3,2.3L48,38.9z"
                 />
+                
             </svg>
         </div>
     );

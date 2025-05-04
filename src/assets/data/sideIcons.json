@@ -1,26 +1,39 @@
 [
     {
-        "id": "relaxIcon",
-        "name": "RelaxIcon",
-        "alt": "Icône de relaxation",
-        "title": "Relaxation"
+        "id": "strategicFramework",
+        "name": "StrategicFramework",
+        "alt": "Icône Cadrage & Strategie",
+        "title": "Cadrage & Strategie"
     },
     {
-        "id": "natationIcon",
-        "name": "NatationIcon",
-        "alt": "Icône de natation",
-        "title": "Natation"
+        "id": "design",
+        "name": "Design",
+        "alt": "Icône Design",
+        "title": "Design"
     },
     {
-        "id": "cyclistIcon",
-        "name": "CyclistIcon",
-        "alt": "Icône de cyclisme",
-        "title": "Cyclisme"
+        "id": "development",
+        "name": "Development",
+        "alt": "Icône Développement",
+        "title": "Développement"
     },
     {
-        "id": "musculationIcon",
-        "name": "MusculationIcon",
-        "alt": "Icône de musculation",
-        "title": "Musculation"
+        "id": "perfSeo",
+        "name": "PerfSeo",
+        "alt": "Icône Performance & SEO",
+        "title": "Performance & SEO"
+    },
+    {
+        "id": "devOps",
+        "name": "DevOps",
+        "alt": "Icône DevOps",
+        "title": "DevOps"
+    },
+
+    {
+        "id": "supportFollow",
+        "name": "SupportFollow",
+        "alt": "Icône Support & Suivi",
+        "title": "Support & Suivi"
     }
 ]

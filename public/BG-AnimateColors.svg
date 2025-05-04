@@ -1,0 +1,19 @@
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 243.5">
+        <style>#AZ stop:first-child{animation:stopColor1 8s infinite alternate ease-in-out}#AZ stop:last-child{animation:stopColor2 8s infinite alternate ease-in-out}@keyframes blue1{0%{stop-color:#ffed00}100%{stop-color:#00fff7}} @keyframes blue2{0%{stop-color:#312783}100%{stop-color:#7300ff}} @keyframes red1{0%{stop-color:#e6007e}100%{stop-color:#f8a5c2}} @keyframes red2{0%{stop-color:#009fe3}100%{stop-color:#00e6d3}} @keyframes green1{0%{stop-color:#009640}100%{stop-color:#00ff55}} @keyframes green2{0%{stop-color:#e30613}100%{stop-color:#ff5500}} @keyframes stopColor1{0%{stop-color:#ffed00}100%{stop-color:#00fff7}} @keyframes stopColor2{0%{stop-color:#e30613}100%{stop-color:#7300ff}}</style>
+            <defs>
+                <linearGradient id="AZ" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffed00" />
+                    <stop offset="100%" stop-color="#009fe3" />
+                </linearGradient>
+
+                <filter id="H">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
+            </defs>
+
+            <rect id="RX" fill="url(#AZ)" width="24" height="243.5" />
+        </svg>
