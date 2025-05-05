@@ -18,13 +18,19 @@
         width: 64px;
         height: auto;
         .side-icon {
+            // width: 100%;
             margin-bottom: 20px;
-            border-radius: 10px;
             box-sizing: border-box;
+            border-radius: 10px;
             border: 2px solid $nav-bg-black;
+            width: 64px;
+            height: 64px;
+            background-color: white;
             svg {
                 width: 64px;
                 height: 64px;
+                // background-color: white;
+                // border-radius: 12px;
             }
             .red-content_icon {
                 fill: transparent;
@@ -35,15 +41,16 @@
             }
             .white-bg_icon {
                 fill: rgb(255, 255, 255);
-
+                // fill: rgb(0, 0, 0);
                 @include drop-shadow(1px 1px rgba(0, 0, 0, 0.2));
-
+                // opacity: 0.5;
+                // animation: opacity10-5 1.6s 0.8s ease-in-out forwards;
                 // &.before {
                 //     opacity: 0.5;
                 // }
-                &.after {
-                    opacity: 0.5;
-                }
+                // &.after {
+                //     opacity: 0.5;
+                // }
             }
         }
     }

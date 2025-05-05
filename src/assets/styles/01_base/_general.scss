@@ -327,3 +327,10 @@ ol {
         width: 0%;
     }
 }
+main {
+    margin: 94px 0 0 117px;
+    width: calc(100vw - 116px);
+    min-height: calc(100vh - 94px);
+    position: relative;
+    box-sizing: border-box;
+}

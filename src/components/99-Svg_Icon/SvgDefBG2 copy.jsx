@@ -1,0 +1,23 @@
+import React from "react";
+import dynamic from "next/dynamic";
+const SvgDefBG2 = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+        <defs>
+            <linearGradient id="I" gradientUnits="userSpaceOnUse" />
+            <linearGradient id="AX" x1="0" y1="0" x2="100%" y2="100%" href="#I">
+                <stop offset="0" stopColor="#ffed00" />
+                <stop offset="1" stopColor="#009fe3" />
+            </linearGradient>
+            <filter id="H">
+                <feGaussianBlur stdDeviation="3" result="A" />
+                <feMerge></feMerge>
+            </filter>
+        </defs>
+        <path
+            id="RX"
+            fill="url(#AX)"
+            d="M57 0H7C3.7 0 0 3.7 0 7v50c0 3.3 3.7 7 7 7h50c3.3 0 7-3.7 7-7V7c0-3.3-3.7-7-7-7z"
+        />
+    </svg>
+);
+export default dynamic(() => Promise.resolve(React.memo(SvgDefBG2)));
