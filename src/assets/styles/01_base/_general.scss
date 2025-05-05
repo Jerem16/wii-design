@@ -240,7 +240,22 @@ ol {
     border-radius: 45px 82px 0px 0px;
     background: $white;
 }
-
+@keyframes opacity10-5 {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+@keyframes opacity0-10 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes opacityAnimationDelay {
     0% {
         opacity: 0;

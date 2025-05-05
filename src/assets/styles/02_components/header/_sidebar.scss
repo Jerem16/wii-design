@@ -1,8 +1,5 @@
-/* sidebar */
-
 .sidebar {
     width: 117px;
-    // min-height: calc(726px - 0px);
     position: fixed;
     top: 85px;
     z-index: 99;
@@ -14,7 +11,6 @@
     justify-content: space-between;
     justify-content: center;
     padding: 7px 26px 0 26px;
-    // border: 1px solid #e72424;
     box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
     .side-nav {
         position: relative;
@@ -22,123 +18,33 @@
         width: 64px;
         height: auto;
         .side-icon {
-            width: 64px;
-            height: 64px;
             margin-bottom: 20px;
-            border-radius: 7px;
-            // background-color: #ff0101;
+            border-radius: 10px;
             box-sizing: border-box;
             border: 2px solid $nav-bg-black;
+            svg {
+                width: 64px;
+                height: 64px;
+            }
             .red-content_icon {
-                // fill: #ff0101;
                 fill: transparent;
+                // fill: $text-white;
+
+                // opacity: 0;
+                @include drop-shadow(1px 1px rgba(0, 0, 0, 0.35));
             }
             .white-bg_icon {
-                fill: $text-white;
+                fill: rgb(255, 255, 255);
+
                 @include drop-shadow(1px 1px rgba(0, 0, 0, 0.2));
-            }
-            &:hover {
-                // box-shadow: 2px 2px 2px 0px rgba(255, 1, 1, 0.25);
-                position: relative;
-                transform: scale(1.025);
-                .red-disappear {
-                    display: none;
-                }
-                .red-content_icon {
-                    opacity: 0;
-                }
-                .white-bg_icon {
-                    @include drop-shadow(1.5px 1.5px rgba(0, 0, 0, 1));
 
-                    opacity: 0;
-                    box-shadow: inset 5px 5px gold;
-                }
-
-                .red-content_icon {
-                    animation: sport-icon-V2 0.3s linear;
-                    fill: #fff;
-                    @include drop-shadow(1px 1px rgba(0, 0, 0, 0.35));
-                    opacity: 1;
+                // &.before {
+                //     opacity: 0.5;
+                // }
+                &.after {
+                    opacity: 0.5;
                 }
             }
-            &:active {
-                box-shadow: inset 2px 2px 2px 0px rgba(0, 0, 0, 0.35);
-                position: relative;
-                transform: scale(1);
-                transition: none;
-                background-color: #ff0101;
-                background-color: #282d30;
-                .red-disappear {
-                    display: none;
-                }
-                .red-content_icon {
-                    animation: sport-icon-V2 0.3s linear;
-                    fill: #fff;
-                    @include drop-shadow(1px 1px rgba(0, 0, 0, 0.35));
-                    opacity: 1;
-                }
-                .white-bg_icon {
-                    fill: #ff0101;
-                    fill: blue;
-                    opacity: 0;
-                    box-shadow: inset 5px 5px gold;
-                }
-            }
-            @keyframes sport-icon {
-                from {
-                    fill: #282d30;
-                    opacity: 1;
-                }
-
-                to {
-                    fill: transparent;
-                    opacity: 0;
-                }
-            }
-            @keyframes typo-logo {
-                from {
-                    fill: #ff0101;
-                    opacity: 1;
-                }
-
-                to {
-                    fill: transparent;
-                    opacity: 0;
-                }
-            }
-            @keyframes sport-icon-V2 {
-                from {
-                    fill: #282d30;
-                    opacity: 1;
-                }
-
-                to {
-                    fill: #fff;
-                    opacity: 1;
-                }
-            }
-        }
-    }
-    .copyright {
-        position: absolute;
-        width: 20px;
-        min-height: 186px;
-        height: calc(100vh - 522px);
-        max-height: calc(50vh - 266px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-
-        bottom: 20px;
-        left: 48px;
-
-        .vertical-text {
-            text-align: left;
-            writing-mode: vertical-rl;
-            transform: rotate(-180deg);
-            @include side-copyright;
-            line-height: 20px;
         }
     }
 }

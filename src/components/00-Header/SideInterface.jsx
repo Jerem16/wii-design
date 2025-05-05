@@ -7,7 +7,7 @@ import CyclistIcon from "../99-Svg_Icon/CyclistIcon";
 import MusculationIcon from "../99-Svg_Icon/MusculationIcon";
 import sideIcons from "../../assets/data/sideIcons.json";
 import Compass from "../99-Svg_Icon/sideBar/Compass";
-import Design from "../../components/99-Svg_Icon/sideBar/Design";
+import Design from "../99-Svg_Icon/sideBar/Design";
 import Development from "../99-Svg_Icon/sideBar/Development";
 import DevOps from "../99-Svg_Icon/sideBar/DevOps";
 import PerfSeo from "../99-Svg_Icon/sideBar/PerfSeo";

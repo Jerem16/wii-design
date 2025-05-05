@@ -18,18 +18,17 @@
         "title": "Développement"
     },
     {
-        "id": "perfSeo",
-        "name": "PerfSeo",
-        "alt": "Icône Performance & SEO",
-        "title": "Performance & SEO"
-    },
-    {
         "id": "devOps",
         "name": "DevOps",
         "alt": "Icône DevOps",
         "title": "DevOps"
     },
-
+    {
+        "id": "perfSeo",
+        "name": "PerfSeo",
+        "alt": "Icône Performance & SEO",
+        "title": "Performance & SEO"
+    },
     {
         "id": "supportFollow",
         "name": "SupportFollow",
