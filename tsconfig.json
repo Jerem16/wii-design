@@ -19,6 +19,7 @@
             "@components/*": ["src/components/*"],
             "@assets/*": ["src/assets/*"],
             "@home/*": ["src/home/*"],
+            "@utils/*": ["src/utils/*"],
             "@styles/*": ["src/assets/styles/*"],
             "@data/*": ["src/assets/data/*"],
             "@app/*": ["app/*"],
@@ -35,7 +36,8 @@
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
-        "app/layout.tsx"
-, "src/components/99-Svg_Icon/SvgUse.jsx"    ],
+        "app/layout.tsx",
+        "src/components/99-Svg_Icon/SvgUse.jsx"
+    ],
     "exclude": ["node_modules"]
 }

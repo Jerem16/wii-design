@@ -1,12 +1,12 @@
 "use client";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
-
+import { runDelayWorker } from "@utils/functions/functions";
 const wait = ms => new Promise(res => setTimeout(res, ms));
 const DelayedContent = ({ children }) => <>{children}</>;
 const LazyComponent = dynamic(
     () =>
-        wait(800).then(() => ({
+        runDelayWorker(800).then(() => ({
             default: DelayedContent
         })),
     {
