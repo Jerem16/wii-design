@@ -4,26 +4,31 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import "./error.scss";
-
+import { runDelayWorker } from "@/utils/functions/functions";
 function Error404() {
     const router = useRouter();
     const [countdown, setCountdown] = useState(4);
     const num = 400 + countdown;
 
     useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            router.push("/");
-        }, countdown * 1000);
+        let isMounted = true;
 
-        const intervalId = setInterval(() => {
-            setCountdown(prevCountdown => prevCountdown - 1);
-        }, 1250);
+        const countdownLoop = async () => {
+            for (let i = countdown; i > 0; i--) {
+                await runDelayWorker(1250);
+                if (!isMounted) return;
+                setCountdown(prev => prev - 1);
+            }
+
+            router.push("/");
+        };
+
+        countdownLoop();
 
         return () => {
-            clearTimeout(timeoutId);
-            clearInterval(intervalId);
+            isMounted = false;
         };
-    }, [router, countdown]);
+    }, [router]);
 
     return (
         <div className="error-404">

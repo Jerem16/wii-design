@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import "./error.scss";
+"use client";
 
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import "./error.scss";
+import { runDelayWorker } from "@/utils/functions/functions";
 function Error401() {
     const navigate = useNavigate();
 
@@ -10,22 +13,26 @@ function Error401() {
     const num = countdown * 100 + 1;
 
     useEffect(() => {
-        const timeoutId = setTimeout(() => {
-            navigate("/login");
-        }, countdown * 1000);
+        let isMounted = true;
 
-        const intervalId = setInterval(() => {
-            setCountdown((prevCountdown) => prevCountdown - 1);
-        }, 1250);
+        const countdownLoop = async () => {
+            for (let i = countdown; i > 0; i--) {
+                await runDelayWorker(1250);
+                if (!isMounted) return;
+                setCountdown(prev => prev - 1);
+            }
+
+            navigate("/login");
+        };
+
+        countdownLoop();
 
         return () => {
-            clearTimeout(timeoutId);
-            clearInterval(intervalId);
+            isMounted = false;
         };
-    }, [navigate, countdown]);
-
+    }, [router]);
     return (
-        <main className="error-401">
+        <div className="error-401">
             <div className="borderError">
                 <h1 className="error-404_h1">{num}</h1>
                 <p className="error-404_p">
@@ -43,7 +50,7 @@ function Error401() {
                     Return to the login page
                 </Link>
             </div>
-        </main>
+        </div>
     );
 }
 
