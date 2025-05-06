@@ -11,46 +11,29 @@
     justify-content: space-between;
     justify-content: center;
     padding: 7px 26px 0 26px;
-    box-shadow: 4px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
     .side-nav {
         position: relative;
         left: 0;
         width: 64px;
         height: auto;
+
         .side-icon {
-            // width: 100%;
             margin-bottom: 20px;
             box-sizing: border-box;
             border-radius: 10px;
             border: 2px solid $nav-bg-black;
             width: 64px;
             height: 64px;
-            background-color: white;
             svg {
                 width: 64px;
                 height: 64px;
-                // background-color: white;
-                // border-radius: 12px;
             }
             .red-content_icon {
-                fill: transparent;
-                // fill: $text-white;
-
-                // opacity: 0;
-                @include drop-shadow(1px 1px rgba(0, 0, 0, 0.35));
+                fill: $text-white;
             }
             .white-bg_icon {
-                fill: rgb(255, 255, 255);
-                // fill: rgb(0, 0, 0);
-                @include drop-shadow(1px 1px rgba(0, 0, 0, 0.2));
-                // opacity: 0.5;
-                // animation: opacity10-5 1.6s 0.8s ease-in-out forwards;
-                // &.before {
-                //     opacity: 0.5;
-                // }
-                // &.after {
-                //     opacity: 0.5;
-                // }
+                fill: rgba(2, 2, 3, 0);
             }
         }
     }

@@ -38,6 +38,6 @@
         ".next/types/**/*.ts",
         "app/layout.tsx",
         "src/components/99-Svg_Icon/SvgUse.jsx"
-    ],
+, "src/components/00-Header/SideInterface.jsx"    ],
     "exclude": ["node_modules"]
 }

@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@assets/styles/main.scss"
 import NavInterface from "@components/00-Header/NavInterface.jsx"
-export const Roboto = localFont({
+const Roboto = localFont({
     src: "/fonts/Roboto.woff2",
     variable: "--Roboto",
     weight: "100 900",

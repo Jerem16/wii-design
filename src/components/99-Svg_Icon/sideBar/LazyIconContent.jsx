@@ -1,8 +1,7 @@
 "use client";
-import { Suspense } from "react";
+
 import dynamic from "next/dynamic";
 import { runDelayWorker } from "@utils/functions/functions";
-const wait = ms => new Promise(res => setTimeout(res, ms));
 const DelayedContent = ({ children }) => <>{children}</>;
 const LazyComponent = dynamic(
     () =>
@@ -14,13 +13,11 @@ const LazyComponent = dynamic(
         ssr: false
     }
 );
-const LazyIconContent = ({ children, fallback = null }) => {
+const LazyIconContent = ({ children }) => {
     return (
-        <Suspense fallback={fallback}>
-            <LazyComponent>
-                <g className="red-content_icon">{children}</g>
-            </LazyComponent>
-        </Suspense>
+        <LazyComponent>
+            <g className="white-bg_icon">{children}</g>
+        </LazyComponent>
     );
 };
 

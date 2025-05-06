@@ -1,18 +1,14 @@
-import React from "react";
+import { memo } from "react";
+import SideIcon from "./SideIcon";
 import SvgDefBG2 from "../SvgDefBG2";
 
 const SideBodyIcon = ({ children }) => {
     return (
-        <div className="side-icon">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 64 64"
-            >
-                <SvgDefBG2 />
-                {children}
-            </svg>
-        </div>
+        <SideIcon className={"s-a"}>
+            <SvgDefBG2 />
+            {children}
+        </SideIcon>
     );
 };
 
-export default React.memo(SideBodyIcon);
+export default memo(SideBodyIcon);
