@@ -4,7 +4,7 @@ import React, { lazy, useEffect, useState } from "react";
 import Link from "next/link";
 import sideIcons from "../../assets/data/sideIcons.json";
 import SideIcon from "../99-Svg_Icon/sideBar/SideIcon";
-
+import { idleCallbackPolyfill } from "@utils/functions/functions";
 const lazyIconComponents = {
     StrategicFramework: lazy(() =>
         import("../99-Svg_Icon/sideBar/StrategicFramework")
@@ -15,17 +15,7 @@ const lazyIconComponents = {
     PerfSeo: lazy(() => import("../99-Svg_Icon/sideBar/PerfSeo")),
     SupportFollow: lazy(() => import("../99-Svg_Icon/sideBar/SupportFollow"))
 };
-function createIdleDeadline() {
-    return {
-        timeRemaining: () => Math.max(0, 50),
-        didTimeout: false
-    };
-}
-function idleCallbackPolyfill(callback) {
-    return setTimeout(() => {
-        callback(createIdleDeadline());
-    }, 1);
-}
+
 function showIconsProgressively(sideIcons, scheduleIconVisibility) {
     const baseDelay = 100;
     sideIcons.forEach((_, i) => {

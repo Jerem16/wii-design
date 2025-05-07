@@ -1,6 +1,6 @@
 import { memo, lazy } from "react";
 import SideBodyIcon from "./SideBodyIcon";
-const W4 = lazy(() => import("./preload/W4"));
+const LazyIconContent = lazy(() => import("./LazyIconContent"));
 const DevOps = () => {
     return (
         <SideBodyIcon
@@ -12,7 +12,7 @@ const DevOps = () => {
                 </>
             }
         >
-            <W4 />
+            <LazyIconContent id="devOps" />
         </SideBodyIcon>
     );
 };

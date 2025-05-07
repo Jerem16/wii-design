@@ -1,12 +1,12 @@
 // components/SvgDefs.tsx
-import React from "react";
+import { memo } from "react";
 
-const SvgFilter = () => (
+const SvgFilter = ({ id }) => (
     <>
         <filter id="H">
             <feGaussianBlur stdDeviation="3" result="A" />
             <feMerge>
-                <feMergeNode in="A" />
+                <feMergeNode in={id} />
                 <feMergeNode in="SourceGraphic" />
             </feMerge>
         </filter>
@@ -14,4 +14,4 @@ const SvgFilter = () => (
     </>
 );
 
-export default SvgFilter;
+export default memo(SvgFilter);

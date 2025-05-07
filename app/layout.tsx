@@ -22,14 +22,30 @@ export default function RootLayout({
         <html lang="fr">
             <head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin=""/>
-                <link rel="preload" href="/img/logo1.svg" as="image" type="image/svg+xml" />
+                <link
+                    rel="preconnect"
+                    href="https://fonts.gstatic.com"
+                    crossOrigin=""
+                />
+                <link
+                    rel="preload"
+                    href="/img/logo1.svg"
+                    as="image"
+                    type="image/svg+xml"
+                />
                 <link rel="preload" href="./deferCss.css" as="style" />
                 <link
                     rel="stylesheet"
                     href="./deferCss.css"
                     fetchPriority="low"
                 />
+                {/* <script
+                    type="application/json"
+                    id="lazy-icon-data"
+                    src="/assets/iconsPaths.json"
+                    defer
+                    fetchPriority="low"
+                ></script> */}
             </head>
             <body className={`${Roboto.variable}`} id="top">
                 <NavInterface />
