@@ -1,12 +1,16 @@
-import { memo } from "react";
+import { memo, lazy, Suspense } from "react";
 import SideIcon from "./SideIcon";
 import SvgDefBG2 from "../SvgDefBG2";
+const LazyIconContent = lazy(() => import("./LazyIconContent"));
 
-const SideBodyIcon = ({ children }) => {
+const SideBodyIcon = ({ R: RComponent, children }) => {
     return (
         <SideIcon className={"s-a"}>
             <SvgDefBG2 />
-            {children}
+            <g className={"red-content_icon"}>{RComponent}</g>
+            <Suspense fallback={null}>
+                <LazyIconContent>{children}</LazyIconContent>
+            </Suspense>
         </SideIcon>
     );
 };

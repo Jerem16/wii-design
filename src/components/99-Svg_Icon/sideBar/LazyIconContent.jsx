@@ -1,5 +1,5 @@
 "use client";
-
+import { memo } from "react";
 import dynamic from "next/dynamic";
 import { runDelayWorker } from "@utils/functions/functions";
 const DelayedContent = ({ children }) => <>{children}</>;
@@ -9,16 +9,15 @@ const LazyComponent = dynamic(
             default: DelayedContent
         })),
     {
-        loading: () => null,
         ssr: false
     }
 );
 const LazyIconContent = ({ children }) => {
     return (
         <LazyComponent>
-            <g className="white-bg_icon">{children}</g>
+            <g className={"white-bg_icon"}>{children}</g>
         </LazyComponent>
     );
 };
 
-export default LazyIconContent;
+export default memo(LazyIconContent);
