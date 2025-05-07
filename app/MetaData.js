@@ -23,10 +23,10 @@ const MetaData = {
         type: "website",
         images: [
             {
-                url: "/img/about/avatar.svg",
+                url: "/img/favicon/icons/logo.svg",
                 width: 225,
                 height: 225,
-                alt: "Avatar du créateur du site"
+                alt: "logo du site"
             },
             {
                 url: "https://www.example.com/photo-fb",
