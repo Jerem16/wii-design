@@ -33,10 +33,10 @@ export default function RootLayout({
                     as="image"
                     type="image/svg+xml"
                 />
-                <link rel="preload" href="./deferCss.css" as="style" />
+                <link rel="preload" href="/deferCss.css" as="style" />
                 <link
                     rel="stylesheet"
-                    href="./deferCss.css"
+                    href="/deferCss.css"
                     fetchPriority="low"
                 />
                 {/* <script

@@ -1,15 +1,22 @@
-import React from "react";
 import { notFound } from "next/navigation";
-import { loadRmdlPage } from "../../../src/generated/rmdl/manifest";
+import {
+  RMDL_PAGES,
+  type RmdlPageLoader,
+  type RmdlPageModule,
+} from "../../../src/generated/rmdl/manifest";
 
-type PageProps = Readonly<{
-  params: Readonly<{ slug: string }>;
+type Props = Readonly<{
+  params: Promise<Readonly<{ slug: string }>>;
 }>;
 
-export default async function Page({ params }: PageProps): Promise<React.ReactElement> {
-  const mod = await loadRmdlPage(params.slug);
-  if (!mod) return notFound();
+export default async function Page({ params }: Props): Promise<JSX.Element> {
+  const { slug } = await params;
 
-  const Comp = mod.default;
-  return <Comp />;
+  const loader: RmdlPageLoader | undefined = RMDL_PAGES[slug];
+  if (!loader) notFound();
+
+  const mod: RmdlPageModule = await loader();
+  const Generated = mod.default;
+
+  return <Generated />;
 }
