@@ -1,100 +1,105 @@
 export type RmdlDoc = Readonly<{
-  blocks: ReadonlyArray<RmdlBlock>;
-  meta?: RmdlMeta;
+    blocks: ReadonlyArray<RmdlBlock>;
+    meta?: RmdlMeta;
 }>;
 
 export type RmdlMeta = Readonly<{
-  slug?: string;
-  title?: string;
+    slug?: string;
+    title?: string;
 }>;
 
 export type RmdlBlock =
-  | RmdlHeadingBlock
-  | RmdlParagraphBlock
-  | RmdlListBlock
-  | RmdlQuoteBlock
-  | RmdlCodeBlock;
+    | RmdlHeadingBlock
+    | RmdlParagraphBlock
+    | RmdlListBlock
+    | RmdlQuoteBlock
+    | RmdlCodeBlock;
 
 export type RmdlHeadingLevel = 1 | 2 | 3;
 
 export type RmdlHeadingBlock = Readonly<{
-  kind: "heading";
-  level: RmdlHeadingLevel;
-  inlines: ReadonlyArray<RmdlInline>;
-  id?: string;
+    kind: "heading";
+    level: RmdlHeadingLevel;
+    inlines: ReadonlyArray<RmdlInline>;
+    id?: string;
 }>;
 
 export type RmdlParagraphBlock = Readonly<{
-  kind: "paragraph";
-  inlines: ReadonlyArray<RmdlInline>;
+    kind: "paragraph";
+    inlines: ReadonlyArray<RmdlInline>;
 }>;
 
 export type RmdlListKind = "l" | "ol" | "l2" | "ol2";
 
 export type RmdlListBlock = Readonly<{
-  kind: "list";
-  listKind: RmdlListKind;
-  items: ReadonlyArray<RmdlListItem>;
+    kind: "list";
+    listKind: RmdlListKind;
+    items: ReadonlyArray<RmdlListItem>;
 }>;
 
 export type RmdlListItem = Readonly<{
-  kind: "item";
-  inlines: ReadonlyArray<RmdlInline>;
-  sublists?: ReadonlyArray<RmdlListBlock>;
+    kind: "item";
+    blocks: ReadonlyArray<RmdlBlock>;
 }>;
 
 export type RmdlQuoteBlock = Readonly<{
-  kind: "quote";
-  blocks: ReadonlyArray<RmdlBlock>;
-  by?: string;
+    kind: "quote";
+    blocks: ReadonlyArray<RmdlBlock>;
+    by?: string;
 }>;
 
 export type RmdlCodeBlock = Readonly<{
-  kind: "code";
-  lang: string;
-  code: string;
+    kind: "code";
+    lang: string;
+    code: string;
 }>;
 
 export type RmdlInline =
-  | RmdlTextInline
-  | RmdlStrongInline
-  | RmdlLabelInline
-  | RmdlParenItalicInline
-  | RmdlLinkInline
-  | RmdlAbInline;
+    | RmdlTextInline
+    | RmdlStrongInline
+    | RmdlLabelInline
+    | RmdlParenItalicInline
+    | RmdlLinkInline
+    | RmdlAbInline;
 
 export type RmdlTextInline = Readonly<{
-  kind: "text";
-  text: string;
+    kind: "text";
+    text: string;
 }>;
 
 export type RmdlStrongInline = Readonly<{
-  kind: "strong";
-  inlines: ReadonlyArray<RmdlInline>;
+    kind: "strong";
+    inlines: ReadonlyArray<RmdlInline>;
 }>;
 
 export type RmdlLabelInline = Readonly<{
-  kind: "label";
-  inlines: ReadonlyArray<RmdlInline>;
+    kind: "label";
+    inlines: ReadonlyArray<RmdlInline>;
 }>;
 
+/**
+ * pi : Parenthèse italique
+ * - Les parenthèses sont rendues en normal (jamais en gras)
+ * - `strong=true` => contenu interne gras+italique (mais parenthèses normales)
+ */
 export type RmdlParenItalicInline = Readonly<{
-  kind: "pi";
-  inlines: ReadonlyArray<RmdlInline>;
+    kind: "pi";
+    inlines: ReadonlyArray<RmdlInline>;
+    strong: boolean;
 }>;
 
 export type RmdlLinkInline = Readonly<{
-  kind: "link";
-  href: string;
-  text: ReadonlyArray<RmdlInline>;
-  ext: boolean;
-  cta: boolean;
-  dl: boolean;
+    kind: "link";
+    href: string;
+    text: ReadonlyArray<RmdlInline>;
+    ext: boolean;
+    cta: boolean;
+    dl: boolean;
 }>;
 
 export type RmdlAbInline = Readonly<{
-  kind: "ab";
-  definition?: string;
-  href?: string;
-  text: ReadonlyArray<RmdlInline>;
+    kind: "ab";
+    definition?: string;
+    href?: string;
+    text: ReadonlyArray<RmdlInline>;
 }>;

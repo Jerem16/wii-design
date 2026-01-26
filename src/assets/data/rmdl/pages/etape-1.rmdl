@@ -1,0 +1,33 @@
+<h1>Phase 1 — Cadrage & stratégie<h1>
+
+<lb>Objectif<lb> : Poser un cap clair, cadrer le besoin, et définir une stratégie actionnable.
+
+<s>Livrables<s> <pi>(selon formule)<pi> :
+<l>
+<i><lb>1. Entretien de cadrage<lb> : 60–90 min <pi>(visio ou présentiel)<pi><i>
+<i><lb>2. Analyse de l’existant<lb> : Audit rapide (UX/UI, contenu, perf) <pi>(si support fourni)<pi><i>
+<i><lb>3. Synthèse & recommandations<lb> : Priorités, quick wins, plan d’action <pi>(1 page)<pi><i>
+<l>
+
+<lb>Ce que vous obtenez<lb> :
+<l>
+<i><s>Un récapitulatif clair<s> <pi>(1 page)<pi><i>
+<i><s>Une direction stratégique<s> <pi>(objectifs + étapes)<pi><i>
+<i><s>Un plan d’action<s> <pi>(priorisé)<pi><i>
+<l>
+
+<lb>Notes<lb> :
+<q>
+Un bon cadrage réduit les allers-retours et sécurise le budget.
+<pi>(On évite de “coder à l’aveugle”.)<pi>
+<q>
+
+<lb>Exemple (règle pi + strong)<lb> :
+<s>Un récapitulatif clair<s> <pi>(1 page)<pi>
+<s>Un récapitulatif clair <pi>(1 page)<pi><s>
+
+<lb>Bloc de code (doit rester brut)<lb> :
+```text
+<s>pas un strong<s>
+<pi>(pas une parenthèse italique)<pi>
+<script>alert("XSS")</script>
