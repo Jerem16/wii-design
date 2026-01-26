@@ -1,0 +1,38 @@
+/**
+ * Styles RMDL (Option A) — à compléter
+ * Intégration : importer ce fichier dans `src/assets/styles/main.scss`.
+ */
+
+.rmdl-link {
+  text-decoration: underline;
+}
+
+.rmdl-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.rmdl-quote {
+  padding-left: 1rem;
+  border-left: 3px solid currentColor;
+  margin: 1rem 0;
+}
+
+.rmdl-code {
+  overflow: auto;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.rmdl-list {
+  margin: 0.6rem 0 0.6rem 1.2rem;
+}
+
+.rmdl-ab {
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
