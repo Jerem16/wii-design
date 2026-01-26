@@ -15,16 +15,16 @@ import type {
     doc: RmdlDoc;
   }>;
   
-  export function emitTsxPage(input: EmitInput): string {
-    const { slug, doc } = input;
-  
-    const body = renderBlocks(doc.blocks, 2);
-  
-    return [
-      "/**",
-      " * Page RMDL générée (Option A).",
-      " * Ne pas modifier à la main.",
-      " */",
+export function emitTsxPage(input: EmitInput): string {
+  const { slug, doc } = input;
+
+  const body = renderBlocks(doc.blocks, 2);
+
+  const output = [
+    "/**",
+    " * Page RMDL générée (Option A).",
+    " * Ne pas modifier à la main.",
+    " */",
       "",
       'import React from "react";',
       'import { RmdlHeading } from "../../../rmdl/components/rmdl-heading";',
@@ -41,11 +41,13 @@ import type {
       "    <React.Fragment>",
       body.length ? body : "      {null}",
       "    </React.Fragment>",
-      "  );",
-      "}",
-      "",
-    ].join("\n");
-  }
+    "  );",
+    "}",
+    "",
+  ].join("\n");
+
+  return output;
+}
   
   function indent(n: number): string {
     return "  ".repeat(n);
@@ -131,7 +133,7 @@ import type {
   function renderInline(n: RmdlInline, key: number): string {
     if (n.kind === "text") {
       // Texte => littéral en TSX (protégé)
-      return `{${tsxLit(n.text)}}`;
+      return tsxText(n.text);
     }
   
     if (n.kind === "strong") {
@@ -182,6 +184,10 @@ import type {
   
   function tsxLit(value: string): string {
     // littéral string TSX (JSON.stringify safe)
+    return `{${tsStringLiteral(value)}}`;
+  }
+
+  function tsxText(value: string): string {
     return `{${tsStringLiteral(value)}}`;
   }
   

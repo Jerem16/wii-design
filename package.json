@@ -7,7 +7,9 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "generate:sitemap": "node scripts/generate-sitemap.js"
+        "generate:sitemap": "node scripts/generate-sitemap.js",
+        "rmdl:clean": "node --import=tsx scripts/rmdl-clean.ts",
+        "rmdl:build": "node --import=tsx scripts/rmdl-to-tsx.ts"
     },
     "dependencies": {
         "@aws-amplify/core": "^6.7.2",

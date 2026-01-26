@@ -39,7 +39,7 @@ export type AllowedTag =
     | "ab"
     | "q";
 
-export const ALLOWED_TAGS: ReadonlySet<string> = new Set([
+export const ALLOWED_TAGS: ReadonlySet<AllowedTag> = new Set<AllowedTag>([
     "h1",
     "h2",
     "h3",

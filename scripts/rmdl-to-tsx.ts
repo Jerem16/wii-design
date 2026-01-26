@@ -74,6 +74,10 @@ async function compileOne(filename: string): Promise<{ slug: string; errors: Rea
 
   const safe = sanitize(doc);
   const tsx = emitTsxPage({ slug, doc: safe });
+  const hasDoubleBraces = /\{\{"/.test(tsx) && /"\}\}/.test(tsx);
+  if (hasDoubleBraces) {
+    throw new Error(`TSX invalide généré pour "${slug}" (double accolades).`);
+  }
 
   await ensureDir(OUT_PAGES);
   await fs.writeFile(path.join(OUT_PAGES, `${slug}.tsx`), tsx, "utf-8");

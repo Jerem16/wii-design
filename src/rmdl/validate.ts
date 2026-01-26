@@ -9,8 +9,8 @@ export type ValidationError = Readonly<{
  * Validation RMDL — stub (Option A).
  * TODO: allowlist tags/attrs, urls, structure, règles typographiques (ponctuation hors <lb>/<s>).
  */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export function validate(_doc: RmdlDoc): ReadonlyArray<ValidationError> {
-    return [];
-  }
+export function validate(doc: RmdlDoc): ReadonlyArray<ValidationError> {
+  void doc;
+  return [];
+}
   
