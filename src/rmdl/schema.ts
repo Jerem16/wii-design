@@ -56,5 +56,5 @@ export const ALLOWED_TAGS: ReadonlySet<AllowedTag> = new Set<AllowedTag>([
     "q"
 ]);
 export function isAllowedTag(name: string): name is AllowedTag {
-    return ALLOWED_TAGS.has(name);
+    return ALLOWED_TAGS.has(name as AllowedTag);
 }
