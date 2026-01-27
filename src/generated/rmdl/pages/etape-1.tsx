@@ -6,10 +6,10 @@
 import React from "react";
 import { RmdlHeading } from "../../../rmdl/components/rmdl-heading";
 import { RmdlList } from "../../../rmdl/components/rmdl-list";
-import { RmdlLink } from "../../../rmdl/components/rmdl-link";
-import { RmdlAb } from "../../../rmdl/components/rmdl-ab";
+// import { RmdlLink } from "../../../rmdl/components/rmdl-link";
+// import { RmdlAb } from "../../../rmdl/components/rmdl-ab";
 import { RmdlQuote } from "../../../rmdl/components/rmdl-q";
-import { RmdlCode } from "../../../rmdl/components/rmdl-code";
+// import { RmdlCode } from "../../../rmdl/components/rmdl-code";
 
 export default function Page(): React.ReactElement {
   const __slug = "etape-1";
