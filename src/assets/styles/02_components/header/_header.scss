@@ -5,6 +5,7 @@
     height: 90px;
     height: 85px;
     background-color: $nav-bg-black;
+    font-family: var(--font-ui);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,7 +47,11 @@
             .nav-link {
                 display: block;
                 position: relative;
-                @include nav-link;
+                font-family: var(--font-ui);
+                font-size: var(--fs-ui);
+                line-height: var(--lh-ui);
+                font-weight: 500;
+                color: $text-white;
                 width: fit-content;
                 text-align: center;
             }
