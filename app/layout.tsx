@@ -28,6 +28,10 @@ export default function RootLayout({
                     crossOrigin=""
                 />
                 <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Carlito:wght@400;700&family=Roboto:wght@400;500;700&display=swap"
+                />
+                <link
                     rel="preload"
                     href="/img/logo1.svg"
                     as="image"
