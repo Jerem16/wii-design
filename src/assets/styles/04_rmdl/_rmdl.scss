@@ -3,36 +3,525 @@
  * Intégration : importer ce fichier dans `src/assets/styles/main.scss`.
  */
 
-.rmdl-link {
-  text-decoration: underline;
+// .rmdl-link {
+//     text-decoration: underline;
+// }
+
+// .rmdl-cta {
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0.6rem 1rem;
+//     border-radius: 999px;
+//     text-decoration: none;
+// }
+
+// .rmdl-quote {
+//     padding-left: 1rem;
+//     border-left: 3px solid currentColor;
+//     margin: 1rem 0;
+// }
+
+// .rmdl-code {
+//     overflow: auto;
+//     padding: 1rem;
+//     border-radius: 12px;
+// }
+
+// .rmdl-list {
+//     margin: 0.6rem 0 0.6rem 1.2rem;
+// }
+
+// .rmdl-ab {
+//     border-bottom: 1px dotted currentColor;
+//     cursor: help;
+// }
+// /* =========================
+//    RMDL — Base styles
+//    ========================= */
+
+// .rmdl-h1,
+// .rmdl-h2,
+// .rmdl-h3 {
+//     margin: 0 0 0.75rem 0;
+//     line-height: 1.15;
+// }
+
+// .rmdl-h1 {
+//     font-size: 2rem;
+// }
+// .rmdl-h2 {
+//     font-size: 1.5rem;
+// }
+// .rmdl-h3 {
+//     font-size: 1.25rem;
+// }
+
+// .rmdl-p {
+//     margin: 0 0 0.75rem 0;
+//     line-height: 1.6;
+//     text-wrap: pretty;
+// }
+
+// /* Label (préfixe sémantique) */
+// .rmdl-lb {
+//     font-weight: 600;
+//     /* Optionnel: letter-spacing légère si tu veux un rendu "label" */
+//     /* letter-spacing: 0.01em; */
+// }
+
+// /* Strong global (neutre, sans couleurs) */
+// .rmdl-p strong,
+// .rmdl-li strong,
+// .rmdl-quote strong {
+//     font-weight: 700;
+// }
+
+// /* =========================
+//       RMDL — Parenthèse typographique (<pi>)
+//       Règle: parenthèses jamais en gras, contenu italique,
+//       contenu peut devenir gras si couvert par <strong>
+//       ========================= */
+
+// .rmdl-pi {
+//     display: inline-flex;
+//     align-items: baseline;
+//     gap: 0;
+//     white-space: nowrap;
+// }
+
+// /* Parenthèses toujours normales, même si un <strong> englobe tout */
+// .rmdl-pi > span {
+//     font-weight: 400 !important;
+//     font-style: normal !important;
+// }
+
+// /* Contenu interne toujours italique */
+// .rmdl-pi em {
+//     font-style: italic;
+// }
+
+// /* Si le contenu interne est aussi en <strong>, il restera gras+italique */
+// .rmdl-pi strong em {
+//     font-weight: 700;
+//     font-style: italic;
+// }
+
+// /* =========================
+//       RMDL — Listes
+//       ========================= */
+
+// .rmdl-list {
+//     margin: 0 0 0.75rem 0;
+//     padding-left: 1.25rem;
+// }
+
+// .rmdl-l {
+//     list-style: disc;
+// }
+// .rmdl-ol {
+//     list-style: decimal;
+// }
+
+// .rmdl-li {
+//     margin: 0.35rem 0;
+// }
+
+// /* Paragraphes dans items */
+// .rmdl-li .rmdl-p {
+//     margin: 0.35rem 0;
+// }
+
+// /* Sous-listes (niveau 2) */
+// .rmdl-l2,
+// .rmdl-ol2 {
+//     margin-top: 0.35rem;
+//     margin-bottom: 0.35rem;
+//     padding-left: 1.25rem;
+// }
+
+// /* =========================
+//       RMDL — Quote
+//       ========================= */
+
+// .rmdl-quote {
+//     margin: 0 0 0.75rem 0;
+//     padding: 0;
+//     border: 0;
+// }
+
+// .rmdl-quote-content {
+//     padding: 0.75rem 1rem;
+//     border-left: 3px solid currentColor;
+// }
+
+// /* =========================
+//       RMDL — Liens / CTA (prêt)
+//       (à activer quand l’emit ajoute les classes)
+//       ========================= */
+
+// .rmdl-a {
+//     text-decoration: underline;
+//     text-underline-offset: 0.15em;
+// }
+
+// .rmdl-a.rmdl-cta {
+//     text-decoration: none;
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 0.6rem 0.9rem;
+//     border-radius: 0.75rem;
+//     border: 1px solid currentColor;
+// }
+
+// /* =========================
+//       RMDL — Code (prêt)
+//       (à activer quand l’emit ajoute la classe)
+//       ========================= */
+
+// .rmdl-code {
+//     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+//         "Liberation Mono", "Courier New", monospace;
+//     font-size: 0.95em;
+//     line-height: 1.5;
+//     white-space: pre;
+//     overflow-x: auto;
+// }
+/* RMDL — Typo & layout
+   Objectif : rendu lisible, stable, sans impacter le reste du site.
+*/
+
+:root {
+    --rmdl-font-body: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    --rmdl-font-heading: Calibri, Candara, "Segoe UI", Arial, sans-serif;
+    --rmdl-line: 1.65;
+    --rmdl-radius: 14px;
 }
 
-.rmdl-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.6rem 1rem;
-  border-radius: 999px;
-  text-decoration: none;
+/* Titres */
+.rmdl-h1,
+.rmdl-h2,
+.rmdl-h3 {
+    font-family: var(--rmdl-font-heading);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 1.25rem 0 0.75rem;
 }
 
-.rmdl-quote {
-  padding-left: 1rem;
-  border-left: 3px solid currentColor;
-  margin: 1rem 0;
+.rmdl-h1 {
+    font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+    margin-top: 0.25rem;
 }
 
-.rmdl-code {
-  overflow: auto;
-  padding: 1rem;
-  border-radius: 12px;
+.rmdl-h2 {
+    font-size: clamp(1.45rem, 2vw, 1.9rem);
+    margin-top: 1.75rem;
 }
 
+.rmdl-h3 {
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    margin-top: 1.25rem;
+}
+
+/* Paragraphes */
+.rmdl-p {
+    font-family: var(--rmdl-font-body);
+    font-size: 1rem;
+    line-height: var(--rmdl-line);
+    margin: 0.75rem 0;
+}
+
+/* Strong : on reste neutre (le navigateur gère déjà), mais on évite les surprises */
+.rmdl-p strong {
+    font-weight: 700;
+}
+
+/* Label */
+.rmdl-lb {
+    font-weight: 700;
+    /* Optionnel : look “label” plus marqué
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    */
+}
+
+/* Parenthèses italique (pi)
+     - Les parenthèses restent normales
+     - Le contenu <em> hérite du gras si englobé par <strong> (ou par ton wrapper)
+  */
+.rmdl-pi {
+    white-space: nowrap;
+}
+
+.rmdl-pi > span {
+    font-weight: 400 !important; /* Parenthèses toujours normales, même dans <strong> */
+}
+
+.rmdl-pi em {
+    font-style: italic;
+}
+
+/* Symboles neutres (règle s0) — nécessite que le renderer wrap les symboles */
+.rmdl-neutral {
+    font-weight: 400 !important;
+}
+
+/* Listes */
 .rmdl-list {
-  margin: 0.6rem 0 0.6rem 1.2rem;
+    margin: 0.75rem 0 0.75rem 1.25rem;
+    padding: 0;
 }
 
+.rmdl-list.rmdl-l {
+    list-style: disc;
+}
+
+.rmdl-list.rmdl-ol {
+    list-style: decimal;
+}
+
+.rmdl-list.rmdl-l2 {
+    list-style: circle;
+    margin-left: 1.25rem;
+}
+
+.rmdl-list.rmdl-ol2 {
+    list-style: lower-alpha;
+    margin-left: 1.25rem;
+}
+
+.rmdl-li {
+    margin: 0.35rem 0;
+}
+
+.rmdl-li > .rmdl-p {
+    margin: 0.35rem 0;
+}
+
+/* Quote */
+.rmdl-quote {
+    margin: 1rem 0;
+    padding: 0.85rem 1rem;
+    border-left: 4px solid currentColor;
+    border-radius: var(--rmdl-radius);
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.rmdl-quote-content .rmdl-p {
+    margin: 0;
+}
+
+/* Code */
+.rmdl-code {
+    margin: 1rem 0;
+    padding: 0.85rem 1rem;
+    border-radius: var(--rmdl-radius);
+    background: rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.rmdl-code code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    font-size: 0.95em;
+    line-height: 1.5;
+    white-space: pre;
+    tab-size: 2;
+}
+
+/* Liens / CTA (prévu pour RmdlLink) */
+.rmdl-a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.rmdl-a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.rmdl-a.rmdl-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    text-decoration: none;
+    transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.rmdl-a.rmdl-cta:hover {
+    transform: translateY(-1px);
+}
+
+/* Glossaire / ab (prévu pour RmdlAb : data-def) */
 .rmdl-ab {
-  border-bottom: 1px dotted currentColor;
-  cursor: help;
+    position: relative;
+    cursor: help;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+}
+
+.rmdl-ab[data-def]:hover::after {
+    content: attr(data-def);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.55rem;
+    min-width: 220px;
+    max-width: 360px;
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    z-index: 50;
+}
+:root {
+    --rmdl-font-body: Calibri, "Segoe UI", Arial, sans-serif;
+    --rmdl-font-heading: "Calibri Light", Calibri, "Segoe UI", Arial, sans-serif;
+
+    --rmdl-color-text: #000;
+    --rmdl-color-accent: #2f5496; /* titres Word */
+    --rmdl-color-quote: #404040; /* citations Word */
+    --rmdl-color-muted: #595959;
+
+    --rmdl-font-size-body: 11pt; /* Word: 11pt */
+    --rmdl-line-height: 1.07; /* Word: 107% */
+    --rmdl-space-p: 8pt; /* Word: margin-bottom 8pt */
+}
+
+/* Optionnel : wrapper */
+.rmdl-root {
+    font-family: var(--rmdl-font-body);
+    font-size: var(--rmdl-font-size-body);
+    line-height: var(--rmdl-line-height);
+    color: var(--rmdl-color-text);
+}
+
+/* Corps */
+.rmdl-p,
+.rmdl-li,
+.rmdl-quote,
+.rmdl-lb {
+    font-family: var(--rmdl-font-body);
+    font-size: var(--rmdl-font-size-body);
+    line-height: var(--rmdl-line-height);
+    color: var(--rmdl-color-text);
+}
+
+.rmdl-p {
+    margin: 0 0 var(--rmdl-space-p) 0;
+}
+
+/* Titres (alignés Word) */
+.rmdl-h1 {
+    margin: 18pt 0 4pt 0;
+    font-family: var(--rmdl-font-heading);
+    font-size: 20pt;
+    font-weight: 300;
+    color: var(--rmdl-color-accent);
+    line-height: var(--rmdl-line-height);
+}
+
+.rmdl-h2 {
+    margin: 8pt 0 4pt 0;
+    font-family: var(--rmdl-font-heading);
+    font-size: 16pt;
+    font-weight: 300;
+    color: var(--rmdl-color-accent);
+    line-height: var(--rmdl-line-height);
+}
+
+.rmdl-h3 {
+    margin: 8pt 0 4pt 0;
+    font-family: var(--rmdl-font-body);
+    font-size: 14pt;
+    font-weight: 400;
+    color: var(--rmdl-color-accent);
+    line-height: var(--rmdl-line-height);
+}
+
+/* Label */
+.rmdl-lb {
+    font-weight: 700;
+}
+
+/* Parenthèses typographiques <pi> :
+     - parenthèses TOUJOURS normales
+     - contenu en italique
+  */
+.rmdl-pi {
+    white-space: nowrap; /* optionnel, proche Word */
+}
+
+.rmdl-pi > span {
+    font-style: normal !important;
+    font-weight: 400 !important; /* neutralise le gras même si <pi> est dans <strong> */
+}
+
+.rmdl-pi > em {
+    font-style: italic;
+}
+
+/* Strong */
+.rmdl-p strong,
+.rmdl-li strong {
+    font-weight: 700;
+}
+
+/* Listes */
+.rmdl-list {
+    margin: 0 0 var(--rmdl-space-p) 36pt; /* proche Word (list paragraph indent) */
+    padding: 0;
+}
+
+.rmdl-l {
+    list-style: disc;
+}
+.rmdl-ol {
+    list-style: decimal;
+}
+
+.rmdl-li {
+    margin: 0;
+}
+
+.rmdl-li .rmdl-p {
+    margin-bottom: 0; /* items Word “collés” */
+}
+
+/* Quote */
+.rmdl-quote {
+    margin: 8pt 0;
+}
+
+.rmdl-quote-content {
+    text-align: center;
+    color: var(--rmdl-color-quote);
+    font-style: italic;
+}
+
+/* Code */
+.rmdl-code {
+    margin: 8pt 0;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 10pt;
+    line-height: 1.3;
+    padding: 8pt;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 6pt;
+    background: rgba(0, 0, 0, 0.03);
+    overflow: auto;
+}
+
+/* Liens (simple, proche Word) */
+.rmdl-a {
+    color: var(--rmdl-color-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
 }
