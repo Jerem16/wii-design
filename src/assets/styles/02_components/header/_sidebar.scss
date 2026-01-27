@@ -17,17 +17,25 @@
         left: 0;
         width: 64px;
         height: auto;
+        --side-icon-size: 64px;
+
+        a {
+            display: block;
+            line-height: 0;
+        }
 
         .side-icon {
             margin-bottom: 20px;
             box-sizing: border-box;
             border-radius: 10px;
             border: 2px solid $nav-bg-black;
-            width: 64px;
-            height: 64px;
+            width: var(--side-icon-size);
+            height: var(--side-icon-size);
+            flex: 0 0 var(--side-icon-size);
             svg {
-                width: 64px;
-                height: 64px;
+                width: 100%;
+                height: 100%;
+                display: block;
             }
             .red-content_icon {
                 fill: $text-white;
