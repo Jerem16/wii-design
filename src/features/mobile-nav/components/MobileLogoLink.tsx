@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { MouseEventHandler } from "react";
+import Logo from "@/components/00-Header/Logo";
 
 interface MobileLogoLinkProps {
     onClick: MouseEventHandler<HTMLAnchorElement>;
@@ -7,9 +7,13 @@ interface MobileLogoLinkProps {
 
 const MobileLogoLink = ({ onClick }: MobileLogoLinkProps) => {
     return (
-        <Link href="/#top" aria-label="Retour en haut de page" onClick={onClick}>
-            <img src="/img/logo1.svg" alt="Logo" className="mnav__logo" />
-        </Link>
+        <Logo
+            href="/#top"
+            ariaLabel="Retour en haut de page"
+            title="Retour en haut de page"
+            className="mnav__logo"
+            onClick={onClick}
+        />
     );
 };
 
