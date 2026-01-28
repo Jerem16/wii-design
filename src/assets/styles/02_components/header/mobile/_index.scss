@@ -1,0 +1,11 @@
+.mnav {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .mnav {
+        display: block;
+    }
+
+    @import "./nav";
+}
