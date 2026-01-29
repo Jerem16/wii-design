@@ -1,19 +1,21 @@
+import Link from "next/link";
+import React from "react";
 import type { MouseEventHandler } from "react";
-import Logo from "@/components/00-Header/Logo";
-
+const LazyMyLogoW = React.lazy(() => import("../../../components/99-Svg_Icon/MyLogoW"));
+const LazyMyLogoBG = React.lazy(() => import("../../../components/99-Svg_Icon/MyLogoBG"));
+const LazyMyLogoTypo = React.lazy(() => import("../../../components/99-Svg_Icon/MyLogoTypo"));
 interface MobileLogoLinkProps {
     onClick: MouseEventHandler<HTMLAnchorElement>;
 }
 
 const MobileLogoLink = ({ onClick }: MobileLogoLinkProps) => {
     return (
-        <Logo
-            href="/#top"
-            ariaLabel="Retour en haut de page"
-            title="Retour en haut de page"
-            className="mnav__logo"
-            onClick={onClick}
-        />
+        <Link href="/#top" aria-label="Retour en haut de page" onClick={onClick}>
+            <img src="/img/logo1.svg" alt="Logo" className="my-logo l1" />
+            <LazyMyLogoBG />
+            <LazyMyLogoTypo />
+            <LazyMyLogoW />
+        </Link>
     );
 };
 
