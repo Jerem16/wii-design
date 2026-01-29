@@ -10,11 +10,18 @@ interface MobileLogoLinkProps {
 
 const MobileLogoLink = ({ onClick }: MobileLogoLinkProps) => {
     return (
-        <Link href="/#top" aria-label="Retour en haut de page" onClick={onClick}>
+        <Link
+            href="/#top"
+            aria-label="Retour en haut de page"
+            onClick={onClick}
+            className="logo mnav__logo"
+        >
             <img src="/img/logo1.svg" alt="Logo" className="my-logo l1" />
-            <LazyMyLogoBG />
-            <LazyMyLogoTypo />
-            <LazyMyLogoW />
+            <React.Suspense fallback={null}>
+                <LazyMyLogoBG />
+                <LazyMyLogoTypo />
+                <LazyMyLogoW />
+            </React.Suspense>
         </Link>
     );
 };
