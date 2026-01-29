@@ -12,11 +12,12 @@ const MobileLogoLink = ({ onClick }: MobileLogoLinkProps) => {
     return (
         <Link
             href="/#top"
+            title="Aller à la page d'accueil"
             aria-label="Retour en haut de page"
             onClick={onClick}
             className="logo mnav__logo"
         >
-            <img src="/img/logo1.svg" alt="Logo" className="my-logo l1" />
+            <img src="/img/logo1.svg" alt="Logo-menu" className="my-logo l1" />
             <React.Suspense fallback={null}>
                 <LazyMyLogoBG />
                 <LazyMyLogoTypo />
