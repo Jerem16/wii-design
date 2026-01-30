@@ -14,7 +14,6 @@ const SvgDefBG = ({ idPrefix }) => (
             y1="127"
             x2="382"
             y2="382"
-            href={`#${idPrefix}-I`}
         >
             <StpOf7 />
         </linearGradient>
