@@ -1,17 +1,41 @@
 // components/SvgDefs.tsx
 import React from "react";
 import dynamic from "next/dynamic";
-const SvgDefs = () => (
+/**
+ * @param {{ idPrefix: string }} props
+ */
+const SvgDefs = ({ idPrefix }) => (
     <defs>
-        <linearGradient id="C" x1="0" y1="470" x2="470" y2="0" href="#I">
+        <linearGradient
+            id={`${idPrefix}-C`}
+            x1="0"
+            y1="470"
+            x2="470"
+            y2="0"
+            href={`#${idPrefix}-I`}
+        >
             <stop offset="0" stopColor="#009640" />
             <stop offset="1" stopColor="#312783" />
         </linearGradient>
-        <linearGradient id="D" x1="0" y1="0" x2="470" y2="470" href="#I">
+        <linearGradient
+            id={`${idPrefix}-D`}
+            x1="0"
+            y1="0"
+            x2="470"
+            y2="470"
+            href={`#${idPrefix}-I`}
+        >
             <stop offset="0" stopColor="#312783" />
             <stop offset="1" stopColor="#e30613" />
         </linearGradient>
-        <linearGradient id="E" x1="470" y1="0" x2="0" y2="470" href="#I">
+        <linearGradient
+            id={`${idPrefix}-E`}
+            x1="470"
+            y1="0"
+            x2="0"
+            y2="470"
+            href={`#${idPrefix}-I`}
+        >
             <stop offset="0" stopColor="#e30613" />
             <stop offset="1" stopColor="#009640" />
         </linearGradient>

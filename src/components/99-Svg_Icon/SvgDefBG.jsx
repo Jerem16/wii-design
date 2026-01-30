@@ -3,12 +3,22 @@ import React from "react";
 import dynamic from "next/dynamic";
 import SvgFilter from "./SvgFilter";
 import StpOf7 from "./StpOf7";
-const SvgDefBG = () => (
+/**
+ * @param {{ idPrefix: string }} props
+ */
+const SvgDefBG = ({ idPrefix }) => (
     <defs>
-        <linearGradient id="A" x1="127" y1="127" x2="382" y2="382" href="#I">
+        <linearGradient
+            id={`${idPrefix}-A`}
+            x1="127"
+            y1="127"
+            x2="382"
+            y2="382"
+            href={`#${idPrefix}-I`}
+        >
             <StpOf7 />
         </linearGradient>
-        <SvgFilter id={"A"} />
+        <SvgFilter idPrefix={idPrefix} resultId="A" />
     </defs>
 );
 

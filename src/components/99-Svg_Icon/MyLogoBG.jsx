@@ -1,19 +1,22 @@
 import React from "react";
 import SideBodyLogo from "./SideBodyLogo";
-const MyLogoBG = () => {
+/**
+ * @param {{ idPrefix: string }} props
+ */
+const MyLogoBG = ({ idPrefix }) => {
     return (
-        <SideBodyLogo className={"logoBG"}>
+        <SideBodyLogo className={"logoBG"} idPrefix={idPrefix}>
             <path
-                id="Z"
+                id={`${idPrefix}-Z`}
                 opacity=".5"
                 d="M235 470L0 235 235 0 470 235z"
                 className="animated-z"
             />
             <use
-                href="#Z"
-                fill="url(#A)"
+                href={`#${idPrefix}-Z`}
+                fill={`url(#${idPrefix}-A)`}
                 style={{ mixBlendMode: "screen" }}
-                filter="url(#H)"
+                filter={`url(#${idPrefix}-H)`}
             />
         </SideBodyLogo>
     );

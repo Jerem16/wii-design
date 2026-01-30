@@ -1,17 +1,23 @@
 // components/SvgDefs.tsx
 import { memo } from "react";
 
-const SvgFilter = ({ id }) => (
-    <>
-        <filter id="H">
-            <feGaussianBlur stdDeviation="3" result="A" />
-            <feMerge>
-                <feMergeNode in={id} />
-                <feMergeNode in="SourceGraphic" />
-            </feMerge>
-        </filter>
-        <linearGradient id="I" gradientUnits="userSpaceOnUse" />
-    </>
-);
+/**
+ * @param {{ idPrefix: string, resultId: string }} props
+ */
+const SvgFilter = ({ idPrefix, resultId }) => {
+    const blurId = `${idPrefix}-${resultId}`;
+    return (
+        <>
+            <filter id={`${idPrefix}-H`}>
+                <feGaussianBlur stdDeviation="3" result={blurId} />
+                <feMerge>
+                    <feMergeNode in={blurId} />
+                    <feMergeNode in="SourceGraphic" />
+                </feMerge>
+            </filter>
+            <linearGradient id={`${idPrefix}-I`} gradientUnits="userSpaceOnUse" />
+        </>
+    );
+};
 
 export default memo(SvgFilter);
