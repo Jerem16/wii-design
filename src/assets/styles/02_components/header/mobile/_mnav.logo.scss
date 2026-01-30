@@ -1,28 +1,24 @@
 @media (max-width: 1024px) {
-    .mnav__bar {
-        .logo {
-            position: relative;
-            width: 42px;
-            height: 42px;
-            margin: 0;
-            left: auto;
-            top: auto;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            box-shadow: none;
-        }
+    .mnav__bar .logo {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        margin: 0;
+        left: auto;
+        top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
 
-        .logo .my-logo {
+        .my-logo {
             position: absolute;
             inset: 0;
             width: 100%;
             height: 100%;
         }
 
-        .logo .l1,
-        .logo svg {
+        .l1,
+        svg {
             width: 100%;
             height: 100%;
         }
