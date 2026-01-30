@@ -6,13 +6,13 @@ import dynamic from "next/dynamic";
  */
 const SvgDefs = ({ idPrefix }) => (
     <defs>
-        {/* Gradients autonomes sans href externe. */}
         <linearGradient
             id={`${idPrefix}-C`}
             x1="0"
             y1="470"
             x2="470"
             y2="0"
+            href={`#${idPrefix}-I`}
         >
             <stop offset="0" stopColor="#009640" />
             <stop offset="1" stopColor="#312783" />
@@ -23,6 +23,7 @@ const SvgDefs = ({ idPrefix }) => (
             y1="0"
             x2="470"
             y2="470"
+            href={`#${idPrefix}-I`}
         >
             <stop offset="0" stopColor="#312783" />
             <stop offset="1" stopColor="#e30613" />
@@ -33,6 +34,7 @@ const SvgDefs = ({ idPrefix }) => (
             y1="0"
             x2="0"
             y2="470"
+            href={`#${idPrefix}-I`}
         >
             <stop offset="0" stopColor="#e30613" />
             <stop offset="1" stopColor="#009640" />

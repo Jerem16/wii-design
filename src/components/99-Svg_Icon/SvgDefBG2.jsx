@@ -8,13 +8,13 @@ import StpOf7 from "./StpOf7";
 const SvgDefBG2 = ({ idPrefix }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <defs>
-            {/* Gradient autonome pour éviter toute dépendance à d'autres IDs. */}
             <linearGradient
                 id={`${idPrefix}-AX`}
                 x1="0"
                 y1="0"
                 x2="100%"
                 y2="100%"
+                href={`#${idPrefix}-I`}
             >
                 <StpOf7 />
             </linearGradient>
