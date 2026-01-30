@@ -16,6 +16,7 @@
         "baseUrl": ".", // 👈 nécessaire pour que "paths" fonctionne
         "paths": {
             "@/*": ["./src/*"],
+            "@app/*": ["app/*"],
             "@components/*": ["src/components/*"],
             "@assets/*": ["src/assets/*"],
             "@home/*": ["src/home/*"],
@@ -23,8 +24,8 @@
             "@hooks/*": ["src/hooks/*"],
             "@styles/*": ["src/assets/styles/*"],
             "@data/*": ["src/assets/data/*"],
-            "@app/*": ["app/*"],
-            "@svg/*": ["src/components/svg_Icon/*"]
+            "@svg/*": ["src/components/svg_Icon/*"],
+            "@public/*": ["public/*"]
         },
         "plugins": [
             {
@@ -34,6 +35,11 @@
     },
     "include": [
         "next-env.d.ts",
+        "app/**/*.ts",
+        "app/**/*.tsx",
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "public/**/*.json",
         "**/*.ts",
         "**/*.tsx",
         ".next/types/**/*.ts",
@@ -41,5 +47,5 @@
         "src/components/99-Svg_Icon/SvgUse.jsx",
         "src/components/00-Header/SideInterface.jsx"
     ],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", ".next", "dist"]
 }
