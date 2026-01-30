@@ -16,4 +16,36 @@
     .l1 {
         z-index: 10;
     }
+
+    .logo-stop--c-start {
+        animation: 300s ease-in-out infinite alternate blue1;
+    }
+
+    .logo-stop--c-end {
+        animation: 600s ease-in-out infinite alternate blue2;
+    }
+
+    .logo-stop--d-start {
+        animation: 60s ease-in-out infinite alternate red1;
+    }
+
+    .logo-stop--d-end {
+        animation: 120s ease-in-out infinite alternate red2;
+    }
+
+    .logo-stop--e-start {
+        animation: 180s ease-in-out infinite alternate green1;
+    }
+
+    .logo-stop--e-end {
+        animation: 360s ease-in-out infinite alternate green2;
+    }
+
+    .logo-stop--a-start {
+        animation: 8s ease-in-out infinite alternate blue1;
+    }
+
+    .logo-stop--a-end {
+        animation: 8s ease-in-out infinite alternate stopColor2;
+    }
 }
