@@ -1,4 +1,4 @@
-// components/SvgDefs.tsx
+// components/SvgFilter.jsx
 import { memo } from "react";
 
 /**
