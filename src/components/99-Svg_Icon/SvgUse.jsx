@@ -1,23 +1,26 @@
 import React from "react";
 
-const SvgUse = ({ value }) => (
+/**
+ * @param {{ idPrefix: string, value: string }} props
+ */
+const SvgUse = ({ idPrefix, value }) => (
     <g>
         <use
-            href={`#${value}`}
-            fill="url(#C)"
+            href={`#${idPrefix}-${value}`}
+            fill={`url(#${idPrefix}-C)`}
             x="3"
             style={{ mixBlendMode: "screen" }}
         />
         <use
-            href={`#${value}`}
+            href={`#${idPrefix}-${value}`}
             x="1.5"
             y="1.5"
-            fill="url(#D)"
+            fill={`url(#${idPrefix}-D)`}
             style={{ mixBlendMode: "screen" }}
         />
         <use
-            href={`#${value}`}
-            fill="url(#E)"
+            href={`#${idPrefix}-${value}`}
+            fill={`url(#${idPrefix}-E)`}
             style={{ mixBlendMode: "screen" }}
         />
     </g>

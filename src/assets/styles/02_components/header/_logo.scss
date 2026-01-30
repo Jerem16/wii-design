@@ -9,6 +9,7 @@
     position: absolute;
     left: 0px;
     z-index: 102;
+    isolation: isolate;
     .my-logo {
         position: absolute;
         width: 64px;
