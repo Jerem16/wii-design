@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
  */
 const SvgDefs = ({ idPrefix }) => (
     <defs>
+        {/* Gradients autonomes sans href externe. */}
         <linearGradient
             id={`${idPrefix}-C`}
             x1="0"
