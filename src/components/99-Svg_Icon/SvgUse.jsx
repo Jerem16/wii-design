@@ -1,23 +1,23 @@
 import React from "react";
 
-const SvgUse = ({ value }) => (
+const SvgUse = ({ value, prefix }) => (
     <g>
         <use
-            href={`#${value}`}
-            fill="url(#C)"
+            href={`#${prefix}-${value}`}
+            fill={`url(#${prefix}-C)`}
             x="3"
             style={{ mixBlendMode: "screen" }}
         />
         <use
-            href={`#${value}`}
+            href={`#${prefix}-${value}`}
             x="1.5"
             y="1.5"
-            fill="url(#D)"
+            fill={`url(#${prefix}-D)`}
             style={{ mixBlendMode: "screen" }}
         />
         <use
-            href={`#${value}`}
-            fill="url(#E)"
+            href={`#${prefix}-${value}`}
+            fill={`url(#${prefix}-E)`}
             style={{ mixBlendMode: "screen" }}
         />
     </g>
