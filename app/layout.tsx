@@ -5,7 +5,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@assets/styles/main.scss"
 import NavInterface from "@components/00-Header/NavInterface.jsx"
-import GlobalLogoDefs from "@components/99-Svg_Icon/GlobalLogoDefs.jsx";
 const Roboto = localFont({
     src: "/fonts/Roboto.woff2",
     variable: "--Roboto",
@@ -53,7 +52,6 @@ export default function RootLayout({
                 ></script> */}
             </head>
             <body className={`${Roboto.variable}`} id="top">
-                <GlobalLogoDefs />
                 <NavInterface />
                 <main>
                     {children}
