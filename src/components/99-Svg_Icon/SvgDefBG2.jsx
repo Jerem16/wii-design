@@ -1,25 +1,24 @@
 import { memo } from "react";
 import dynamic from "next/dynamic";
-import SvgFilter from "./SvgFilter";
-import StpOf7 from "./StpOf7";
+import SvgGradientWithFilter from "./SvgGradientWithFilter";
+
 /**
  * @param {{ idPrefix: string }} props
  */
 const SvgDefBG2 = ({ idPrefix }) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
         <defs>
-            <linearGradient
-                id={`${idPrefix}-AX`}
+            <SvgGradientWithFilter
+                idPrefix={idPrefix}
+                resultId="AX"
                 x1="0"
                 y1="0"
                 x2="100%"
                 y2="100%"
-                href={`#${idPrefix}-I`}
-            >
-                <StpOf7 />
-            </linearGradient>
-            <SvgFilter idPrefix={idPrefix} resultId="AX" />
+                // hrefSuffix="I" // optionnel car par défaut = "I"
+            />
         </defs>
+
         <path
             id={`${idPrefix}-RX`}
             fill={`url(#${idPrefix}-AX)`}
@@ -27,4 +26,5 @@ const SvgDefBG2 = ({ idPrefix }) => (
         />
     </svg>
 );
+
 export default dynamic(() => Promise.resolve(memo(SvgDefBG2)));

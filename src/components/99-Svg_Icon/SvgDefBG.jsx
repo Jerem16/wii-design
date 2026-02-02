@@ -1,24 +1,21 @@
-// components/SvgDefs.tsx
 import React from "react";
 import dynamic from "next/dynamic";
-import SvgFilter from "./SvgFilter";
-import StpOf7 from "./StpOf7";
+import SvgGradientWithFilter from "./SvgGradientWithFilter";
+
 /**
  * @param {{ idPrefix: string }} props
  */
 const SvgDefBG = ({ idPrefix }) => (
     <defs>
-        <linearGradient
-            id={`${idPrefix}-A`}
+        <SvgGradientWithFilter
+            idPrefix={idPrefix}
+            resultId="A"
             x1="127"
             y1="127"
             x2="382"
             y2="382"
-            href={`#${idPrefix}-I`}
-        >
-            <StpOf7 />
-        </linearGradient>
-        <SvgFilter idPrefix={idPrefix} resultId="A" />
+            // hrefSuffix="I" // optionnel car par défaut = "I"
+        />
     </defs>
 );
 
