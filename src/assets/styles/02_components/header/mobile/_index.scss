@@ -1,7 +1,9 @@
 .mnav {
     display: none;
 }
-
+.mnav__logo {
+    top: 0;
+}
 @media (max-width: 1024px) {
     .mnav {
         display: block;

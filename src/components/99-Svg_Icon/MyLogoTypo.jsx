@@ -9,7 +9,7 @@ import SvgUse from "./SvgUse";
 const MyLogoTypo = ({ idPrefix }) => {
     const typoPrefix = `${idPrefix}-t`;
     return (
-        <div className="my-logo l2">
+        <div className="my-logo l2 mnav__logo">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 470">
                 <SvgDefs idPrefix={typoPrefix} />
                 <path

@@ -20,10 +20,26 @@ body.mnav--open {
     background-color: $nav-bg-black;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
-
+.my-logo svg,
+.my-logo img[src$=".svg"] {
+    shape-rendering: geometricPrecision;
+    text-rendering: geometricPrecision;
+    image-rendering: auto;
+}
+.my-logo svg [stroke] {
+    vector-effect: non-scaling-stroke;
+}
 .mnav__logo {
     width: 42px;
     height: 42px;
+    position: absolute;
+    top: 5.5px;
+    left: 8px;
+    z-index: 900;
+}
+.l1 {
+    position: absolute;
+    z-index: 1000;
 }
 
 .mnav__toggle {
@@ -55,7 +71,7 @@ body.mnav--open {
     width: min(100vw, 420px);
     height: 100vh;
     padding: 54px 20px 54px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(8px);
     transform: translateX(-100%);
     transition: transform 0.4s ease-in-out;
@@ -63,6 +79,7 @@ body.mnav--open {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    // z-index: 100;
 }
 
 .mnav__panel.open {

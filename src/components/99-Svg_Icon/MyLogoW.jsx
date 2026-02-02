@@ -8,7 +8,7 @@ import SvgUse from "./SvgUse";
 const MyLogoW = ({ idPrefix }) => {
     const wPrefix = `${idPrefix}-w`;
     return (
-        <SideBodyLogo className={"logoW"} idPrefix={wPrefix}>
+        <SideBodyLogo className={"logoW mnav__logo"} idPrefix={wPrefix}>
             <SvgDefs idPrefix={wPrefix} />
             <path
                 id={`${wPrefix}-W`}

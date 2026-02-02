@@ -10,8 +10,10 @@ interface MobileLogoLinkProps {
 const MobileLogoLink = ({ onClick }: MobileLogoLinkProps) => {
     const idPrefix = useIdPrefix("logo");
     return (
-        <Link href="/#top" aria-label="Retour en haut de page" onClick={onClick} >
+        <Link href="/#top" aria-label="Retour en haut de page" onClick={onClick}>
+            {/* <span className="mnav__logo"> */}
             <LogoContent idPrefix={idPrefix} />
+            {/* </span> */}
         </Link>
     );
 };

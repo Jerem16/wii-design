@@ -1,13 +1,11 @@
-import React, { useId } from "react";
+import React, { memo } from "react";
 import Link from "next/link";
-const LazyMyLogoW = React.lazy(() => import("../99-Svg_Icon/MyLogoW"));
-const LazyMyLogoBG = React.lazy(() => import("../99-Svg_Icon/MyLogoBG"));
-const LazyMyLogoTypo = React.lazy(() => import("../99-Svg_Icon/MyLogoTypo"));
+import LogoContent from "./LogoContent";
+import { useIdPrefix } from "@hooks/useIdPrefix";
 
 const Logo = () => {
-    const raw = useId();
-    const idPrefix = `logo-${raw.replace(/[^a-zA-Z0-9_-]/g, "")}`;
-    // Title prop with a default value
+    const idPrefix = useIdPrefix("logo");
+
     return (
         <Link
             className="logo"
@@ -15,12 +13,9 @@ const Logo = () => {
             href="/"
             title="Aller à la page d'accueil"
         >
-            <img src="/img/logo1.svg" className="my-logo l1" alt="Logo-menu" />
-            <LazyMyLogoBG idPrefix={idPrefix} />
-            <LazyMyLogoTypo idPrefix={idPrefix} />
-            <LazyMyLogoW idPrefix={idPrefix} />
+            <LogoContent idPrefix={idPrefix} />
         </Link>
     );
 };
 
-export default React.memo(Logo);
+export default memo(Logo);

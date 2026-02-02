@@ -6,7 +6,7 @@ import SideBodyLogo from "./SideBodyLogo";
 const MyLogoBG = ({ idPrefix }) => {
     const bgPrefix = `${idPrefix}-bg`;
     return (
-        <SideBodyLogo className={"logoBG"} idPrefix={bgPrefix} withBgDefs>
+        <SideBodyLogo className={"logoBG mnav__logo"} idPrefix={bgPrefix} withBgDefs>
             <path
                 id={`${bgPrefix}-Z`}
                 opacity=".5"

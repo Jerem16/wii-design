@@ -1,5 +1,4 @@
 import Logo from "@components/00-Header/Logo.jsx";
-import LogoDebugChecks from "./LogoDebugChecks";
 
 const LogoTestPage = () => {
     return (
@@ -40,7 +39,6 @@ const LogoTestPage = () => {
                 </div>
             </section>
 
-            <LogoDebugChecks />
         </div>
     );
 };
