@@ -2,7 +2,7 @@
 import { memo } from "react";
 import MobileHeader from "./MobileHeader";
 import { NavigationProvider } from "@utils/context/NavigationContext";
-import ScrollProvider  from "@utils/context/ScrollContext"; 
+import ScrollProvider from "@utils/context/ScrollContext";
 import { useScrollAnchors } from "../../../hooks/useScrollAnchors";
 import { useMobileBreakpoint } from "../hooks/useMobileBreakpoint";
 
@@ -30,3 +30,4 @@ const MobileNav = () => {
 };
 
 export default memo(MobileNav);
+//mnav__bar

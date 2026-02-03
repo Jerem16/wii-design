@@ -36,7 +36,7 @@ const MobileHeader: React.FC = () => {
     );
 
     return (
-        <div className="ha header">
+        <div className="mnav__bar">
             <MobileLogoLink onClick={handleLogoClick} />
             <Nav
                 menuItems={updatedMenuItems}

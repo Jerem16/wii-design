@@ -24,7 +24,7 @@ const MenuOpen: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
     );
 
     const containerClass = useMemo(
-        () => `head-flex absolute ${hamburgerMenuIsOpen ? "open" : ""}`,
+        () => `mnav__panel ${hamburgerMenuIsOpen ? "open" : ""}`,
         [hamburgerMenuIsOpen]
     );
 

@@ -2,7 +2,7 @@
 import { memo } from "react";
 import MobileNav from "./MobileNav";
 import { NavigationProvider } from "@/features/navigation/core/context/NavigationContext";
-import { ScrollProvider } from "@/features/navigation/core/context/ScrollContext";
+import ScrollProvider  from "@utils/context/ScrollContext";
 
 const MobileNavWithProviders = () => {
     return (

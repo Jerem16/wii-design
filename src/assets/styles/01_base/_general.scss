@@ -248,10 +248,8 @@ main {
     min-height: calc(100dvh);
     display: block;
 }
-.section:first-child {
-    width: 100%;
-    min-height: calc(100dvh);
-    display: block;
+.fixed-menu:first-child {
+    padding-top: 1px;
 }
 .active-section {
     padding-top: 80px;

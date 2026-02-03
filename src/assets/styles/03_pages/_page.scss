@@ -7,9 +7,20 @@
     .fixed-menu {
         height: calc(60px + 2rem);
         width: 100vw;
+        
         transform-origin: top;
         transform: scaleY(1);
-        transition: all 375ms ease-in-out;
+        animation: fixedMenuCollapse 375ms ease-in-out 1s forwards infinite;
+    }
+
+    @keyframes fixedMenuCollapse {
+        to {
+            opacity: 0;
+            transform: scaleY(0);
+            pointer-events: none;
+            padding-top: 0px;
+            visibility: hidden;
+        }
     }
     h2 {
         display: flex;
@@ -50,4 +61,3 @@
 #expert {
     background: linear-gradient(#51c264, #fff);
 }
-
