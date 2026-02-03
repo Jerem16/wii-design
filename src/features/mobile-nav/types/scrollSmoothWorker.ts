@@ -1,12 +1,1 @@
-export interface ScrollSmoothWorkerData {
-    start: number;
-    end: number;
-    duration: number;
-    startTime: number;
-    currentTime: number;
-}
-
-export interface ScrollSmoothWorkerResponse {
-    newScrollY: number;
-    progress: number;
-}
+export * from "@/features/navigation/core/types/scrollSmoothWorker";
