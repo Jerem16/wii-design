@@ -7,7 +7,7 @@ import { useScrollAnchors } from "../../../hooks/useScrollAnchors";
 import { useMobileBreakpoint } from "../hooks/useMobileBreakpoint";
 
 const MobileNavContent = () => {
-    useScrollAnchors(true);
+    useScrollAnchors([]);
     return (
         <div className="mnav">
             <MobileHeader />
