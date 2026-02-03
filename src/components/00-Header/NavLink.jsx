@@ -5,6 +5,9 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import { handleNavClick } from "@/features/navigation/core/utils/handleNavClick";
 
+import { DESKTOP_HOME_ANCHOR_MAP } from "@/features/desktop-nav/extensions/homeAnchorMap";
+
+
 /**
  * NavLink component that renders a navigation link.
  * @component
@@ -17,9 +20,13 @@ import { handleNavClick } from "@/features/navigation/core/utils/handleNavClick"
 const NavLink = ({ label, path, title }) => {
     const handleClick = useCallback(
         (event) => {
-            handleNavClick(path, event);
+            handleNavClick(path, event, undefined, {
+                label,
+                desktopAnchorMap: DESKTOP_HOME_ANCHOR_MAP,
+            });
         },
-        [path]
+        [label, path]
+
     );
 
     return (
