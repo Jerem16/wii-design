@@ -2,9 +2,9 @@
 import { useMemo, memo } from "react";
 import dynamic from "next/dynamic";
 import type { MenuItem } from "../data/menuItems";
-import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
+import { useNavigation } from "@utils/context/NavigationContext";
 import { svgComponents } from "./svgComponents";
-import { makeClickHandler } from "@/features/navigation/core/utils/handlers";
+import { makeClickHandler } from "@utils/handlers";
 
 const LazySubMenu = dynamic<{
     menuItem: MenuItem;
@@ -19,21 +19,23 @@ interface NavLinkProps {
     handleMenuClick: (menuItemId: string) => void;
 }
 
-const NavLink = ({
+const NavLink: React.FC<NavLinkProps> = ({
     menuItem,
     onNavigationClick,
     isOpen,
     handleMenuClick,
-}: NavLinkProps) => {
+}) => {
     const { closeHamburgerMenu } = useNavigation();
     const SvgIcon = useMemo(() => svgComponents[menuItem.svg], [menuItem.svg]);
 
     const handleClick = useMemo(
         () =>
             makeClickHandler(() => {
+                // 1er clic : on va sur /pX, on ouvre le sous-menu, le hamburger reste ouvert
                 onNavigationClick(menuItem.path);
                 const wasOpen = isOpen;
                 handleMenuClick(menuItem.id);
+                // Si pas de sous-items OU si c'était déjà ouvert, on ferme le hamburger
                 if (!menuItem.subItems?.length || wasOpen) {
                     closeHamburgerMenu(500);
                 }
@@ -50,14 +52,13 @@ const NavLink = ({
     );
 
     const hasSub = !!menuItem.subItems && menuItem.subItems.length > 0;
-    const href = menuItem.AnchorId ? `${menuItem.path}${menuItem.AnchorId}` : menuItem.path;
 
     return (
         <div className={`mnav__item ${menuItem.id}`}>
             <a
                 aria-label={`Page ${menuItem.title}`}
                 className={`mnav__link ${menuItem.class ?? ""}`}
-                href={href}
+                href={menuItem.path + menuItem.AnchorId}
                 onClick={handleClick}
                 tabIndex={0}
                 aria-haspopup={hasSub ? "menu" : undefined}
@@ -78,7 +79,11 @@ const NavLink = ({
             </a>
 
             {hasSub && isOpen && (
-                <LazySubMenu menuItem={menuItem} isOpen={isOpen} onSubItemClick={onNavigationClick} />
+                <LazySubMenu
+                    menuItem={menuItem}
+                    isOpen={isOpen}
+                    onSubItemClick={onNavigationClick}
+                />
             )}
         </div>
     );

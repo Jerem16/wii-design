@@ -1,17 +1,23 @@
-"use client";
+// "use client";
 import { useMemo, memo } from "react";
 import { usePathname } from "next/navigation";
 import Nav from "./Nav";
+import type { MenuItem } from "../data/menuItems";
 import MobileLogoLink from "./MobileLogoLink";
-import { useScrollContext } from "@/features/navigation/core/context/ScrollContext";
-import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
+import { useScrollContext } from "@utils/context/ScrollContext";
+import { useNavigation } from "@utils/context/NavigationContext";
 import { menuItems } from "../data/menuItems";
-import { updateMenuClasses } from "../utils/updateMenuUtils";
-import { useSmoothScroll } from "@/features/navigation/core/hooks/useSmoothScroll";
-import { useInitialScroll } from "@/features/navigation/core/utils/scrollUtils";
-import { makeClickHandler } from "@/features/navigation/core/utils/handlers";
+import { updateMenuClasses } from "@utils/updateMenuUtils";
+import { useSmoothScroll } from "@utils/useSmoothScroll";
+import { useInitialScroll } from "@utils/scrollUtils";
+import { makeClickHandler } from "@utils/handlers";
 
-const MobileHeader = () => {
+interface NavProps {
+    menuItems: MenuItem[];
+    onNavigationClick: (path: string) => void;
+}
+
+const MobileHeader: React.FC<NavProps> = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute, closeHamburgerMenu } = useNavigation();
     const { activeSection } = useScrollContext();
@@ -30,14 +36,18 @@ const MobileHeader = () => {
     );
 
     const updatedMenuItems = useMemo(
-        () => updateMenuClasses(menuItems.mainLink, activeSection, currentRoute),
+        () =>
+            updateMenuClasses(menuItems.mainLink, activeSection, currentRoute),
         [activeSection, currentRoute]
     );
 
     return (
-        <div className="mnav__bar">
+        <div className="ha header">
             <MobileLogoLink onClick={handleLogoClick} />
-            <Nav menuItems={updatedMenuItems} onNavigationClick={handleNavigationClick} />
+            <Nav
+                menuItems={updatedMenuItems}
+                onNavigationClick={handleNavigationClick}
+            />
         </div>
     );
 };

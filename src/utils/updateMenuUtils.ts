@@ -1,5 +1,5 @@
-import type { MenuItem } from "../data/menuItems";
-import type { SubItem } from "../types/menu";
+import type { MenuItem } from "../assets/data/menuItems";
+import type { SubItem } from "../assets/data/interfaces/menu";
 
 const isMainItemActive = (itemPath: string, currentRoute: string): boolean => {
     if (itemPath === "/") {

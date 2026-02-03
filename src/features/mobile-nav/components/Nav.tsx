@@ -2,7 +2,6 @@ import { memo } from "react";
 import type { MenuItem } from "../data/menuItems";
 import ButtonOpen from "./ButtonOpen";
 import MenuOpen from "./MenuOpen";
-
 interface NavProps {
     menuItems: {
         mainLink?: MenuItem[];
@@ -10,13 +9,17 @@ interface NavProps {
     onNavigationClick: (path: string) => void;
 }
 
-const Nav = ({ menuItems, onNavigationClick }: NavProps) => {
+const Nav: React.FC<NavProps> = ({ menuItems, onNavigationClick }) => {
     return (
         <>
             <ButtonOpen />
-            <MenuOpen menuItems={menuItems} onNavigationClick={onNavigationClick} />
+            <MenuOpen
+                menuItems={menuItems}
+                onNavigationClick={onNavigationClick}
+            />
         </>
     );
 };
 
 export default memo(Nav);
+

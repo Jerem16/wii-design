@@ -9,12 +9,12 @@ interface MenuListProps {
     handleMenuClick: (menuItemId: string) => void;
 }
 
-const MenuList = ({
+const MenuList: React.FC<MenuListProps> = ({
     menuItems,
     openSubMenu,
     onNavigationClick,
     handleMenuClick,
-}: MenuListProps) => {
+}) => {
     const renderedMenuItems = useMemo(
         () =>
             menuItems.map((menuItem) => (

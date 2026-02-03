@@ -235,66 +235,38 @@ ol {
     border: 0;
 }
 
-//? Card
-.card_bg {
-    position: absolute;
-    left: 42px;
-    top: 82px;
-    width: $width-card_bg;
-    height: calc(360px + 82px);
-    border-radius: 45px 0px 45px 45px;
-    background: $white;
-}
-.segment {
-    width: $width-card_bg;
-    height: auto;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    column-gap: calc(42px);
-    position: relative;
-    margin: 0 0 0 42px;
-
-    .card_header,
-    .card_empty {
-        width: calc($width-card_header + 42px + 42px);
-        flex-flow: column nowrap;
-        padding: 40px 42px;
-        padding: 40px 42px 42px 42px;
-        display: flex;
-        border-radius: 45px;
-    }
-    .card_empty {
-        background: none;
-    }
-    .card_content,
-    .srv-description {
-        display: flex;
-        width: calc($width-card_content + 60px + 42px);
-        flex-flow: column nowrap;
-        align-content: space-between;
-        justify-content: space-between;
-        padding: 40px 66px 42px 42px;
-        border-radius: 45px 90px 45px 45px;
-
-        p {
-            padding: 0;
-            margin: 0;
-        }
-    }
-}
-.card_title,
-.card_empty {
-    height: 82px;
-    width: calc($width-card_content + 66px + 42px);
-    padding: 40px 66px 42px 42px;
-    border-radius: 45px 82px 0px 0px;
-    background: $white;
-}
 main {
-    margin: 94px 0 0 117px;
-    width: calc(100% - 117px);
-    min-height: calc(100vh - 94px);
+    margin: 0;
+    margin-top: 64px;
+    width: calc(100%);
+    min-height: calc(100dvh - 64px);
     position: relative;
     box-sizing: border-box;
+}
+.section {
+    width: 100%;
+    min-height: calc(100dvh);
+    display: block;
+}
+.section:first-child {
+    width: 100%;
+    min-height: calc(100dvh);
+    display: block;
+}
+.active-section {
+    padding-top: 80px;
+}
+@media (min-width: 1024px) {
+    main {
+        margin: 94px 0 0 117px;
+        width: calc(100% - 117px);
+        min-height: calc(100vh - 94px);
+    }
+    .section {
+        padding: 24px;
+        min-height: 100vh;
+    }
+    .active-section {
+        padding-top: 0px;
+    }
 }

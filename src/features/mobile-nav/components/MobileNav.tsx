@@ -1,7 +1,9 @@
 "use client";
 import { memo } from "react";
 import MobileHeader from "./MobileHeader";
-import { useScrollAnchors } from "@/features/navigation/core/hooks/useScrollAnchors";
+import { NavigationProvider } from "@utils/context/NavigationContext";
+import ScrollProvider  from "@utils/context/ScrollContext"; 
+import { useScrollAnchors } from "../../../hooks/useScrollAnchors";
 import { useMobileBreakpoint } from "../hooks/useMobileBreakpoint";
 
 const MobileNavContent = () => {
@@ -18,7 +20,13 @@ const MobileNav = () => {
 
     if (!isMobile) return null;
 
-    return <MobileNavContent />;
+    return (
+        <NavigationProvider>
+            <ScrollProvider>
+                <MobileNavContent />
+            </ScrollProvider>
+        </NavigationProvider>
+    );
 };
 
 export default memo(MobileNav);

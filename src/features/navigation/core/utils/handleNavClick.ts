@@ -7,11 +7,6 @@ type HandleNavClickOptions = {
     offsetPx?: number;
 };
 
-type HandleNavClickMeta = {
-    label?: string;
-    desktopAnchorMap?: Record<string, string>;
-};
-
 type ParsedHref = {
     pathname: string;
     hash: string | undefined;
@@ -34,8 +29,7 @@ const parseHref = (href: string): ParsedHref => {
 export const handleNavClick = (
     href: string,
     event: MouseEvent<HTMLElement>,
-    options: HandleNavClickOptions = {},
-    meta: HandleNavClickMeta = {}
+    options: HandleNavClickOptions = {}
 ): void => {
     if (typeof window === "undefined") {
         return;
@@ -46,23 +40,12 @@ export const handleNavClick = (
         return;
     }
 
-    const currentPath = window.location.pathname;
-    const mappedAnchor =
-        currentPath === "/" && meta.label && meta.desktopAnchorMap
-            ? meta.desktopAnchorMap[meta.label]
-            : undefined;
-
-    if (mappedAnchor) {
-        event.preventDefault();
-        scrollToAnchor(mappedAnchor, { smooth, offsetPx });
-        return;
-    }
-
     const { pathname: targetPath, hash } = parseHref(href);
     if (!hash) {
         return;
     }
 
+    const currentPath = window.location.pathname;
     if (currentPath !== targetPath) {
         return;
     }
