@@ -3,9 +3,7 @@
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
-import { handleNavClick } from "@/features/navigation/core/utils/nav";
-import { handleScrollClick } from "@/features/navigation/core/utils/scrollSmooth";
+import { handleNavClick } from "@/features/navigation/core/utils/handleNavClick";
 
 /**
  * NavLink component that renders a navigation link.
@@ -17,11 +15,12 @@ import { handleScrollClick } from "@/features/navigation/core/utils/scrollSmooth
  * @returns {JSX.Element} The rendered NavLink component
  */
 const NavLink = ({ label, path, title }) => {
-    const { currentRoute, updateRoute } = useNavigation();
-    const handleClick = useCallback(() => {
-        if (!path.includes("#")) return;
-        handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
-    }, [currentRoute, path, updateRoute]);
+    const handleClick = useCallback(
+        (event) => {
+            handleNavClick(path, event);
+        },
+        [path]
+    );
 
     return (
         <div className="link-button">
