@@ -1,4 +1,20 @@
 import type { MenuLinks, MenuItem } from "../types/menu";
+import { HOME_SECTIONS } from "@/features/navigation/core/data/homeSections";
+import type { HomeSectionId } from "@/features/navigation/core/data/homeSections";
+
+const homeSectionIds: Record<HomeSectionId, string> = {
+    s1: "menu-slider",
+    s2: "menu-about",
+    s3: "menu-services",
+    s4: "menu-contact",
+};
+
+const homeSubItems = HOME_SECTIONS.map((section) => ({
+    id: homeSectionIds[section.id],
+    title: section.label,
+    AnchorId: section.anchor,
+    class: "",
+}));
 
 export const menuItems: MenuLinks = {
     mainLink: [
@@ -9,32 +25,7 @@ export const menuItems: MenuLinks = {
             path: "/",
             AnchorId: "#top",
             svg: "Home",
-            subItems: [
-                {
-                    id: "menu-slider",
-                    title: "Slider",
-                    AnchorId: "#s1",
-                    class: "",
-                },
-                {
-                    id: "menu-about",
-                    title: "À propos",
-                    AnchorId: "#s2",
-                    class: "",
-                },
-                {
-                    id: "menu-services",
-                    title: "Services",
-                    AnchorId: "#s3",
-                    class: "",
-                },
-                {
-                    id: "menu-contact",
-                    title: "Contact",
-                    AnchorId: "#s4",
-                    class: "",
-                },
-            ],
+            subItems: homeSubItems,
         },
         {
             id: "menu-services",
