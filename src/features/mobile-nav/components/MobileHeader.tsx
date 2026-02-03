@@ -2,7 +2,6 @@
 import { useMemo, memo } from "react";
 import { usePathname } from "next/navigation";
 import Nav from "./Nav";
-import type { MenuItem } from "../data/menuItems";
 import MobileLogoLink from "./MobileLogoLink";
 import { useScrollContext } from "@utils/context/ScrollContext";
 import { useNavigation } from "@utils/context/NavigationContext";
@@ -12,12 +11,7 @@ import { useSmoothScroll } from "@utils/useSmoothScroll";
 import { useInitialScroll } from "@utils/scrollUtils";
 import { makeClickHandler } from "@utils/handlers";
 
-interface NavProps {
-    menuItems: MenuItem[];
-    onNavigationClick: (path: string) => void;
-}
-
-const MobileHeader: React.FC<NavProps> = () => {
+const MobileHeader: React.FC = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute, closeHamburgerMenu } = useNavigation();
     const { activeSection } = useScrollContext();
