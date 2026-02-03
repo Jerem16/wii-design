@@ -4,7 +4,9 @@ import React, { useCallback } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { handleNavClick } from "@/features/navigation/core/utils/handleNavClick";
+
 import { DESKTOP_HOME_ANCHOR_MAP } from "@/features/desktop-nav/extensions/homeAnchorMap";
+
 
 /**
  * NavLink component that renders a navigation link.
@@ -24,6 +26,7 @@ const NavLink = ({ label, path, title }) => {
             });
         },
         [label, path]
+
     );
 
     return (
