@@ -1,0 +1,1177 @@
+{
+  "generatedAt": "2026-02-04T12:38:07.958Z",
+  "rootsScanned": [
+    "src",
+    "app",
+    "scripts"
+  ],
+  "totals": {
+    "filesScanned": 197,
+    "importCount": 351,
+    "workerStringCount": 10
+  },
+  "imports": [
+    {
+      "file": "src/frames/Frames.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/hooks/useIdPrefix.ts",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/hooks/useLazyIconData.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/hooks/useScrollAnchors.ts",
+      "specifiers": [
+        "react",
+        "@utils/context/ScrollContext",
+        "@utils/sections",
+        "@utils/rafThrottle",
+        "../workers/scrollWorker"
+      ]
+    },
+    {
+      "file": "src/hooks/useTimeoutWorker.ts",
+      "specifiers": [
+        "react",
+        "react",
+        "../hooks/useTimeoutWorker"
+      ]
+    },
+    {
+      "file": "src/rmdl/lexer.ts",
+      "specifiers": [
+        "./schema",
+        "./schema"
+      ]
+    },
+    {
+      "file": "src/rmdl/parser.ts",
+      "specifiers": [
+        "./ast",
+        "./lexer"
+      ]
+    },
+    {
+      "file": "src/rmdl/sanitize.ts",
+      "specifiers": [
+        "./ast"
+      ]
+    },
+    {
+      "file": "src/rmdl/validate.ts",
+      "specifiers": [
+        "./ast"
+      ]
+    },
+    {
+      "file": "src/rmdl/compiler/emit-tsx.ts",
+      "specifiers": [
+        "../ast",
+        "./escape-tsx",
+        "react",
+        "../../../rmdl/components/rmdl-heading",
+        "../../../rmdl/components/rmdl-list",
+        "../../../rmdl/components/rmdl-link",
+        "../../../rmdl/components/rmdl-ab",
+        "../../../rmdl/components/rmdl-q",
+        "../../../rmdl/components/rmdl-code"
+      ]
+    },
+    {
+      "file": "src/rmdl/components/rmdl-ab.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/rmdl/components/rmdl-heading.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/rmdl/components/rmdl-link.tsx",
+      "specifiers": [
+        "react",
+        "next/link"
+      ]
+    },
+    {
+      "file": "src/rmdl/components/rmdl-code.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/utils/Space.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/generated/rmdl/pages/etape-1.tsx",
+      "specifiers": [
+        "react",
+        "../../../rmdl/components/rmdl-heading",
+        "../../../rmdl/components/rmdl-list",
+        "../../../rmdl/components/rmdl-link",
+        "../../../rmdl/components/rmdl-ab",
+        "../../../rmdl/components/rmdl-q",
+        "../../../rmdl/components/rmdl-code"
+      ]
+    },
+    {
+      "file": "src/utils/scrollUtils.ts",
+      "specifiers": [
+        "react",
+        "./scrollSmooth"
+      ]
+    },
+    {
+      "file": "src/utils/scrollSmooth.ts",
+      "specifiers": [
+        "../workers/scrollSmoothWorker"
+      ]
+    },
+    {
+      "file": "src/utils/updateMenuUtils.ts",
+      "specifiers": [
+        "../assets/data/menuItems",
+        "../assets/data/interfaces/menu"
+      ]
+    },
+    {
+      "file": "src/utils/useSmoothScroll.ts",
+      "specifiers": [
+        "react",
+        "./scrollSmooth",
+        "./nav"
+      ]
+    },
+    {
+      "file": "src/utils/blogData/fetchData.ts",
+      "specifiers": [
+        "node:fs",
+        "node:path",
+        "@src/types/blog"
+      ]
+    },
+    {
+      "file": "src/utils/blogData/loadData.ts",
+      "specifiers": [
+        "./fetchData",
+        "@src/types/blog"
+      ]
+    },
+    {
+      "file": "src/generated/rmdl/manifest.ts",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/rmdl/components/rmdl-q.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/utils/context/DrivingContext.tsx",
+      "specifiers": [
+        "react",
+        "./utils/createUseContext",
+        "../localStorage/boolean-convertor/useLocalStorageBoolean"
+      ]
+    },
+    {
+      "file": "src/utils/context/ScrollContext.tsx",
+      "specifiers": [
+        "react",
+        "./utils/createUseContext"
+      ]
+    },
+    {
+      "file": "src/utils/context/NavigationContext.tsx",
+      "specifiers": [
+        "react",
+        "next/navigation",
+        "./utils/createUseContext"
+      ]
+    },
+    {
+      "file": "src/utils/context/slider/useScrollListener.ts",
+      "specifiers": [
+        "react",
+        "../../addScrollListener"
+      ]
+    },
+    {
+      "file": "src/utils/context/slider/SliderContext.tsx",
+      "specifiers": [
+        "react",
+        "../../../assets/data/content/slider",
+        "./useSlides",
+        "./useScrollListener",
+        "./useAutoSlide",
+        "./fnSliderContext",
+        "../utils/createUseContext"
+      ]
+    },
+    {
+      "file": "src/utils/context/slider/useSlides.ts",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/utils/context/utils/createUseContext.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/Logo.jsx",
+      "specifiers": [
+        "react",
+        "next/link",
+        "./LogoContent",
+        "@hooks/useIdPrefix"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/LogoContent.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/NavInterface.jsx",
+      "specifiers": [
+        "react",
+        "./Navbar",
+        "./Sidebar",
+        "../../features/mobile-nav/components/MobileNav"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/SideInterface.jsx",
+      "specifiers": [
+        "react",
+        "next/link",
+        "../../assets/data/sideIcons.json",
+        "../99-Svg_Icon/sideBar/SideIcon",
+        "@utils/functions/functions"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/NavLink.jsx",
+      "specifiers": [
+        "react",
+        "prop-types",
+        "next/link"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/Navbar.jsx",
+      "specifiers": [
+        "react",
+        "prop-types",
+        "./Logo",
+        "./NavLink",
+        "../../assets/data/navLinks.json"
+      ]
+    },
+    {
+      "file": "src/components/error-404/Error401.jsx",
+      "specifiers": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "@/utils/functions/functions",
+        "./error.scss"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/Sidebar.jsx",
+      "specifiers": [
+        "react",
+        "./SideInterface",
+        "./Copyright"
+      ]
+    },
+    {
+      "file": "src/components/error-404/Error404.jsx",
+      "specifiers": [
+        "react",
+        "next/link",
+        "next/navigation",
+        "@/utils/functions/functions",
+        "./error.scss"
+      ]
+    },
+    {
+      "file": "src/components/loader/Loader.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "./loader.css"
+      ]
+    },
+    {
+      "file": "src/components/shared/data/index.ts",
+      "specifiers": [
+        "@/assets/data/navLinks.json",
+        "@/features/mobile-nav/data/menuItems",
+        "@/features/mobile-nav/data/menuItems"
+      ]
+    },
+    {
+      "file": "src/components/shared/logo/index.ts",
+      "specifiers": [
+        "@/components/00-Header/Logo"
+      ]
+    },
+    {
+      "file": "src/components/shared/nav-link/index.ts",
+      "specifiers": [
+        "@/components/00-Header/NavLink"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Blog.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Connection.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Contact.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/shared/index.ts",
+      "specifiers": [
+        "./data",
+        "./logo",
+        "./nav-link"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/GlobalLogoDefs.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Home.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/MyLogoBG.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyLogo"
+      ]
+    },
+    {
+      "file": "src/components/00-Header/Copyright.jsx",
+      "specifiers": [
+        "react",
+        "prop-types"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Reservation.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/MyLogoW.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyLogo",
+        "./SvgDefs",
+        "./SvgUse"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/MyLogoTypo.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "./SvgDefs",
+        "./SvgUse"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SearchClose.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Services.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/rmdl/components/rmdl-list.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SvgDefBG2.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "./SvgGradientWithFilter"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SvgDefs.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SvgFilter.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SvgGradientWithFilter.jsx",
+      "specifiers": [
+        "react",
+        "./SvgFilter",
+        "./StpOf7"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SideBodyLogo.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "./SvgDefBG"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SvgUse.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Search.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/Tarifs.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/Facebook.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/Instagram.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/Linkedin.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/TikTok.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/Twitter.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/WhatsApp.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/SvgDefBG.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "./SvgGradientWithFilter"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/utils/MenuIcon.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/utils/Arrow.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/utils/CheckedIcon.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/social/Youtube.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/Design.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyIcon"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/DevOps.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyIcon"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/Development.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyIcon"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/LazyIconContent.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "@utils/functions/functions",
+        "@hooks/useLazyIconData"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/PerfSeo.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyIcon"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/SideBodyIcon.tsx",
+      "specifiers": [
+        "react",
+        "react",
+        "./SideIcon",
+        "../SvgDefBG2",
+        "@hooks/useIdPrefix"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/SideIcon.jsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/StrategicFramework.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyIcon"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/StpOf7.jsx",
+      "specifiers": [
+        "react",
+        "next/dynamic"
+      ]
+    },
+    {
+      "file": "src/components/99-Svg_Icon/sideBar/SupportFollow.jsx",
+      "specifiers": [
+        "react",
+        "./SideBodyIcon"
+      ]
+    },
+    {
+      "file": "src/features/desktop-nav/index.ts",
+      "specifiers": [
+        "@/components/00-Header/NavInterface",
+        "@/components/00-Header/Navbar",
+        "@/components/00-Header/Sidebar",
+        "@/components/00-Header/SideInterface",
+        "@/components/shared/nav-link",
+        "@/components/shared/logo"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/MenuList.tsx",
+      "specifiers": [
+        "react",
+        "../data/menuItems",
+        "./NavLink"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/MenuOpen.tsx",
+      "specifiers": [
+        "react",
+        "@utils/context/NavigationContext",
+        "./MenuList",
+        "../data/menuItems"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/MobileHeader.tsx",
+      "specifiers": [
+        "react",
+        "next/navigation",
+        "./Nav",
+        "./MobileLogoLink",
+        "@utils/context/ScrollContext",
+        "@utils/context/NavigationContext",
+        "../data/menuItems",
+        "@utils/updateMenuUtils",
+        "@utils/useSmoothScroll",
+        "@utils/scrollUtils",
+        "@utils/handlers"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/MobileLogoLink.tsx",
+      "specifiers": [
+        "react",
+        "next/link",
+        "react",
+        "@/components/00-Header/LogoContent",
+        "@hooks/useIdPrefix"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/MobileNav.tsx",
+      "specifiers": [
+        "react",
+        "./MobileHeader",
+        "@utils/context/NavigationContext",
+        "@utils/context/ScrollContext",
+        "../../../hooks/useScrollAnchors",
+        "../hooks/useMobileBreakpoint"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/MobileNavWithProviders.tsx",
+      "specifiers": [
+        "react",
+        "./MobileNav",
+        "@/features/navigation/core/context/NavigationContext",
+        "@utils/context/ScrollContext"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/Nav.tsx",
+      "specifiers": [
+        "react",
+        "../data/menuItems",
+        "./ButtonOpen",
+        "./MenuOpen"
+      ]
+    },
+    {
+      "file": "src/assets/data/utils/attachContent.ts",
+      "specifiers": [
+        "../interfaces/menu",
+        "../interfaces/content"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/ButtonOpen.tsx",
+      "specifiers": [
+        "react",
+        "@utils/context/NavigationContext",
+        "@components/99-Svg_Icon/utils/MenuIcon"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/SubMenu.tsx",
+      "specifiers": [
+        "react",
+        "../data/menuItems",
+        "@utils/context/NavigationContext",
+        "@utils/handlers"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/svgComponents.ts",
+      "specifiers": [
+        "react",
+        "@components/99-Svg_Icon/Tarifs",
+        "@components/99-Svg_Icon/Home",
+        "@components/99-Svg_Icon/Services",
+        "@components/99-Svg_Icon/Blog",
+        "@components/99-Svg_Icon/Contact"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/hooks/useMobileBreakpoint.ts",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/data/menuItems.ts",
+      "specifiers": [
+        "../types/menu"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/types/menu.ts",
+      "specifiers": [
+        "../components/svgComponents"
+      ]
+    },
+    {
+      "file": "src/features/navigation/index.ts",
+      "specifiers": [
+        "@/features/desktop-nav",
+        "@/features/mobile-nav/components/MobileNav"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/index.ts",
+      "specifiers": [
+        "./context/NavigationContext",
+        "./context/ScrollContext",
+        "./context/utils/createUseContext",
+        "./hooks/useScrollAnchors",
+        "./hooks/useSmoothScroll",
+        "./utils/handlers",
+        "./utils/nav",
+        "./utils/rafThrottle",
+        "./utils/scrollSmooth",
+        "./utils/scrollUtils",
+        "./utils/sections",
+        "./types/scrollWorker",
+        "./types/scrollSmoothWorker"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/components/RouteSync.tsx",
+      "specifiers": [
+        "react",
+        "next/navigation",
+        "../context/NavigationContext"
+      ]
+    },
+    {
+      "file": "src/features/mobile-nav/components/NavLink.tsx",
+      "specifiers": [
+        "react",
+        "next/dynamic",
+        "../data/menuItems",
+        "@utils/context/NavigationContext",
+        "./svgComponents",
+        "@utils/handlers"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/hooks/useSmoothScroll.ts",
+      "specifiers": [
+        "react",
+        "../utils/scrollSmooth",
+        "../utils/nav",
+        "../utils/getNavOffsetPx"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/hooks/useScrollAnchors.ts",
+      "specifiers": [
+        "react",
+        "../context/ScrollContext",
+        "../utils/sections",
+        "../utils/rafThrottle",
+        "../types/scrollWorker"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/utils/getNavOffsetPx.ts",
+      "specifiers": [
+        "./rafThrottle"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/utils/handleNavClick.ts",
+      "specifiers": [
+        "react",
+        "../hooks/useSmoothScroll"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/utils/scrollSmooth.ts",
+      "specifiers": [
+        "../types/scrollSmoothWorker"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/utils/scrollUtils.ts",
+      "specifiers": [
+        "react",
+        "../hooks/useSmoothScroll",
+        "./getNavOffsetPx"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/context/ScrollContext.tsx",
+      "specifiers": [
+        "react",
+        "react",
+        "./utils/createUseContext"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/context/utils/createUseContext.tsx",
+      "specifiers": [
+        "react",
+        "react"
+      ]
+    },
+    {
+      "file": "app/layout.tsx",
+      "specifiers": [
+        "next",
+        "./MetaData.js",
+        "next/font/local",
+        "@components/00-Header/NavInterface.jsx",
+        "./globals.css",
+        "@assets/styles/main.scss"
+      ]
+    },
+    {
+      "file": "app/page.tsx",
+      "specifiers": [
+        "@/frames/Frames"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/context/NavigationContext.tsx",
+      "specifiers": [
+        "react",
+        "react",
+        "next/navigation",
+        "./utils/createUseContext"
+      ]
+    },
+    {
+      "file": "app/about/error.tsx",
+      "specifiers": [
+        "@components/error-404/Error404"
+      ]
+    },
+    {
+      "file": "app/about/page.tsx",
+      "specifiers": [
+        "next",
+        "@/frames/Frames"
+      ]
+    },
+    {
+      "file": "app/about/loading.tsx",
+      "specifiers": [
+        "../../src/components/loader/Loader"
+      ]
+    },
+    {
+      "file": "app/achievements/error.tsx",
+      "specifiers": [
+        "@components/error-404/Error404"
+      ]
+    },
+    {
+      "file": "app/achievements/loading.tsx",
+      "specifiers": [
+        "../../src/components/loader/Loader"
+      ]
+    },
+    {
+      "file": "app/achievements/page.tsx",
+      "specifiers": [
+        "next",
+        "@/frames/Frames"
+      ]
+    },
+    {
+      "file": "app/contact/error.tsx",
+      "specifiers": [
+        "@components/error-404/Error404"
+      ]
+    },
+    {
+      "file": "app/contact/loading.tsx",
+      "specifiers": [
+        "../../src/components/loader/Loader"
+      ]
+    },
+    {
+      "file": "app/contact/page.tsx",
+      "specifiers": [
+        "next",
+        "@/frames/Frames"
+      ]
+    },
+    {
+      "file": "app/mentions-legales/error.tsx",
+      "specifiers": [
+        "@components/error-404/Error404"
+      ]
+    },
+    {
+      "file": "app/mentions-legales/loading.tsx",
+      "specifiers": [
+        "../../src/components/loader/Loader"
+      ]
+    },
+    {
+      "file": "app/mentions-legales/page.tsx",
+      "specifiers": [
+        "next"
+      ]
+    },
+    {
+      "file": "app/informations-legales/error.tsx",
+      "specifiers": [
+        "@components/error-404/Error404"
+      ]
+    },
+    {
+      "file": "app/informations-legales/loading.tsx",
+      "specifiers": [
+        "../../src/components/loader/Loader"
+      ]
+    },
+    {
+      "file": "app/informations-legales/page.tsx",
+      "specifiers": [
+        "next"
+      ]
+    },
+    {
+      "file": "app/services/error.tsx",
+      "specifiers": [
+        "@components/error-404/Error404"
+      ]
+    },
+    {
+      "file": "app/services/loading.tsx",
+      "specifiers": [
+        "../../src/components/loader/Loader"
+      ]
+    },
+    {
+      "file": "app/services/page.tsx",
+      "specifiers": [
+        "next",
+        "@/frames/Frames"
+      ]
+    },
+    {
+      "file": "app/p2/page.tsx",
+      "specifiers": [
+        "@/frames/Frames"
+      ]
+    },
+    {
+      "file": "app/debug/logo-test/LogoDebugChecks.tsx",
+      "specifiers": [
+        "react"
+      ]
+    },
+    {
+      "file": "app/debug/logo-test/page.tsx",
+      "specifiers": [
+        "@components/00-Header/Logo.jsx"
+      ]
+    },
+    {
+      "file": "app/rmdl/[slug]/page.tsx",
+      "specifiers": [
+        "next/navigation",
+        "../../../src/generated/rmdl/manifest",
+        "react"
+      ]
+    },
+    {
+      "file": "scripts/audit-dead-code.ts",
+      "specifiers": [
+        "node:fs",
+        "node:path"
+      ]
+    },
+    {
+      "file": "scripts/rmdl-clean.ts",
+      "specifiers": [
+        "node:fs/promises",
+        "node:path",
+        "react"
+      ]
+    },
+    {
+      "file": "scripts/rmdl-to-tsx.ts",
+      "specifiers": [
+        "node:fs/promises",
+        "node:path",
+        "../src/rmdl/lexer",
+        "../src/rmdl/parser",
+        "../src/rmdl/validate",
+        "../src/rmdl/sanitize",
+        "../src/rmdl/compiler/emit-tsx",
+        "react"
+      ]
+    },
+    {
+      "file": "app/p1/page.tsx",
+      "specifiers": [
+        "@/frames/Frames"
+      ]
+    }
+  ],
+  "workerStringRefs": [
+    {
+      "file": "src/hooks/useScrollAnchors.ts",
+      "matches": [
+        "/workers/scrollWorker",
+        "/workers/scrollWorker.js"
+      ]
+    },
+    {
+      "file": "src/hooks/useTimeoutWorker.ts",
+      "matches": [
+        "/workers/timeoutWorker.js"
+      ]
+    },
+    {
+      "file": "src/utils/fnScrollUtils.ts",
+      "matches": [
+        "/workers/scrollSmoothWorker.js"
+      ]
+    },
+    {
+      "file": "src/utils/scrollSmooth.ts",
+      "matches": [
+        "/workers/scrollSmoothWorker",
+        "/workers/scrollSmoothWorker.js"
+      ]
+    },
+    {
+      "file": "src/utils/functions/functions.js",
+      "matches": [
+        "/workers/delayWorker.js"
+      ]
+    },
+    {
+      "file": "src/utils/functions/colorGradientAnimation.js",
+      "matches": [
+        "/workers/colorWorker.js"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/hooks/useScrollAnchors.ts",
+      "matches": [
+        "/workers/scrollWorker.js"
+      ]
+    },
+    {
+      "file": "src/features/navigation/core/utils/scrollSmooth.ts",
+      "matches": [
+        "/workers/scrollSmoothWorker.js"
+      ]
+    }
+  ],
+  "appFiles": [
+    "app/MetaData.js",
+    "app/layout.tsx",
+    "app/page.tsx",
+    "app/about/error.tsx",
+    "app/about/loading.tsx",
+    "app/about/page.tsx",
+    "app/contact/error.tsx",
+    "app/contact/loading.tsx",
+    "app/contact/page.tsx",
+    "app/achievements/error.tsx",
+    "app/achievements/loading.tsx",
+    "app/achievements/page.tsx",
+    "app/informations-legales/error.tsx",
+    "app/informations-legales/loading.tsx",
+    "app/informations-legales/page.tsx",
+    "app/mentions-legales/error.tsx",
+    "app/mentions-legales/loading.tsx",
+    "app/mentions-legales/page.tsx",
+    "app/p1/error.tsx",
+    "app/p1/loading.tsx",
+    "app/p1/page.tsx",
+    "app/p2/error.tsx",
+    "app/p2/loading.tsx",
+    "app/p2/page.tsx",
+    "app/services/error.tsx",
+    "app/services/loading.tsx",
+    "app/services/page.tsx",
+    "app/debug/logo-test/LogoDebugChecks.tsx",
+    "app/debug/logo-test/page.tsx",
+    "app/rmdl/[slug]/page.tsx"
+  ],
+  "configRefs": {
+    "packageScripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint",
+      "generate:sitemap": "node scripts/generate-sitemap.js",
+      "rmdl:clean": "node --import=tsx scripts/rmdl-clean.ts",
+      "rmdl:build": "node --import=tsx scripts/rmdl-to-tsx.ts"
+    },
+    "nextConfigPresent": true
+  }
+}
