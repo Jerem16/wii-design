@@ -51,11 +51,11 @@ export default function RootLayout({
                     fetchPriority="low"
                 ></script> */}
             </head>
-            <body className={`${Roboto.variable}`} id="top">
+            <body className={`${Roboto.variable}`} >
                 <NavInterface />
                 
                 <main>
-                    <div className="fixed-menu"></div>
+                    <div className="fixed-menu" id="top"></div>
                     {children}
                 </main>
             </body>

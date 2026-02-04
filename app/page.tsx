@@ -3,7 +3,6 @@ import Frames from "@/frames/Frames";
 export default function Home() {
     return (
         <>
-            
             <Frames className="section s1-bg" id="s1">
                 <></>
             </Frames>

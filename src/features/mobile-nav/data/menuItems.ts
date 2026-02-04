@@ -60,9 +60,9 @@ export const menuItems: MenuLinks = {
         },
         {
             id: "menu-prices",
-            title: "Tarifs",
+            title: "Réalisations",
             class: "",
-            path: "/p2",
+            path: "/achievements",
             AnchorId: "#top",
             svg: "Tarifs",
             subItems: [
@@ -81,20 +81,48 @@ export const menuItems: MenuLinks = {
             ],
         },
         {
-            id: "menu-blog",
-            title: "Blog",
+            id: "menu-about",
+            title: "À propos",
             class: "",
-            path: "/p1",
+            path: "/about",
             AnchorId: "#top",
-            svg: "Blog",
+            svg: "Blog",            
+            subItems: [
+                {
+                    id: "menu-without-license",
+                    title: "Sans Permis",
+                    AnchorId: "#sans-permis",
+                    class: "",
+                },
+                {
+                    id: "menu-with-license",
+                    title: "Avec Permis",
+                    AnchorId: "#avec-permis",
+                    class: "",
+                },
+            ],
         },
         {
             id: "menu-contact",
             title: "Contact",
             class: "",
-            path: "/p2",
+            path: "/contact",
             AnchorId: "#expert",
             svg: "Contact",
+            subItems: [
+                {
+                    id: "menu-without-license",
+                    title: "Débutant",
+                    AnchorId: "#novice",
+                    class: "",
+                },
+                {
+                    id: "menu-with-license",
+                    title: "Confirmé",
+                    AnchorId: "#expert",
+                    class: "",
+                },
+            ],
         },
     ],
 };
