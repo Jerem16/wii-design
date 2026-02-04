@@ -4,14 +4,14 @@
         div {
         }
     }
-    .fixed-menu {
-        height: calc(60px + 2rem);
-        width: 100vw;
+    // .fixed-menu {
+    //     height: calc(60px + 2rem);
+    //     width: 100vw;
         
-        transform-origin: top;
-        transform: scaleY(1);
-        animation: fixedMenuCollapse 375ms ease-in-out 1s forwards infinite;
-    }
+    //     transform-origin: top;
+    //     transform: scaleY(1);
+    //     animation: fixedMenuCollapse 375ms ease-in-out 1s forwards infinite;
+    // }
 
     @keyframes fixedMenuCollapse {
         to {

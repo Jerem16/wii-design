@@ -53,7 +53,9 @@ export default function RootLayout({
             </head>
             <body className={`${Roboto.variable}`} id="top">
                 <NavInterface />
+                
                 <main>
+                    <div className="fixed-menu"></div>
                     {children}
                 </main>
             </body>
