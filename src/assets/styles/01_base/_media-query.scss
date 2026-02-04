@@ -26,4 +26,7 @@
 }
 
 @media (max-width: 1024px) {
+    :root {
+        --nav-offset: calc(64px + 1.5rem);
+    }
 }
