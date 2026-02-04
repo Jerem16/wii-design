@@ -3,13 +3,13 @@ import { useMemo, memo } from "react";
 import { usePathname } from "next/navigation";
 import Nav from "./Nav";
 import MobileLogoLink from "./MobileLogoLink";
-import { useScrollContext } from "@context/ScrollContext";
-import { useNavigation } from "@context/NavigationContext";
+import { useScrollContext } from "@utils/navigation/core/context/ScrollContext";
+import { useNavigation } from "@utils/navigation/core/context/NavigationContext";
 import { menuItems } from "../data/menuItems";
 import { updateMenuClasses } from "@utils/updateMenuUtils";
-import { useSmoothScroll } from "@utils/useSmoothScroll";
-import { useInitialScroll } from "@utils/scrollUtils";
-import { makeClickHandler } from "@utils/handlers";
+import { useSmoothScroll } from "@utils/navigation/core/hooks/useSmoothScroll";
+import { useInitialScroll } from "@utils/navigation/core/utils/scrollUtils";
+import { makeClickHandler } from "@utils/navigation/core/utils/handlers";
 
 const MobileHeader: React.FC = () => {
     const pathname = usePathname();

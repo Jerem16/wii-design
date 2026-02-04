@@ -18,9 +18,34 @@ type AuditOutput = {
 };
 
 const ROOT = process.cwd();
+const CHECK_MODE = process.argv.includes("--check");
 const SCAN_DIRS = ["src", "app", "scripts"];
 const IGNORE_DIRS = new Set(["node_modules", ".next", "dist", ".git"]);
 const CODE_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"]);
+const LEGACY_STUBS = [
+    "src/utils/context/NavigationContext.tsx",
+    "src/utils/context/ScrollContext.tsx",
+    "src/utils/useSmoothScroll.ts",
+    "src/hooks/useScrollAnchors.ts",
+    "src/utils/handlers.ts",
+    "src/utils/rafThrottle.ts",
+    "src/utils/scrollSmooth.ts",
+    "src/utils/scrollUtils.ts",
+    "src/utils/sections.ts",
+    "src/utils/nav.ts",
+];
+const SOT_PATHS = [
+    "src/utils/navigation/core/context/NavigationContext.tsx",
+    "src/utils/navigation/core/context/ScrollContext.tsx",
+    "src/utils/navigation/core/hooks/useSmoothScroll.ts",
+    "src/utils/navigation/core/hooks/useScrollAnchors.ts",
+    "src/utils/navigation/core/utils/handlers.ts",
+    "src/utils/navigation/core/utils/rafThrottle.ts",
+    "src/utils/navigation/core/utils/scrollSmooth.ts",
+    "src/utils/navigation/core/utils/scrollUtils.ts",
+    "src/utils/navigation/core/utils/sections.ts",
+    "src/utils/navigation/core/utils/nav.ts",
+];
 
 const isCodeFile = (filePath: string): boolean => {
     return CODE_EXTENSIONS.has(path.extname(filePath));
@@ -204,8 +229,75 @@ const writeOutputs = async (output: AuditOutput): Promise<void> => {
     await fs.writeFile(markdownPath, `${summaryLines.join("\n")}\n`, "utf8");
 };
 
+const isStubOnly = (content: string): boolean => {
+    const lines = content
+        .split("\n")
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0 && line !== "\"use client\";" && line !== "'use client';");
+    return lines.length > 0 && lines.every((line) => line.startsWith("export "));
+};
+
+const assertCheck = async (output: AuditOutput): Promise<void> => {
+    const issues: string[] = [];
+
+    for (const relativePath of SOT_PATHS) {
+        try {
+            await fs.access(path.join(ROOT, relativePath));
+        } catch {
+            issues.push(`SOT manquante: ${relativePath}`);
+        }
+    }
+
+    for (const relativePath of LEGACY_STUBS) {
+        const fullPath = path.join(ROOT, relativePath);
+        try {
+            const content = await fs.readFile(fullPath, "utf8");
+            if (!isStubOnly(content)) {
+                issues.push(`Legacy non stub: ${relativePath}`);
+            }
+        } catch {
+            // missing legacy files are allowed
+        }
+    }
+
+    const filesWithImportMeta = await Promise.all(
+        output.filesScanned.map(async (file) => {
+            const content = await readFileSafe(path.join(ROOT, file));
+            return content.includes("import.meta.url");
+        })
+    );
+    const usesImportMeta = filesWithImportMeta.some(Boolean);
+
+    if (usesImportMeta) {
+        const workersDir = path.join(ROOT, "src", "workers");
+        try {
+            const workerFiles = await fs.readdir(workersDir);
+            if (workerFiles.length === 0) {
+                issues.push("src/workers est vide alors que import.meta.url est utilisé.");
+            }
+        } catch {
+            issues.push("src/workers est manquant alors que import.meta.url est utilisé.");
+        }
+    }
+
+    if (issues.length > 0) {
+        // eslint-disable-next-line no-console
+        console.error("Audit dead code --check a échoué:");
+        issues.forEach((issue) => {
+            // eslint-disable-next-line no-console
+            console.error(`- ${issue}`);
+        });
+        process.exit(1);
+    }
+};
+
 runAudit()
-    .then(writeOutputs)
+    .then(async (output) => {
+        if (CHECK_MODE) {
+            await assertCheck(output);
+        }
+        await writeOutputs(output);
+    })
     .catch((error: unknown) => {
         const message = error instanceof Error ? error.message : "Erreur inconnue";
         // eslint-disable-next-line no-console

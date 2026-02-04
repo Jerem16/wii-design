@@ -1,9 +1,9 @@
 "use client";
 import { memo } from "react";
 import MobileHeader from "./MobileHeader";
-import { NavigationProvider } from "@context/NavigationContext";
-import ScrollProvider from "@context/ScrollContext";
-import { useScrollAnchors } from "@hooks/useScrollAnchors";
+import { NavigationProvider } from "@utils/navigation/core/context/NavigationContext";
+import ScrollProvider from "@utils/navigation/core/context/ScrollContext";
+import { useScrollAnchors } from "@utils/navigation/core/hooks/useScrollAnchors";
 import { useMobileBreakpoint } from "@hooks/useMobileBreakpoint";
 
 const MobileNavContent = () => {
