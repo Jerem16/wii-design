@@ -3,11 +3,11 @@ import type {
     ScrollSmoothWorkerResponse,
 } from "../types/scrollSmoothWorker";
 
-export const handleScrollClick = (targetId: string, offsetPx = 0): void => {
+export const handleScrollClick = (targetId: string): void => {
     const element = document.getElementById(targetId);
     if (!element) return;
     const start = window.scrollY;
-    const end = element.getBoundingClientRect().top + window.scrollY - offsetPx;
+    const end = element.getBoundingClientRect().top + window.scrollY;
     const duration = 750;
     const startTime = performance.now();
 
