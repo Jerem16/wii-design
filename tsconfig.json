@@ -21,6 +21,7 @@
             "@assets/*": ["src/assets/*"],
             "@home/*": ["src/home/*"],
             "@utils/*": ["src/utils/*"],
+            "@context/*": ["src/utils/context/*"],
             "@hooks/*": ["src/hooks/*"],
             "@styles/*": ["src/assets/styles/*"],
             "@data/*": ["src/assets/data/*"],

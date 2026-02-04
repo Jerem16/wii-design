@@ -2,7 +2,7 @@
 import { useMemo, memo } from "react";
 import dynamic from "next/dynamic";
 import type { MenuItem } from "../data/menuItems";
-import { useNavigation } from "@utils/context/NavigationContext";
+import { useNavigation } from "@context/NavigationContext";
 import { svgComponents } from "./svgComponents";
 import { makeClickHandler } from "@utils/handlers";
 
