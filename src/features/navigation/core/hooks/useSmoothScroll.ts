@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { handleScrollClick } from "../utils/scrollSmooth";
 import { handleNavClick } from "../utils/nav";
+import { getNavOffsetPx } from "../utils/getNavOffsetPx";
 
 type ScrollToAnchorOptions = {
     smooth?: boolean;
@@ -15,25 +16,21 @@ export const scrollToAnchor = (
         return;
     }
 
-    const { smooth = true, offsetPx = 0 } = options;
+    const { smooth = true, offsetPx } = options;
+    const resolvedOffset = typeof offsetPx === "number" ? offsetPx : getNavOffsetPx();
     const targetId = anchor.startsWith("#") ? anchor.slice(1) : anchor;
     const element = document.getElementById(targetId);
     if (!element) {
         return;
     }
 
-    if (offsetPx !== 0) {
-        const top = element.getBoundingClientRect().top + window.scrollY - offsetPx;
-        window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
-        return;
-    }
-
     if (smooth) {
-        handleScrollClick(targetId);
+        handleScrollClick(targetId, resolvedOffset);
         return;
     }
 
-    element.scrollIntoView({ behavior: "auto" });
+    const top = element.getBoundingClientRect().top + window.scrollY - resolvedOffset;
+    window.scrollTo({ top, behavior: "auto" });
 };
 
 export const useSmoothScroll = (
