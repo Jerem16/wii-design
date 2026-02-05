@@ -40,7 +40,7 @@ export const menuItems: MenuLinks = {
             id: "menu-services",
             title: "Services",
             class: "",
-            path: "/p1",
+            path: "/services",
             AnchorId: "#top",
             svg: "Services",
             subItems: [

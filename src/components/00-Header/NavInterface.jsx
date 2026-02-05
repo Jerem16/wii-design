@@ -1,18 +1,16 @@
-"use client";
-
 import React from "react";
+import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 import MobileNav from "../../features/mobile-nav/components/MobileNav";
-import DesktopNavWithProviders from "../../features/desktop-nav/DesktopNavWithProviders";
-import { useMobileBreakpoint } from "@hooks/useMobileBreakpoint";
 
 const NavInterface = () => {
-    const isMobile = useMobileBreakpoint(1024);
-
-    if (isMobile) {
-        return <MobileNav />;
-    }
-
-    return <DesktopNavWithProviders />;
+    return (
+        <>
+            <Navbar />
+            <Sidebar />
+            <MobileNav />
+        </>
+    );
 };
 
 export default NavInterface;
