@@ -1,12 +1,12 @@
 import React from "react";
-import DesktopNavbar from "@/features/desktop-nav/DesktopNavbar";
+import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import MobileNav from "../../features/mobile-nav/components/MobileNav";
 
 const NavInterface = () => {
     return (
         <>
-            <DesktopNavbar />
+            <Navbar />
             <Sidebar />
             <MobileNav />
         </>
