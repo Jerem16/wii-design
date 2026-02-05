@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { type FocusEvent, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/00-Header/Logo";
@@ -22,11 +22,13 @@ const DesktopNavbar = () => {
     const [activeHash, setActiveHash] = useState<string>("");
     const {
         navRef,
-        openSubMenuId,
+        isSubMenuOpen,
         toggleSubMenu,
         closeSubMenu,
         openSubMenuOnHover,
         closeSubMenuOnMouseLeave,
+        openSubMenuOnFocus,
+        closeSubMenuOnBlur,
     } = useDesktopSubMenuBehavior();
 
     useEffect(() => {
@@ -52,16 +54,26 @@ const DesktopNavbar = () => {
                 {mainLinks.map((item) => {
                     const SvgIcon = svgComponents[item.svg];
                     const hasSubItems = Boolean(item.subItems?.length);
-                    const isOpen = openSubMenuId === item.id;
+                    const isOpen = isSubMenuOpen(item.id);
                     const isParentActive = isParentRouteActive(pathname, item);
                     const submenuId = `desktop-submenu-${item.id}`;
+
+                    const handleBlur = (event: FocusEvent<HTMLDivElement>) => {
+                        const nextFocused = event.relatedTarget;
+                        if (nextFocused instanceof Node && event.currentTarget.contains(nextFocused)) {
+                            return;
+                        }
+                        closeSubMenuOnBlur(item.id);
+                    };
 
                     return (
                         <div
                             key={item.id}
                             className="link-button group_link-submenu"
                             onMouseEnter={() => openSubMenuOnHover(item.id)}
-                            onMouseLeave={closeSubMenuOnMouseLeave}
+                            onMouseLeave={() => closeSubMenuOnMouseLeave(item.id)}
+                            onFocus={() => openSubMenuOnFocus(item.id)}
+                            onBlur={handleBlur}
                         >
                             {hasSubItems ? (
                                 <>
