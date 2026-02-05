@@ -4,12 +4,13 @@ import { handleNavClick } from "../../../../utils/nav";
 
 export const useSmoothScroll = (
     currentRoute: string | undefined,
-    updateRoute: (route: string) => void
+    updateRoute: (route: string) => void,
+    onScrollClick: (hash: string) => void = handleScrollClick
 ) => {
     return useCallback(
         (path: string) => {
-            handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
+            handleNavClick(path, currentRoute, updateRoute, onScrollClick);
         },
-        [currentRoute, updateRoute]
+        [currentRoute, onScrollClick, updateRoute]
     );
 };

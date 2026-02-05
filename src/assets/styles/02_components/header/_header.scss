@@ -55,6 +55,27 @@
                 width: fit-content;
                 text-align: center;
             }
+
+            .submenu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                min-width: 100%;
+                background-color: $nav-bg-black;
+                border: 2px solid $shp-text-black-h1;
+                z-index: 103;
+
+                .submenu_group {
+                    display: flex;
+                    flex-direction: column;
+
+                    .nav-link {
+                        width: 100%;
+                        padding: 0.6rem 1rem;
+                        text-align: left;
+                    }
+                }
+            }
         }
     }
     .gr-nav {
