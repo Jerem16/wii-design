@@ -1,6 +1,6 @@
 import { useCallback } from "react";
-import { handleScrollClick } from "./scrollSmooth";
-import { handleNavClick } from "./nav";
+import { handleScrollClick } from "../utils/scrollSmooth";
+import { handleNavClick } from "../../../../utils/nav";
 
 export const useSmoothScroll = (
     currentRoute: string | undefined,

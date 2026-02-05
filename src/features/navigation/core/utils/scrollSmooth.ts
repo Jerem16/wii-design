@@ -1,7 +1,7 @@
 import type {
     ScrollSmoothWorkerData,
     ScrollSmoothWorkerResponse,
-} from "../workers/scrollSmoothWorker";
+} from "../../../../workers/scrollSmoothWorker";
 
 export const handleScrollClick = (targetId: string): void => {
     const element = document.getElementById(targetId);
@@ -11,7 +11,9 @@ export const handleScrollClick = (targetId: string): void => {
     const duration = 750;
     const startTime = performance.now();
 
-    const worker = new Worker(new URL("../workers/scrollSmoothWorker.js", import.meta.url));
+    const worker = new Worker(
+        new URL("../../../../workers/scrollSmoothWorker.js", import.meta.url)
+    );
 
     const animateScroll = (currentTime: number): void => {
         const data: ScrollSmoothWorkerData = {
