@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useDesktopSubMenuBehavior = () => {
     const [openSubMenuId, setOpenSubMenuId] = useState<string | null>(null);
+    const [canUseHover, setCanUseHover] = useState(false);
     const navRef = useRef<HTMLElement | null>(null);
     const openSubMenuIdRef = useRef<string | null>(null);
 
@@ -17,6 +18,34 @@ export const useDesktopSubMenuBehavior = () => {
 
     const toggleSubMenu = useCallback((id: string) => {
         setOpenSubMenuId((prev) => (prev === id ? null : id));
+    }, []);
+
+    const openSubMenuOnHover = useCallback(
+        (id: string) => {
+            if (!canUseHover) return;
+            setOpenSubMenuId(id);
+        },
+        [canUseHover]
+    );
+
+    const closeSubMenuOnMouseLeave = useCallback(() => {
+        if (!canUseHover) return;
+        setOpenSubMenuId(null);
+    }, [canUseHover]);
+
+    useEffect(() => {
+        const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+
+        const updateHoverCapability = () => {
+            setCanUseHover(mediaQuery.matches);
+        };
+
+        updateHoverCapability();
+        mediaQuery.addEventListener("change", updateHoverCapability);
+
+        return () => {
+            mediaQuery.removeEventListener("change", updateHoverCapability);
+        };
     }, []);
 
     useEffect(() => {
@@ -51,5 +80,7 @@ export const useDesktopSubMenuBehavior = () => {
         openSubMenuId,
         toggleSubMenu,
         closeSubMenu,
+        openSubMenuOnHover,
+        closeSubMenuOnMouseLeave,
     };
 };
