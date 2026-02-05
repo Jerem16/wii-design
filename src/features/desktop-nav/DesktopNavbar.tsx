@@ -20,8 +20,14 @@ const isParentRouteActive = (pathname: string, item: MenuItem): boolean => {
 const DesktopNavbar = () => {
     const pathname = usePathname();
     const [activeHash, setActiveHash] = useState<string>("");
-    const { navRef, openSubMenuId, toggleSubMenu, closeSubMenu } =
-        useDesktopSubMenuBehavior();
+    const {
+        navRef,
+        openSubMenuId,
+        toggleSubMenu,
+        closeSubMenu,
+        openSubMenuOnHover,
+        closeSubMenuOnMouseLeave,
+    } = useDesktopSubMenuBehavior();
 
     useEffect(() => {
         const updateHash = () => {
@@ -51,14 +57,19 @@ const DesktopNavbar = () => {
                     const submenuId = `desktop-submenu-${item.id}`;
 
                     return (
-                        <div key={item.id} className="link-button group_link-submenu">
+                        <div
+                            key={item.id}
+                            className="link-button group_link-submenu"
+                            onMouseEnter={() => openSubMenuOnHover(item.id)}
+                            onMouseLeave={closeSubMenuOnMouseLeave}
+                        >
                             {hasSubItems ? (
                                 <>
                                     <button
                                         type="button"
                                         className={`head-link ${isParentActive ? "active" : ""}`}
                                         onClick={() => toggleSubMenu(item.id)}
-                                        aria-expanded={isOpen}
+                                        aria-expanded={isOpen ? "true" : "false"}
                                         aria-controls={submenuId}
                                     >
                                         {SvgIcon ? <SvgIcon /> : null}
