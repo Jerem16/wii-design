@@ -1,0 +1,118 @@
+"use client";
+
+import { memo, useMemo, useState } from "react";
+import Link from "next/link";
+import { menuItems } from "@/features/mobile-nav/data/menuItems";
+import { useNavigation, NavigationProvider } from "@/features/navigation/core/context/NavigationContext";
+import ScrollProvider, { useScrollContext } from "@/features/navigation/core/context/ScrollContext";
+import { useScrollAnchors } from "@/features/navigation/core/hooks/useScrollAnchors";
+import { mapMenuForDesktop, updateDesktopMenuClasses, handleDesktopNavClick } from "./adaptableMenuUtils";
+import { useAdaptableResize } from "./useAdaptableResize";
+import { useAdaptableMenu } from "./useAdaptableMenu";
+import AdaptableDesktopNavItem from "./AdaptableDesktopNavItem";
+import Logo from "@/components/00-Header/Logo";
+
+const DesktopNavContent = () => {
+    const { currentRoute, updateRoute, openSubMenu, setOpenSubMenu } = useNavigation();
+    const { activeSection } = useScrollContext();
+    const { navRef } = useAdaptableMenu();
+
+    const [tabletMain, setTabletMain] = useState(false);
+    const [openMainButton, setOpenMainButton] = useState(false);
+    const [openButton, setOpenButton] = useState(false);
+    const [bigMenu, setBigMenu] = useState(false);
+    const [isDesktop, setIsDesktop] = useState(false);
+    const [openMenu, setOpenMenu] = useState<string | null>(null);
+    const [lastClickedMenu, setLastClickedMenu] = useState<string | null>(null);
+
+    useScrollAnchors([]);
+    useAdaptableResize({
+        setTabletMain,
+        setOpenMainButton,
+        setOpenButton,
+        setBigMenu,
+        setIsDesktop,
+    });
+
+    const desktopSource = useMemo(() => mapMenuForDesktop(menuItems.mainLink), []);
+    const updatedMenuItems = useMemo(
+        () => updateDesktopMenuClasses(desktopSource, activeSection, currentRoute),
+        [activeSection, currentRoute, desktopSource]
+    );
+
+    if (!isDesktop) return null;
+
+    const showLink = (menuId: string) => {
+        setOpenMenu(menuId);
+        if (lastClickedMenu === menuId && openMenu !== "main") {
+            return;
+        }
+        setLastClickedMenu(menuId);
+        setOpenMenu(openMenu === menuId ? null : menuId);
+    };
+
+    const handleMouseOrFocus = (menuId: string) => {
+        showLink(menuId);
+        if (!bigMenu) {
+            setOpenMainButton(false);
+        }
+    };
+
+    const handleMainMouseOrFocus = (menuId: string) => {
+        handleMouseOrFocus(menuId);
+        setOpenMainButton(true);
+    };
+
+
+    const handleNavigationClick = (path: string) => {
+        handleDesktopNavClick(path, currentRoute, updateRoute);
+    };
+
+    return (
+        <header className="desktop-adaptable-nav" role="banner">
+            <div className="header">
+                <Link href="/#top" aria-label="Retour à la page d'accueil" className="logo-link">
+                    <Logo />
+                </Link>
+                <div className="head-flex">
+                    <nav
+                        ref={navRef}
+                        className="main-nav"
+                        onMouseEnter={() => (!tabletMain ? undefined : handleMainMouseOrFocus(""))}
+                        onFocus={() => (!tabletMain ? undefined : handleMainMouseOrFocus(""))}
+                    >
+                        {updatedMenuItems.mainLink.map((menuItem) => (
+                            <AdaptableDesktopNavItem
+                                openMainButton={openMainButton}
+                                openButton={openButton}
+                                key={menuItem.id}
+                                menuItem={menuItem}
+                                onNavigationClick={handleNavigationClick}
+                                isOpen={openSubMenu === menuItem.id}
+                                handleMenuClick={(menuItemId) =>
+                                    setOpenSubMenu(openSubMenu === menuItemId ? null : menuItemId)
+                                }
+                                showNavLinks={openMainButton || openButton || openMenu === menuItem.id}
+                                onMouseEnter={() => handleMouseOrFocus(menuItem.id)}
+                                onFocus={() => handleMouseOrFocus(menuItem.id)}
+                                onMenuToggle={showLink}
+                            />
+                        ))}
+                    </nav>
+                </div>
+            </div>
+        </header>
+    );
+};
+
+const AdaptableDesktopNav = () => {
+    return (
+        <NavigationProvider>
+            <ScrollProvider>
+                <DesktopNavContent />
+            </ScrollProvider>
+        </NavigationProvider>
+    );
+};
+
+export default memo(AdaptableDesktopNav);

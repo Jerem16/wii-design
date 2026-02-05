@@ -38,9 +38,16 @@ export default function RootLayout({
                     type="image/svg+xml"
                 />
                 <link rel="preload" href="/deferCss.css" as="style" />
+                <link rel="preload" href="/desktopDeferNav.css" as="style" media="(min-width: 1024px)" />
                 <link
                     rel="stylesheet"
                     href="/deferCss.css"
+                    fetchPriority="low"
+                />
+                <link
+                    rel="stylesheet"
+                    href="/desktopDeferNav.css"
+                    media="(min-width: 1024px)"
                     fetchPriority="low"
                 />
                 {/* <script
