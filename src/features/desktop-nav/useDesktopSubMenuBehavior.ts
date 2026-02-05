@@ -3,35 +3,57 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export const useDesktopSubMenuBehavior = () => {
-    const [openSubMenuId, setOpenSubMenuId] = useState<string | null>(null);
+    const [hoveredMenuId, setHoveredMenuId] = useState<string | null>(null);
+    const [pinnedMenuId, setPinnedMenuId] = useState<string | null>(null);
+    const [focusedMenuId, setFocusedMenuId] = useState<string | null>(null);
     const [canUseHover, setCanUseHover] = useState(false);
     const navRef = useRef<HTMLElement | null>(null);
-    const openSubMenuIdRef = useRef<string | null>(null);
+    const pinnedMenuIdRef = useRef<string | null>(null);
 
     useEffect(() => {
-        openSubMenuIdRef.current = openSubMenuId;
-    }, [openSubMenuId]);
+        pinnedMenuIdRef.current = pinnedMenuId;
+    }, [pinnedMenuId]);
 
     const closeSubMenu = useCallback(() => {
-        setOpenSubMenuId(null);
+        setHoveredMenuId(null);
+        setPinnedMenuId(null);
+        setFocusedMenuId(null);
     }, []);
 
     const toggleSubMenu = useCallback((id: string) => {
-        setOpenSubMenuId((prev) => (prev === id ? null : id));
+        setPinnedMenuId((prev) => (prev === id ? null : id));
+        setHoveredMenuId(id);
     }, []);
 
     const openSubMenuOnHover = useCallback(
         (id: string) => {
             if (!canUseHover) return;
-            setOpenSubMenuId(id);
+            setHoveredMenuId(id);
         },
         [canUseHover]
     );
 
-    const closeSubMenuOnMouseLeave = useCallback(() => {
+    const closeSubMenuOnMouseLeave = useCallback((id: string) => {
         if (!canUseHover) return;
-        setOpenSubMenuId(null);
+        if (pinnedMenuIdRef.current === id) {
+            return;
+        }
+        setHoveredMenuId((prev) => (prev === id ? null : prev));
     }, [canUseHover]);
+
+    const isSubMenuOpen = useCallback(
+        (id: string) =>
+            pinnedMenuId === id || hoveredMenuId === id || focusedMenuId === id,
+        [focusedMenuId, hoveredMenuId, pinnedMenuId]
+    );
+
+    const openSubMenuOnFocus = useCallback((id: string) => {
+        setFocusedMenuId(id);
+    }, []);
+
+    const closeSubMenuOnBlur = useCallback((id: string) => {
+        setFocusedMenuId((prev) => (prev === id ? null : prev));
+    }, []);
 
     useEffect(() => {
         const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -56,13 +78,13 @@ export const useDesktopSubMenuBehavior = () => {
             if (!(target instanceof Node)) return;
 
             if (!navRef.current.contains(target)) {
-                setOpenSubMenuId(null);
+                closeSubMenu();
             }
         };
 
         const onKeyDown = (event: KeyboardEvent) => {
-            if (event.key === "Escape" && openSubMenuIdRef.current) {
-                setOpenSubMenuId(null);
+            if (event.key === "Escape" && pinnedMenuIdRef.current) {
+                closeSubMenu();
             }
         };
 
@@ -73,14 +95,16 @@ export const useDesktopSubMenuBehavior = () => {
             document.removeEventListener("mousedown", onMouseDown);
             document.removeEventListener("keydown", onKeyDown);
         };
-    }, []);
+    }, [closeSubMenu]);
 
     return {
         navRef,
-        openSubMenuId,
+        isSubMenuOpen,
         toggleSubMenu,
         closeSubMenu,
         openSubMenuOnHover,
         closeSubMenuOnMouseLeave,
+        openSubMenuOnFocus,
+        closeSubMenuOnBlur,
     };
 };

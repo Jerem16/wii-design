@@ -47,12 +47,6 @@
         }
     }
 
-    .group_link-submenu:hover .submenu,
-    .group_link-submenu:focus-within .submenu {
-        display: block;
-        opacity: 1;
-    }
-
     .submenu_group {
         background-color: $white;
         border-radius: 1rem;
