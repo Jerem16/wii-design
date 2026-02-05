@@ -1,6 +1,8 @@
 "use client";
 import React, { createContext, useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { createUseContext } from "./utils/createUseContext";
+
 interface NavigationContextType {
     currentRoute: string;
     updateRoute: (path: string) => void;
@@ -10,16 +12,20 @@ interface NavigationContextType {
     openHamburgerMenu: () => void;
     closeHamburgerMenu: (delay?: number) => void;
 }
+
 const NavigationContext = createContext<NavigationContextType | null>(null);
+
 const useNavigationState = () => {
     const router = useRouter();
     const pathname = usePathname();
     const [currentRoute, setCurrentRoute] = useState(pathname || "/");
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
     const [hamburgerMenuIsOpen, setHamburgerMenuIsOpen] = useState(false);
+
     useEffect(() => {
         setCurrentRoute(pathname || "/");
     }, [pathname]);
+
     const updateRoute = (path: string) => {
         setCurrentRoute(path);
         router.push(path);
@@ -28,6 +34,7 @@ const useNavigationState = () => {
     const closeHamburgerMenu = (delay: number = 0) => {
         setTimeout(() => setHamburgerMenuIsOpen(false), delay);
     };
+
     return {
         currentRoute,
         updateRoute,
@@ -38,6 +45,7 @@ const useNavigationState = () => {
         closeHamburgerMenu,
     };
 };
+
 export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
@@ -48,7 +56,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
         </NavigationContext.Provider>
     );
 };
-import { createUseContext } from "./utils/createUseContext";
+
 export const useNavigation = createUseContext(
     NavigationContext,
     "useNavigation"

@@ -1,6 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { handleScrollClick } from "./scrollSmooth";
+
 export const useInitialScroll = (pathname: string | null) => {
     useEffect(() => {
         if (typeof window === "undefined") return;

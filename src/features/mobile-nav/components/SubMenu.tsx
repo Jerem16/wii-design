@@ -2,8 +2,11 @@
 
 import { useMemo, memo } from "react";
 import type { MenuItem } from "../data/menuItems";
-import { useNavigation } from "@context/NavigationContext";
-import { makePayloadClickHandler, makeActivationHandler } from "@utils/handlers";
+import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
+import {
+    makePayloadClickHandler,
+    makeActivationHandler,
+} from "@/features/navigation/core/utils/handlers";
 
 interface SubMenuProps {
     menuItem: MenuItem;
