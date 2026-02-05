@@ -68,6 +68,7 @@ html {
     --lh-ui: 1.3;
     --lh-h: 1.2;
     --measure: 65ch;
+    --scroll-offset: 64px;
 }
 h1,
 h2,
@@ -223,15 +224,18 @@ main {
 }
 .fixed-menu:first-child {
     width: 100%;
-    height: 64px;
-    background: red;
-    position: absolute;
+    // height: 64px;
+    // background: red;
+    // position: absolute;
     top: 0;
 }
 .active-section {
-    padding-top: 80px;
+    // padding-top: 80px;
 }
 @media (min-width: 1024px) {
+    :root {
+        --scroll-offset: 164px;
+    }
     main {
         margin: 94px 0 0 117px;
         width: calc(100% - 117px);
