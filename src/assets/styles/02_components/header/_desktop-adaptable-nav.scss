@@ -268,31 +268,4 @@
         }
     }
 }
-.nav-bar {
-    background: radial-gradient(
-            1200px 200px at 50% 0%,
-            rgba(39, 215, 255, 0.1),
-            transparent 60%
-        ),
-        rgba(2, 2, 3, 0.92);
 
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    // border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.sidebar {
-    background: radial-gradient(
-            200px 1200px at 50% 100%,
-            rgba(39, 215, 255, 0.1),
-            transparent 60%
-        ),
-        rgba(2, 2, 3, 0.92);
-
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    // background: #ffffff;
-    /* Sidebar => plutôt une bordure “séparateur” à droite */
-    border-bottom: 0;
-    // border-right: 1px solid rgba(255, 255, 255, 0.06);
-}

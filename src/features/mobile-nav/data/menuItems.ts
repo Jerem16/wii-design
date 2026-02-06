@@ -125,6 +125,36 @@ export const menuItems: MenuLinks = {
             ],
         },
     ],
+    reservation: [
+        {
+            id: "reservationId",
+            title: "Réservation",
+            class: "",
+            path: "/reservation",
+            AnchorId: "#top",
+            svg: "Reservation",
+        },
+    ],
+    search: [
+        {
+            id: "search",
+            title: "Rechercher ...",
+            class: "",
+            path: "/search",
+            AnchorId: "#top",
+            svg: "Search",
+        },
+    ],
+    connection: [
+        {
+            id: "connection",
+            title: "Se connecter",
+            class: "",
+            path: "/reservation",
+            AnchorId: "#top",
+            svg: "Connection",
+        },
+    ],
 };
 
 export type { MenuItem };

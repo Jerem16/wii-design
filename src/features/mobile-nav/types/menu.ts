@@ -19,5 +19,7 @@ export interface MenuItem {
 
 export interface MenuLinks {
     mainLink: MenuItem[];
+    reservation?: MenuItem[];
     search?: MenuItem[];
+    connection?: MenuItem[];
 }
