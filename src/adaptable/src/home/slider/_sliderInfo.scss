@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/slider/_sliderInfo.scss
+   ROLE: component
+   SCOPE: Slider - information bar
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (max-width 1440px utilisé)
+   NOTES: Animation d'entrée sur .active-section.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 #slider {
     position: relative;
 
@@ -57,6 +75,8 @@
         }
     }
 }
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1440px) {
     #slider {
         .sld-info_ctn {

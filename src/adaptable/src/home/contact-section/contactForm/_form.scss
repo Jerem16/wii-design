@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/contact-section/contactForm/_form.scss
+   ROLE: component
+   SCOPE: Formulaire de contact
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Animation locale pour le message de validation.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  4) Animations
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .ctc-layout {
     .ctc-form {
         position: relative;

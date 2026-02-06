@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/mobile/_index.scss
+   ROLE: component
+   SCOPE: Entrée mobile navbar
+   DEPENDENCIES: ./_nav.scss, ./_mnav.logo.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: L'@import dans le media query est volontaire pour limiter au mobile.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .mnav {
     display: none;
 }

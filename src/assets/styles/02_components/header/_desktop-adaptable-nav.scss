@@ -1,3 +1,22 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/_desktop-adaptable-nav.scss
+   ROLE: component
+   SCOPE: Navigation desktop adaptable
+   DEPENDENCIES: variables.scss, mixins.scss
+   BREAKPOINTS:
+     - Mobile: default (non utilisé ici)
+     - Desktop: >= 1024px
+   NOTES: Bloc desktop dédié, évite les régressions mobile.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  4) Animations
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (min-width: 1024px) {
     .desktop-adaptable-nav {
         width: 100vw;

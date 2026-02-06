@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/_header.scss
+   ROLE: component
+   SCOPE: Header / Navbar (structure principale)
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Styles de base de la navbar, le responsive est géré ailleurs.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 /* nav-bar */
 
 .nav-bar {

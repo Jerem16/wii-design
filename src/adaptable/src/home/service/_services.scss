@@ -1,6 +1,24 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/service/_services.scss
+   ROLE: component
+   SCOPE: Section Services (home)
+   DEPENDENCIES: questionaire, confirmed, beginner
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (max-width 1390px utilisé ici)
+   NOTES: Imports regroupés en tête, responsive en bas.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
 @import "../../home/service/questionaire";
 @import "../../home/service/confirmed/confirmed";
 @import "../../home/service/beginner/beginner";
+
+/* 2) Base / structure */
 .services {
     .card_bg {
         // Ajoute du style ici si nécessaire
@@ -65,6 +83,8 @@
         }
     }
 }
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1390px) {
     .services,
     #confirmed,

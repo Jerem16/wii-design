@@ -1,4 +1,24 @@
+/* ==========================================================================
+   FILE: src/components/error-404/error.scss
+   ROLE: component
+   SCOPE: Pages d'erreur 401/404
+   DEPENDENCIES: none
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Styles spécifiques aux pages d'erreur.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  1) Tokens / variables locales (si applicable)
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 1) Tokens / variables locales */
 $Primary: #00bb78;
+
+/* 2) Base / structure */
 
 .error-401,
 .error-404 {

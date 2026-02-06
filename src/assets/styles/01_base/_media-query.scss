@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/assets/styles/01_base/_media-query.scss
+   ROLE: global
+   SCOPE: Ajustements responsive globaux
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (mais ici usage en max-width existant)
+   NOTES: Conserver les max-width actuels pour éviter toute régression.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1390px) {
     body {
         background: $white;

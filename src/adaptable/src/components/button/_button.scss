@@ -1,4 +1,20 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/components/button/_button.scss
+   ROLE: component
+   SCOPE: Boutons CTA (adaptable)
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: États hover/active conservés.
+   ========================================================================== */
 
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .btn-style_blue {
     border-radius: 8px;
     padding: 0.75rem 2rem;

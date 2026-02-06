@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/slider/_sliderCTA.scss
+   ROLE: component
+   SCOPE: Slider - call-to-action
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: États hover/focus-visible conservés.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .sld-CTA {
     width: 270px;
     height: 180px;

@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/assets/styles/main.scss
+   ROLE: global
+   SCOPE: Point d'entrée des styles (imports)
+   DEPENDENCIES: partials utils/base/components/pages
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Conserver l'ordre d'import pour éviter toute régression.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 /* Utils */
 @import "./00_utils/variables";
 @import "./00_utils/_functions";

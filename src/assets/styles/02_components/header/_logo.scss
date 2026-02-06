@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/_logo.scss
+   ROLE: component
+   SCOPE: Logo dans la navbar
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Positionnement absolu, ne pas modifier sans vérifier le header.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .logo {
     width: 64px;
     height: 64px;

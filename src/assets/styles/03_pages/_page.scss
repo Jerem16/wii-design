@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/03_pages/_page.scss
+   ROLE: layout
+   SCOPE: Styles de page génériques
+   DEPENDENCIES: none
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Contient des animations locales et backgrounds.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  4) Animations
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .section {
     width: 100%;
     &:first-child {

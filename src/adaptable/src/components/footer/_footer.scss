@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/components/footer/_footer.scss
+   ROLE: component
+   SCOPE: Footer
+   DEPENDENCIES: variables.scss, mixins.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (max-width utilisé ici)
+   NOTES: Conserver les max-width existants pour éviter toute régression.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .footer {
     text-align: center;
     font-size: 1rem;
@@ -109,6 +127,8 @@
         }
     }
 }
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1390px) {
     .footer {
         height: fit-content;

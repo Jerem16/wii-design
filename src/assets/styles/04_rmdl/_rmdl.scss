@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/04_rmdl/_rmdl.scss
+   ROLE: component
+   SCOPE: Styles RMDL (rendu éditorial)
+   DEPENDENCIES: variables CSS (fonts/typo)
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Conserver ce bloc isolé pour éviter les conflits avec le reste du site.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 /**
  * Styles RMDL (Option A)
  * Intégration : importer ce fichier dans `src/assets/styles/main.scss`.
