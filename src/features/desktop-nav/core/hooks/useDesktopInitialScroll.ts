@@ -6,9 +6,24 @@ import { handleScrollClick } from "../utils/fnScrollUtils";
 
 export const useDesktopInitialScroll = (pathname: string | null) => {
     useEffect(() => {
-        if (window.location.hash) {
+        const hash = window.location.hash;
+        if (hash) {
+            resetActiveMenuClasses();
             window.scrollTo({ top: 0 });
-            handleScrollClick(window.location.hash.substring(1));
+            const targetId = hash.substring(1);
+            if (document.getElementById(targetId)) {
+                handleScrollClick(targetId);
+            }
+            resetActiveMenuClasses();
+            return;
+        }
+
+        const topElement = document.getElementById("top");
+        window.scrollTo({ top: 0 });
+        if (topElement) {
+            resetActiveMenuClasses();
+            handleScrollClick("top");
+            window.history.replaceState(null, "", "#top");
         }
         resetActiveMenuClasses();
     }, [pathname]);

@@ -65,7 +65,9 @@ export const updateMenuClasses = (
 /*-------------------------------------------------------*/
 
 export const resetActiveMenuClasses = () => {
-    const activeLinks = document.querySelectorAll(".nav-link.active");
+    const activeLinks = document.querySelectorAll(
+        ".head-link.active, .nav-link.active"
+    );
 
     activeLinks.forEach(link => {
         if (link instanceof HTMLElement) {
@@ -77,6 +79,7 @@ export const resetActiveMenuClasses = () => {
 
     submenus.forEach(submenu => {
         if (submenu instanceof HTMLElement) {
+            submenu.classList.remove("open");
             submenu.style.display = "";
         }
     });
