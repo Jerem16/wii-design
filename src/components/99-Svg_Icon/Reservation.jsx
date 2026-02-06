@@ -176,7 +176,12 @@ const Reservation = () => {
                         />
                     </filter>
                     <clipPath id="clip0_167_8479">
-                        <rect width="18" height="18" fill="white" />
+                        <rect
+                            width="18"
+                            height="18"
+                            aria-hidden="true"
+                            fill="white"
+                        />
                     </clipPath>
                 </defs>
             </svg>

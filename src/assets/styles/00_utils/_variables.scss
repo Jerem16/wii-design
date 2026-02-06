@@ -50,6 +50,20 @@ $shadow-rgba: rgba(48, 46, 77, 0.15);
 //* Nav-bar & sidebar */
 $nav-bg-black: #020203;
 $nav-title-red: #e60000;
+
+$nav-bg-black: radial-gradient(
+        1200px 200px at 50% 0%,
+        rgba(39, 215, 255, 0.1),
+        transparent 60%
+    ),
+    rgba(2, 2, 3, 0.92);
+$sidebar-bg-black: radial-gradient(
+        200px 1200px at 50% 100%,
+        rgba(39, 215, 255, 0.1),
+        transparent 60%
+    ),
+    rgba(2, 2, 3, 0.92);
+$nav-title-red: #e60000;
 // $nav-title-red: white;
 
 //* Main */
@@ -88,3 +102,9 @@ $color-shadow: rgba(0, 0, 0, 0.25);
 $width-card_header: 360px;
 $width-card_content: 720px;
 $width-card_bg: 1314px;
+
+/* Nav */
+$icon-nav-width: 64px;
+$margin-nav: 26px;
+$side-bar-width: calc($icon-nav-width + $margin-nav + $margin-nav);
+$nav-bar-height: calc($icon-nav-width + $margin-nav);

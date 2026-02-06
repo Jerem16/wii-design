@@ -19,9 +19,11 @@
 /* 5) Responsive - Desktop (>= 1024px) */
 @media (min-width: 1024px) {
     .desktop-adaptable-nav {
-        width: 100vw;
-        // position: fixed;
-        // top: -1px;
+        width: calc(100vw - 116px - $margin-nav);
+        // background: #ff0000;
+        margin-left: $margin-nav;
+        position: relative;
+        top: -7px;
         // z-index: 100;
 
         .header {
@@ -276,7 +278,7 @@
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    // border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .sidebar {
@@ -289,8 +291,8 @@
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-
+    // background: #ffffff;
     /* Sidebar => plutôt une bordure “séparateur” à droite */
     border-bottom: 0;
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    // border-right: 1px solid rgba(255, 255, 255, 0.06);
 }

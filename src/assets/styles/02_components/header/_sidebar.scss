@@ -16,18 +16,18 @@
 
 /* 2) Base / structure */
 .sidebar {
-    width: 117px;
+    width: $side-bar-width;
     position: fixed;
-    top: 85px;
+    top: $nav-bar-height;
     z-index: 99;
-    height: calc(100vh - 85px);
+    height: calc(100vh - $nav-bar-height);
     background-color: $nav-bg-black;
     display: flex;
     align-items: center;
     gap: 20px;
     justify-content: space-between;
     justify-content: center;
-    padding: 7px 26px 0 26px;
+    padding: 0px $margin-nav;
 
     .side-nav {
         position: relative;

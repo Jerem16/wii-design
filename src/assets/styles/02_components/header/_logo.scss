@@ -19,15 +19,16 @@
     height: 64px;
     display: inline-flex;
     align-items: center;
-    margin: 117px;
-    margin: 27px;
-    background-color: $nav-bg-black;
-    position: absolute;
-    left: 0px;
+    // margin: 117px;
+    // margin: 27px;
+    // background-color: $nav-bg-black;
+    // position: absolute;
+    // left: 0px;
     z-index: 102;
     isolation: isolate;
     .my-logo {
         position: absolute;
+        top: $margin-nav;
         width: 64px;
     }
     .l1 {

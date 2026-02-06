@@ -251,20 +251,21 @@ main {
 }
 @media (min-width: 1024px) {
     :root {
-        --scroll-offset: 164px;
+        --scroll-offset: $nav-bar-height;
     }
     main {
-        margin: 94px 0 0 117px;
+        margin: $nav-bar-height 0 0 $side-bar-width;
         width: calc(100% - 117px);
-        min-height: calc(100vh - 94px);
+        min-height: calc(100vh - $nav-bar-height);
         top: 0;
     }
     .section {
         padding: 24px;
         min-height: 100vh;
+        // background: #ff0000 !important;
     }
     .active-section {
-        padding-top: 0;
+        // padding-top: 0;
     }
     .fixed-menu:first-child {
         display: none;
