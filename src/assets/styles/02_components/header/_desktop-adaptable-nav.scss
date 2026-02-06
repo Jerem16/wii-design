@@ -48,6 +48,12 @@
             gap: 2rem;
         }
 
+        .head-space {
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+        }
+
         nav {
             animation: opacityAnimationDelay 0.9s ease-in-out forwards;
         }
@@ -73,6 +79,138 @@
             &:focus {
                 transform: scale(1);
             }
+        }
+
+        .reservationId,
+        .search,
+        .connection {
+            display: inline-flex;
+            justify-content: space-around;
+            width: auto;
+            border-radius: 100px;
+            background: $white;
+            @include menuShadow(rgba(0, 0, 0, 0.5));
+            transition: all 0.45s ease, color 0.3s ease;
+
+            &:hover,
+            &:focus {
+                @include menuShadow(rgba(0, 0, 0, 0.25));
+            }
+        }
+
+        .reservationId {
+            background: $primary-blue;
+            color: $white;
+            cursor: pointer;
+
+            .nav-link,
+            .icon-color {
+                fill: $white;
+                color: $white;
+                text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.35);
+                filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, 0.25));
+                transition: fill 0.3s ease, color 0.3s ease;
+            }
+
+            &:hover,
+            &:focus {
+                background: $primary-orange;
+                transform: scale(1.05);
+                @include menuShadow(rgba(0, 0, 0, 0.2));
+
+                .nav-link,
+                .icon-color {
+                    fill: $white !important;
+                    color: $white !important;
+                }
+
+                .icon-color_secondary {
+                    fill: $secondary-orange;
+                }
+            }
+
+            .head-link.active .icon-color,
+            .head-link.active .nav-link {
+                fill: $white !important;
+                color: $white !important;
+            }
+
+            .head-link.active .nav-icon {
+                filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
+            }
+
+            .main-link,
+            .nav-icon {
+                filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.35));
+            }
+        }
+
+        .research,
+        .connection {
+            cursor: pointer;
+            width: auto;
+
+            .nav-link,
+            .icon-color {
+                transition: fill 0.3s ease, color 0.3s ease;
+            }
+
+            &:hover,
+            &:focus {
+                @include menuShadow(rgba(0, 0, 0, 0.2));
+
+                .nav-link,
+                .icon-color {
+                    fill: $primary-blue !important;
+                    color: $primary-black !important;
+                }
+
+                button {
+                    .nav-link,
+                    .icon-color {
+                        fill: $primary-black !important;
+                        color: $primary-black !important;
+                    }
+                }
+            }
+
+            .head-link.active .icon-color,
+            .head-link.active .nav-link {
+                fill: $primary-black !important;
+                color: $primary-black !important;
+            }
+        }
+
+        .research {
+            &:hover,
+            &:focus {
+                transform: scale(1);
+            }
+        }
+
+        .connection {
+            .nav-link {
+                width: 114px;
+            }
+
+            &:hover,
+            &:focus {
+                transform: scale(1.05);
+
+                .nav-link,
+                .icon-color {
+                    fill: $primary-blue !important;
+                    color: $primary-blue !important;
+                }
+            }
+        }
+
+        .reservationId,
+        .search,
+        .connection,
+        .head-link,
+        .nav-link {
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
         .nav-circle {
@@ -135,6 +273,11 @@
             font-family: var(--font-ui);
             font-size: var(--fs-ui);
             line-height: var(--lh-ui);
+        }
+
+        input.nav-link,
+        option.nav-link {
+            text-transform: capitalize;
         }
 
         .group_link-submenu .nav-link.hidden {
@@ -268,4 +411,3 @@
         }
     }
 }
-
