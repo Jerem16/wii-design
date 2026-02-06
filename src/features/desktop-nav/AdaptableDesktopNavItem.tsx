@@ -1,9 +1,10 @@
 "use client";
 
 import { memo, useMemo } from "react";
+import type { FocusEvent, KeyboardEvent, MouseEvent } from "react";
 import type { MenuItem } from "@/features/mobile-nav/types/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
-import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
+import { useDesktopNavigation } from "@/features/desktop-nav/core/context/DesktopNavigationContext";
 import AdaptableDesktopSubMenu from "./AdaptableDesktopSubMenu";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
 
@@ -33,18 +34,19 @@ const AdaptableDesktopNavItem = ({
     onFocus,
 }: AdaptableDesktopNavItemProps) => {
     const SvgIcon = useMemo(() => svgComponents[menuItem.svg], [menuItem.svg]);
-    const { setOpenSubMenu } = useNavigation();
+    const { setOpenSubMenu } = useDesktopNavigation();
     const mainNav = !openMainButton && showNavLinks && !openButton;
+    const hasSubMenu = Boolean(menuItem.subItems?.length);
 
     const handleInteraction = (
-        event: React.MouseEvent<HTMLDivElement> | React.KeyboardEvent<HTMLDivElement>
+        event: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
     ) => {
         event.preventDefault();
         onMenuToggle(menuItem.id);
     };
 
     const hoverInteraction = (
-        event: React.MouseEvent<HTMLAnchorElement> | React.FocusEvent<HTMLAnchorElement>
+        event: MouseEvent<HTMLAnchorElement> | FocusEvent<HTMLAnchorElement>
     ) => {
         event.preventDefault();
         setOpenSubMenu(menuItem.id);
@@ -58,12 +60,20 @@ const AdaptableDesktopNavItem = ({
             href={menuItem.path}
             onClick={(event) => {
                 event.preventDefault();
+                if (hasSubMenu) {
+                    handleMenuClick(menuItem.id);
+                    return;
+                }
                 onNavigationClick(menuItem.path + (menuItem.AnchorId ?? ""));
                 handleMenuClick(menuItem.id);
             }}
             onKeyDown={(event) => {
                 if (event.key === "Enter" || event.key === " ") {
                     event.preventDefault();
+                    if (hasSubMenu) {
+                        handleMenuClick(menuItem.id);
+                        return;
+                    }
                     onNavigationClick(menuItem.path + (menuItem.AnchorId ?? ""));
                     handleMenuClick(menuItem.id);
                 }
