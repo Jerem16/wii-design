@@ -1,8 +1,10 @@
 "use client";
 
-import { memo, useState } from "react";
-import type { MenuItem } from "@/features/mobile-nav/types/menu";
+import { memo } from "react";
+import { useRouter } from "next/navigation";
+import type { MenuItem } from "@/features/desktop-nav/vendor/adaptable/assets/data/interfaces/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
+import useSearchHandler from "@/features/desktop-nav/vendor/adaptable/components/header/navInput/useSearchHandler";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
 
 interface AdaptableDesktopNavInputProps {
@@ -12,7 +14,6 @@ interface AdaptableDesktopNavInputProps {
     onMenuToggle: (menuItemId: string) => void;
     onMouseEnter: () => void;
     onFocus: () => void;
-    onNavigationClick: (path: string) => void;
 }
 
 const AdaptableDesktopNavInput = ({
@@ -22,17 +23,14 @@ const AdaptableDesktopNavInput = ({
     onMenuToggle,
     onMouseEnter,
     onFocus,
-    onNavigationClick,
 }: AdaptableDesktopNavInputProps) => {
-    const [query, setQuery] = useState("");
-    const SvgIcon = svgComponents[menuItem.svg];
-
-    const handleSubmit = (
-        event?: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>
-    ) => {
-        event?.preventDefault();
-        onNavigationClick(menuItem.path + (menuItem.AnchorId ?? ""));
-    };
+    const router = useRouter();
+    const {
+        query,
+        handleSearch,
+        handleSubmit,
+    } = useSearchHandler(router);
+    const SvgIcon = svgComponents[menuItem.svg as keyof typeof svgComponents];
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === "Enter" || event.key === " ") {
@@ -55,14 +53,17 @@ const AdaptableDesktopNavInput = ({
             <form
                 aria-label={`Page ${menuItem.title}`}
                 className="head-link"
-                onSubmit={handleSubmit}
+                onSubmit={(event) => {
+                    event.preventDefault();
+                    handleSubmit();
+                }}
             >
                 {showNavLinks ? (
                     <>
                         <button
                             type="submit"
                             className="nav-icon flx-c"
-                            onClick={handleSubmit}
+                            onClick={() => handleSubmit()}
                             aria-label="Valider la recherche"
                         >
                             {SvgIcon ? <SvgIcon /> : null}
@@ -72,7 +73,7 @@ const AdaptableDesktopNavInput = ({
                             type="text"
                             value={query}
                             placeholder={placeholder}
-                            onChange={(event) => setQuery(event.target.value)}
+                            onChange={handleSearch}
                             onFocus={onFocus}
                             className={`nav-link ${getShowClass(showNavLinks)}`}
                         />

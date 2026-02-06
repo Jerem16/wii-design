@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import "@assets/styles/main.scss"
 import NavInterface from "@components/00-Header/NavInterface.jsx"
+import { SearchProvider } from "@/features/desktop-nav/vendor/adaptable/utils/context/SearchContext";
 const Roboto = localFont({
     src: "/fonts/Roboto.woff2",
     variable: "--Roboto",
@@ -59,12 +60,14 @@ export default function RootLayout({
                 ></script> */}
             </head>
             <body className={`${Roboto.variable}`} >
-                <NavInterface />
-                
-                <main>
-                    <div className="fixed-menu" id="top"></div>
-                    {children}
-                </main>
+                <SearchProvider>
+                    <NavInterface />
+
+                    <main>
+                        <div className="fixed-menu" id="top"></div>
+                        {children}
+                    </main>
+                </SearchProvider>
             </body>
         </html>
     );
