@@ -49,10 +49,7 @@ const DesktopNavContent = () => {
         setIsDesktop
     });
 
-    const desktopSource = useMemo(
-        () => mapMenuForDesktop(menuItems),
-        []
-    );
+    const desktopSource = useMemo(() => mapMenuForDesktop(menuItems), []);
     const updatedMenuItems = useMemo(
         () =>
             updateDesktopMenuClasses(
@@ -101,13 +98,7 @@ const DesktopNavContent = () => {
 
     return (
         <header className="nav-bar" role="banner">
-            <Link
-                href="/#slider"
-                aria-label="Retour à la page d'accueil : Peur de la conduite"
-                className="logo-link"
-            >
-                <Logo />
-            </Link>
+            <Logo />
             <div className="desktop-adaptable-nav">
                 <div className="header">
                     <div className="head-flex">
@@ -174,7 +165,9 @@ const DesktopNavContent = () => {
                                                 : menuItemId
                                         )
                                     }
-                                    showNavLinks={shouldShowNavLinks(menuItem.id)}
+                                    showNavLinks={shouldShowNavLinks(
+                                        menuItem.id
+                                    )}
                                     onMouseEnter={() =>
                                         handleInteraction(menuItem.id)
                                     }
@@ -191,11 +184,15 @@ const DesktopNavContent = () => {
                                 <AdaptableDesktopNavInput
                                     key={menuItem.id}
                                     menuItem={menuItem}
-                                    showNavLinks={shouldShowNavLinks(menuItem.id)}
+                                    showNavLinks={shouldShowNavLinks(
+                                        menuItem.id
+                                    )}
                                     onMouseEnter={() =>
                                         handleInteraction(menuItem.id)
                                     }
-                                    onFocus={() => handleInteraction(menuItem.id)}
+                                    onFocus={() =>
+                                        handleInteraction(menuItem.id)
+                                    }
                                     onMenuToggle={showLink}
                                     onNavigationClick={handleNavigationClick}
                                 />
@@ -218,7 +215,9 @@ const DesktopNavContent = () => {
                                                 : menuItemId
                                         )
                                     }
-                                    showNavLinks={shouldShowNavLinks(menuItem.id)}
+                                    showNavLinks={shouldShowNavLinks(
+                                        menuItem.id
+                                    )}
                                     onMouseEnter={() =>
                                         handleInteraction(menuItem.id)
                                     }
