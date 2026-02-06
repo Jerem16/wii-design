@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/about/_about.scss
+   ROLE: component
+   SCOPE: Section About (home)
+   DEPENDENCIES: variables.scss, mixins.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (max-width 1390px utilisé ici)
+   NOTES: Ajustements responsive en max-width conservés.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .about-bg {
     &.active-section {
         .fixed-menu {
@@ -74,6 +92,8 @@
         }
     }
 }
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1390px) {
     .about {
         height: auto;

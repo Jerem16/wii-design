@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/assets/styles/01_base/_general.scss
+   ROLE: global
+   SCOPE: Reset + styles globaux (adaptable)
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Mobile-first, conserve les sélecteurs existants.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 // _general.scss] ******/
 
 body {

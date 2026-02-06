@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/_sidebar.scss
+   ROLE: component
+   SCOPE: Sidebar navigation
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Sidebar fixée, vérifier l'interaction avec la navbar.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .sidebar {
     width: 117px;
     position: fixed;

@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/01_base/_general.scss
+   ROLE: global
+   SCOPE: Reset + styles globaux (typographie, base)
+   DEPENDENCIES: Variables CSS root, fonts
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Mobile-first, pas de media queries locales.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 a,
 body {
     text-decoration: none;

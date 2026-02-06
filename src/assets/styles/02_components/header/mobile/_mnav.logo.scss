@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/mobile/_mnav.logo.scss
+   ROLE: component
+   SCOPE: Ajustements logo (mobile)
+   DEPENDENCIES: _logo.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (non utilisé ici)
+   NOTES: Bloc mobile isolé pour éviter les overrides desktop.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1024px) {
     .mnav__bar {
         .logo {

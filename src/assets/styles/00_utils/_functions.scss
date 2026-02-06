@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/00_utils/_functions.scss
+   ROLE: utility
+   SCOPE: Fonctions Sass
+   DEPENDENCIES: sass:color, sass:math
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Fonctions partagées par l'ensemble des styles.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  1) Tokens / variables locales (si applicable)
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 @use "sass:color";
 @use "sass:math";
 

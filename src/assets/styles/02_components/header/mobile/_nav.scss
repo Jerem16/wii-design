@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/assets/styles/02_components/header/mobile/_nav.scss
+   ROLE: component
+   SCOPE: Navigation mobile (menu, overlay, états)
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (masqué via _index.scss)
+   NOTES: Interaction menu ↔ overlay ↔ body lock.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 body.mnav--open {
     overflow: hidden;
     touch-action: none;

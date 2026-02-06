@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/service/_questionaire.scss
+   ROLE: component
+   SCOPE: Formulaire questionnaire (services)
+   DEPENDENCIES: mixins.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Styles spécifiques au formulaire services.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 form.srv-form {
     justify-content: flex-start;
     input[type="checkbox"] {

@@ -1,9 +1,27 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/slider/_slider.scss
+   ROLE: component
+   SCOPE: Slider (home) - point d'entrée
+   DEPENDENCIES: sliderRoad, sliderContent, sliderArrow, sliderCTA, sliderInfo, sunBG
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (max-width 1390px/900px utilisés)
+   NOTES: Imports regroupés en tête.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
 @import "../../home/slider/sliderRoad";
 @import "../../home/slider/sliderContent";
 @import "../../home/slider/sliderArrow";
 @import "../../home/slider/sliderCTA";
 @import "../../home/slider/sliderInfo";
 @import "../../home/slider/sunBG";
+
+/* 2) Base / structure */
 .slider-bg {
     position: relative;
     margin: 0 auto;
@@ -28,6 +46,8 @@
     float: right;
     margin-right: 90px;
 }
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1390px) {
     .sld-container {
         .sld-road-med {

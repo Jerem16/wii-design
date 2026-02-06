@@ -1,2 +1,18 @@
+/* ==========================================================================
+   FILE: src/assets/styles/00_utils/_fonts.scss
+   ROLE: utility
+   SCOPE: Déclarations / documentation typographique
+   DEPENDENCIES: none
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Les fonts sont chargées dans le layout, pas via @font-face ici.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 /****** Fonts ******/
 /* Google Fonts chargées via <link> dans le <head> (app/layout.tsx). */

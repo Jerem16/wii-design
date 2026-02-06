@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/assets/styles/03_pages/_page.scss
+   ROLE: layout
+   SCOPE: Styles de page (adaptable)
+   DEPENDENCIES: none
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Contient le menu fixe de section.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  4) Animations
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .section {
     width: 100%;
     &:first-child {

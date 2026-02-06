@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/components/header/_header.scss
+   ROLE: component
+   SCOPE: Header / Navbar (adaptable)
+   DEPENDENCIES: variables.scss, mixins.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Styles principaux de navigation, responsive géré ailleurs.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  1) Tokens / variables locales (si applicable)
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 1) Tokens / variables locales */
 @mixin smoothTransition($props...) {
     transition: $props 0.35s ease;
 }
@@ -16,6 +34,8 @@
         @include menuShadow(rgba(0, 0, 0, 0.25));
     }
 }
+
+/* 2) Base / structure */
 header {
     background: linear-gradient(
         180deg,

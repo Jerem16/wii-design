@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/contact-section/_contact.scss
+   ROLE: component
+   SCOPE: Section Contact (home)
+   DEPENDENCIES: variables.scss, mixins.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px (max-width 1390px/992px utilisés)
+   NOTES: Conserver les max-width pour la réactivité existante.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  5) Responsive - Desktop (>= 1024px)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .contact {
     margin-bottom: 136px;
     margin-top: 50px;
@@ -271,6 +289,8 @@
         }
     }
 }
+
+/* 5) Responsive - Desktop (>= 1024px) */
 @media (max-width: 1390px) {
     .contact {
         .ctc-content {

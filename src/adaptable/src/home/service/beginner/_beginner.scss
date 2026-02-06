@@ -1,3 +1,20 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/service/beginner/_beginner.scss
+   ROLE: component
+   SCOPE: Section Services - Beginner/Confirmed
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Garde les dimensions fixes pour éviter les régressions visuelles.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .services.content-srv {
     margin-top: 60px;
     .segment {

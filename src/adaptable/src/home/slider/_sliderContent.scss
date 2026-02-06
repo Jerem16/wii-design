@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/slider/_sliderContent.scss
+   ROLE: component
+   SCOPE: Slider - contenu et transitions
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Animations gérées via classes .active/.next/.prev.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+  3) States (hover, focus, active, open)
+  4) Animations
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .slider {
     top: 0;
     z-index: 2;

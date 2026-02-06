@@ -1,4 +1,19 @@
+/* ==========================================================================
+   FILE: src/adaptable/src/home/slider/_sunBG.scss
+   ROLE: component
+   SCOPE: Slider - background soleil
+   DEPENDENCIES: variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Décor de fond, ne pas modifier sans vérifier le slider.
+   ========================================================================== */
 
+/* --- Table of contents -----------------------------------------------------
+  2) Base / structure
+--------------------------------------------------------------------------- */
+
+/* 2) Base / structure */
 .sld-bg {
     z-index: 1;
     .slider-bg::before {

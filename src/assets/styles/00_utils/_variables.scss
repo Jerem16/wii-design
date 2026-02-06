@@ -1,3 +1,19 @@
+/* ==========================================================================
+   FILE: src/assets/styles/00_utils/_variables.scss
+   ROLE: utility
+   SCOPE: Variables globales (tokens de design)
+   DEPENDENCIES: none
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Conserve les doublons existants pour éviter toute régression.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  1) Tokens / variables locales (si applicable)
+--------------------------------------------------------------------------- */
+
+/* 1) Tokens / variables locales */
 //_variables.scss
 
 $primary-blue: rgba(26, 109, 229, 1);

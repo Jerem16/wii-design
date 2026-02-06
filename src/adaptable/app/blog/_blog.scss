@@ -1,3 +1,21 @@
+/* ==========================================================================
+   FILE: src/adaptable/app/blog/_blog.scss
+   ROLE: page
+   SCOPE: Page blog (adaptable)
+   DEPENDENCIES: mixins.scss, variables.scss
+   BREAKPOINTS:
+     - Mobile: default
+     - Desktop: >= 1024px
+   NOTES: Mixins et tokens locaux en tête.
+   ========================================================================== */
+
+/* --- Table of contents -----------------------------------------------------
+  1) Tokens / variables locales (si applicable)
+  2) Base / structure
+  3) States (hover, focus, active, open)
+--------------------------------------------------------------------------- */
+
+/* 1) Tokens / variables locales */
 .category,
 .packs-container {
     filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.5));
