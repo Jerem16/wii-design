@@ -3,7 +3,7 @@
 import { memo } from "react";
 import type { KeyboardEvent, MouseEvent } from "react";
 import type { MenuItem } from "@/features/mobile-nav/types/menu";
-import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
+import { useDesktopNavigation } from "@/features/desktop-nav/core/context/DesktopNavigationContext";
 
 interface DesktopSubMenuProps {
     menuItem: MenuItem;
@@ -12,7 +12,7 @@ interface DesktopSubMenuProps {
 }
 
 const AdaptableDesktopSubMenu = ({ menuItem, isOpen, onSubItemClick }: DesktopSubMenuProps) => {
-    const { setOpenSubMenu } = useNavigation();
+    const { setOpenSubMenu } = useDesktopNavigation();
 
     if (!menuItem.subItems || menuItem.subItems.length === 0) return null;
 

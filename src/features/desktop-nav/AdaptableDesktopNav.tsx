@@ -3,17 +3,21 @@
 import { memo, useMemo, useState } from "react";
 import { menuItems } from "@/features/desktop-nav/data/menuItems";
 import {
-    useNavigation,
-    NavigationProvider
-} from "@/features/navigation/core/context/NavigationContext";
-import ScrollProvider, {
-    useScrollContext
-} from "@/features/navigation/core/context/ScrollContext";
-import { useScrollAnchors } from "@/features/navigation/core/hooks/useScrollAnchors";
+    DesktopNavigationProvider,
+    useDesktopNavigation
+} from "@/features/desktop-nav/core/context/DesktopNavigationContext";
+import {
+    DesktopScrollProvider,
+    useDesktopScrollContext
+} from "@/features/desktop-nav/core/context/DesktopScrollContext";
+import { useDesktopScrollAnchors } from "@/features/desktop-nav/core/hooks/useDesktopScrollAnchors";
+import {
+    handleNavClick,
+    handleScrollClick
+} from "@/features/desktop-nav/core/utils/fnScrollUtils";
 import {
     mapMenuForDesktop,
-    updateDesktopMenuClasses,
-    handleDesktopNavClick
+    updateDesktopMenuClasses
 } from "./adaptableMenuUtils";
 import { useResize } from "./hooks/useResize";
 import { useAdaptableMenu } from "./useAdaptableMenu";
@@ -27,8 +31,8 @@ const DesktopNavContent = () => {
         updateRoute,
         openSubMenu,
         setOpenSubMenu
-    } = useNavigation();
-    const { activeSection } = useScrollContext();
+    } = useDesktopNavigation();
+    const { activeSection } = useDesktopScrollContext();
     const { navRef } = useAdaptableMenu();
 
     const [tabletMain, setTabletMain] = useState(false);
@@ -39,7 +43,7 @@ const DesktopNavContent = () => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const [lastClickedMenu, setLastClickedMenu] = useState<string | null>(null);
 
-    useScrollAnchors([]);
+    useDesktopScrollAnchors([]);
     useResize({
         setTabletMain,
         setOpenMainButton,
@@ -83,7 +87,7 @@ const DesktopNavContent = () => {
     };
 
     const handleNavigationClick = (path: string) => {
-        handleDesktopNavClick(path, currentRoute, updateRoute);
+        handleNavClick(path, currentRoute, updateRoute, handleScrollClick);
     };
 
     const shouldShowNavLinks = (menuId: string): boolean =>
@@ -236,11 +240,11 @@ const DesktopNavContent = () => {
 
 const AdaptableDesktopNav = () => {
     return (
-        <NavigationProvider>
-            <ScrollProvider>
+        <DesktopNavigationProvider>
+            <DesktopScrollProvider>
                 <DesktopNavContent />
-            </ScrollProvider>
-        </NavigationProvider>
+            </DesktopScrollProvider>
+        </DesktopNavigationProvider>
     );
 };
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useNavigation } from "@/features/navigation/core/context/NavigationContext";
+import { useDesktopNavigation } from "@/features/desktop-nav/core/context/DesktopNavigationContext";
 
 const handleClickOutside = (
     event: MouseEvent,
@@ -22,7 +22,7 @@ const handleEscape = (event: KeyboardEvent, setOpenSubMenu: (value: string | nul
 
 export const useAdaptableMenu = () => {
     const navRef = useRef<HTMLElement | null>(null);
-    const { openSubMenu, setOpenSubMenu } = useNavigation();
+    const { openSubMenu, setOpenSubMenu } = useDesktopNavigation();
 
     useEffect(() => {
         const onClickOutside = (event: MouseEvent) =>
