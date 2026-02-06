@@ -4,7 +4,7 @@ export const metadata: Metadata = {
 };
 import Frames from "@/frames/Frames";
 export default async function Page() {
-    await new Promise(r => setTimeout(r, 5000));
+    // await new Promise(r => setTimeout(r, 5000));
     return (
         <>
             <Frames className="section" id="novice">
