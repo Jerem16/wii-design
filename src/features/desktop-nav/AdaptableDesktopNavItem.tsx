@@ -2,9 +2,9 @@
 
 import { memo, useMemo } from "react";
 import type { FocusEvent, KeyboardEvent, MouseEvent } from "react";
-import type { MenuItem } from "@/features/mobile-nav/types/menu";
+import type { MenuItem } from "@/features/desktop-nav/vendor/adaptable/assets/data/interfaces/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
-import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
+import { useNavigation } from "@/features/desktop-nav/vendor/adaptable/utils/context/NavigationContext";
 import AdaptableDesktopSubMenu from "./AdaptableDesktopSubMenu";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
 
@@ -33,7 +33,10 @@ const AdaptableDesktopNavItem = ({
     onMouseEnter,
     onFocus,
 }: AdaptableDesktopNavItemProps) => {
-    const SvgIcon = useMemo(() => svgComponents[menuItem.svg], [menuItem.svg]);
+    const SvgIcon = useMemo(
+        () => svgComponents[menuItem.svg as keyof typeof svgComponents],
+        [menuItem.svg]
+    );
     const { setOpenSubMenu } = useNavigation();
     const mainNav = !openMainButton && showNavLinks && !openButton;
     const hasSubMenu = Boolean(menuItem.subItems?.length);

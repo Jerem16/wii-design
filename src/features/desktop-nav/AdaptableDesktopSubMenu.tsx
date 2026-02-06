@@ -2,8 +2,8 @@
 
 import { memo } from "react";
 import type { KeyboardEvent, MouseEvent } from "react";
-import type { MenuItem } from "@/features/mobile-nav/types/menu";
-import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
+import type { MenuItem } from "@/features/desktop-nav/vendor/adaptable/assets/data/interfaces/menu";
+import { useNavigation } from "@/features/desktop-nav/vendor/adaptable/utils/context/NavigationContext";
 
 interface DesktopSubMenuProps {
     menuItem: MenuItem;

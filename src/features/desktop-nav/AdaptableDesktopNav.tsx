@@ -1,29 +1,28 @@
 "use client";
 
 import { memo, useMemo, useState } from "react";
-import { menuItems } from "@/features/desktop-nav/data/menuItems";
+import { usePathname } from "next/navigation";
 import {
     NavigationProvider,
-    useNavigation
-} from "@/features/desktop-nav/core/context/NavigationContext";
+    useNavigation,
+} from "@/features/desktop-nav/vendor/adaptable/utils/context/NavigationContext";
 import {
     ScrollProvider,
-    useScrollContext
-} from "@/features/desktop-nav/core/context/ScrollContext";
-import { useDesktopScrollAnchors } from "@/features/desktop-nav/core/hooks/useDesktopScrollAnchors";
+    useScrollContext,
+} from "@/features/desktop-nav/vendor/adaptable/utils/context/ScrollContext";
 import {
     handleNavClick,
-    handleScrollClick
-} from "@/features/desktop-nav/core/utils/fnScrollUtils";
-import {
-    mapMenuForDesktop,
-    updateDesktopMenuClasses
-} from "./adaptableMenuUtils";
-import { useResize } from "./hooks/useResize";
-import { useAdaptableMenu } from "./useAdaptableMenu";
+    handleScrollClick,
+} from "@/features/desktop-nav/vendor/adaptable/utils/fnScrollUtils";
+import { updateMenuClasses } from "@/features/desktop-nav/vendor/adaptable/utils/updateMenuUtils";
+import { useMenuBehavior } from "@/features/desktop-nav/vendor/adaptable/utils/updateMenuUtils";
+import useResize from "@/features/desktop-nav/vendor/adaptable/components/header/utils/useResize";
+import { adaptableMenuData } from "@/features/desktop-nav/adapters/adaptableMenuData";
+import { useInitialScrollDesktop } from "@/features/desktop-nav/adapters/useInitialScrollDesktop";
 import AdaptableDesktopNavItem from "./AdaptableDesktopNavItem";
 import AdaptableDesktopNavInput from "./AdaptableDesktopNavInput";
 import Logo from "@/components/00-Header/Logo";
+import DesktopScrollSectionsWrapper from "./DesktopScrollSectionsWrapper";
 
 const DesktopNavContent = () => {
     const {
@@ -33,37 +32,33 @@ const DesktopNavContent = () => {
         setOpenSubMenu
     } = useNavigation();
     const { activeSection } = useScrollContext();
-    const { navRef } = useAdaptableMenu();
+    const { navRef } = useMenuBehavior();
+    const pathname = usePathname();
 
     const [tabletMain, setTabletMain] = useState(false);
     const [openMainButton, setOpenMainButton] = useState(false);
     const [openButton, setOpenButton] = useState(false);
     const [bigMenu, setBigMenu] = useState(false);
-    const [isDesktop, setIsDesktop] = useState(false);
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const [lastClickedMenu, setLastClickedMenu] = useState<string | null>(null);
 
-    useDesktopScrollAnchors([]);
-    useResize({
-        setTabletMain,
-        setOpenMainButton,
-        setOpenButton,
-        setBigMenu,
-        setIsDesktop
-    });
+    useResize(setTabletMain, setOpenMainButton, setOpenButton, setBigMenu);
+    useInitialScrollDesktop(pathname);
 
-    const desktopSource = useMemo(() => mapMenuForDesktop(menuItems), []);
     const updatedMenuItems = useMemo(
         () =>
-            updateDesktopMenuClasses(
-                desktopSource,
+            updateMenuClasses(
+                adaptableMenuData.mainLink,
+                adaptableMenuData.reservation,
+                adaptableMenuData.search,
+                adaptableMenuData.connection,
                 activeSection,
                 currentRoute
             ),
-        [activeSection, currentRoute, desktopSource]
+        [activeSection, currentRoute]
     );
 
-    if (!isDesktop) return null;
+    if (!tabletMain) return null;
 
     const showLink = (menuId: string) => {
         setOpenMenu(menuId);
@@ -197,7 +192,6 @@ const DesktopNavContent = () => {
                                         handleInteraction(menuItem.id)
                                     }
                                     onMenuToggle={showLink}
-                                    onNavigationClick={handleNavigationClick}
                                 />
                             ))}
                         </nav>
@@ -242,6 +236,7 @@ const AdaptableDesktopNav = () => {
     return (
         <NavigationProvider>
             <ScrollProvider>
+                <DesktopScrollSectionsWrapper />
                 <DesktopNavContent />
             </ScrollProvider>
         </NavigationProvider>
