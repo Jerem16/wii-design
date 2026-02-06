@@ -2,22 +2,17 @@
 
 import { createContext, useContext, useState, useMemo } from "react";
 
-type DesktopScrollContextType = {
+type ScrollContextType = {
     activeSection: string;
     setActiveSection: (section: string) => void;
 };
 
-const DesktopScrollContext = createContext<
-    DesktopScrollContextType | undefined
->(undefined);
+const ScrollContext = createContext<ScrollContextType | undefined>(undefined);
 
-export const DesktopScrollProvider = ({
-    children,
-}: {
-    children: React.ReactNode;
-}) => {
+export const ScrollProvider = ({ children }: { children: React.ReactNode }) => {
     const [activeSection, setActiveSection] = useState<string>("");
 
+    // Mémoriser l'objet value pour éviter sa recréation à chaque rendu
     const contextValue = useMemo(
         () => ({
             activeSection,
@@ -27,17 +22,17 @@ export const DesktopScrollProvider = ({
     );
 
     return (
-        <DesktopScrollContext.Provider value={contextValue}>
+        <ScrollContext.Provider value={contextValue}>
             {children}
-        </DesktopScrollContext.Provider>
+        </ScrollContext.Provider>
     );
 };
 
-export const useDesktopScrollContext = () => {
-    const context = useContext(DesktopScrollContext);
+export const useScrollContext = () => {
+    const context = useContext(ScrollContext);
     if (!context) {
         throw new Error(
-            "useDesktopScrollContext must be used within a DesktopScrollProvider"
+            "useScrollContext must be used within a ScrollProvider"
         );
     }
     return context;

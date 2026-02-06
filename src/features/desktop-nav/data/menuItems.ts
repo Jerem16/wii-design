@@ -156,3 +156,4 @@ export const menuItems: MenuLinks = {
         },
     ],
 };
+export type { MenuItem } from "./interfaces/menu"; 

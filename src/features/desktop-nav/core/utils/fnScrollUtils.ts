@@ -20,23 +20,9 @@ function scrollTimeEvent(
         );
     }
 }
-
-const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-};
-
 export const handleScrollClick = (targetId: string) => {
-    if (targetId === "top" || targetId === "scroll-start") {
-        scrollToTop();
-        return;
-    }
-
     const element = document.getElementById(targetId);
-    if (!element) {
-        scrollToTop();
-        return;
-    }
-
+    if (!element) return;
     const start = window.scrollY;
     const end = element.getBoundingClientRect().top + window.scrollY;
     const duration = 750;
@@ -119,7 +105,7 @@ function elseNav({
         updateRoute(targetPath);
 
         if (targetHash === undefined) {
-            handleScrollClick?.("scroll-start");
+            handleScrollClick?.(`scroll-start`);
         } else if (targetHash !== currentHash) {
             handleScrollClick?.(targetHash);
             updateRoute(`${targetPath}#${targetHash}`);

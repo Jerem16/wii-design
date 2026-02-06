@@ -1,8 +1,7 @@
-\"use client\";
-
-import type { MenuItem, SubItem } from "@/features/mobile-nav/types/menu";
+import { MenuItem } from "../../data/menuItems";
+import { SubItem } from "../../data/interfaces/menu";
 import { useEffect, useRef } from "react";
-import { useDesktopNavigation } from "../context/DesktopNavigationContext";
+import { useNavigation } from "../context/NavigationContext";
 
 export const isMainItemActive = (
     itemPath: string,
@@ -22,11 +21,11 @@ const updateSubItems = (
     activeSection: string
 ): SubItem[] => {
     const activeSubItem = subItems.find(
-        (sub) => sub.AnchorId === `#${activeSection}`
+        sub => sub.AnchorId === `#${activeSection}`
     );
-    return subItems.map((sub) => ({
+    return subItems.map(sub => ({
         ...sub,
-        class: activeSubItem?.id === sub.id ? "active" : "",
+        class: activeSubItem?.id === sub.id ? "active" : ""
     }));
 };
 export const updateMenuItems = (
@@ -34,12 +33,12 @@ export const updateMenuItems = (
     activeSection: string,
     currentRoute: string
 ): MenuItem[] => {
-    return items.map((item) => ({
+    return items.map(item => ({
         ...item,
         class: isMainItemActive(item.path, currentRoute) ? "active" : "",
         subItems: item.subItems
             ? updateSubItems(item.subItems, activeSection)
-            : undefined,
+            : undefined
     }));
 };
 
@@ -60,7 +59,7 @@ export const updateMenuClasses = (
         currentRoute
     ),
     search: updateMenuItems(search || [], activeSection, currentRoute),
-    connection: updateMenuItems(connection || [], activeSection, currentRoute),
+    connection: updateMenuItems(connection || [], activeSection, currentRoute)
 });
 
 /*-------------------------------------------------------*/
@@ -68,7 +67,7 @@ export const updateMenuClasses = (
 export const resetActiveMenuClasses = () => {
     const activeLinks = document.querySelectorAll(".nav-link.active");
 
-    activeLinks.forEach((link) => {
+    activeLinks.forEach(link => {
         if (link instanceof HTMLElement) {
             link.classList.remove("active");
         }
@@ -76,7 +75,7 @@ export const resetActiveMenuClasses = () => {
 
     const submenus = document.querySelectorAll(".submenu.open");
 
-    submenus.forEach((submenu) => {
+    submenus.forEach(submenu => {
         if (submenu instanceof HTMLElement) {
             submenu.style.display = "";
         }
@@ -105,11 +104,12 @@ const handleKeyDown = (
 };
 export const useMenuBehavior = () => {
     const navRef = useRef<HTMLElement | null>(null);
-    const { openSubMenu, setOpenSubMenu } = useDesktopNavigation();
+    const { openSubMenu, setOpenSubMenu } = useNavigation();
     const setOpenSubMenuBridge: React.Dispatch<React.SetStateAction<
         string | null
-    >> = (value) => {
+    >> = value => {
         if (typeof value === "function") {
+            // Appelle la fonction avec la valeur courante
             setOpenSubMenu(
                 (value as (prev: string | null) => string | null)(openSubMenu)
             );

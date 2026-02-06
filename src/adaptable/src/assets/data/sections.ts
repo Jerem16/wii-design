@@ -6,5 +6,5 @@ export const sections = [
     { id: "contact" },
     // { id: "s1" },
     { id: "sans-permis" },
-    { id: "avec-permis" },
+    { id: "avec-permis" }
 ];

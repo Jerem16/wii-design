@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { useDesktopScrollContext } from "../context/DesktopScrollContext";
+import { useScrollContext } from "../context/ScrollContext";
 import {
     addNewUrl,
     updateSectionClasses,
@@ -10,7 +10,7 @@ import {
 } from "../utils/fnScrollUtils";
 
 export const useDesktopScrollAnchors = (sections: { id: string }[]) => {
-    const { setActiveSection } = useDesktopScrollContext();
+    const { setActiveSection } = useScrollContext();
     useEffect(() => {
         const handleScroll = () => {
             scrollInView(sections);

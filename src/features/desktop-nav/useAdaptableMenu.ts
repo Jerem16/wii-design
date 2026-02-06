@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useDesktopNavigation } from "@/features/desktop-nav/core/context/DesktopNavigationContext";
+import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
 
 const handleClickOutside = (
     event: MouseEvent,
@@ -13,7 +13,10 @@ const handleClickOutside = (
     }
 };
 
-const handleEscape = (event: KeyboardEvent, setOpenSubMenu: (value: string | null) => void) => {
+const handleEscape = (
+    event: KeyboardEvent,
+    setOpenSubMenu: (value: string | null) => void
+) => {
     if (event.key === "Escape") {
         event.preventDefault();
         setOpenSubMenu(null);
@@ -22,12 +25,13 @@ const handleEscape = (event: KeyboardEvent, setOpenSubMenu: (value: string | nul
 
 export const useAdaptableMenu = () => {
     const navRef = useRef<HTMLElement | null>(null);
-    const { openSubMenu, setOpenSubMenu } = useDesktopNavigation();
+    const { openSubMenu, setOpenSubMenu } = useNavigation();
 
     useEffect(() => {
         const onClickOutside = (event: MouseEvent) =>
             handleClickOutside(event, navRef, setOpenSubMenu);
-        const onKeyDown = (event: KeyboardEvent) => handleEscape(event, setOpenSubMenu);
+        const onKeyDown = (event: KeyboardEvent) =>
+            handleEscape(event, setOpenSubMenu);
 
         document.addEventListener("mousedown", onClickOutside);
         document.addEventListener("keydown", onKeyDown);

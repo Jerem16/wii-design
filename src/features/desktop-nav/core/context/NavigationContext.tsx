@@ -1,5 +1,3 @@
-"use client";
-
 import React, {
     createContext,
     useContext,
@@ -10,7 +8,7 @@ import React, {
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-interface DesktopNavigationContextType {
+interface NavigationContextType {
     currentRoute: string;
     updateRoute: (path: string) => void;
     openSubMenu: string | null;
@@ -20,21 +18,20 @@ interface DesktopNavigationContextType {
     resetDisplayStyles: () => void;
 }
 
-const DesktopNavigationContext = createContext<
-    DesktopNavigationContextType | undefined
->(undefined);
+const NavigationContext = createContext<NavigationContextType | null>(null);
 
-export const DesktopNavigationProvider: React.FC<{
-    children: React.ReactNode;
-}> = ({ children }) => {
+export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
+    children,
+}) => {
     const router = useRouter();
     const pathname = usePathname();
     const [currentRoute, setCurrentRoute] = useState(pathname || "/");
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
     const [showNavLinks, setShowNavLinks] = useState<boolean>(true);
 
+    // Fonction pour réinitialiser l'affichage des sous-menus
     const resetDisplayStyles = useCallback(() => {
-        setOpenSubMenu(null);
+        setOpenSubMenu(null); // Ferme tous les sous-menus
     }, []);
 
     useEffect(() => {
@@ -69,17 +66,17 @@ export const DesktopNavigationProvider: React.FC<{
     );
 
     return (
-        <DesktopNavigationContext.Provider value={contextValue}>
+        <NavigationContext.Provider value={contextValue}>
             {children}
-        </DesktopNavigationContext.Provider>
+        </NavigationContext.Provider>
     );
 };
 
-export const useDesktopNavigation = () => {
-    const context = useContext(DesktopNavigationContext);
+export const useNavigation = () => {
+    const context = useContext(NavigationContext);
     if (!context) {
         throw new Error(
-            "useDesktopNavigation must be used within a DesktopNavigationProvider"
+            "useNavigation must be used within a NavigationProvider"
         );
     }
     return context;

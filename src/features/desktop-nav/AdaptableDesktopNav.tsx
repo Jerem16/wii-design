@@ -3,13 +3,13 @@
 import { memo, useMemo, useState } from "react";
 import { menuItems } from "@/features/desktop-nav/data/menuItems";
 import {
-    DesktopNavigationProvider,
-    useDesktopNavigation
-} from "@/features/desktop-nav/core/context/DesktopNavigationContext";
+    NavigationProvider,
+    useNavigation
+} from "@/features/desktop-nav/core/context/NavigationContext";
 import {
-    DesktopScrollProvider,
-    useDesktopScrollContext
-} from "@/features/desktop-nav/core/context/DesktopScrollContext";
+    ScrollProvider,
+    useScrollContext
+} from "@/features/desktop-nav/core/context/ScrollContext";
 import { useDesktopScrollAnchors } from "@/features/desktop-nav/core/hooks/useDesktopScrollAnchors";
 import {
     handleNavClick,
@@ -31,8 +31,8 @@ const DesktopNavContent = () => {
         updateRoute,
         openSubMenu,
         setOpenSubMenu
-    } = useDesktopNavigation();
-    const { activeSection } = useDesktopScrollContext();
+    } = useNavigation();
+    const { activeSection } = useScrollContext();
     const { navRef } = useAdaptableMenu();
 
     const [tabletMain, setTabletMain] = useState(false);
@@ -240,11 +240,11 @@ const DesktopNavContent = () => {
 
 const AdaptableDesktopNav = () => {
     return (
-        <DesktopNavigationProvider>
-            <DesktopScrollProvider>
+        <NavigationProvider>
+            <ScrollProvider>
                 <DesktopNavContent />
-            </DesktopScrollProvider>
-        </DesktopNavigationProvider>
+            </ScrollProvider>
+        </NavigationProvider>
     );
 };
 
