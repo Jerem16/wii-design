@@ -1,4 +1,4 @@
-import type { MenuItem, SubItem } from "@/features/mobile-nav/types/menu";
+import type { MenuItem, MenuLinks, SubItem } from "@/features/mobile-nav/types/menu";
 
 export interface DesktopMenuLinks {
     mainLink: MenuItem[];
@@ -7,12 +7,12 @@ export interface DesktopMenuLinks {
     connection: MenuItem[];
 }
 
-export const mapMenuForDesktop = (items: MenuItem[]): DesktopMenuLinks => {
+export const mapMenuForDesktop = (items: MenuLinks): DesktopMenuLinks => {
     return {
-        mainLink: items,
-        reservation: [],
-        search: [],
-        connection: [],
+        mainLink: items.mainLink,
+        reservation: items.reservation ?? [],
+        search: items.search ?? [],
+        connection: items.connection ?? [],
     };
 };
 
