@@ -1,3 +1,5 @@
+import { resetActiveMenuClasses } from "./updateMenuUtils";
+
 /*-------------------------------------------------------*/
 
 function scrollTimeEvent(
@@ -55,65 +57,38 @@ export const handleNavClick = (
     const [currentPath, currentHash] = currentRoute.split("#");
     const [targetPath, targetHash] = path.split("#");
 
-    ifNav({
-        currentPath,
-        targetPath,
-        targetHash,
-        currentHash,
-        updateRoute,
-    });
-
-    elseNav({
-        currentPath,
-        targetPath,
-        targetHash,
-        currentHash,
-        updateRoute,
-        handleScrollClick,
-    });
-};
-
-function ifNav({
-    currentPath,
-    targetPath,
-    targetHash,
-    currentHash,
-    updateRoute,
-}: NavParams): void {
     if (currentPath !== targetPath) {
-        updateRoute(targetPath);
-
-        if (targetHash === undefined) {
+        if (targetHash) {
+            updateRoute(`${targetPath}#${targetHash}`);
             return;
         }
-
-        if (targetHash !== currentHash) {
-            updateRoute(`${targetPath}#${targetHash}`);
-        }
-    }
-}
-
-function elseNav({
-    currentPath,
-    targetPath,
-    targetHash,
-    currentHash,
-    updateRoute,
-    handleScrollClick,
-}: NavParams): void {
-    if (currentPath === targetPath) {
         updateRoute(targetPath);
-
-        if (targetHash === undefined) {
-            handleScrollClick?.(`scroll-start`);
-        } else if (targetHash !== currentHash) {
-            handleScrollClick?.(targetHash);
-            updateRoute(`${targetPath}#${targetHash}`);
-        } else if (targetHash === currentHash) {
-            updateRoute(`${targetPath}#${targetHash}`);
-        }
+        return;
     }
-}
+
+    if (!targetHash) {
+        const topElement = document.getElementById("top");
+        resetActiveMenuClasses();
+        window.scrollTo({ top: 0 });
+        if (topElement) {
+            handleScrollClick?.("top");
+            window.history.replaceState(null, "", "#top");
+        } else {
+            window.history.replaceState(null, "", targetPath);
+        }
+        return;
+    }
+
+    if (targetHash !== currentHash) {
+        resetActiveMenuClasses();
+        window.scrollTo({ top: 0 });
+        handleScrollClick?.(targetHash);
+        window.history.replaceState(null, "", `#${targetHash}`);
+    } else {
+        resetActiveMenuClasses();
+        window.history.replaceState(null, "", `#${targetHash}`);
+    }
+};
 
 /*-------------------------------------------------------*/
 

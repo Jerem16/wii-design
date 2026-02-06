@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import { menuItems } from "@/features/desktop-nav/data/menuItems";
 import {
     NavigationProvider,
@@ -11,6 +12,7 @@ import {
     useScrollContext
 } from "@/features/desktop-nav/core/context/ScrollContext";
 import { useDesktopScrollAnchors } from "@/features/desktop-nav/core/hooks/useDesktopScrollAnchors";
+import { useDesktopInitialScroll } from "@/features/desktop-nav/core/hooks/useDesktopInitialScroll";
 import {
     handleNavClick,
     handleScrollClick
@@ -34,6 +36,7 @@ const DesktopNavContent = () => {
     } = useNavigation();
     const { activeSection } = useScrollContext();
     const { navRef } = useAdaptableMenu();
+    const pathname = usePathname();
 
     const [tabletMain, setTabletMain] = useState(false);
     const [openMainButton, setOpenMainButton] = useState(false);
@@ -43,7 +46,33 @@ const DesktopNavContent = () => {
     const [openMenu, setOpenMenu] = useState<string | null>(null);
     const [lastClickedMenu, setLastClickedMenu] = useState<string | null>(null);
 
-    useDesktopScrollAnchors([]);
+    const sections = useMemo(() => {
+        const sectionIds = new Set<string>(["top"]);
+        const collectIds = (items: typeof menuItems.mainLink) => {
+            items.forEach(item => {
+                if (item.AnchorId) {
+                    sectionIds.add(item.AnchorId.replace(/^#/, ""));
+                }
+                item.subItems?.forEach(subItem => {
+                    if (subItem.AnchorId) {
+                        sectionIds.add(subItem.AnchorId.replace(/^#/, ""));
+                    }
+                });
+            });
+        };
+
+        collectIds(menuItems.mainLink);
+        collectIds(menuItems.reservation ?? []);
+        collectIds(menuItems.search ?? []);
+        collectIds(menuItems.connection ?? []);
+
+        return Array.from(sectionIds)
+            .filter(Boolean)
+            .map(id => ({ id }));
+    }, []);
+
+    useDesktopScrollAnchors(sections);
+    useDesktopInitialScroll(pathname);
     useResize({
         setTabletMain,
         setOpenMainButton,
