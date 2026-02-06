@@ -1,7 +1,6 @@
 "use client";
 
 import { memo, useMemo, useState } from "react";
-import Link from "next/link";
 import { menuItems } from "@/features/desktop-nav/data/menuItems";
 import {
     useNavigation,

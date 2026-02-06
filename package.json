@@ -10,8 +10,8 @@
         "generate:sitemap": "node scripts/generate-sitemap.js",
         "rmdl:clean": "node --import=tsx scripts/rmdl-clean.ts",
         "rmdl:build": "node --import=tsx scripts/rmdl-to-tsx.ts",
-        "keep:list": "node scripts/keep-list.cjs",
-        "keep:functions": "node scripts/keep-functions.cjs"
+        "keep:list": "node tools/scripts/keep-list.cjs",
+        "keep:functions": "node tools/scripts/keep-functions.cjs"
     },
     "dependencies": {
         "@aws-amplify/core": "^6.7.2",
@@ -40,16 +40,16 @@
         "esbuild": "^0.23.1",
         "eslint": "^9.15.0",
         "eslint-config-next": "15.3.1",
+        "fast-glob": "^3.3.3",
+        "madge": "^8.0.0",
+        "sass-graph": "^4.0.1",
         "sass-loader": "13.0.0",
+        "sitemap": "^8.0.0",
         "tailwindcss": "^4",
+        "ts-prune": "^0.10.3",
         "tsx": "^4.21.0",
         "typescript": "^5.6.2",
-        "webpack": "^5.0.0",
-        "fast-glob": "^3.3.3",
-        "sass-graph": "^4.0.1",
-        "madge": "^8.0.0",
-        "ts-prune": "^0.10.3",
-        "sitemap": "^8.0.0"
+        "webpack": "^5.0.0"
     },
     "resolutions": {
         "react-hook-form": "7.51.5"

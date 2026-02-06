@@ -1,0 +1,47 @@
+{
+  "root": "Y:\\Wii-Design\\wii-design",
+  "tsconfigUsed": "tsconfig.json",
+  "entryCount": 31,
+  "protectedCount": 0,
+  "scssReachableCount": 16,
+  "keepCount": 145,
+  "deleteCandidatesCount": 347,
+  "examples": {
+    "entries": [
+      "app/layout.tsx",
+      "app/page.tsx",
+      "app/about/error.tsx",
+      "app/about/loading.tsx",
+      "app/about/page.tsx",
+      "app/achievements/error.tsx",
+      "app/achievements/loading.tsx",
+      "app/achievements/page.tsx",
+      "app/connection/error.tsx",
+      "app/connection/loading.tsx"
+    ],
+    "keep": [
+      "app/MetaData.js",
+      "app/about/error.tsx",
+      "app/about/loading.tsx",
+      "app/about/page.tsx",
+      "app/achievements/error.tsx",
+      "app/achievements/loading.tsx",
+      "app/achievements/page.tsx",
+      "app/connection/error.tsx",
+      "app/connection/loading.tsx",
+      "app/connection/page.tsx"
+    ],
+    "deleteCandidates": [
+      ".stock/BG-AnimateColors.svg",
+      ".stock/BG-wii-design-com.svg",
+      ".stock/LOGO-WII-DESIGN-DARK-COLOR.svg",
+      ".stock/LOGO-WII-DESIGN.svg",
+      ".stock/Typo-wii-design-com.svg",
+      ".stock/logo2.svg",
+      ".vscode/settings.json",
+      "amplify-config.ts",
+      "amplify/auth/resource.ts",
+      "amplify/backend.ts"
+    ]
+  }
+}
