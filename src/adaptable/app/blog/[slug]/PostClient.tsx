@@ -1,6 +1,6 @@
 "use client";
-import Blog from "@components/Blog/Blog";
-import type { Section, Post, Author } from "@src/types/blog";
+import Blog from "../../../src/components/Blog/Blog";
+import type { Section, Post, Author } from "../../../src/types/blog";
 
 type Props = {
     post: Post;

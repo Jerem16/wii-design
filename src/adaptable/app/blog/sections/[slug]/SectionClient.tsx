@@ -1,8 +1,8 @@
 // app/blog/sections/[slug]/SectionClient.tsx
 "use client";
 import { useMemo } from "react";
-import PostContent from "@components/Blog/PostContent";
-import { Section, Post, Author } from "@src/types/blog";
+import PostContent from "../../../../src/components/Blog/PostContent";
+import { Section, Post, Author } from "../../../../src/types/blog";
 
 type Props = {
     section: Section;

@@ -8,7 +8,7 @@ import React, {
     ReactNode,
     useMemo,
 } from "react";
-import type { BlogData } from "@src/types/blog";
+import type { BlogData } from "../types/blog";
 
 const PUBLIC_DATA_URL = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/data/data.json`;
 

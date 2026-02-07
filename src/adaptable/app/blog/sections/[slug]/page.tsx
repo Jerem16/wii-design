@@ -1,9 +1,9 @@
 // app/blog/sections/[slug]/page.tsx
-import { loadData } from "@/src/utils/blogData/loadData"; // ✅ maintenant externe
+import { loadData } from "../../../../src/utils/blogData/loadData"; // ✅ maintenant externe
 import { Metadata, ResolvingMetadata } from "next";
-import ButtonPage from "@components/Blog/ButtonPage";
-import SectionContainer from "@/app/blog/SectionContainer";
-import BlogIcon from "@components/svg_Icon/Blog";
+import ButtonPage from "../../../../src/components/Blog/ButtonPage";
+import SectionContainer from "../../SectionContainer";
+import BlogIcon from "@components/99-Svg_Icon/Blog";
 export async function generateStaticParams() {
     const { sections } = await loadData();
     return sections.map(({ slug }) => ({ slug }));
