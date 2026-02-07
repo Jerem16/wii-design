@@ -1,4 +1,4 @@
-import type { MenuLinks } from "@/features/mobile-nav/types/menu";
+import type { MenuLinks } from "./interfaces/menu";
 
 export const menuItems: MenuLinks = {
     mainLink: [

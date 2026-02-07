@@ -1,5 +1,4 @@
-import { MenuItem } from "../../data/menuItems";
-import { SubItem } from "../../data/interfaces/menu";
+import { MenuItem, SubItem } from "../../data/interfaces/menu";
 import { useEffect, useRef } from "react";
 import { useNavigation } from "../context/NavigationContext";
 

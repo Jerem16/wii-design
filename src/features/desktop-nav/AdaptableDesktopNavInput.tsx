@@ -2,9 +2,9 @@
 
 import { memo } from "react";
 import { useRouter } from "next/navigation";
-import type { MenuItem } from "@/features/desktop-nav/vendor/adaptable/assets/data/interfaces/menu";
+import type { MenuItem } from "@/features/desktop-nav/data/interfaces/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
-import useSearchHandler from "@/features/desktop-nav/vendor/adaptable/components/header/navInput/useSearchHandler";
+import useSearchHandler from "@/features/desktop-nav/hooks/useSearchHandler";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
 
 interface AdaptableDesktopNavInputProps {
