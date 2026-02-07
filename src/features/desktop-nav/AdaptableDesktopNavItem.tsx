@@ -2,9 +2,9 @@
 
 import { memo, useMemo } from "react";
 import type { FocusEvent, KeyboardEvent, MouseEvent } from "react";
-import type { MenuItem } from "@/features/desktop-nav/vendor/adaptable/assets/data/interfaces/menu";
+import type { MenuItem } from "@/features/desktop-nav/data/interfaces/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
-import { useNavigation } from "@/features/desktop-nav/vendor/adaptable/utils/context/NavigationContext";
+import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
 import AdaptableDesktopSubMenu from "./AdaptableDesktopSubMenu";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
 

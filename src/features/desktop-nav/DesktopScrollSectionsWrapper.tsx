@@ -1,10 +1,10 @@
 "use client";
 
-import { useScrollAnchors } from "@/features/desktop-nav/vendor/adaptable/utils/scrollUtils";
+import { useDesktopScrollAnchors } from "@/features/desktop-nav/core/hooks/useDesktopScrollAnchors";
 import { desktopSections } from "@/features/desktop-nav/adapters/adaptableSections";
 
 const DesktopScrollSectionsWrapper = () => {
-    useScrollAnchors(desktopSections);
+    useDesktopScrollAnchors(desktopSections);
     return null;
 };
 

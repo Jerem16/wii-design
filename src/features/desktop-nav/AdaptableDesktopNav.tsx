@@ -5,18 +5,18 @@ import { usePathname } from "next/navigation";
 import {
     NavigationProvider,
     useNavigation,
-} from "@/features/desktop-nav/vendor/adaptable/utils/context/NavigationContext";
+} from "@/features/desktop-nav/core/context/NavigationContext";
 import {
     ScrollProvider,
     useScrollContext,
-} from "@/features/desktop-nav/vendor/adaptable/utils/context/ScrollContext";
+} from "@/features/desktop-nav/core/context/ScrollContext";
 import {
     handleNavClick,
     handleScrollClick,
-} from "@/features/desktop-nav/vendor/adaptable/utils/fnScrollUtils";
-import { updateMenuClasses } from "@/features/desktop-nav/vendor/adaptable/utils/updateMenuUtils";
-import { useMenuBehavior } from "@/features/desktop-nav/vendor/adaptable/utils/updateMenuUtils";
-import useResize from "@/features/desktop-nav/vendor/adaptable/components/header/utils/useResize";
+} from "@/features/desktop-nav/core/utils/fnScrollUtils";
+import { updateMenuClasses } from "@/features/desktop-nav/core/utils/updateMenuUtils";
+import { useMenuBehavior } from "@/features/desktop-nav/core/utils/updateMenuUtils";
+import useResize from "@/features/desktop-nav/hooks/useResize";
 import { adaptableMenuData } from "@/features/desktop-nav/adapters/adaptableMenuData";
 import { useInitialScrollDesktop } from "@/features/desktop-nav/adapters/useInitialScrollDesktop";
 import AdaptableDesktopNavItem from "./AdaptableDesktopNavItem";

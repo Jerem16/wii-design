@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { handleScrollClick } from "@/features/desktop-nav/vendor/adaptable/utils/fnScrollUtils";
+import { handleScrollClick } from "@/features/desktop-nav/core/utils/fnScrollUtils";
 import { resetDesktopMenuClasses } from "@/features/desktop-nav/adapters/resetDesktopMenuClasses";
 
 export const useInitialScrollDesktop = (pathname: string | null) => {

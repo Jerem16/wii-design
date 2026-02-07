@@ -2,13 +2,13 @@ import type {
     MenuLinks,
     MenuItem,
     SubItem,
-} from "@/features/desktop-nav/vendor/adaptable/assets/data/interfaces/menu";
+} from "@/features/desktop-nav/data/interfaces/menu";
 import { menuItems } from "@/features/desktop-nav/data/menuItems";
 import type {
     MenuItem as DesktopMenuItem,
     MenuLinks as DesktopMenuLinks,
     SubItem as DesktopSubItem,
-} from "@/features/mobile-nav/types/menu";
+} from "@/features/desktop-nav/data/interfaces/menu";
 
 const mapSubItem = (subItem: DesktopSubItem): SubItem => {
     return {

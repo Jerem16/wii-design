@@ -1,6 +1,5 @@
 "use client";
 
-// SearchContext.tsx
 import React, {
     createContext,
     useContext,
@@ -8,10 +7,9 @@ import React, {
     useEffect,
     useMemo,
 } from "react";
-import { initializeMenuWithContent } from "../../utils/initializeMenu";
-import { MenuLinks } from "../../assets/data/interfaces/menu";
+import { initializeMenuWithContent } from "../utils/initializeMenu";
+import { MenuLinks } from "../../data/interfaces/menu";
 
-// Définir le type pour SearchContext
 interface Result {
     path: string;
     text: string;
@@ -23,8 +21,8 @@ interface SearchContextType {
     results: Result[];
     setResults: (results: Result[]) => void;
     menuData: MenuLinks | null;
-    query: string; // Ajouter query
-    setQuery: (query: string) => void; // Ajouter setQuery
+    query: string;
+    setQuery: (query: string) => void;
 }
 
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
@@ -34,7 +32,7 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
     const [results, setResults] = useState<Result[]>([]);
     const [menuData, setMenuData] = useState<MenuLinks | null>(null);
-    const [query, setQuery] = useState(""); // Ajout de query ici
+    const [query, setQuery] = useState("");
 
     useEffect(() => {
         const data = initializeMenuWithContent();
@@ -42,8 +40,8 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
     }, []);
 
     const contextValue: SearchContextType = useMemo(
-        () => ({ results, setResults, menuData, query, setQuery }), // Passer query et setQuery
-        [results, setResults, menuData, query] // Ajouter query comme dépendance
+        () => ({ results, setResults, menuData, query, setQuery }),
+        [results, setResults, menuData, query]
     );
 
     return (

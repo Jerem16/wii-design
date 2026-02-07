@@ -1,6 +1,5 @@
-// src/assets/data/utils/attachContent.ts
-import { MenuLinks } from "../interfaces/menu";
-import { Content } from "../interfaces/content"; // Assurez-vous d'importer Content
+import { MenuLinks } from "./interfaces/menu";
+import { Content } from "./interfaces/content";
 
 export function attachContentToMenu(
     menu: MenuLinks,
