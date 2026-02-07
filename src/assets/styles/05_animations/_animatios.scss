@@ -1,0 +1,39 @@
+.circular_rainbow {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    min-height: 100dvh;
+    display: block;
+}
+
+/* Le fond animé */
+.circular_rainbow::before {
+    content: "";
+    position: absolute;
+    inset: -50%; /* plus grand que la section pour éviter les bords visibles en rotation */
+    background: conic-gradient(
+        from 433.2000000000009deg,
+        #ff891f,
+        #fd1f00,
+        #285aff,
+        #28c896,
+        #fbd700,
+        #ff891f
+    );
+    filter: saturate(1.1) contrast(1.05);
+    animation: sectionSpin 12s linear infinite;
+    transform-origin: 50% 50%;
+    will-change: transform;
+}
+
+/* Ton contenu au-dessus du fond */
+.circular_rainbow > * {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes sectionSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
