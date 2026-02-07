@@ -83,6 +83,7 @@ export type Content =
     | SliderInfo
     | AboutContent
     | ServiceContent
+    | ServiceForm
     | ContactAnnouncement
     | ContactDetail
     | SocialLink;
