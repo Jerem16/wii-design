@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState, useMemo, useCallback } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useSearch } from "@/features/desktop-nav/vendor/adaptable/utils/context/SearchContext";
-import searchQuery from "@/features/desktop-nav/vendor/adaptable/utils/searchMenu";
-import useSessionStorage from "@/features/desktop-nav/vendor/adaptable/utils/sessionStorage/useSessionStorage";
+import { useSearch } from "@/features/desktop-nav/core/context/SearchContext";
+import searchQuery from "@/features/desktop-nav/core/utils/searchMenu";
+import useSessionStorage from "@/features/desktop-nav/core/utils/sessionStorage/useSessionStorage";
 
 export default function SearchPageContent() {
     const router = useRouter();
