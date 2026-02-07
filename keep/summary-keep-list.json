@@ -4,20 +4,20 @@
   "entryCount": 31,
   "protectedCount": 0,
   "scssReachableCount": 16,
-  "keepCount": 145,
-  "deleteCandidatesCount": 347,
+  "keepCount": 184,
+  "deleteCandidatesCount": 349,
   "examples": {
     "entries": [
       "app/layout.tsx",
       "app/page.tsx",
+      "app/connection/error.tsx",
+      "app/connection/loading.tsx",
+      "app/connection/page.tsx",
       "app/about/error.tsx",
       "app/about/loading.tsx",
       "app/about/page.tsx",
       "app/achievements/error.tsx",
-      "app/achievements/loading.tsx",
-      "app/achievements/page.tsx",
-      "app/connection/error.tsx",
-      "app/connection/loading.tsx"
+      "app/achievements/loading.tsx"
     ],
     "keep": [
       "app/MetaData.js",

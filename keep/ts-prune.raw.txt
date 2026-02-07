@@ -1,6 +1,6 @@
 \next.config.ts:7 - default
-\app\layout.tsx:16 - default
-\app\layout.tsx:14 - metadata
+\app\layout.tsx:17 - default
+\app\layout.tsx:15 - metadata
 \app\page.tsx:3 - default
 \amplify\data\resource.ts:17 - Schema
 \app\about\error.tsx:3 - default
@@ -33,8 +33,8 @@
 \app\reservation\page.tsx:3 - metadata
 \app\search\error.tsx:3 - default
 \app\search\loading.tsx:2 - default
-\app\search\page.tsx:7 - default
-\app\search\page.tsx:4 - metadata
+\app\search\page.tsx:8 - default
+\app\search\page.tsx:5 - metadata
 \app\services\error.tsx:3 - default
 \app\services\loading.tsx:2 - default
 \app\services\page.tsx:7 - default
@@ -73,9 +73,9 @@
 \src\components\Legal\PrivacyPolicy.tsx:67 - default
 \src\components\Legal\RegistrationAndVAT.tsx:18 - default
 \src\components\Legal\TermsOfUse.tsx:65 - default
-\src\features\desktop-nav\adaptableMenuUtils.ts:3 - DesktopMenuLinks (used in module)
-\src\features\desktop-nav\adaptableMenuUtils.ts:19 - isMainItemActive (used in module)
-\src\features\desktop-nav\adaptableMenuUtils.ts:78 - handleScrollClick (used in module)
+\src\features\desktop-nav\adaptableMenuUtils.ts:4 - DesktopMenuLinks (used in module)
+\src\features\desktop-nav\adaptableMenuUtils.ts:11 - mapMenuForDesktop
+\src\features\desktop-nav\adaptableMenuUtils.ts:20 - updateDesktopMenuClasses
 \src\features\desktop-nav\index.ts:1 - NavInterface
 \src\features\desktop-nav\index.ts:2 - Navbar
 \src\features\desktop-nav\index.ts:3 - Sidebar
@@ -83,6 +83,7 @@
 \src\features\desktop-nav\index.ts:5 - AdaptableDesktopNav
 \src\features\desktop-nav\index.ts:6 - NavLink
 \src\features\desktop-nav\index.ts:7 - Logo
+\src\features\desktop-nav\useAdaptableMenu.ts:26 - useAdaptableMenu
 \src\features\desktop-nav\useAdaptableResize.ts:13 - useAdaptableResize
 \src\generated\rmdl\manifest.ts:14 - loadRmdlPage
 \src\rmdl\compiler\emit-tsx.ts:13 - EmitInput (used in module)
@@ -134,12 +135,6 @@
 \src\adaptable\app\tarifs\page.tsx:47 - default
 \src\adaptable\app\tarifs\page.tsx:3 - metadata
 \src\adaptable\src\amplify\amplifyClient.ts:3 - configureAmplify
-\src\adaptable\src\context\DataBlogProvider.tsx:23 - DataBlogProvider
-\src\adaptable\src\context\DataBlogProvider.tsx:62 - useDataBlog
-\src\adaptable\src\types\blog.d.ts:1 - Author (used in module)
-\src\adaptable\src\types\blog.d.ts:8 - Post (used in module)
-\src\adaptable\src\types\blog.d.ts:26 - Section (used in module)
-\src\adaptable\src\types\blog.d.ts:40 - BlogData (used in module)
 \src\adaptable\src\types\blog.d.ts:46 - BlogProps
 \src\adaptable\src\types\blog.d.ts:50 - Seo
 \src\adaptable\src\types\buttons.d.ts:4 - ButtonBaseProps
@@ -162,7 +157,8 @@
 \src\components\shared\data\index.ts:3 - MenuItem
 \src\components\shared\logo\index.ts:1 - Logo
 \src\components\shared\nav-link\index.ts:1 - NavLink
-\src\features\desktop-nav\extensions\homeAnchorMap.ts:1 - DESKTOP_HOME_ANCHOR_MAP
+\src\features\desktop-nav\data\menuItems.ts:159 - MenuItem
+\src\features\desktop-nav\data\sections.ts:1 - sections
 \src\features\mobile-nav\components\MobileNavWithProviders.tsx:17 - default
 \src\features\mobile-nav\types\scrollSmoothWorker.ts:1 - ScrollSmoothWorkerData
 \src\features\mobile-nav\types\scrollSmoothWorker.ts:9 - ScrollSmoothWorkerResponse
@@ -173,8 +169,6 @@
 \src\adaptable\app\blog\[slug]\page.tsx:13 - generateStaticParams
 \src\adaptable\app\blog\[slug]\page.tsx:17 - generateMetadata
 \src\adaptable\app\blog\[slug]\page.tsx:41 - default
-\src\adaptable\src\components\Blog\Blog.tsx:60 - default
-\src\adaptable\src\components\Blog\ButtonPage.tsx:27 - default
 \src\adaptable\src\components\button\Button.tsx:11 - default
 \src\adaptable\src\components\header\NavLink.tsx:50 - default
 \src\adaptable\src\components\Legal\DevLegalNotices.tsx:63 - default
@@ -182,18 +176,33 @@
 \src\adaptable\src\components\Legal\RegistrationAndVAT.tsx:18 - default
 \src\adaptable\src\components\Legal\TermsOfUse.tsx:65 - default
 \src\adaptable\src\home\contact-section\index.tsx:20 - default
-\src\adaptable\src\utils\blogData\loadData.ts:5 - loadData
 \src\adaptable\src\utils\cookieStorage\useCookie.tsx:4 - default
 \src\adaptable\src\utils\localStorage\useLocalStorage.tsx:4 - default
-\src\features\navigation\core\utils\handlers.ts:32 - debounce (used in module)
-\src\features\navigation\core\utils\handlers.ts:81 - makeHandler (used in module)
-\src\features\navigation\core\utils\handlers.ts:5 - MinimalEvent (used in module)
-\src\features\navigation\core\utils\handlers.ts:11 - stopAndPrevent (used in module)
+\src\features\desktop-nav\core\hooks\useDesktopInitialScroll.ts:7 - useDesktopInitialScroll
+\src\features\desktop-nav\core\utils\addScrollListener.ts:3 - addScrollListener
+\src\features\desktop-nav\core\utils\searchUtils.ts:8 - normalizeWord (used in module)
+\src\features\desktop-nav\core\utils\updateMenuUtils.ts:5 - isMainItemActive (used in module)
+\src\features\desktop-nav\core\utils\updateMenuUtils.ts:30 - updateMenuItems (used in module)
+\src\features\desktop-nav\data\content\services.ts:9 - serviceForm
+\src\features\desktop-nav\data\interfaces\content.ts:4 - AboutCardIdentity (used in module)
+\src\features\desktop-nav\data\interfaces\content.ts:10 - AboutCardContent (used in module)
+\src\features\desktop-nav\data\interfaces\content.ts:32 - Slider
+\src\features\desktop-nav\data\interfaces\content.ts:41 - ServiceOption (used in module)
+\src\features\desktop-nav\data\interfaces\content.ts:59 - ContactContent
+\src\features\navigation\core\utils\handlers.ts:32 - debounce
+\src\features\navigation\core\utils\handlers.ts:81 - makeHandler
+\src\features\navigation\core\utils\handlers.ts:5 - MinimalEvent
+\src\features\navigation\core\utils\handlers.ts:11 - stopAndPrevent
 \src\features\navigation\core\utils\handlers.ts:16 - isActivationKey
-\src\features\navigation\core\utils\handlers.ts:19 - onlyActivation (used in module)
-\src\features\navigation\core\utils\handlers.ts:26 - Debounced (used in module)
-\src\features\navigation\core\utils\scrollSmooth.ts:24 - getScrollOffset (used in module)
-\src\features\navigation\core\utils\sections.ts:1 - currentSectionId (used in module)
+\src\features\navigation\core\utils\handlers.ts:19 - onlyActivation
+\src\features\navigation\core\utils\handlers.ts:26 - Debounced
+\src\features\navigation\core\utils\rafThrottle.ts:1 - rafThrottle
+\src\features\navigation\core\utils\scrollSmooth.ts:24 - getScrollOffset
+\src\features\navigation\core\utils\scrollSmooth.ts:46 - handleScrollClick
+\src\features\navigation\core\utils\sections.ts:3 - scrollInView
+\src\features\navigation\core\utils\sections.ts:20 - updateSectionClasses
+\src\features\navigation\core\utils\sections.ts:37 - addNewUrl
+\src\features\navigation\core\utils\sections.ts:1 - currentSectionId
 \src\adaptable\app\blog\sections\[slug]\page.tsx:7 - generateStaticParams
 \src\adaptable\app\blog\sections\[slug]\page.tsx:13 - generateMetadata
 \src\adaptable\app\blog\sections\[slug]\page.tsx:49 - default
@@ -209,6 +218,7 @@
 \src\adaptable\src\home\contact-section\contactForm\index.tsx:142 - default
 \src\adaptable\src\utils\context\slider\fnSliderContext.ts:20 - sessionSlideRef
 \src\adaptable\src\utils\context\slider\slideRefParam.ts:3 - slideRefParam (used in module)
+\src\features\navigation\core\context\utils\createUseContext.tsx:3 - createUseContext
 \src\adaptable\src\home\contact-section\contactForm\mapCGU\index.tsx:84 - default
 \src\adaptable\src\home\contact-section\contactForm\mapContactQuestions\index.tsx:111 - default
 \src\adaptable\src\home\service\questions\mapQuestions\index.tsx:49 - default

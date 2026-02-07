@@ -137,7 +137,6 @@ src/adaptable/src/components/Legal/TermsOfUse.tsx
 src/adaptable/src/components/PrivacyPolicy.tsx
 src/adaptable/src/components/TermsOfUse.tsx
 src/adaptable/src/components/button/Button.tsx
-src/adaptable/src/components/button/ButtonLink.tsx
 src/adaptable/src/components/button/_button.scss
 src/adaptable/src/components/checkbox/_input-checkbox.scss
 src/adaptable/src/components/checkbox/inputCheckbox.tsx
@@ -171,13 +170,7 @@ src/adaptable/src/components/svg_Icon/Search.jsx
 src/adaptable/src/components/svg_Icon/SearchClose.jsx
 src/adaptable/src/components/svg_Icon/Services.jsx
 src/adaptable/src/components/svg_Icon/Tarifs.jsx
-src/adaptable/src/components/svg_Icon/social/Facebook.jsx
-src/adaptable/src/components/svg_Icon/social/Instagram.jsx
-src/adaptable/src/components/svg_Icon/social/Linkedin.jsx
-src/adaptable/src/components/svg_Icon/social/TikTok.jsx
 src/adaptable/src/components/svg_Icon/social/Twitter.jsx
-src/adaptable/src/components/svg_Icon/social/WhatsApp.jsx
-src/adaptable/src/components/svg_Icon/social/Youtube.jsx
 src/adaptable/src/components/svg_Icon/utils/Arrow.jsx
 src/adaptable/src/components/svg_Icon/utils/CheckedIcon.jsx
 src/adaptable/src/context/DataBlogProvider.tsx
@@ -199,7 +192,6 @@ src/adaptable/src/home/contact-section/contactForm/index.tsx
 src/adaptable/src/home/contact-section/contactForm/mapCGU/index.tsx
 src/adaptable/src/home/contact-section/contactForm/mapContactQuestions/index.tsx
 src/adaptable/src/home/contact-section/index.tsx
-src/adaptable/src/home/contact-section/socialSvgComponents.ts
 src/adaptable/src/home/service/_questionaire.scss
 src/adaptable/src/home/service/_services.scss
 src/adaptable/src/home/service/beginner/_beginner.scss
@@ -267,6 +259,7 @@ src/assets/data/navLinks.json
 src/assets/data/rmdl/glossary.json
 src/assets/data/utils/attachContent.ts
 src/assets/styles/02_components/header/mobile/_mnav.logo.scss
+src/assets/styles/05_animations/_animatios.scss
 src/components/00-Header/NavLink.jsx
 src/components/00-Header/Navbar.jsx
 src/components/99-Svg_Icon/GlobalLogoDefs.jsx
@@ -301,12 +294,20 @@ src/components/shared/data/index.ts
 src/components/shared/index.ts
 src/components/shared/logo/index.ts
 src/components/shared/nav-link/index.ts
-src/features/desktop-nav/extensions/homeAnchorMap.ts
+src/features/desktop-nav/adaptableMenuUtils.ts
+src/features/desktop-nav/core/hooks/useDesktopInitialScroll.ts
+src/features/desktop-nav/core/utils/addScrollListener.ts
+src/features/desktop-nav/data/sections.ts
 src/features/desktop-nav/index.ts
+src/features/desktop-nav/useAdaptableMenu.ts
 src/features/desktop-nav/useAdaptableResize.ts
 src/features/mobile-nav/components/MobileNavWithProviders.tsx
 src/features/mobile-nav/types/scrollSmoothWorker.ts
 src/features/mobile-nav/types/scrollWorker.ts
+src/features/navigation/core/context/utils/createUseContext.tsx
+src/features/navigation/core/utils/rafThrottle.ts
+src/features/navigation/core/utils/scrollSmooth.ts
+src/features/navigation/core/utils/sections.ts
 src/hooks/useTimeoutWorker.ts
 src/rmdl/ast.ts
 src/rmdl/compiler/emit-tsx.ts
@@ -326,3 +327,4 @@ src/utils/localStorage/boolean-convertor/useLocalStorageBoolean.tsx
 src/utils/useIsBrowser.ts
 src/workers/scrollSmoothWorker.js
 src/workers/scrollWorker.js
+types/babel-traverse.d.ts
