@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 };
 import SectionContainer from "./SectionContainer";
 import BlogClientWrapper from "./BlogClientWrapper";
-import BlogIcon from "@components/svg_Icon/Blog";
+import BlogIcon from "@components/99-Svg_Icon/Blog";
 
 
 export default async function Page() {

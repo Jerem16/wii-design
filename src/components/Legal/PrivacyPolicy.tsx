@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonLink from "../button/ButtonLink";
+import ButtonLink from "../../adaptable/src/components/button/ButtonLink";
 import Cookies from "./Cookies";
 const PrivacyPolicy = () => {
     return (

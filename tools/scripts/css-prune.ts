@@ -118,8 +118,23 @@ import fg from "fast-glob";
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import postcss from "postcss";
-import postcssScss from "postcss-scss";
-import selectorParser from "postcss-selector-parser";
+
+const postcssScss = undefined;
+
+function parseSelectorTokens(sel: string): { classes: string[]; ids: string[] } {
+    const classes = new Set<string>();
+    const ids = new Set<string>();
+    const classRegex = /\.([A-Za-z0-9_-]+)/g;
+    const idRegex = /#([A-Za-z0-9_-]+)/g;
+    let match: RegExpExecArray | null;
+    while ((match = classRegex.exec(sel))) {
+        classes.add(match[1]);
+    }
+    while ((match = idRegex.exec(sel))) {
+        ids.add(match[1]);
+    }
+    return { classes: [...classes], ids: [...ids] };
+}
 
 type KeepConfig = {
     classes: string[];
@@ -339,13 +354,7 @@ function extractTokensFromSelector(str: string): {
     classes: string[];
     ids: string[];
 } {
-    const classes: string[] = [];
-    const ids: string[] = [];
-    selectorParser((root: any) => {
-        root.walkClasses((c: any) => classes.push(c.value));
-        root.walkIds((i: any) => ids.push(i.value));
-    }).processSync(str);
-    return { classes, ids };
+    return parseSelectorTokens(str);
 }
 
 function matchRegex(cls: string, patterns: string[]): boolean {
@@ -385,7 +394,6 @@ function scanFile(file: string, res: ScanResult) {
     if (/\.(css|scss)$/.test(file)) {
         const root = postcss.parse(code, {
             from: file,
-            parser: file.endsWith(".scss") ? postcssScss : undefined,
         });
         root.walkDecls(/^(animation|animation-name)$/i, (decl: any) => {
             splitClasses(decl.value.replace(/[,]/g, " ")).forEach((n) => {
@@ -549,13 +557,7 @@ function analyzeSelectorWithParser(sel: string): {
     classes: string[];
     ids: string[];
 } {
-    const classes: string[] = [];
-    const ids: string[] = [];
-    selectorParser((root: any) => {
-        root.walkClasses((c: any) => classes.push(c.value));
-        root.walkIds((i: any) => ids.push(i.value));
-    }).processSync(sel);
-    return { classes, ids };
+    return parseSelectorTokens(sel);
 }
 
 function isClassKept(
@@ -635,8 +637,7 @@ function pruneCss(
     for (const file of files) {
         const rel = path.relative(process.cwd(), file);
         const css = fs.readFileSync(file, "utf8");
-        const parser = file.endsWith(".scss") ? postcssScss : undefined;
-        const root = postcss.parse(css, { from: file, parser });
+        const root = postcss.parse(css, { from: file });
         const fileReport = {
             path: rel,
             selectors: [] as { selector: string; kept: boolean; reason: string }[],
