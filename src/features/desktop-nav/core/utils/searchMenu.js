@@ -104,5 +104,15 @@ export default function searchQuery(jsonData, query) {
         console.warn("Connection is not an array:", jsonData.connection);
     }
 
+    if (jsonData.contentIndex && typeof jsonData.contentIndex === "object") {
+        const contentItems = Object.entries(jsonData.contentIndex).map(
+            ([anchorId, content]) => ({
+                AnchorId: anchorId,
+                content,
+            })
+        );
+        searchInItems(contentItems, "/");
+    }
+
     return results;
 }

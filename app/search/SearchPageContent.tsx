@@ -29,13 +29,23 @@ export default function SearchPageContent() {
     );
 
     useEffect(() => {
-        if (queryFromUrl && queryFromUrl !== validQuery) {
+        if (!queryFromUrl) {
+            return;
+        }
+
+        const hasMenuData =
+            !!menuData &&
+            typeof menuData === "object" &&
+            Array.isArray(menuData.mainLink);
+
+        if (queryFromUrl !== validQuery) {
             setValidQuery(queryFromUrl);
             setQuery(queryFromUrl);
-            if (Array.isArray(menuData) && menuData.length > 0) {
-                const searchResults = searchQuery(menuData, queryFromUrl);
-                setResults(searchResults);
-            }
+        }
+
+        if (hasMenuData) {
+            const searchResults = searchQuery(menuData, queryFromUrl);
+            setResults(searchResults);
         }
     }, [queryFromUrl, menuData, validQuery, setQuery, setResults]);
 
