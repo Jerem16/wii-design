@@ -63,6 +63,17 @@ const DesktopNavContent = () => {
     );
 
     if (DESKTOP_NAV_DEBUG) {
+        console.log("[DESKTOP_NAV_DEBUG] render-main-map-source", {
+            variant: "desktop-nav",
+            mapSource: "updatedMenuItems.mainLink",
+            isUpdatedMenuSameRefAsInitial:
+                updatedMenuItems.mainLink === adaptableMenuData.mainLink,
+            updatedMenuLength: updatedMenuItems.mainLink.length,
+            initialMenuLength: adaptableMenuData.mainLink.length
+        });
+    }
+
+    if (DESKTOP_NAV_DEBUG) {
         const mainActiveItems = updatedMenuItems.mainLink.filter(
             item => item.class === "active"
         );
@@ -79,6 +90,10 @@ const DesktopNavContent = () => {
             activeMainItemId: activeMainItem?.id ?? null,
             activeMainItemPath: activeMainItem?.path ?? null,
             activeMainItemLabel: activeMainItem?.title ?? null,
+            activeMainItemClass: activeMainItem?.class ?? null,
+            activeMainItemClassNameProp:
+                (activeMainItem as { className?: string } | undefined)
+                    ?.className ?? null,
             activeMainLinkClassName: `head-link ${activeMainItem?.class ?? ""}`
         });
     }
