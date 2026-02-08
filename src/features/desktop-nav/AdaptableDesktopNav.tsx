@@ -37,6 +37,7 @@ const DesktopNavContent = () => {
     const { activeSection } = useScrollContext();
     const { navRef } = useMenuBehavior();
     const pathname = usePathname();
+    const DESKTOP_NAV_DEBUG = true;
 
     const [tabletMain, setTabletMain] = useState(false);
     const [openMainButton, setOpenMainButton] = useState(false);
@@ -60,6 +61,20 @@ const DesktopNavContent = () => {
             ),
         [activeSection, currentRoute]
     );
+
+    if (DESKTOP_NAV_DEBUG) {
+        const mainActiveItems = updatedMenuItems.mainLink.filter(
+            item => item.class === "active"
+        );
+        console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses", {
+            variant: "desktop-nav",
+            currentRoute,
+            activeSection,
+            pathname,
+            mainActiveCount: mainActiveItems.length,
+            mainActiveIds: mainActiveItems.map(item => item.id),
+        });
+    }
 
     if (!tabletMain) return null;
 
