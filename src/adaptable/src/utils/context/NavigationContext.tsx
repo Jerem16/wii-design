@@ -19,7 +19,6 @@ interface NavigationContextType {
 }
 
 const NavigationContext = createContext<NavigationContextType | null>(null);
-const DESKTOP_NAV_DEBUG = true;
 
 export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
@@ -37,47 +36,12 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
 
     useEffect(() => {
         const nextRoute = pathname || "/";
-        setCurrentRoute(prev => {
-            if (DESKTOP_NAV_DEBUG) {
-                console.log("[DESKTOP_NAV_DEBUG] setCurrentRoute", {
-                    variant: "adaptable",
-                    trigger: "pathname-effect",
-                    previous: prev,
-                    next: nextRoute,
-                    pathname,
-                    hash:
-                        typeof window !== "undefined"
-                            ? window.location.hash
-                            : "",
-                });
-            }
-            return nextRoute;
-        });
+        setCurrentRoute(nextRoute);
     }, [pathname]);
 
     const updateRoute = useCallback(
         (path: string) => {
-            setCurrentRoute(prev => {
-                if (DESKTOP_NAV_DEBUG) {
-                    console.log("[DESKTOP_NAV_DEBUG] updateRoute", {
-                        variant: "adaptable",
-                        next: path,
-                        previous: prev,
-                        pathname,
-                        hash:
-                            typeof window !== "undefined"
-                                ? window.location.hash
-                                : "",
-                    });
-                }
-                return path;
-            });
-            if (DESKTOP_NAV_DEBUG) {
-                console.log("[DESKTOP_NAV_DEBUG] router.push", {
-                    variant: "adaptable",
-                    next: path,
-                });
-            }
+            setCurrentRoute(path);
             router.push(path);
         },
         [router]
@@ -101,14 +65,6 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
             showNavLinks,
         ]
     );
-
-    if (DESKTOP_NAV_DEBUG) {
-        console.log("[DESKTOP_NAV_DEBUG] NavigationProvider render", {
-            variant: "adaptable",
-            currentRoute,
-            pathname,
-        });
-    }
 
     return (
         <NavigationContext.Provider value={contextValue}>
