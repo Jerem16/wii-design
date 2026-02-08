@@ -35,20 +35,20 @@ export const useWorkerScrollSpy = ({
     sectionIds,
     thresholdPx,
     isEnabled = true,
-    offsetCssVarName = "--scroll-spy-offset",
+    offsetCssVarName = "--scroll-offset",
     offsetFallbackPx = 0,
     offsetScopeSelector,
 }: Params): { activeId?: HashId; refresh: () => void } => {
     const [activeId, setActiveId] = useState<HashId | undefined>(undefined);
     const sectionsRef = useRef<readonly SectionMetrics[]>([]);
-    const offsetRef = useRef<number>(offsetFallbackPx);
+    const offsetPxRef = useRef<number>(offsetFallbackPx);
     const computeRef = useRef<(() => void) | null>(null);
 
     const refresh = useCallback(() => {
         if (typeof window === "undefined") return;
         if (!isEnabled) return;
         sectionsRef.current = measureSections(sectionIds);
-        offsetRef.current = readOffsetPxFromCssVar({
+        offsetPxRef.current = readOffsetPxFromCssVar({
             cssVarName: offsetCssVarName,
             fallbackPx: offsetFallbackPx,
             scopeSelector: offsetScopeSelector,
@@ -67,7 +67,7 @@ export const useWorkerScrollSpy = ({
         if (typeof window === "undefined") return;
 
         sectionsRef.current = measureSections(sectionIds);
-        offsetRef.current = readOffsetPxFromCssVar({
+        offsetPxRef.current = readOffsetPxFromCssVar({
             cssVarName: offsetCssVarName,
             fallbackPx: offsetFallbackPx,
             scopeSelector: offsetScopeSelector,
@@ -78,7 +78,7 @@ export const useWorkerScrollSpy = ({
 
         const runScroll = () => {
             const sections = sectionsRef.current;
-            const effectiveScrollY = window.scrollY + offsetRef.current;
+            const effectiveScrollY = window.scrollY + offsetPxRef.current;
             if (worker) {
                 const workerScrollY =
                     effectiveScrollY + thresholdPx - workerBaseThresholdPx;
@@ -95,7 +95,7 @@ export const useWorkerScrollSpy = ({
 
         const handleResize = () => {
             sectionsRef.current = measureSections(sectionIds);
-            offsetRef.current = readOffsetPxFromCssVar({
+            offsetPxRef.current = readOffsetPxFromCssVar({
                 cssVarName: offsetCssVarName,
                 fallbackPx: offsetFallbackPx,
                 scopeSelector: offsetScopeSelector,
