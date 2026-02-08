@@ -33,6 +33,7 @@ const AdaptableDesktopNavItem = ({
     onMouseEnter,
     onFocus,
 }: AdaptableDesktopNavItemProps) => {
+    const DESKTOP_NAV_DEBUG = true;
     const SvgIcon = useMemo(
         () => svgComponents[menuItem.svg as keyof typeof svgComponents],
         [menuItem.svg]
@@ -55,40 +56,61 @@ const AdaptableDesktopNavItem = ({
         setOpenSubMenu(menuItem.id);
     };
 
-    const renderLink = () => (
-        <a
-            role={!showNavLinks ? "menuitem" : "link"}
-            aria-label={`Page ${menuItem.title}`}
-            className={`head-link ${menuItem.class ?? ""}`}
-            href={menuItem.path}
-            onClick={(event) => {
-                event.preventDefault();
-                if (hasSubMenu) {
-                    handleMenuClick(menuItem.id);
-                    return;
-                }
-                onNavigationClick(menuItem.path + (menuItem.AnchorId ?? ""));
-                handleMenuClick(menuItem.id);
-            }}
-            onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
+    const renderLink = () => {
+        const headLinkClassName = `head-link ${menuItem.class ?? ""}`;
+        if (DESKTOP_NAV_DEBUG) {
+            console.log("[DESKTOP_NAV_DEBUG] render-head-link", {
+                variant: "desktop-nav",
+                id: menuItem.id,
+                href: menuItem.path,
+                className: headLinkClassName,
+                classNameSource: "template `head-link ${menuItem.class ?? ''}`",
+                menuItemClass: menuItem.class ?? null,
+                menuItemClassNameProp:
+                    (menuItem as { className?: string }).className ?? null
+            });
+        }
+        return (
+            <a
+                role={!showNavLinks ? "menuitem" : "link"}
+                aria-label={`Page ${menuItem.title}`}
+                className={headLinkClassName}
+                href={menuItem.path}
+                onClick={(event) => {
                     event.preventDefault();
                     if (hasSubMenu) {
                         handleMenuClick(menuItem.id);
                         return;
                     }
-                    onNavigationClick(menuItem.path + (menuItem.AnchorId ?? ""));
+                    onNavigationClick(
+                        menuItem.path + (menuItem.AnchorId ?? "")
+                    );
                     handleMenuClick(menuItem.id);
-                }
-            }}
-            tabIndex={0}
-            onMouseEnter={hoverInteraction}
-            onFocus={hoverInteraction}
-        >
-            {SvgIcon && <SvgIcon />}
-            <span className={`nav-link ${getShowClass(showNavLinks)}`}>{menuItem.title}</span>
-        </a>
-    );
+                }}
+                onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                        event.preventDefault();
+                        if (hasSubMenu) {
+                            handleMenuClick(menuItem.id);
+                            return;
+                        }
+                        onNavigationClick(
+                            menuItem.path + (menuItem.AnchorId ?? "")
+                        );
+                        handleMenuClick(menuItem.id);
+                    }
+                }}
+                tabIndex={0}
+                onMouseEnter={hoverInteraction}
+                onFocus={hoverInteraction}
+            >
+                {SvgIcon && <SvgIcon />}
+                <span className={`nav-link ${getShowClass(showNavLinks)}`}>
+                    {menuItem.title}
+                </span>
+            </a>
+        );
+    };
 
     const renderSubMenu = () => {
         if (!menuItem.subItems?.length) return null;
