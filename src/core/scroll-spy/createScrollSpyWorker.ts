@@ -29,7 +29,7 @@ export const createScrollSpyWorker = (
         onActive(normalizeHashId(event.data.currentSectionId));
     };
 
-    const post = ({ sections, scrollY, thresholdPx }: ScrollSpyWorkerIn) => {
+    const post = ({ sections, scrollY }: ScrollSpyWorkerIn) => {
         const positions = sections.reduce<Record<string, WorkerPosition>>(
             (acc, section) => {
                 const id = toWorkerId(section.id);
@@ -38,10 +38,9 @@ export const createScrollSpyWorker = (
             },
             {}
         );
-        const adjustedScrollY = scrollY + (thresholdPx - 100);
         const payload: WorkerMessageIn = {
             sections: sections.map((section) => ({ id: toWorkerId(section.id) })),
-            scrollY: adjustedScrollY,
+            scrollY,
             positions,
         };
         worker.postMessage(payload);

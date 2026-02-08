@@ -19,15 +19,26 @@ const parsePositivePx = (value: string): number | null => {
 export const readOffsetPxFromCssVar = ({
     cssVarName,
     fallbackPx = 0,
+    scopeSelector,
 }: {
     cssVarName: CssVarName;
     fallbackPx?: number;
+    scopeSelector?: string;
 }): number => {
     if (typeof window === "undefined") return fallbackPx;
 
-    const rawValue = getComputedStyle(document.documentElement).getPropertyValue(
-        cssVarName
-    );
-    const parsed = parsePositivePx(rawValue);
-    return parsed ?? fallbackPx;
+    const readFromElement = (element: Element | null): number | null => {
+        if (!element) return null;
+        const rawValue = getComputedStyle(element).getPropertyValue(cssVarName);
+        return parsePositivePx(rawValue);
+    };
+
+    const scopedElement = scopeSelector
+        ? document.querySelector(scopeSelector)
+        : null;
+    const scopedValue = readFromElement(scopedElement);
+    if (scopedValue !== null) return scopedValue;
+
+    const rootValue = readFromElement(document.documentElement);
+    return rootValue ?? fallbackPx;
 };
