@@ -21,6 +21,19 @@ interface NavigationContextType {
 const NavigationContext = createContext<NavigationContextType | null>(null);
 const DESKTOP_NAV_DEBUG = true;
 
+const getPathnameFromRoute = (route: string): string => {
+    const [pathnamePart] = route.split("#");
+    if (!pathnamePart) {
+        return "/";
+    }
+    return pathnamePart;
+};
+
+const shouldUpdateRouteFromPathname = (
+    currentRoute: string,
+    pathname: string
+): boolean => getPathnameFromRoute(currentRoute) !== pathname;
+
 export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     children,
 }) => {
@@ -38,6 +51,10 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     useEffect(() => {
         const nextRoute = pathname || "/";
         setCurrentRoute(prev => {
+            const shouldUpdate = shouldUpdateRouteFromPathname(
+                prev,
+                nextRoute
+            );
             if (DESKTOP_NAV_DEBUG) {
                 console.log("[DESKTOP_NAV_DEBUG] setCurrentRoute", {
                     variant: "desktop-nav",
@@ -49,9 +66,10 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
                         typeof window !== "undefined"
                             ? window.location.hash
                             : "",
+                    shouldUpdate,
                 });
             }
-            return nextRoute;
+            return shouldUpdate ? nextRoute : prev;
         });
     }, [pathname]);
 
