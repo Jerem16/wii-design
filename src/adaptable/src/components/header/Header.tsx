@@ -27,6 +27,7 @@ const Header: React.FC<NavProps> = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
+    const DESKTOP_NAV_DEBUG = true;
 
     useInitialScroll(pathname);
 
@@ -50,6 +51,20 @@ const Header: React.FC<NavProps> = () => {
         activeSection,
         currentRoute
     );
+
+    if (DESKTOP_NAV_DEBUG) {
+        const mainActiveItems = updatedMenuItems.mainLink.filter(
+            item => item.class === "active"
+        );
+        console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses", {
+            variant: "adaptable",
+            currentRoute,
+            activeSection,
+            pathname,
+            mainActiveCount: mainActiveItems.length,
+            mainActiveIds: mainActiveItems.map(item => item.id),
+        });
+    }
 
     return (
         <div className="header">
