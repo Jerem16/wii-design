@@ -118,6 +118,9 @@ function elseNav({
 /*-------------------------------------------------------*/
 
 export let currentSectionId = "";
+export const setCurrentSectionId = (id: string) => {
+    currentSectionId = id;
+};
 export function scrollInView(sections: { id: string }[]) {
     const scrollPosition = window.scrollY;
     sections.forEach(({ id }) => {
