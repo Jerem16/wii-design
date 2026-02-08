@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 
 import React from "react";
 
@@ -15,6 +15,7 @@ interface NavLinkShowProps {
     openMenuId?: string | null;
 }
 type SvgComponentKey = keyof typeof svgComponents;
+const DESKTOP_NAV_DEBUG = true;
 const RenderLink: React.FC<NavLinkShowProps> = ({
     menuItem,
     onNavigationClick,
@@ -42,11 +43,22 @@ const RenderLink: React.FC<NavLinkShowProps> = ({
             return setOpenSubMenu(menuItemId);
         }
     };
+    const headLinkClassName = `head-link ${menuItem.class}`;
+    if (DESKTOP_NAV_DEBUG && menuItem.class?.includes("active")) {
+        console.log("[DESKTOP_NAV_DEBUG] head-link:props", {
+            variant: "adaptable",
+            menuId: menuItem.id,
+            menuPath: menuItem.path,
+            menuLabel: menuItem.title,
+            headLinkClassName,
+        });
+    }
+
     return (
         <a
             role={!showNavLinks ? "menuitem" : "link"}
             aria-label={`Page ${menuItem.title}`}
-            className={`head-link ${menuItem.class}`}
+            className={headLinkClassName}
             href={menuItem.path}
             onClick={handleInteraction}
             onKeyDown={(e) => {

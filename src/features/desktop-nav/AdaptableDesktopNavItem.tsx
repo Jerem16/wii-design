@@ -8,6 +8,8 @@ import { useNavigation } from "@/features/desktop-nav/core/context/NavigationCon
 import AdaptableDesktopSubMenu from "./AdaptableDesktopSubMenu";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
 
+const DESKTOP_NAV_DEBUG = true;
+
 interface AdaptableDesktopNavItemProps {
     menuItem: MenuItem;
     onNavigationClick: (path: string) => void;
@@ -55,11 +57,22 @@ const AdaptableDesktopNavItem = ({
         setOpenSubMenu(menuItem.id);
     };
 
+    const headLinkClassName = `head-link ${menuItem.class ?? ""}`;
+    if (menuItem.class?.includes("active")) {
+        console.log("[DESKTOP_NAV_DEBUG] head-link:props", {
+            variant: "desktop-nav",
+            menuId: menuItem.id,
+            menuPath: menuItem.path,
+            menuLabel: menuItem.title,
+            headLinkClassName,
+        });
+    }
+
     const renderLink = () => (
         <a
             role={!showNavLinks ? "menuitem" : "link"}
             aria-label={`Page ${menuItem.title}`}
-            className={`head-link ${menuItem.class ?? ""}`}
+            className={headLinkClassName}
             href={menuItem.path}
             onClick={(event) => {
                 event.preventDefault();

@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
     NavigationProvider,
@@ -37,6 +37,7 @@ const DesktopNavContent = () => {
     const { activeSection } = useScrollContext();
     const { navRef } = useMenuBehavior();
     const pathname = usePathname();
+    const DESKTOP_NAV_DEBUG = true;
 
     const [tabletMain, setTabletMain] = useState(false);
     const [openMainButton, setOpenMainButton] = useState(false);
@@ -60,6 +61,45 @@ const DesktopNavContent = () => {
             ),
         [activeSection, currentRoute]
     );
+
+    if (DESKTOP_NAV_DEBUG) {
+        const mainActiveItems = updatedMenuItems.mainLink.filter(
+            item => item.class === "active"
+        );
+        console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses", {
+            variant: "desktop-nav",
+            currentRoute,
+            activeSection,
+            pathname,
+            mainActiveCount: mainActiveItems.length,
+            mainActiveIds: mainActiveItems.map(item => item.id),
+        });
+        console.log("[DESKTOP_NAV_DEBUG] render:source", {
+            variant: "desktop-nav",
+            renderSource: "updatedMenuItems.mainLink",
+            renderedMainCount: updatedMenuItems.mainLink.length,
+        });
+    }
+
+    useEffect(() => {
+        if (!DESKTOP_NAV_DEBUG) return;
+        const allHeadLinks = document.querySelectorAll(".head-link");
+        const activeHeadLinks = document.querySelectorAll(".head-link.active");
+        const activeNavLinks = document.querySelectorAll(".nav-link.active");
+        console.log("[DESKTOP_NAV_DEBUG] dom:main-active", {
+            variant: "desktop-nav",
+            currentRoute,
+            domAllMainLinksCount: allHeadLinks.length,
+            domActiveHeadLinkCount: activeHeadLinks.length,
+            domActiveNavLinkCount: activeNavLinks.length,
+            domActiveHeadLinkHrefs: Array.from(activeHeadLinks).map(link =>
+                link instanceof HTMLAnchorElement ? link.getAttribute("href") : ""
+            ),
+            domActiveHeadLinkText: Array.from(activeHeadLinks).map(link =>
+                link instanceof HTMLElement ? link.textContent?.trim() : ""
+            ),
+        });
+    }, [currentRoute]);
 
     if (!tabletMain) return null;
 

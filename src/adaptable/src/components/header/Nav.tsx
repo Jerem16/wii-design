@@ -5,6 +5,8 @@ import NavLinkShow from "./navLink/NavLinkShow";
 import NavInput from "./navInput/NavInput";
 import { useNavigation } from "../../utils/context/NavigationContext";
 
+const DESKTOP_NAV_DEBUG = true;
+
 interface NavProps {
     menuItems: {
         mainLink?: MenuItem[];
@@ -84,6 +86,14 @@ const Nav: React.FC<NavProps> = ({
                 onMenuToggle={(id) => showLink(id)}
             />
         ));
+
+    if (DESKTOP_NAV_DEBUG) {
+        console.log("[DESKTOP_NAV_DEBUG] render:dataset", {
+            variant: "adaptable",
+            renderSource: "menuItems.mainLink",
+            renderedMainCount: menuItems.mainLink?.length ?? 0,
+        });
+    }
     return (
         <div className="head-flex">
             <nav

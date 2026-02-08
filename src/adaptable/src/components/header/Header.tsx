@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Nav from "./Nav";
@@ -27,6 +29,7 @@ const Header: React.FC<NavProps> = () => {
     const pathname = usePathname();
     const { currentRoute, updateRoute } = useNavigation();
     const { activeSection } = useScrollContext();
+    const DESKTOP_NAV_DEBUG = true;
 
     useInitialScroll(pathname);
 
@@ -50,6 +53,45 @@ const Header: React.FC<NavProps> = () => {
         activeSection,
         currentRoute
     );
+
+    if (DESKTOP_NAV_DEBUG) {
+        const mainActiveItems = updatedMenuItems.mainLink.filter(
+            item => item.class === "active"
+        );
+        console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses", {
+            variant: "adaptable",
+            currentRoute,
+            activeSection,
+            pathname,
+            mainActiveCount: mainActiveItems.length,
+            mainActiveIds: mainActiveItems.map(item => item.id),
+        });
+        console.log("[DESKTOP_NAV_DEBUG] render:source", {
+            variant: "adaptable",
+            renderSource: "updatedMenuItems.mainLink",
+            renderedMainCount: updatedMenuItems.mainLink.length,
+        });
+    }
+
+    useEffect(() => {
+        if (!DESKTOP_NAV_DEBUG) return;
+        const allHeadLinks = document.querySelectorAll(".head-link");
+        const activeHeadLinks = document.querySelectorAll(".head-link.active");
+        const activeNavLinks = document.querySelectorAll(".nav-link.active");
+        console.log("[DESKTOP_NAV_DEBUG] dom:main-active", {
+            variant: "adaptable",
+            currentRoute,
+            domAllMainLinksCount: allHeadLinks.length,
+            domActiveHeadLinkCount: activeHeadLinks.length,
+            domActiveNavLinkCount: activeNavLinks.length,
+            domActiveHeadLinkHrefs: Array.from(activeHeadLinks).map(link =>
+                link instanceof HTMLAnchorElement ? link.getAttribute("href") : ""
+            ),
+            domActiveHeadLinkText: Array.from(activeHeadLinks).map(link =>
+                link instanceof HTMLElement ? link.textContent?.trim() : ""
+            ),
+        });
+    }, [currentRoute]);
 
     return (
         <div className="header">

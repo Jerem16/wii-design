@@ -2,6 +2,8 @@ import { MenuItem, SubItem } from "../../data/interfaces/menu";
 import { useEffect, useRef } from "react";
 import { useNavigation } from "../context/NavigationContext";
 
+const DESKTOP_NAV_DEBUG = true;
+
 export const isMainItemActive = (
     itemPath: string,
     currentRoute: string
@@ -50,16 +52,45 @@ export const updateMenuClasses = (
     connection?: MenuItem[],
     activeSection = "",
     currentRoute = ""
-) => ({
-    mainLink: updateMenuItems(mainLink || [], activeSection, currentRoute),
-    reservation: updateMenuItems(
+) => {
+    const updatedMainLink = updateMenuItems(
+        mainLink || [],
+        activeSection,
+        currentRoute
+    );
+    const updatedReservation = updateMenuItems(
         reservation || [],
         activeSection,
         currentRoute
-    ),
-    search: updateMenuItems(search || [], activeSection, currentRoute),
-    connection: updateMenuItems(connection || [], activeSection, currentRoute)
-});
+    );
+    const updatedSearch = updateMenuItems(search || [], activeSection, currentRoute);
+    const updatedConnection = updateMenuItems(
+        connection || [],
+        activeSection,
+        currentRoute
+    );
+
+    if (DESKTOP_NAV_DEBUG) {
+        const mainActiveItems = updatedMainLink.filter(
+            item => item.class === "active"
+        );
+        console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses:data", {
+            variant: "desktop-nav",
+            currentRoute,
+            activeSection,
+            mainActiveIds: mainActiveItems.map(item => item.id),
+            mainActivePaths: mainActiveItems.map(item => item.path),
+            mainActiveLabels: mainActiveItems.map(item => item.title),
+        });
+    }
+
+    return {
+        mainLink: updatedMainLink,
+        reservation: updatedReservation,
+        search: updatedSearch,
+        connection: updatedConnection,
+    };
+};
 
 /*-------------------------------------------------------*/
 
