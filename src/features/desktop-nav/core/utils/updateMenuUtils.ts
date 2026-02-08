@@ -50,16 +50,38 @@ export const updateMenuClasses = (
     connection?: MenuItem[],
     activeSection = "",
     currentRoute = ""
-) => ({
-    mainLink: updateMenuItems(mainLink || [], activeSection, currentRoute),
-    reservation: updateMenuItems(
-        reservation || [],
+) => {
+    const updatedMenu = {
+        mainLink: updateMenuItems(mainLink || [], activeSection, currentRoute),
+        reservation: updateMenuItems(
+            reservation || [],
+            activeSection,
+            currentRoute
+        ),
+        search: updateMenuItems(search || [], activeSection, currentRoute),
+        connection: updateMenuItems(
+            connection || [],
+            activeSection,
+            currentRoute
+        )
+    };
+
+    const mainActiveItems = updatedMenu.mainLink.filter(
+        item => item.class === "active"
+    );
+
+    console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses:active-main", {
+        variant: "desktop-nav",
+        currentRoute,
         activeSection,
-        currentRoute
-    ),
-    search: updateMenuItems(search || [], activeSection, currentRoute),
-    connection: updateMenuItems(connection || [], activeSection, currentRoute)
-});
+        mainActiveCount: mainActiveItems.length,
+        mainActiveIds: mainActiveItems.map(item => item.id),
+        mainActivePaths: mainActiveItems.map(item => item.path),
+        mainActiveLabels: mainActiveItems.map(item => item.title)
+    });
+
+    return updatedMenu;
+};
 
 /*-------------------------------------------------------*/
 

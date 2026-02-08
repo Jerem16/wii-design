@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
     NavigationProvider,
@@ -66,6 +66,7 @@ const DesktopNavContent = () => {
         const mainActiveItems = updatedMenuItems.mainLink.filter(
             item => item.class === "active"
         );
+        const activeMainItem = mainActiveItems[0];
         console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses", {
             variant: "desktop-nav",
             currentRoute,
@@ -73,8 +74,34 @@ const DesktopNavContent = () => {
             pathname,
             mainActiveCount: mainActiveItems.length,
             mainActiveIds: mainActiveItems.map(item => item.id),
+            renderSource: "updatedMenuItems.mainLink",
+            renderedItemsCount: updatedMenuItems.mainLink.length,
+            activeMainItemId: activeMainItem?.id ?? null,
+            activeMainItemPath: activeMainItem?.path ?? null,
+            activeMainItemLabel: activeMainItem?.title ?? null,
+            activeMainLinkClassName: `head-link ${activeMainItem?.class ?? ""}`
         });
     }
+
+    useEffect(() => {
+        if (!DESKTOP_NAV_DEBUG) return;
+        const activeMainLinks = document.querySelectorAll(
+            ".desktop-adaptable-nav .head-link.active"
+        );
+        const allMainLinks = document.querySelectorAll(
+            ".desktop-adaptable-nav .head-link"
+        );
+        console.log("[DESKTOP_NAV_DEBUG] dom-main-active", {
+            variant: "desktop-nav",
+            currentRoute,
+            domActiveMainCount: activeMainLinks.length,
+            domAllMainLinksCount: allMainLinks.length,
+            domActiveMainLinks: Array.from(activeMainLinks).map(link => ({
+                href: link instanceof HTMLAnchorElement ? link.href : null,
+                text: link.textContent?.trim() ?? ""
+            }))
+        });
+    }, [currentRoute]);
 
     if (!tabletMain) return null;
 
