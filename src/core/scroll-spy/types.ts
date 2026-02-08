@@ -9,7 +9,6 @@ export type SectionMetrics = {
 export type ScrollSpyWorkerIn = {
     sections: readonly SectionMetrics[];
     scrollY: number;
-    thresholdPx: number;
 };
 
 export type ScrollSpyWorkerOut = {

@@ -13,6 +13,7 @@ type Params = {
     isEnabled?: boolean;
     offsetCssVarName?: CssVarName;
     offsetFallbackPx?: number;
+    offsetScopeSelector?: string;
 };
 
 const computeActiveId = (
@@ -36,6 +37,7 @@ export const useWorkerScrollSpy = ({
     isEnabled = true,
     offsetCssVarName = "--scroll-spy-offset",
     offsetFallbackPx = 0,
+    offsetScopeSelector,
 }: Params): { activeId?: HashId; refresh: () => void } => {
     const [activeId, setActiveId] = useState<HashId | undefined>(undefined);
     const sectionsRef = useRef<readonly SectionMetrics[]>([]);
@@ -49,9 +51,16 @@ export const useWorkerScrollSpy = ({
         offsetRef.current = readOffsetPxFromCssVar({
             cssVarName: offsetCssVarName,
             fallbackPx: offsetFallbackPx,
+            scopeSelector: offsetScopeSelector,
         });
         computeRef.current?.();
-    }, [isEnabled, offsetCssVarName, offsetFallbackPx, sectionIds]);
+    }, [
+        isEnabled,
+        offsetCssVarName,
+        offsetFallbackPx,
+        offsetScopeSelector,
+        sectionIds,
+    ]);
 
     useEffect(() => {
         if (!isEnabled) return;
@@ -61,18 +70,21 @@ export const useWorkerScrollSpy = ({
         offsetRef.current = readOffsetPxFromCssVar({
             cssVarName: offsetCssVarName,
             fallbackPx: offsetFallbackPx,
+            scopeSelector: offsetScopeSelector,
         });
 
         const worker = createScrollSpyWorker(setActiveId);
+        const workerBaseThresholdPx = 100;
 
         const runScroll = () => {
             const sections = sectionsRef.current;
             const effectiveScrollY = window.scrollY + offsetRef.current;
             if (worker) {
+                const workerScrollY =
+                    effectiveScrollY + thresholdPx - workerBaseThresholdPx;
                 worker.post({
                     sections,
-                    scrollY: effectiveScrollY,
-                    thresholdPx,
+                    scrollY: workerScrollY,
                 });
             } else {
                 setActiveId(computeActiveId(sections, effectiveScrollY, thresholdPx));
@@ -86,6 +98,7 @@ export const useWorkerScrollSpy = ({
             offsetRef.current = readOffsetPxFromCssVar({
                 cssVarName: offsetCssVarName,
                 fallbackPx: offsetFallbackPx,
+                scopeSelector: offsetScopeSelector,
             });
             runScroll();
         };
@@ -116,6 +129,7 @@ export const useWorkerScrollSpy = ({
         isEnabled,
         offsetCssVarName,
         offsetFallbackPx,
+        offsetScopeSelector,
         sectionIds,
         thresholdPx,
     ]);
