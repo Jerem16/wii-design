@@ -33,7 +33,6 @@ const AdaptableDesktopNavItem = ({
     onMouseEnter,
     onFocus,
 }: AdaptableDesktopNavItemProps) => {
-    const DESKTOP_NAV_DEBUG = true;
     const SvgIcon = useMemo(
         () => svgComponents[menuItem.svg as keyof typeof svgComponents],
         [menuItem.svg]
@@ -58,18 +57,6 @@ const AdaptableDesktopNavItem = ({
 
     const renderLink = () => {
         const headLinkClassName = `head-link ${menuItem.class ?? ""}`;
-        if (DESKTOP_NAV_DEBUG) {
-            console.log("[DESKTOP_NAV_DEBUG] render-head-link", {
-                variant: "desktop-nav",
-                id: menuItem.id,
-                href: menuItem.path,
-                className: headLinkClassName,
-                classNameSource: "template `head-link ${menuItem.class ?? ''}`",
-                menuItemClass: menuItem.class ?? null,
-                menuItemClassNameProp:
-                    (menuItem as { className?: string }).className ?? null
-            });
-        }
         return (
             <a
                 role={!showNavLinks ? "menuitem" : "link"}

@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useEffect, useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import {
     NavigationProvider,
@@ -37,8 +37,6 @@ const DesktopNavContent = () => {
     const { activeSection } = useScrollContext();
     const { navRef } = useMenuBehavior();
     const pathname = usePathname();
-    const DESKTOP_NAV_DEBUG = true;
-
     const [tabletMain, setTabletMain] = useState(false);
     const [openMainButton, setOpenMainButton] = useState(false);
     const [openButton, setOpenButton] = useState(false);
@@ -61,62 +59,6 @@ const DesktopNavContent = () => {
             ),
         [activeSection, currentRoute]
     );
-
-    if (DESKTOP_NAV_DEBUG) {
-        console.log("[DESKTOP_NAV_DEBUG] render-main-map-source", {
-            variant: "desktop-nav",
-            mapSource: "updatedMenuItems.mainLink",
-            isUpdatedMenuSameRefAsInitial:
-                updatedMenuItems.mainLink === adaptableMenuData.mainLink,
-            updatedMenuLength: updatedMenuItems.mainLink.length,
-            initialMenuLength: adaptableMenuData.mainLink.length
-        });
-    }
-
-    if (DESKTOP_NAV_DEBUG) {
-        const mainActiveItems = updatedMenuItems.mainLink.filter(
-            item => item.class === "active"
-        );
-        const activeMainItem = mainActiveItems[0];
-        console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses", {
-            variant: "desktop-nav",
-            currentRoute,
-            activeSection,
-            pathname,
-            mainActiveCount: mainActiveItems.length,
-            mainActiveIds: mainActiveItems.map(item => item.id),
-            renderSource: "updatedMenuItems.mainLink",
-            renderedItemsCount: updatedMenuItems.mainLink.length,
-            activeMainItemId: activeMainItem?.id ?? null,
-            activeMainItemPath: activeMainItem?.path ?? null,
-            activeMainItemLabel: activeMainItem?.title ?? null,
-            activeMainItemClass: activeMainItem?.class ?? null,
-            activeMainItemClassNameProp:
-                (activeMainItem as { className?: string } | undefined)
-                    ?.className ?? null,
-            activeMainLinkClassName: `head-link ${activeMainItem?.class ?? ""}`
-        });
-    }
-
-    useEffect(() => {
-        if (!DESKTOP_NAV_DEBUG) return;
-        const activeMainLinks = document.querySelectorAll(
-            ".desktop-adaptable-nav .head-link.active"
-        );
-        const allMainLinks = document.querySelectorAll(
-            ".desktop-adaptable-nav .head-link"
-        );
-        console.log("[DESKTOP_NAV_DEBUG] dom-main-active", {
-            variant: "desktop-nav",
-            currentRoute,
-            domActiveMainCount: activeMainLinks.length,
-            domAllMainLinksCount: allMainLinks.length,
-            domActiveMainLinks: Array.from(activeMainLinks).map(link => ({
-                href: link instanceof HTMLAnchorElement ? link.href : null,
-                text: link.textContent?.trim() ?? ""
-            }))
-        });
-    }, [currentRoute]);
 
     if (!tabletMain) return null;
 

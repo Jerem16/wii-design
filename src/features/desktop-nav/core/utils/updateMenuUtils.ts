@@ -66,20 +66,6 @@ export const updateMenuClasses = (
         )
     };
 
-    const mainActiveItems = updatedMenu.mainLink.filter(
-        item => item.class === "active"
-    );
-
-    console.log("[DESKTOP_NAV_DEBUG] updateMenuClasses:active-main", {
-        variant: "desktop-nav",
-        currentRoute,
-        activeSection,
-        mainActiveCount: mainActiveItems.length,
-        mainActiveIds: mainActiveItems.map(item => item.id),
-        mainActivePaths: mainActiveItems.map(item => item.path),
-        mainActiveLabels: mainActiveItems.map(item => item.title)
-    });
-
     return updatedMenu;
 };
 
