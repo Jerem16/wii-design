@@ -92,7 +92,7 @@ export const useDesktopScrollAnchors = (sections: { id: string }[]) => {
         sectionIds,
         thresholdPx: 100,
         isEnabled: true,
-        offsetCssVarName: "--scroll-spy-offset",
+        offsetCssVarName: "--scroll-offset",
         offsetScopeSelector: ".desktop-adaptable-nav",
     });
 

@@ -42,3 +42,9 @@ export const readOffsetPxFromCssVar = ({
     const rootValue = readFromElement(document.documentElement);
     return rootValue ?? fallbackPx;
 };
+
+export const readScrollOffsetPx = (): number =>
+    readOffsetPxFromCssVar({
+        cssVarName: "--scroll-offset",
+        fallbackPx: 0,
+    });
