@@ -107,22 +107,8 @@ export const menuItems: MenuLinks = {
             title: "Contact",
             class: "",
             path: "/contact",
-            AnchorId: "#expert",
+            AnchorId: "#top",
             svg: "Contact",
-            subItems: [
-                {
-                    id: "menu-without-license",
-                    title: "Débutant",
-                    AnchorId: "#novice",
-                    class: "",
-                },
-                {
-                    id: "menu-with-license",
-                    title: "Confirmé",
-                    AnchorId: "#expert",
-                    class: "",
-                },
-            ],
         },
     ],
     reservation: [
