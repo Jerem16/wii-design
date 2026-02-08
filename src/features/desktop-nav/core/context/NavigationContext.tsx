@@ -8,14 +8,6 @@ import React, {
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-const DESKTOP_NAV_DEBUG = false;
-const logDesktopNav = (...args: unknown[]) => {
-    if (DESKTOP_NAV_DEBUG) {
-        // eslint-disable-next-line no-console
-        console.log("[DesktopNav]", ...args);
-    }
-};
-
 interface NavigationContextType {
     currentRoute: string;
     updateRoute: (path: string) => void;
@@ -43,28 +35,15 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     }, []);
 
     useEffect(() => {
-        logDesktopNav("NavigationContext.setCurrentRoute(pathname)", {
-            before: currentRoute,
-            next: pathname || "/",
-            pathname,
-            hash: window.location.hash,
-        });
         setCurrentRoute(pathname || "/");
-    }, [pathname, currentRoute]);
+    }, [pathname]);
 
     const updateRoute = useCallback(
         (path: string) => {
-            logDesktopNav("NavigationContext.updateRoute", {
-                before: currentRoute,
-                next: path,
-                pathname: window.location.pathname,
-                hash: window.location.hash,
-                willPush: true,
-            });
             setCurrentRoute(path);
             router.push(path);
         },
-        [currentRoute, router]
+        [router]
     );
 
     const contextValue = useMemo(
