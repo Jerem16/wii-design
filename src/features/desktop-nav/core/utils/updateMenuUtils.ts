@@ -2,6 +2,14 @@ import { MenuItem, SubItem } from "../../data/interfaces/menu";
 import { useEffect, useRef } from "react";
 import { useNavigation } from "../context/NavigationContext";
 
+const DESKTOP_NAV_DEBUG = false;
+const logDesktopNav = (...args: unknown[]) => {
+    if (DESKTOP_NAV_DEBUG) {
+        // eslint-disable-next-line no-console
+        console.log("[DesktopNav]", ...args);
+    }
+};
+
 export const isMainItemActive = (
     itemPath: string,
     currentRoute: string
@@ -50,16 +58,53 @@ export const updateMenuClasses = (
     connection?: MenuItem[],
     activeSection = "",
     currentRoute = ""
-) => ({
-    mainLink: updateMenuItems(mainLink || [], activeSection, currentRoute),
-    reservation: updateMenuItems(
+) => {
+    const nextMainLink = updateMenuItems(
+        mainLink || [],
+        activeSection,
+        currentRoute
+    );
+    const nextReservation = updateMenuItems(
         reservation || [],
         activeSection,
         currentRoute
-    ),
-    search: updateMenuItems(search || [], activeSection, currentRoute),
-    connection: updateMenuItems(connection || [], activeSection, currentRoute)
-});
+    );
+    const nextSearch = updateMenuItems(
+        search || [],
+        activeSection,
+        currentRoute
+    );
+    const nextConnection = updateMenuItems(
+        connection || [],
+        activeSection,
+        currentRoute
+    );
+    const activeMain = nextMainLink.find(item => item.class === "active");
+    const activeSub = nextMainLink
+        .flatMap(item => item.subItems || [])
+        .find(sub => sub.class === "active");
+    logDesktopNav("updateMenuClasses", {
+        currentRoute,
+        activeSection,
+        activeMainId: activeMain?.id,
+        activeSubId: activeSub?.id,
+        activeMainCount: nextMainLink.filter(item => item.class === "active")
+            .length,
+        activeSubCount: nextMainLink.reduce(
+            (count, item) =>
+                count +
+                (item.subItems?.filter(sub => sub.class === "active").length ||
+                    0),
+            0
+        ),
+    });
+    return {
+        mainLink: nextMainLink,
+        reservation: nextReservation,
+        search: nextSearch,
+        connection: nextConnection,
+    };
+};
 
 /*-------------------------------------------------------*/
 
