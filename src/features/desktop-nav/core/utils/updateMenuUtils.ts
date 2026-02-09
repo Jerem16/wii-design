@@ -1,5 +1,5 @@
 import { MenuItem, SubItem } from "../../data/interfaces/menu";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { useNavigation } from "../context/NavigationContext";
 
 export const isMainItemActive = (
@@ -109,21 +109,34 @@ const handleKeyDown = (
         setOpenSubMenu(null);
     }
 };
+
+/* ... le reste inchangé ... */
+
 export const useMenuBehavior = () => {
     const navRef = useRef<HTMLElement | null>(null);
     const { openSubMenu, setOpenSubMenu } = useNavigation();
-    const setOpenSubMenuBridge: React.Dispatch<React.SetStateAction<
-        string | null
-    >> = value => {
-        if (typeof value === "function") {
-            // Appelle la fonction avec la valeur courante
-            setOpenSubMenu(
-                (value as (prev: string | null) => string | null)(openSubMenu)
-            );
-        } else {
-            setOpenSubMenu(value);
-        }
-    };
+
+    // Garder la valeur la plus récente sans la capturer dans le callback
+    const openSubMenuRef = useRef<string | null>(openSubMenu);
+
+    useEffect(() => {
+        openSubMenuRef.current = openSubMenu;
+    }, [openSubMenu]);
+
+    const setOpenSubMenuBridge = useCallback<
+        React.Dispatch<React.SetStateAction<string | null>>
+    >(
+        value => {
+            if (typeof value === "function") {
+                const updater = value as (prev: string | null) => string | null;
+                setOpenSubMenu(updater(openSubMenuRef.current));
+            } else {
+                setOpenSubMenu(value);
+            }
+        },
+        [setOpenSubMenu]
+    );
+
     useEffect(() => {
         const onClickOutside = (e: MouseEvent) =>
             handleClickOutside(e, navRef, setOpenSubMenuBridge);
@@ -132,11 +145,12 @@ export const useMenuBehavior = () => {
 
         document.addEventListener("mousedown", onClickOutside);
         document.addEventListener("keydown", onKeyDown);
+
         return () => {
             document.removeEventListener("mousedown", onClickOutside);
             document.removeEventListener("keydown", onKeyDown);
         };
-    }, [openSubMenu, setOpenSubMenu, setOpenSubMenuBridge]);
+    }, [setOpenSubMenuBridge]);
 
     return { navRef, openSubMenu, setOpenSubMenu: setOpenSubMenuBridge };
 };

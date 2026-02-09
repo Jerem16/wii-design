@@ -1,5 +1,5 @@
 import React from "react";
-import ButtonLink from "../adaptable/src/components/button/ButtonLink";
+import ButtonLink from "@/components/button/ButtonLink";
 const PrivacyPolicy = () => {
     return (
         <div className="pp_politique-container">

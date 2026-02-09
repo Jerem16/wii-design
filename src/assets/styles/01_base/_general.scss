@@ -56,7 +56,7 @@ hr {
     color: inherit;
 }
 * {
-    border: 0 solid #e5e7eb;
+    // border: 0 solid #e5e7eb;
 }
 :after,
 :before {
@@ -252,6 +252,7 @@ main {
         --scroll-offset: $nav-bar-height;
     }
     main {
+        // margin: 90px 0 0 116px;
         width: calc(100% - 116px);
         min-height: calc(100vh - $nav-bar-height);
         top: 90px;
@@ -261,14 +262,9 @@ main {
         padding: 24px;
         min-height: 100vh;
     }
-    .active-section {
-    }
-    .fixed-menu:first-child {
-    }
     .fixed-menu {
         height: 90px;
         width: 100vw;
-        background: #ff0000;
         opacity: 0.5;
         top: 0;
         display: block;
