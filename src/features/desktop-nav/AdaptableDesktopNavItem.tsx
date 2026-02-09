@@ -37,7 +37,7 @@ const AdaptableDesktopNavItem = ({
         () => svgComponents[menuItem.svg as keyof typeof svgComponents],
         [menuItem.svg]
     );
-    const { setOpenSubMenu } = useNavigation();
+    const { openSubMenu, setOpenSubMenu } = useNavigation();
     const mainNav = !openMainButton && showNavLinks && !openButton;
     const hasSubMenu = Boolean(menuItem.subItems?.length);
 
@@ -66,6 +66,15 @@ const AdaptableDesktopNavItem = ({
                 onClick={(event) => {
                     event.preventDefault();
                     if (hasSubMenu) {
+                        if (
+                            menuItem.class?.includes("active") &&
+                            openSubMenu === menuItem.id
+                        ) {
+                            onNavigationClick(
+                                menuItem.path + (menuItem.AnchorId ?? "")
+                            );
+                            return;
+                        }
                         handleMenuClick(menuItem.id);
                         return;
                     }
@@ -78,6 +87,15 @@ const AdaptableDesktopNavItem = ({
                     if (event.key === "Enter" || event.key === " ") {
                         event.preventDefault();
                         if (hasSubMenu) {
+                            if (
+                                menuItem.class?.includes("active") &&
+                                openSubMenu === menuItem.id
+                            ) {
+                                onNavigationClick(
+                                    menuItem.path + (menuItem.AnchorId ?? "")
+                                );
+                                return;
+                            }
                             handleMenuClick(menuItem.id);
                             return;
                         }
