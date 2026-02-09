@@ -5,6 +5,12 @@ import { createScrollSpyWorker } from "./createScrollSpyWorker";
 import { measureSections } from "./measureSections";
 import { rafThrottle } from "./rafThrottle";
 import { readOffsetPxFromCssVar } from "./readOffsetFromCss";
+import {
+    dbg,
+    isScrollSpyDebugEnabled,
+    shouldLogNow,
+} from "./debug";
+import { readScrollOffsetDiagnostics } from "./readCssPx";
 import type { CssVarName, HashId, SectionMetrics } from "./types";
 
 type Params = {
@@ -43,6 +49,8 @@ export const useWorkerScrollSpy = ({
     const sectionsRef = useRef<readonly SectionMetrics[]>([]);
     const offsetPxRef = useRef<number>(offsetFallbackPx);
     const computeRef = useRef<(() => void) | null>(null);
+    const activeIdRef = useRef<HashId | undefined>(undefined);
+    const protocolLoggedRef = useRef(false);
 
     const refresh = useCallback(() => {
         if (typeof window === "undefined") return;
@@ -66,6 +74,8 @@ export const useWorkerScrollSpy = ({
         if (!isEnabled) return;
         if (typeof window === "undefined") return;
 
+        const debugEnabled = isScrollSpyDebugEnabled();
+
         sectionsRef.current = measureSections(sectionIds);
         offsetPxRef.current = readOffsetPxFromCssVar({
             cssVarName: offsetCssVarName,
@@ -73,21 +83,91 @@ export const useWorkerScrollSpy = ({
             scopeSelector: offsetScopeSelector,
         });
 
-        const worker = createScrollSpyWorker(setActiveId);
+        if (debugEnabled) {
+            dbg("offset:css-vars", {
+                ...readScrollOffsetDiagnostics(),
+                pathname: window.location.pathname,
+                reason: "mount",
+            });
+        }
+
+        if (debugEnabled && !protocolLoggedRef.current) {
+            protocolLoggedRef.current = true;
+            dbg("worker:protocol", {
+                inKeys: ["sections", "scrollY"],
+                workerMessageKeys: ["sections", "scrollY", "positions"],
+                outKeys: ["currentSectionId"],
+            });
+        }
+
+        const handleActiveChange = (nextId?: HashId, source?: string) => {
+            const previousActiveId = activeIdRef.current;
+            activeIdRef.current = nextId;
+            if (
+                source === "worker" &&
+                debugEnabled &&
+                shouldLogNow("worker:output", 200)
+            ) {
+                dbg("worker:output", {
+                    source,
+                    workerOut: { currentSectionId: nextId ?? null },
+                    normalizedActiveId: nextId ?? null,
+                    previousActiveId: previousActiveId ?? null,
+                    didChange: previousActiveId !== nextId,
+                });
+            }
+            setActiveId(nextId);
+        };
+
+        const worker = createScrollSpyWorker((nextId) =>
+            handleActiveChange(nextId, "worker")
+        );
         const workerBaseThresholdPx = 100;
 
         const runScroll = () => {
             const sections = sectionsRef.current;
-            const effectiveScrollY = window.scrollY + offsetPxRef.current;
+            const rawScrollY = window.scrollY;
+            const offsetPx = offsetPxRef.current;
+            const effectiveScrollY = rawScrollY + offsetPx;
+            const workerScrollY =
+                effectiveScrollY + thresholdPx - workerBaseThresholdPx;
+
+            if (debugEnabled && shouldLogNow("scroll:input", 200)) {
+                const firstSection = sections[0];
+                const lastSection = sections[sections.length - 1];
+                const samples = [firstSection, lastSection]
+                    .filter(Boolean)
+                    .slice(0, 2)
+                    .map((section) => ({
+                        id: section?.id,
+                        top: section?.top,
+                        height: section?.height,
+                    }));
+                dbg("scroll:input", {
+                    rawScrollY,
+                    offsetPx,
+                    thresholdPx,
+                    effectiveScrollY,
+                    sectionsCount: sections.length,
+                    firstSectionTop: firstSection?.top ?? null,
+                    lastSectionTop: lastSection?.top ?? null,
+                    scrollInputSent: {
+                        sectionsCount: sections.length,
+                        samples,
+                        scrollY: workerScrollY,
+                    },
+                });
+            }
             if (worker) {
-                const workerScrollY =
-                    effectiveScrollY + thresholdPx - workerBaseThresholdPx;
                 worker.post({
                     sections,
                     scrollY: workerScrollY,
                 });
             } else {
-                setActiveId(computeActiveId(sections, effectiveScrollY, thresholdPx));
+                handleActiveChange(
+                    computeActiveId(sections, effectiveScrollY, thresholdPx),
+                    "sync"
+                );
             }
         };
 
@@ -100,6 +180,13 @@ export const useWorkerScrollSpy = ({
                 fallbackPx: offsetFallbackPx,
                 scopeSelector: offsetScopeSelector,
             });
+            if (debugEnabled && shouldLogNow("offset:css-vars", 500)) {
+                dbg("offset:css-vars", {
+                    ...readScrollOffsetDiagnostics(),
+                    pathname: window.location.pathname,
+                    reason: "resize",
+                });
+            }
             runScroll();
         };
 
