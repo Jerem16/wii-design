@@ -1,1 +1,1 @@
-export * from "../../../mobile-nav/core/utils/sections";
+export * from "../../shared/utils/sections";

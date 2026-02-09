@@ -1,1 +1,1 @@
-export * from "../../../mobile-nav/core/utils/handlers";
+export * from "../../shared/utils/handlers";
