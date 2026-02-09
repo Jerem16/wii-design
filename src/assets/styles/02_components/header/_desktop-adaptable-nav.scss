@@ -20,11 +20,9 @@
 @media (min-width: 1024px) {
     .desktop-adaptable-nav {
         width: calc(100vw - 116px - $margin-nav);
-        // background: #ff0000;
         margin-left: $margin-nav;
         position: relative;
         top: -7px;
-        // z-index: 100;
 
         .header {
             padding: 0;
@@ -38,9 +36,6 @@
         }
 
         .head-flex {
-            // margin-top: 1.5rem;
-            // position: absolute;
-            // left: 117px;
             display: flex;
             flex: 1;
             align-items: center;

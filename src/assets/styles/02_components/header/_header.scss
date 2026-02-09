@@ -21,7 +21,6 @@
 .nav-bar {
     width: 100%;
     height: $nav-bar-height;
-    // background-color: $nav-bg-black;
     font-family: var(--font-ui);
     display: flex;
     align-items: center;
@@ -32,59 +31,6 @@
     left: 0;
     right: 0;
     z-index: 100;
-    // .link-group,
-    // .gr-nav {
-    //     width: 100%;
-    //     max-width: 900px;
-    //     height: 88px;
-    //     box-sizing: content-box;
-    //     background-color: black;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: space-around;
-    //     margin: 0;
-    //     position: relative;
-    //     z-index: 100;
-    //     margin-left: 90px;
-    //     .link-button {
-    //         position: relative;
-    //         z-index: 102;
-    //         top: 0;
-    //         background-color: $nav-bg-black;
-    //         width: calc(25% - 0px);
-    //         border-left: 2px solid $shp-text-black-h1;
-    //         border-right: 2px solid $shp-text-black-h1;
-    //         height: 90px;
-    //         display: flex;
-    //         flex-flow: column;
-    //         align-content: center;
-    //         align-items: center;
-    //         justify-content: center;
-
-    //         .nav-link {
-    //             display: block;
-    //             position: relative;
-    //             font-family: var(--font-ui);
-    //             font-size: var(--fs-ui);
-    //             line-height: var(--lh-ui);
-    //             font-weight: 500;
-    //             color: $text-white;
-    //             width: fit-content;
-    //             text-align: center;
-    //         }
-    //     }
-    // }
-    // .gr-nav {
-    //     position: absolute;
-    //     max-width: inherit;
-    //     min-width: 100%;
-    //     height: 90px;
-    //     border: 2px solid #000;
-    //     top: 0;
-    //     left: 0;
-    //     right: 0;
-    //     box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    // }
 }
 .nav-bar {
     background: radial-gradient(
@@ -96,7 +42,6 @@
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    // border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .sidebar {
@@ -109,8 +54,6 @@
 
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    // background: #ffffff;
     /* Sidebar => plutôt une bordure “séparateur” à droite */
     border-bottom: 0;
-    // border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
