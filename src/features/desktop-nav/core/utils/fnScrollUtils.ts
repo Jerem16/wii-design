@@ -1,37 +1,93 @@
-/*-------------------------------------------------------*/
+import type {
+    ScrollSmoothWorkerData,
+    ScrollSmoothWorkerResponse,
+} from "../../../../workers/scrollSmoothWorker";
 
-function scrollTimeEvent(
-    currentTime: number,
-    start: number,
-    end: number,
-    duration: number,
-    startTime: number
-) {
-    const elapsed = currentTime - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const easeInOutCubic =
-        progress < 0.5
-            ? 4 * progress * progress * progress
-            : 1 - Math.pow(-2 * progress + 2, 4) / 2;
-    window.scrollTo(0, start + (end - start) * easeInOutCubic);
-    if (progress < 1) {
-        window.requestAnimationFrame((newTime) =>
-            scrollTimeEvent(newTime, start, end, duration, startTime)
-        );
-    }
-}
-export const handleScrollClick = (targetId: string) => {
-    const element = document.getElementById(targetId);
-    if (!element) return;
-    const start = window.scrollY;
-    const end = element.getBoundingClientRect().top + window.scrollY;
-    const duration = 750;
-    const startTime = performance.now();
-    window.requestAnimationFrame((currentTime) => {
-        scrollTimeEvent(currentTime, start, end, duration, startTime);
-    });
+type ScrollOffsetOptions = {
+    /**
+     * Priorité 1 : variable CSS (--scroll-offset) si définie (ex: "72px")
+     * Fallback : hauteur d’un header trouvé via selector
+     */
+    headerSelector?: string;
+    /** Offset additionnel (px) */
+    extra?: number;
 };
 
+const parsePx = (raw: string): number | null => {
+    const v = raw.trim().toLowerCase();
+    if (!v) return null;
+    // Supporte "72px" ou "72"
+    const n = Number.parseFloat(v.replace("px", ""));
+    return Number.isFinite(n) ? n : null;
+};
+
+export const getScrollOffset = (opts?: ScrollOffsetOptions): number => {
+    if (typeof window === "undefined") return 0;
+
+    // 1) CSS var
+    const cssRaw = window
+        .getComputedStyle(document.documentElement)
+        .getPropertyValue("--scroll-offset");
+    const cssPx = parsePx(cssRaw);
+    const baseFromCss = cssPx ?? 0;
+
+    // 2) Fallback header height (si pas de CSS var)
+    const selector =
+        opts?.headerSelector ?? "[data-scroll-header], .header, header";
+    const header = document.querySelector<HTMLElement>(selector);
+    const baseFromHeader = header ? header.getBoundingClientRect().height : 0;
+
+    const base = cssPx !== null ? baseFromCss : baseFromHeader;
+    const extra = opts?.extra ?? 0;
+
+    return Math.max(0, base + extra);
+};
+
+export const handleScrollClick = (targetId: string): void => {
+    const element = document.getElementById(targetId);
+    if (!element) return;
+
+    const start = window.scrollY;
+
+    // Offset global + offset spécifique au bloc (optionnel)
+    const elementExtraRaw = element.getAttribute("data-scroll-offset") ?? "";
+    const elementExtra = parsePx(elementExtraRaw) ?? 0;
+
+    const offset = getScrollOffset({ extra: elementExtra });
+
+    const endRaw = element.getBoundingClientRect().top + window.scrollY - offset;
+    const end = Math.max(0, endRaw);
+
+    const duration = 750;
+    const startTime = performance.now();
+
+    const worker = new Worker(
+        new URL("../../../../workers/scrollSmoothWorker.js", import.meta.url)
+    );
+
+    const animateScroll = (currentTime: number): void => {
+        const data: ScrollSmoothWorkerData = {
+            start,
+            end,
+            duration,
+            startTime,
+            currentTime,
+        };
+        worker.postMessage(data);
+    };
+
+    worker.onmessage = (event: MessageEvent<ScrollSmoothWorkerResponse>): void => {
+        const { newScrollY, progress } = event.data;
+        window.scrollTo(0, newScrollY);
+        if (progress < 1) {
+            window.requestAnimationFrame(animateScroll);
+        } else {
+            worker.terminate();
+        }
+    };
+
+    window.requestAnimationFrame(animateScroll);
+};
 /*-------------------------------------------------------*/
 
 interface NavParams {
@@ -116,48 +172,3 @@ function elseNav({
 }
 
 /*-------------------------------------------------------*/
-
-export let currentSectionId = "";
-export const setCurrentSectionId = (id: string) => {
-    currentSectionId = id;
-};
-export function scrollInView(sections: { id: string }[]) {
-    const scrollPosition = window.scrollY;
-    sections.forEach(({ id }) => {
-        const section = document.getElementById(id);
-        if (section) {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const isInView =
-                scrollPosition >= sectionTop - 100 &&
-                scrollPosition < sectionTop + sectionHeight;
-            if (isInView) {
-                currentSectionId = id;
-            }
-        }
-    });
-}
-export function updateSectionClasses(
-    sections: { id: string }[],
-    setActiveSection: (id: string) => void
-) {
-    sections.forEach(({ id }) => {
-        const section = document.getElementById(id);
-        if (section) {
-            if (id === currentSectionId) {
-                section.classList.add("active-section");
-                setActiveSection(id);
-            } else {
-                section.classList.remove("active-section");
-            }
-        }
-    });
-}
-export function addNewUrl(currentSectionId: string) {
-    if (currentSectionId) {
-        const newUrl = `#${currentSectionId}`;
-        if (window.location.hash !== newUrl) {
-            window.history.replaceState(null, "", newUrl);
-        }
-    }
-}

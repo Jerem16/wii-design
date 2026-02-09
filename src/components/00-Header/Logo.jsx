@@ -10,7 +10,7 @@ const Logo = () => {
         <Link
             className="logo"
             data-logo-id={idPrefix}
-            href="/#s1"
+            href="/#top"
             title="Aller à la page d'accueil"
         >
             <LogoContent idPrefix={idPrefix} />

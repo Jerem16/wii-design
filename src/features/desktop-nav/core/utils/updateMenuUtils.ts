@@ -1,5 +1,4 @@
 import { MenuItem, SubItem } from "../../data/interfaces/menu";
-import type { HashId } from "@/core/scroll-spy/types";
 import { useEffect, useRef } from "react";
 import { useNavigation } from "../context/NavigationContext";
 
@@ -16,47 +15,30 @@ export const isMainItemActive = (
 
 /*-------------------------------------------------------*/
 
-const normalizeHashId = (value: string): HashId | undefined => {
-    const trimmed = value.trim();
-    if (!trimmed) return undefined;
-    const withHash = trimmed.startsWith("#") ? trimmed : `#${trimmed}`;
-    if (withHash === "#") return undefined;
-    return withHash as HashId;
-};
-
 const updateSubItems = (
     subItems: SubItem[],
-    activeHash: HashId | undefined,
-    shouldApplyActive: boolean
+    activeSection: string
 ): SubItem[] => {
-    return subItems.map((sub) => {
-        const subHash = normalizeHashId(sub.AnchorId);
-        const isActive =
-            shouldApplyActive &&
-            activeHash !== undefined &&
-            subHash === activeHash;
-        return {
-            ...sub,
-            class: isActive ? "active" : "",
-        };
-    });
+    const activeSubItem = subItems.find(
+        sub => sub.AnchorId === `#${activeSection}`
+    );
+    return subItems.map(sub => ({
+        ...sub,
+        class: activeSubItem?.id === sub.id ? "active" : ""
+    }));
 };
 export const updateMenuItems = (
     items: MenuItem[],
     activeSection: string,
     currentRoute: string
 ): MenuItem[] => {
-    const activeHash = normalizeHashId(activeSection);
-    return items.map((item) => {
-        const isMainActive = isMainItemActive(item.path, currentRoute);
-        return {
-            ...item,
-            class: isMainActive ? "active" : "",
-            subItems: item.subItems
-                ? updateSubItems(item.subItems, activeHash, isMainActive)
-                : undefined,
-        };
-    });
+    return items.map(item => ({
+        ...item,
+        class: isMainItemActive(item.path, currentRoute) ? "active" : "",
+        subItems: item.subItems
+            ? updateSubItems(item.subItems, activeSection)
+            : undefined
+    }));
 };
 
 /*-------------------------------------------------------*/

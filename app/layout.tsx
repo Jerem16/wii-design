@@ -1,23 +1,23 @@
 /* eslint-disable @next/next/no-css-tags */
 import type { Metadata } from "next";
-import MetaData from "./MetaData.js"
+import MetaData from "./MetaData.js";
 import localFont from "next/font/local";
 import "./globals.css";
-import "@assets/styles/main.scss"
-import NavInterface from "@components/00-Header/NavInterface.jsx"
+import "@assets/styles/main.scss";
+import NavInterface from "@components/00-Header/NavInterface.jsx";
 
 const Roboto = localFont({
     src: "/fonts/Roboto.woff2",
     variable: "--Roboto",
     weight: "100 900",
-    display: "swap", 
+    display: "swap"
 });
-export const metadata : Metadata  = MetaData ;
+export const metadata: Metadata = MetaData;
 
 export default function RootLayout({
     children
 }: Readonly<{
-    children: React.ReactNode
+    children: React.ReactNode;
 }>) {
     return (
         <html lang="fr">
@@ -39,7 +39,12 @@ export default function RootLayout({
                     type="image/svg+xml"
                 />
                 <link rel="preload" href="/deferCss.css" as="style" />
-                <link rel="preload" href="/desktopDeferNav.css" as="style" media="(min-width: 1024px)" />
+                <link
+                    rel="preload"
+                    href="/desktopDeferNav.css"
+                    as="style"
+                    media="(min-width: 1024px)"
+                />
                 <link
                     rel="stylesheet"
                     href="/deferCss.css"
@@ -59,14 +64,11 @@ export default function RootLayout({
                     fetchPriority="low"
                 ></script> */}
             </head>
-            <body className={`${Roboto.variable}`} >
+            <body className={`${Roboto.variable}`}>
                 {/* <SearchProvider> */}
-                    <NavInterface />
-
-                    <main>
-                        <div className="fixed-menu" id="top"></div>
-                        {children}
-                    </main>
+                <NavInterface />
+                <div className="fixed-menu" id="top"></div>
+                <main>{children}</main>
                 {/* </SearchProvider> */}
             </body>
         </html>
