@@ -1,3 +1,4 @@
+import { dbg, isScrollSpyDebugEnabled, shouldLogNow } from "./debug";
 import type { CssVarName } from "./types";
 
 const parsePositivePx = (value: string): number | null => {
@@ -6,14 +7,19 @@ const parsePositivePx = (value: string): number | null => {
     const pxMatch = trimmed.match(/^(-?\d+(?:\.\d+)?)px$/);
     if (pxMatch) {
         const numeric = Number(pxMatch[1]);
-        return Number.isFinite(numeric) && numeric >= 0 ? numeric : null;
+        return Number.isFinite(numeric) && numeric > 0 ? numeric : null;
     }
     const numericMatch = trimmed.match(/^(-?\d+(?:\.\d+)?)$/);
     if (numericMatch) {
         const numeric = Number(numericMatch[1]);
-        return Number.isFinite(numeric) && numeric >= 0 ? numeric : null;
+        return Number.isFinite(numeric) && numeric > 0 ? numeric : null;
     }
     return null;
+};
+
+type OffsetCandidate = {
+    valueRaw: string | null;
+    valuePx: number | null;
 };
 
 export const readOffsetPxFromCssVar = ({
@@ -27,35 +33,90 @@ export const readOffsetPxFromCssVar = ({
 }): number => {
     if (typeof window === "undefined") return fallbackPx;
 
-    const readFromElement = (element: Element | null): number | null => {
-        if (!element) return null;
-        const rawValue = getComputedStyle(element).getPropertyValue(cssVarName);
-        return parsePositivePx(rawValue);
+    const readCandidate = (
+        element: Element | null,
+        varName: CssVarName
+    ): OffsetCandidate => {
+        if (!element) return { valueRaw: null, valuePx: null };
+        const rawValue = getComputedStyle(element).getPropertyValue(varName);
+        const trimmed = rawValue.trim();
+        return {
+            valueRaw: trimmed || null,
+            valuePx: parsePositivePx(rawValue),
+        };
     };
 
     const scopedElement = scopeSelector
         ? document.querySelector(scopeSelector)
         : null;
-    const scopedValue = readFromElement(scopedElement);
-    if (scopedValue !== null) return scopedValue;
-    if (cssVarName === "--scroll-spy-offset" && scopedElement) {
-        const scopedFallback = parsePositivePx(
-            getComputedStyle(scopedElement).getPropertyValue("--scroll-offset")
-        );
-        if (scopedFallback !== null) return scopedFallback;
+    const scopedPrimary = readCandidate(scopedElement, cssVarName);
+    const scopedFallback =
+        cssVarName === "--scroll-spy-offset"
+            ? readCandidate(scopedElement, "--scroll-offset")
+            : { valueRaw: null, valuePx: null };
+
+    const rootElement = document.documentElement;
+    const rootPrimary = readCandidate(rootElement, cssVarName);
+    const rootFallback =
+        cssVarName === "--scroll-spy-offset"
+            ? readCandidate(rootElement, "--scroll-offset")
+            : { valueRaw: null, valuePx: null };
+
+    let sourceVarNameUsed: CssVarName | null = null;
+    let valueRawUsed: string | null = null;
+    let valuePxUsed: number | null = null;
+    let reason = "fallbackPx";
+
+    if (scopedPrimary.valuePx !== null) {
+        sourceVarNameUsed = cssVarName;
+        valueRawUsed = scopedPrimary.valueRaw;
+        valuePxUsed = scopedPrimary.valuePx;
+        reason = "scoped:valid";
+    } else if (
+        cssVarName === "--scroll-spy-offset" &&
+        scopedFallback.valuePx !== null
+    ) {
+        sourceVarNameUsed = "--scroll-offset";
+        valueRawUsed = scopedFallback.valueRaw;
+        valuePxUsed = scopedFallback.valuePx;
+        reason = "scoped:fallback-valid";
+    } else if (rootPrimary.valuePx !== null) {
+        sourceVarNameUsed = cssVarName;
+        valueRawUsed = rootPrimary.valueRaw;
+        valuePxUsed = rootPrimary.valuePx;
+        reason = "root:valid";
+    } else if (
+        cssVarName === "--scroll-spy-offset" &&
+        rootFallback.valuePx !== null
+    ) {
+        sourceVarNameUsed = "--scroll-offset";
+        valueRawUsed = rootFallback.valueRaw;
+        valuePxUsed = rootFallback.valuePx;
+        reason = "root:fallback-valid";
     }
 
-    const rootValue = readFromElement(document.documentElement);
-    if (rootValue !== null) return rootValue;
-    if (cssVarName === "--scroll-spy-offset") {
-        const rootFallback = parsePositivePx(
-            getComputedStyle(document.documentElement).getPropertyValue(
-                "--scroll-offset"
-            )
-        );
-        if (rootFallback !== null) return rootFallback;
+    if (isScrollSpyDebugEnabled() && shouldLogNow("offset:selection", 500)) {
+        dbg("offset:selection", {
+            cssVarNameRequested: cssVarName,
+            scopeSelector: scopeSelector ?? null,
+            sourceVarNameUsed,
+            valueRawUsed,
+            valuePxUsed,
+            reason,
+            candidates: {
+                scoped: {
+                    [cssVarName]: scopedPrimary,
+                    "--scroll-offset": scopedFallback,
+                },
+                root: {
+                    [cssVarName]: rootPrimary,
+                    "--scroll-offset": rootFallback,
+                },
+            },
+        });
     }
-    return fallbackPx;
+
+    return valuePxUsed ?? fallbackPx;
 };
 
 export const readScrollOffsetPx = (): number =>

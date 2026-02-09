@@ -19,6 +19,9 @@ type ScrollOffsetDiagnostics = {
     candidates: Record<string, CssVarDiagnostic>;
 };
 
+const isValidOffsetPx = (value: number | null): value is number =>
+    value !== null && Number.isFinite(value) && value > 0;
+
 const readCssVarRaw = (varName: string, el: HTMLElement): string | null => {
     const rawValue = getComputedStyle(el).getPropertyValue(varName).trim();
     return rawValue ? rawValue : null;
@@ -55,10 +58,10 @@ export const readScrollOffsetDiagnostics = (): ScrollOffsetDiagnostics => {
         ),
     };
 
-    const preferred = candidates["--scroll-offset"].valuePx !== null
-        ? "--scroll-offset"
-        : candidates["--scroll-spy-offset"].valuePx !== null
-          ? "--scroll-spy-offset"
+    const preferred = isValidOffsetPx(candidates["--scroll-spy-offset"].valuePx)
+        ? "--scroll-spy-offset"
+        : isValidOffsetPx(candidates["--scroll-offset"].valuePx)
+          ? "--scroll-offset"
           : null;
 
     return {
