@@ -29,9 +29,6 @@
     -webkit-filter: drop-shadow($rgba);
     filter: drop-shadow($rgba);
 }
-/*
-    @include drop-shadow(2px 3px rgba(0, 0, 0, 0.25));
-*/
 
 @mixin starting-style {
     transform: scaleX(0);
@@ -95,8 +92,6 @@
     -ms-transform: $transform;
     -o-transform: $transform;
 }
-// @include transform(scale(1.2));
 @mixin transition($properties, $duration, $timing-function) {
     transition: $properties $duration $timing-function;
 }
-// @include transition(all, 0.3s, ease);

@@ -56,20 +56,11 @@ export default function RootLayout({
                     media="(min-width: 1024px)"
                     fetchPriority="low"
                 />
-                {/* <script
-                    type="application/json"
-                    id="lazy-icon-data"
-                    src="/assets/iconsPaths.json"
-                    defer
-                    fetchPriority="low"
-                ></script> */}
             </head>
             <body className={`${Roboto.variable}`}>
-                {/* <SearchProvider> */}
                 <NavInterface />
                 <div className="fixed-menu" id="top"></div>
                 <main>{children}</main>
-                {/* </SearchProvider> */}
             </body>
         </html>
     );

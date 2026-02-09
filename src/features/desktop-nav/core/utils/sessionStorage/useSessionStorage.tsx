@@ -20,4 +20,3 @@ export default function useSessionStorage<T>(key: string, initialValue: T) {
 
     return [storedValue, setStoredValue] as const;
 }
-// //* const [name, setName] = useSessionStorage<string>("name", "Jérémy");
