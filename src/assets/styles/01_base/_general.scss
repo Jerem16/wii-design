@@ -252,21 +252,20 @@ main {
         --scroll-offset: $nav-bar-height;
     }
     main {
-        // margin: 90px 0 0 116px;
-        width: calc(100% - 116px);
+        width: calc(100% - $side-bar-width);
         min-height: calc(100vh - $nav-bar-height);
-        top: 90px;
-        left: 116px;
+        top: $nav-bar-height;
+        left: $side-bar-width;
     }
     .section {
         padding: 24px;
         min-height: 100vh;
     }
     .fixed-menu {
-        height: 90px;
+        height: 190px;
         width: 100vw;
-        opacity: 0.5;
         top: 0;
         display: block;
+        background: $nav-bg-black;
     }
 }

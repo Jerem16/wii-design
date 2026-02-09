@@ -44,12 +44,12 @@ const useNavigationState = () => {
         setOpenSubMenu,
         hamburgerMenuIsOpen,
         openHamburgerMenu,
-        closeHamburgerMenu,
+        closeHamburgerMenu
     };
 };
 
 export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
-    children,
+    children
 }) => {
     const navigationState = useNavigationState();
     return (

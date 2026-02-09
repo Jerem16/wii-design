@@ -1,26 +1,13 @@
 "use client";
 import { useEffect } from "react";
-import { scrollToHashWhenReady } from "./scrollSmooth";
+import { handleScrollClick } from "./scrollSmooth";
 
 export const useInitialScroll = (pathname: string | null) => {
     useEffect(() => {
         if (typeof window === "undefined") return;
-        const runInitialHashScroll = () => {
-            if (!window.location.hash) return;
+        if (window.location.hash) {
             window.scrollTo({ top: 0 });
-            scrollToHashWhenReady(window.location.hash);
-        };
-
-        const handleHashChange = () => {
-            if (!window.location.hash) return;
-            scrollToHashWhenReady(window.location.hash);
-        };
-
-        runInitialHashScroll();
-        window.addEventListener("hashchange", handleHashChange);
-
-        return () => {
-            window.removeEventListener("hashchange", handleHashChange);
-        };
+            handleScrollClick(window.location.hash.substring(1));
+        }
     }, [pathname]);
 };

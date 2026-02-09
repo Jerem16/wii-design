@@ -18,7 +18,7 @@ const ScrollProvider = ({ children }: ScrollProviderProps) => {
     const [activeSection, setActiveSection] = useState<string>("");
 
     const contextValue = useMemo(() => ({ activeSection, setActiveSection }), [
-        activeSection,
+        activeSection
     ]);
 
     return (

@@ -13,13 +13,13 @@ export const stopAndPrevent = (e: MinimalEvent) => {
     e.stopPropagation();
 };
 
-export const isActivationKey = (e: MinimalEvent) => e.key === "Enter" || e.key === " ";
+export const isActivationKey = (e: MinimalEvent) =>
+    e.key === "Enter" || e.key === " ";
 
 /** Gate prêt à l'emploi : ne passe que Enter/Espace */
-export const onlyActivation =
-    (keys: readonly string[] = ["Enter", " "]) =>
-    (e: MinimalEvent) =>
-        typeof e.key === "string" && keys.includes(e.key);
+export const onlyActivation = (keys: readonly string[] = ["Enter", " "]) => (
+    e: MinimalEvent
+) => typeof e.key === "string" && keys.includes(e.key);
 
 /* ---------- Debounce typé (aucun any) ---------- */
 
@@ -29,7 +29,10 @@ export type Debounced<A extends unknown[]> = ((...args: A) => void) & {
 };
 
 /** @__PURE__  Exécute `fn` après `wait` ms d'inactivité (trailing-only). */
-export function debounce<A extends unknown[]>(fn: (...args: A) => void, wait = 100): Debounced<A> {
+export function debounce<A extends unknown[]>(
+    fn: (...args: A) => void,
+    wait = 100
+): Debounced<A> {
     let timer: ReturnType<typeof setTimeout> | null = null;
     let lastArgs: A | null = null;
 
@@ -78,7 +81,10 @@ type WithPayload = BaseOpts & { withPayload: true };
 type NoPayload = BaseOpts & { withPayload?: false | undefined };
 
 /* ---- Overloads ergonomiques ---- */
-export function makeHandler(run: () => void, opts?: NoPayload): (e: MinimalEvent) => void;
+export function makeHandler(
+    run: () => void,
+    opts?: NoPayload
+): (e: MinimalEvent) => void;
 export function makeHandler<P>(
     run: (payload: P) => void,
     opts: WithPayload
@@ -141,18 +147,24 @@ export function makeHandler<P>(
 type HandlerOpts = Omit<BaseOpts, "withPayload">;
 
 /** Clic générique (debounce 100ms par défaut) */
-export const makeClickHandler = (run: () => void, opts?: HandlerOpts) => makeHandler(run, opts);
+export const makeClickHandler = (run: () => void, opts?: HandlerOpts) =>
+    makeHandler(run, opts);
 
 /** Clic avec payload (ex: path) */
-export const makePayloadClickHandler = <P>(run: (payload: P) => void, opts?: HandlerOpts) =>
-    makeHandler<P>(run, { ...opts, withPayload: true });
+export const makePayloadClickHandler = <P>(
+    run: (payload: P) => void,
+    opts?: HandlerOpts
+) => makeHandler<P>(run, { ...opts, withPayload: true });
 
 /** Clavier : déclenche uniquement sur Entrée/Espace */
-export const makeActivationHandler = <P>(run: (payload: P) => void, opts?: HandlerOpts) =>
+export const makeActivationHandler = <P>(
+    run: (payload: P) => void,
+    opts?: HandlerOpts
+) =>
     makeHandler<P>(run, {
         ...opts,
         withPayload: true,
         gate: opts?.gate ?? onlyActivation(),
         stopPrevent: false, // comme avant: pas de stopPropagation forcé
-        before: (e) => e.preventDefault?.(),
+        before: e => e.preventDefault?.()
     });

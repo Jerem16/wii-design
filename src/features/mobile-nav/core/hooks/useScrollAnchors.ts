@@ -1,17 +1,21 @@
 "use client";
-import { useEffect } from "react";
+
+import { useEffect, useRef } from "react";
 import { useScrollContext } from "../context/ScrollContext";
-import { scrollInView, addNewUrl, updateSectionClasses } from "../utils/sections";
 import { rafThrottle } from "../utils/rafThrottle";
+import { createScrollSpy, type SectionRef } from "../utils/sections";
+
 import type {
     ScrollWorkerData,
     ScrollWorkerResponse,
     SectionPosition,
 } from "../../../../workers/scrollWorker";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const useScrollAnchors = (_sections: { id: string }[]) => {
     const { setActiveSection } = useScrollContext();
+
+    const spyRef = useRef(createScrollSpy({ offset: 100 }));
+    const sectionsRef = useRef<SectionRef[]>([]);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -20,11 +24,17 @@ export const useScrollAnchors = (_sections: { id: string }[]) => {
             new URL("../../../../workers/scrollWorker.js", import.meta.url)
         );
 
-        let currentSections: { id: string }[] = [];
-
         const handleScroll = () => {
-            const nodes = Array.from(document.querySelectorAll<HTMLElement>("section[id]"));
-            currentSections = nodes.map((el) => ({ id: el.id }));
+            const nodes = Array.from(
+                document.querySelectorAll<HTMLElement>("section[id]")
+            );
+
+            const currentSections: SectionRef[] = nodes.map((el) => ({
+                id: el.id,
+            }));
+
+            sectionsRef.current = currentSections;
+
             const positions = currentSections.reduce<Record<string, SectionPosition>>(
                 (acc, { id }) => {
                     const section = document.getElementById(id);
@@ -44,22 +54,29 @@ export const useScrollAnchors = (_sections: { id: string }[]) => {
                 scrollY: window.scrollY,
                 positions,
             };
+
             worker.postMessage(data);
         };
 
         worker.onmessage = (event: MessageEvent<ScrollWorkerResponse>) => {
             const { currentSectionId } = event.data;
-            if (currentSectionId) {
-                scrollInView(currentSections);
-                addNewUrl(currentSectionId);
-                updateSectionClasses(currentSections, setActiveSection);
-            }
+
+            // Synchroniser l'ID calculé par le worker dans le spy (pas de recalcul main-thread)
+            spyRef.current.setCurrentSectionId(currentSectionId ?? null);
+
+            // Appliquer URL + classes
+            spyRef.current.addNewUrl();
+            spyRef.current.updateSectionClasses(
+                sectionsRef.current,
+                setActiveSection
+            );
         };
 
         const controller = new AbortController();
         const throttledScroll = rafThrottle(handleScroll);
 
         handleScroll();
+
         window.addEventListener("scroll", throttledScroll, {
             passive: true,
             signal: controller.signal,
