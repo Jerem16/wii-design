@@ -51,6 +51,7 @@ export const useWorkerScrollSpy = ({
     const computeRef = useRef<(() => void) | null>(null);
     const activeIdRef = useRef<HashId | undefined>(undefined);
     const protocolLoggedRef = useRef(false);
+    const offsetLoggedRef = useRef(false);
 
     const refresh = useCallback(() => {
         if (typeof window === "undefined") return;
@@ -90,6 +91,34 @@ export const useWorkerScrollSpy = ({
                 reason: "mount",
             });
         }
+        if (debugEnabled && !offsetLoggedRef.current) {
+            offsetLoggedRef.current = true;
+            const scrollOffsetRaw = getComputedStyle(
+                document.documentElement
+            )
+                .getPropertyValue("--scroll-offset")
+                .trim();
+            const scrollSpyOffsetRaw = getComputedStyle(
+                document.documentElement
+            )
+                .getPropertyValue("--scroll-spy-offset")
+                .trim();
+            const scrollOffsetPx = parseFloat(scrollOffsetRaw);
+            const scrollSpyOffsetPx = parseFloat(scrollSpyOffsetRaw);
+            dbg("offset:mount", {
+                scrollOffset: {
+                    raw: scrollOffsetRaw,
+                    px: Number.isNaN(scrollOffsetPx) ? null : scrollOffsetPx,
+                },
+                scrollSpyOffset: {
+                    raw: scrollSpyOffsetRaw,
+                    px: Number.isNaN(scrollSpyOffsetPx)
+                        ? null
+                        : scrollSpyOffsetPx,
+                },
+                offsetPxUsed: offsetPxRef.current,
+            });
+        }
 
         if (debugEnabled && !protocolLoggedRef.current) {
             protocolLoggedRef.current = true;
@@ -106,14 +135,18 @@ export const useWorkerScrollSpy = ({
             if (
                 source === "worker" &&
                 debugEnabled &&
+                previousActiveId !== nextId &&
                 shouldLogNow("worker:output", 200)
             ) {
                 dbg("worker:output", {
                     source,
-                    workerOut: { currentSectionId: nextId ?? null },
+                    workerOut: {
+                        keys: ["currentSectionId", "activeId"],
+                        currentSectionId: nextId ?? null,
+                        activeId: nextId ?? null,
+                    },
                     normalizedActiveId: nextId ?? null,
                     previousActiveId: previousActiveId ?? null,
-                    didChange: previousActiveId !== nextId,
                 });
             }
             setActiveId(nextId);
@@ -132,7 +165,7 @@ export const useWorkerScrollSpy = ({
             const workerScrollY =
                 effectiveScrollY + thresholdPx - workerBaseThresholdPx;
 
-            if (debugEnabled && shouldLogNow("scroll:input", 200)) {
+            if (debugEnabled && shouldLogNow("scroll:input", 300)) {
                 const firstSection = sections[0];
                 const lastSection = sections[sections.length - 1];
                 const samples = [firstSection, lastSection]
@@ -146,8 +179,13 @@ export const useWorkerScrollSpy = ({
                 dbg("scroll:input", {
                     rawScrollY,
                     offsetPx,
+                    offsetPxUsed: offsetPx,
                     thresholdPx,
                     effectiveScrollY,
+                    workerInputKeys: Object.keys({
+                        sections,
+                        scrollY: workerScrollY,
+                    }),
                     sectionsCount: sections.length,
                     firstSectionTop: firstSection?.top ?? null,
                     lastSectionTop: lastSection?.top ?? null,
