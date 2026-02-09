@@ -1,15 +1,29 @@
 "use client";
 
 import { useEffect } from "react";
-import { handleScrollClick } from "@/features/desktop-nav/core/utils/fnScrollUtils";
+import { scrollToHashWhenReady } from "@/features/desktop-nav/core/utils/fnScrollUtils";
 import { resetDesktopMenuClasses } from "@/features/desktop-nav/adapters/resetDesktopMenuClasses";
 
 export const useInitialScrollDesktop = (pathname: string | null) => {
     useEffect(() => {
-        if (window.location.hash) {
+        const runInitialHashScroll = () => {
+            if (!window.location.hash) return;
             window.scrollTo({ top: 0 });
-            handleScrollClick(window.location.hash.substring(1));
-        }
+            scrollToHashWhenReady(window.location.hash);
+        };
+
+        const handleHashChange = () => {
+            if (!window.location.hash) return;
+            scrollToHashWhenReady(window.location.hash);
+        };
+
+        runInitialHashScroll();
+        window.addEventListener("hashchange", handleHashChange);
+
         resetDesktopMenuClasses();
+
+        return () => {
+            window.removeEventListener("hashchange", handleHashChange);
+        };
     }, [pathname]);
 };
