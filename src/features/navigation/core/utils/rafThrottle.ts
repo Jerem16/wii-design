@@ -1,1 +1,1 @@
-export * from "../../shared/utils/rafThrottle";
+export * from "../../../mobile-nav/core/utils/rafThrottle";
