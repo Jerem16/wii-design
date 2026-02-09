@@ -2,21 +2,19 @@ export type DebugPayload = Record<string, unknown>;
 
 const logTimestamps = new Map<string, number>();
 
-export const isScrollSpyDebugEnabled = (): boolean => {
+export const isDebug = (): boolean => {
     if (typeof window === "undefined") return false;
     try {
-        if (window.localStorage.getItem("DEBUG_SCROLL_SPY") === "1") {
-            return true;
-        }
+        return window.localStorage.getItem("DEBUG_SCROLL_SPY") === "1";
     } catch {
         return false;
     }
-    const search = window.location?.search ?? "";
-    return new URLSearchParams(search).get("debugScrollSpy") === "1";
 };
 
+export const isScrollSpyDebugEnabled = isDebug;
+
 export const dbg = (event: string, data?: DebugPayload): void => {
-    if (!isScrollSpyDebugEnabled()) return;
+    if (!isDebug()) return;
     console.log("[SCROLL_SPY_DEBUG]", event, data ?? {});
 };
 

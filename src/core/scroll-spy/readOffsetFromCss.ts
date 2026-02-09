@@ -38,9 +38,24 @@ export const readOffsetPxFromCssVar = ({
         : null;
     const scopedValue = readFromElement(scopedElement);
     if (scopedValue !== null) return scopedValue;
+    if (cssVarName === "--scroll-spy-offset" && scopedElement) {
+        const scopedFallback = parsePositivePx(
+            getComputedStyle(scopedElement).getPropertyValue("--scroll-offset")
+        );
+        if (scopedFallback !== null) return scopedFallback;
+    }
 
     const rootValue = readFromElement(document.documentElement);
-    return rootValue ?? fallbackPx;
+    if (rootValue !== null) return rootValue;
+    if (cssVarName === "--scroll-spy-offset") {
+        const rootFallback = parsePositivePx(
+            getComputedStyle(document.documentElement).getPropertyValue(
+                "--scroll-offset"
+            )
+        );
+        if (rootFallback !== null) return rootFallback;
+    }
+    return fallbackPx;
 };
 
 export const readScrollOffsetPx = (): number =>
