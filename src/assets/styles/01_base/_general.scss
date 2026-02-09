@@ -252,6 +252,7 @@ main {
 @media (min-width: 1024px) {
     :root {
         --scroll-offset: $nav-bar-height;
+        --scroll-spy-offset: var(--scroll-offset);
     }
     main {
         margin: $nav-bar-height 0 0 $side-bar-width;
