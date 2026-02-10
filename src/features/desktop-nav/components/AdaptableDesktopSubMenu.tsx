@@ -3,8 +3,8 @@
 import { memo, useMemo } from "react";
 import type { KeyboardEvent, MouseEvent } from "react";
 import type { MenuItem } from "@/features/desktop-nav/data/interfaces/menu";
-import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
-import { makeInteractionHandlers } from "@/features/desktop-nav/core/utils/handlers";
+import { useNavigation } from "@/features/desktop-nav/core/navigation/context/NavigationContext";
+import { makeInteractionHandlers } from "@/features/desktop-nav/core/navigation/utils/handlers";
 
 interface DesktopSubMenuProps {
     menuItem: MenuItem;

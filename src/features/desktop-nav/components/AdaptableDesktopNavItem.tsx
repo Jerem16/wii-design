@@ -4,10 +4,10 @@ import { memo, useMemo } from "react";
 import type { FocusEvent, KeyboardEvent, MouseEvent } from "react";
 import type { MenuItem } from "@/features/desktop-nav/data/interfaces/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
-import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
-import { isActivationKey } from "@/features/desktop-nav/core/utils/handlers";
+import { useNavigation } from "@/features/desktop-nav/core/navigation/context/NavigationContext";
+import { isActivationKey } from "@/features/desktop-nav/core/navigation/utils/handlers";
 import AdaptableDesktopSubMenu from "./AdaptableDesktopSubMenu";
-import { getShowClass, getShowGroupClass } from "./menuClassUtils";
+import { getShowClass, getShowGroupClass } from "../menuClassUtils";
 
 interface AdaptableDesktopNavItemProps {
     menuItem: MenuItem;

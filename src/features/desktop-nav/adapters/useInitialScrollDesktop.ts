@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { scrollToHashWhenReady } from "@/features/desktop-nav/core/utils/fnScrollUtils";
+import { scrollToHashWhenReady } from "@/features/desktop-nav/core/navigation/utils/fnScrollUtils";
 import { resetDesktopMenuClasses } from "@/features/desktop-nav/adapters/resetDesktopMenuClasses";
 
 export const useInitialScrollDesktop = (pathname: string | null) => {
