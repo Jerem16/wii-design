@@ -1,8 +1,8 @@
 "use client";
 import { memo } from "react";
 import MobileNav from "./MobileNav";
-import { NavigationProvider } from "@/features/mobile-nav/core/context/NavigationContext";
-import ScrollProvider from "@/features/mobile-nav/core/context/ScrollContext";
+import { NavigationProvider } from "@/features/mobile-nav/core/navigation/context/NavigationContext";
+import ScrollProvider from "@/features/mobile-nav/core/navigation/context/ScrollContext";
 
 const MobileNavWithProviders = () => {
     return (

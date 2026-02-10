@@ -9,7 +9,7 @@ import type {
     ScrollWorkerData,
     ScrollWorkerResponse,
     SectionPosition,
-} from "../../../../workers/scrollWorker";
+} from "../../../../../workers/scrollWorker";
 
 export const useScrollAnchors = (_sections: { id: string }[]) => {
     const { setActiveSection } = useScrollContext();
@@ -21,7 +21,7 @@ export const useScrollAnchors = (_sections: { id: string }[]) => {
         if (typeof window === "undefined") return;
 
         const worker = new Worker(
-            new URL("../../../../workers/scrollWorker.js", import.meta.url)
+            new URL("../../../../../workers/scrollWorker.js", import.meta.url)
         );
 
         const handleScroll = () => {

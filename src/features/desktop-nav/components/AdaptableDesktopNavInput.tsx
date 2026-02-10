@@ -5,11 +5,11 @@ import type { KeyboardEvent } from "react";
 import { useRouter } from "next/navigation";
 import type { MenuItem } from "@/features/desktop-nav/data/interfaces/menu";
 import { svgComponents } from "@/features/mobile-nav/components/svgComponents";
-import useSearchHandler from "@/features/desktop-nav/hooks/useSearchHandler";
-import { useSearch } from "@/features/desktop-nav/core/context/SearchContext";
-import searchQuery from "@/features/desktop-nav/core/utils/searchMenu";
-import { getShowClass, getShowGroupClass } from "./menuClassUtils";
-import { isActivationKey } from "@/features/desktop-nav/core/utils/handlers";
+import useSearchHandler from "@/features/desktop-nav/core/search/hooks/useSearchHandler";
+import { useSearch } from "@/features/desktop-nav/core/search/context/SearchContext";
+import searchQuery from "@/features/desktop-nav/core/search/utils/searchMenu";
+import { getShowClass, getShowGroupClass } from "../menuClassUtils";
+import { isActivationKey } from "@/features/desktop-nav/core/navigation/utils/handlers";
 
 interface AdaptableDesktopNavInputProps {
     menuItem: MenuItem;

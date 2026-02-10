@@ -1,7 +1,7 @@
 import type {
     ScrollSmoothWorkerData,
     ScrollSmoothWorkerResponse,
-} from "../../../../workers/scrollSmoothWorker";
+} from "../../../../../workers/scrollSmoothWorker";
 
 type ScrollOffsetOptions = {
     /**
@@ -62,7 +62,7 @@ export const handleScrollClick = (targetId: string): void => {
     const startTime = performance.now();
 
     const worker = new Worker(
-        new URL("../../../../workers/scrollSmoothWorker.js", import.meta.url)
+        new URL("../../../../../workers/scrollSmoothWorker.js", import.meta.url)
     );
 
     const animateScroll = (currentTime: number): void => {

@@ -1,5 +1,5 @@
 import type { MenuItem, MenuLinks } from "@/features/desktop-nav/data/interfaces/menu";
-import { updateMenuClasses } from "@/features/desktop-nav/core/utils/updateMenuUtils";
+import { updateMenuClasses } from "@/features/desktop-nav/core/search/utils/updateMenuUtils";
 
 export interface DesktopMenuLinks {
     mainLink: MenuItem[];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { resetActiveMenuClasses } from "../utils/updateMenuUtils";
+import { resetActiveMenuClasses } from "../../search/utils/updateMenuUtils";
 import { handleScrollClick } from "../utils/fnScrollUtils";
 
 export const useDesktopInitialScroll = (pathname: string | null) => {

@@ -1,7 +1,7 @@
-import type { MenuItem, SubItem } from "../../data/interfaces/menu";
+import type { MenuItem, SubItem } from "../../../data/interfaces/menu";
 import { useEffect, useRef, useCallback } from "react";
 import type { Dispatch, RefObject, SetStateAction } from "react";
-import { useNavigation } from "../context/NavigationContext";
+import { useNavigation } from "../../navigation/context/NavigationContext";
 
 export const isMainItemActive = (
     itemPath: string,

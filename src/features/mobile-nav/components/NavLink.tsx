@@ -2,9 +2,9 @@
 import { useMemo, memo } from "react";
 import dynamic from "next/dynamic";
 import type { MenuItem } from "../data/menuItems";
-import { useNavigation } from "@/features/mobile-nav/core/context/NavigationContext";
+import { useNavigation } from "@/features/mobile-nav/core/navigation/context/NavigationContext";
 import { svgComponents } from "./svgComponents";
-import { makeClickHandler } from "@/features/mobile-nav/core/utils/handlers";
+import { makeClickHandler } from "@/features/mobile-nav/core/navigation/utils/handlers";
 
 const LazySubMenu = dynamic<{
     menuItem: MenuItem;

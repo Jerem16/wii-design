@@ -1,9 +1,9 @@
 import { useState, useCallback } from "react";
-import { useSearch } from "../core/context/SearchContext";
-import searchQuery from "../core/utils/searchMenu";
-import { filterSuggestions, SearchItem } from "../core/utils/searchUtils";
+import { useSearch } from "../context/SearchContext";
+import searchQuery from "../utils/searchMenu";
+import { filterSuggestions, SearchItem } from "../utils/searchUtils";
 import { useRouter } from "next/navigation";
-import { useURLParams } from "../core/utils/useURLParams";
+import { useURLParams } from "../../navigation/utils/useURLParams";
 
 const useSearchHandler = (router: ReturnType<typeof useRouter>) => {
     const { menuData, setResults, query, setQuery } = useSearch();

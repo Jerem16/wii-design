@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import type { RefObject } from "react";
-import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
+import { useNavigation } from "@/features/desktop-nav/core/navigation/context/NavigationContext";
 
 const handleClickOutside = (
     event: MouseEvent,

@@ -1,5 +1,5 @@
 import { useCallback, useMemo, memo } from "react";
-import { useNavigation } from "@/features/mobile-nav/core/context/NavigationContext";
+import { useNavigation } from "@/features/mobile-nav/core/navigation/context/NavigationContext";
 import MenuList from "./MenuList";
 import type { MenuItem } from "../data/menuItems";
 interface NavProps {
