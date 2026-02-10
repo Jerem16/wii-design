@@ -1,0 +1,362 @@
+[
+  {
+    "file": "src/assets/data/utils/attachContent.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/00-Header/NavLink.jsx",
+    "status": "REJETÉ (utilisé)",
+    "tsc_rc": 2,
+    "build_rc": null,
+    "tsc_tail": "src/components/shared/nav-link/index.ts(1,10): error TS2305: Module '\"@/components/00-Header/NavLink\"' has no exported member 'default'.",
+    "build_tail": "skipped (tsc failed)"
+  },
+  {
+    "file": "src/components/00-Header/Navbar.jsx",
+    "status": "REJETÉ (utilisé)",
+    "tsc_rc": 2,
+    "build_rc": null,
+    "tsc_tail": "src/features/desktop-nav/index.ts(2,10): error TS2305: Module '\"@/components/00-Header/Navbar\"' has no exported member 'default'.",
+    "build_tail": "skipped (tsc failed)"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/GlobalLogoDefs.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/SearchClose.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/R1.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/R2.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/R3.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/R4.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/R5.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/R6.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/W1.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/W2.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/W3.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/W4.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/W5.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/sideBar/preload/W6.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/social/Twitter.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/utils/Arrow.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/99-Svg_Icon/utils/CheckedIcon.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/Legal/DevLegalNotices.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/Legal/PrivacyPolicy.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/Legal/RegistrationAndVAT.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/Legal/TermsOfUse.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/button/Button.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/error-404/Error401.jsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/shared/data/index.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/shared/index.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/components/shared/logo/index.ts",
+    "status": "REJETÉ (utilisé)",
+    "tsc_rc": 2,
+    "build_rc": null,
+    "tsc_tail": "src/features/desktop-nav/index.ts(7,10): error TS2305: Module '\"@/components/shared/logo\"' has no exported member 'Logo'.",
+    "build_tail": "skipped (tsc failed)"
+  },
+  {
+    "file": "src/components/shared/nav-link/index.ts",
+    "status": "REJETÉ (utilisé)",
+    "tsc_rc": 2,
+    "build_rc": null,
+    "tsc_tail": "src/features/desktop-nav/index.ts(6,10): error TS2305: Module '\"@/components/shared/nav-link\"' has no exported member 'NavLink'.",
+    "build_tail": "skipped (tsc failed)"
+  },
+  {
+    "file": "src/features/desktop-nav/adaptableMenuUtils.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/desktop-nav/core/navigation/hooks/useDesktopInitialScroll.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/desktop-nav/core/navigation/utils/addScrollListener.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/desktop-nav/data/sections.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/desktop-nav/index.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/desktop-nav/useAdaptableMenu.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/desktop-nav/useAdaptableResize.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/mobile-nav/components/MobileNavWithProviders.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/mobile-nav/types/scrollSmoothWorker.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/features/mobile-nav/types/scrollWorker.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/hooks/useTimeoutWorker.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/utils/addScrollListener.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/utils/getSectionIds.ts",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/utils/localStorage/boolean-convertor/useLocalStorageBoolean.tsx",
+    "status": "UNUSED validé",
+    "tsc_rc": 0,
+    "build_rc": 0,
+    "tsc_tail": "",
+    "build_tail": "  ├ chunks/1684-136a134e690724b9.js      45.8 kB\n  ├ chunks/4bd1b696-1f481c743e5447ff.js  53.2 kB\n  └ other shared chunks (total)          2.22 kB\n\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n"
+  },
+  {
+    "file": "src/utils/useIsBrowser.ts",
+    "status": "REJETÉ (utilisé)",
+    "tsc_rc": 2,
+    "build_rc": null,
+    "tsc_tail": "src/utils/localStorage/boolean-convertor/useLocalStorageBoolean.tsx(1,59): error TS1192: Module '\"/workspace/wii-design/src/utils/useIsBrowser\"' has no default export.",
+    "build_tail": "skipped (tsc failed)"
+  }
+]
