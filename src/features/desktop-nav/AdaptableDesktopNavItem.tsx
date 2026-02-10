@@ -55,56 +55,62 @@ const AdaptableDesktopNavItem = ({
         setOpenSubMenu(menuItem.id);
     };
 
+    const isActivationKey = (key: string): boolean =>
+        key === "Enter" || key === " " || key === "Spacebar";
+    
     const renderLink = () => {
         const headLinkClassName = `head-link ${menuItem.class ?? ""}`;
+        const targetHref = `${menuItem.path}${menuItem.AnchorId ?? ""}`;
+    
+        const shouldNavigateWhenSubMenuOpen = (
+            anchorEl: HTMLAnchorElement
+        ): boolean => {
+            if (!hasSubMenu) return false;
+    
+            if (openSubMenu === menuItem.id) return true;
+    
+            const root = anchorEl.closest(".group_link-submenu");
+            return Boolean(root?.querySelector(".submenu.open"));
+        };
+    
+        const activateHeadLink = (anchorEl: HTMLAnchorElement) => {
+            if (hasSubMenu) {
+                // Sous-menu déjà ouvert => 2e clic / activation => navigate
+                if (shouldNavigateWhenSubMenuOpen(anchorEl)) {
+                    setOpenSubMenu(null);
+                    onNavigationClick(targetHref);
+                    return;
+                }
+    
+                // 1er clic => ouvre/toggle sous-menu (comportement actuel)
+                handleMenuClick(menuItem.id);
+                return;
+            }
+    
+            // Pas de sous-menu => navigate direct + comportement actuel (toggle/close)
+            onNavigationClick(targetHref);
+            handleMenuClick(menuItem.id);
+        };
+    
+        const onHeadLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
+            event.preventDefault();
+            activateHeadLink(event.currentTarget);
+        };
+    
+        const onHeadLinkKeyDown = (event: KeyboardEvent<HTMLAnchorElement>) => {
+            if (!isActivationKey(event.key)) return;
+            event.preventDefault();
+            activateHeadLink(event.currentTarget);
+        };
+    
         return (
             <a
                 role={!showNavLinks ? "menuitem" : "link"}
                 aria-label={`Page ${menuItem.title}`}
                 className={headLinkClassName}
                 href={menuItem.path}
-                onClick={(event) => {
-                    event.preventDefault();
-                    if (hasSubMenu) {
-                        if (
-                            menuItem.class?.includes("active") &&
-                            openSubMenu === menuItem.id
-                        ) {
-                            onNavigationClick(
-                                menuItem.path + (menuItem.AnchorId ?? "")
-                            );
-                            return;
-                        }
-                        handleMenuClick(menuItem.id);
-                        return;
-                    }
-                    onNavigationClick(
-                        menuItem.path + (menuItem.AnchorId ?? "")
-                    );
-                    handleMenuClick(menuItem.id);
-                }}
-                onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                        event.preventDefault();
-                        if (hasSubMenu) {
-                            if (
-                                menuItem.class?.includes("active") &&
-                                openSubMenu === menuItem.id
-                            ) {
-                                onNavigationClick(
-                                    menuItem.path + (menuItem.AnchorId ?? "")
-                                );
-                                return;
-                            }
-                            handleMenuClick(menuItem.id);
-                            return;
-                        }
-                        onNavigationClick(
-                            menuItem.path + (menuItem.AnchorId ?? "")
-                        );
-                        handleMenuClick(menuItem.id);
-                    }
-                }}
+                onClick={onHeadLinkClick}
+                onKeyDown={onHeadLinkKeyDown}
                 tabIndex={0}
                 onMouseEnter={hoverInteraction}
                 onFocus={hoverInteraction}
@@ -116,6 +122,8 @@ const AdaptableDesktopNavItem = ({
             </a>
         );
     };
+    
+
 
     const renderSubMenu = () => {
         if (!menuItem.subItems?.length) return null;
@@ -150,9 +158,8 @@ const AdaptableDesktopNavItem = ({
             tabIndex={0}
             onClick={handleInteraction}
             onKeyDown={(event) => {
-                if (event.key === "Enter" || event.key === " ") {
-                    handleInteraction(event);
-                }
+                if (!isActivationKey(event.key)) return;
+                handleInteraction(event);
             }}
             onMouseEnter={onMouseEnter}
             onFocus={onFocus}
