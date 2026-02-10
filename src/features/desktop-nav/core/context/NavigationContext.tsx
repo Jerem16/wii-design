@@ -2,13 +2,13 @@
 
 import React, {
     createContext,
-    useContext,
     useState,
     useMemo,
     useCallback,
-    useEffect,
+    useEffect
 } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { createUseContext } from "@/features/navigation/core/context/utils/createUseContext";
 
 interface NavigationContextType {
     currentRoute: string;
@@ -20,7 +20,9 @@ interface NavigationContextType {
     resetDisplayStyles: () => void;
 }
 
-const NavigationContext = createContext<NavigationContextType | null>(null);
+const NavigationContext = createContext<NavigationContextType | undefined>(
+    undefined
+);
 
 const getPathnameFromRoute = (route: string): string => {
     const [pathnamePart] = route.split("#");
@@ -35,27 +37,24 @@ const shouldUpdateRouteFromPathname = (
     pathname: string
 ): boolean => getPathnameFromRoute(currentRoute) !== pathname;
 
-export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
-    children,
-}) => {
+export const NavigationProvider: React.FC<{
+    children: React.ReactNode;
+}> = ({ children }) => {
     const router = useRouter();
     const pathname = usePathname();
+
     const [currentRoute, setCurrentRoute] = useState(pathname || "/");
     const [openSubMenu, setOpenSubMenu] = useState<string | null>(null);
     const [showNavLinks, setShowNavLinks] = useState<boolean>(true);
 
-    // Fonction pour réinitialiser l'affichage des sous-menus
     const resetDisplayStyles = useCallback(() => {
-        setOpenSubMenu(null); // Ferme tous les sous-menus
+        setOpenSubMenu(null);
     }, []);
 
     useEffect(() => {
         const nextRoute = pathname || "/";
         setCurrentRoute(prev => {
-            const shouldUpdate = shouldUpdateRouteFromPathname(
-                prev,
-                nextRoute
-            );
+            const shouldUpdate = shouldUpdateRouteFromPathname(prev, nextRoute);
             return shouldUpdate ? nextRoute : prev;
         });
     }, [pathname]);
@@ -76,14 +75,14 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
             setOpenSubMenu,
             resetDisplayStyles,
             showNavLinks,
-            setShowNavLinks,
+            setShowNavLinks
         }),
         [
             currentRoute,
             updateRoute,
             openSubMenu,
             resetDisplayStyles,
-            showNavLinks,
+            showNavLinks
         ]
     );
 
@@ -94,12 +93,7 @@ export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
     );
 };
 
-export const useNavigation = () => {
-    const context = useContext(NavigationContext);
-    if (!context) {
-        throw new Error(
-            "useNavigation must be used within a NavigationProvider"
-        );
-    }
-    return context;
-};
+export const useNavigation = createUseContext(
+    NavigationContext,
+    "useNavigation"
+);

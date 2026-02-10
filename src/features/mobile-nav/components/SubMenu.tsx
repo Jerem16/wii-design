@@ -26,11 +26,6 @@ const SubMenu = ({ menuItem, isOpen, onSubItemClick }: SubMenuProps) => {
         [onSubItemClick, closeHamburgerMenu]
     );
 
-    const handleKeyDown = useMemo(
-        () => makeActivationHandler<string>(onSubItemClick),
-        [onSubItemClick]
-    );
-
     if (!menuItem.subItems || menuItem.subItems.length === 0) return null;
 
     return (
@@ -47,7 +42,6 @@ const SubMenu = ({ menuItem, isOpen, onSubItemClick }: SubMenuProps) => {
                                 className={`mnav__sublink ${subItem.class}`}
                                 tabIndex={0}
                                 onClick={(e) => handleSubItemClick(fullPath, e)}
-                                onKeyDown={(e) => handleKeyDown(fullPath, e)}
                             >
                                 {subItem.title}
                             </a>

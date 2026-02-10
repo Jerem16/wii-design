@@ -9,6 +9,7 @@ import useSearchHandler from "@/features/desktop-nav/hooks/useSearchHandler";
 import { useSearch } from "@/features/desktop-nav/core/context/SearchContext";
 import searchQuery from "@/features/desktop-nav/core/utils/searchMenu";
 import { getShowClass, getShowGroupClass } from "./menuClassUtils";
+import { isActivationKey } from "@/features/desktop-nav/core/utils/handlers";
 
 interface AdaptableDesktopNavInputProps {
     menuItem: MenuItem;
@@ -37,12 +38,10 @@ const AdaptableDesktopNavInput = ({
     const router = useRouter();
     const { menuData } = useSearch();
     const listboxId = "search-subresults";
-    const {
-        query,
-        handleSearch,
-        handleSubmit,
-        isSubResultOpen,
-    } = useSearchHandler(router);
+
+    const { query, handleSearch, handleSubmit, isSubResultOpen } =
+        useSearchHandler(router);
+
     const SvgIcon = svgComponents[menuItem.svg as keyof typeof svgComponents];
     const [isInputFocused, setIsInputFocused] = useState(false);
     const blurTimeoutRef = useRef<number | null>(null);
@@ -75,10 +74,9 @@ const AdaptableDesktopNavInput = ({
         (isSubResultOpen || displayedResults.length > 0);
 
     const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-        if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            onMenuToggle(menuItem.id);
-        }
+        if (!isActivationKey(event.key)) return;
+        event.preventDefault();
+        onMenuToggle(menuItem.id);
     };
 
     const clearBlurTimeout = () => {
@@ -104,13 +102,13 @@ const AdaptableDesktopNavInput = ({
     const buildResultHref = (result: LiveResult) => {
         if (!result.path) return "";
         if (!result.go) return result.path;
+
         if (result.path.includes("#")) {
             const [basePath, hash] = result.path.split("#");
-            const goValue = result.go.startsWith("?")
-                ? result.go
-                : `?${result.go}`;
+            const goValue = result.go.startsWith("?") ? result.go : `?${result.go}`;
             return `${basePath}${goValue}#${hash}`;
         }
+
         return `${result.path}${result.go}`;
     };
 
@@ -191,9 +189,7 @@ const AdaptableDesktopNavInput = ({
                                                 event.preventDefault();
                                                 handleResultNavigation(result);
                                             }}
-                                            onClick={() =>
-                                                handleResultNavigation(result)
-                                            }
+                                            onClick={() => handleResultNavigation(result)}
                                         >
                                             {result.text}
                                         </button>
@@ -215,9 +211,9 @@ const AdaptableDesktopNavInput = ({
                             </div>
                         ) : null}
                     </>
-                ) : (
-                    SvgIcon ? <SvgIcon /> : null
-                )}
+                ) : SvgIcon ? (
+                    <SvgIcon />
+                ) : null}
             </form>
         </div>
     );

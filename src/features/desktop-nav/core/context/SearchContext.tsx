@@ -1,12 +1,7 @@
 "use client";
 
-import React, {
-    createContext,
-    useContext,
-    useState,
-    useEffect,
-    useMemo,
-} from "react";
+import React, { createContext, useState, useEffect, useMemo } from "react";
+import { createUseContext } from "@/features/navigation/core/context/utils/createUseContext";
 import { initializeMenuWithContent } from "../utils/initializeMenu";
 import { MenuLinks } from "../../data/interfaces/menu";
 
@@ -28,7 +23,7 @@ interface SearchContextType {
 const SearchContext = createContext<SearchContextType | undefined>(undefined);
 
 export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
-    children,
+    children
 }) => {
     const [results, setResults] = useState<Result[]>([]);
     const [menuData, setMenuData] = useState<MenuLinks | null>(null);
@@ -41,7 +36,7 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
 
     const contextValue: SearchContextType = useMemo(
         () => ({ results, setResults, menuData, query, setQuery }),
-        [results, setResults, menuData, query]
+        [results, menuData, query]
     );
 
     return (
@@ -51,10 +46,4 @@ export const SearchProvider: React.FC<{ children: React.ReactNode }> = ({
     );
 };
 
-export const useSearch = (): SearchContextType => {
-    const context = useContext(SearchContext);
-    if (!context) {
-        throw new Error("useSearch must be used within a SearchProvider");
-    }
-    return context;
-};
+export const useSearch = createUseContext(SearchContext, "useSearch");

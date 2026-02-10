@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import { useNavigation } from "@/features/desktop-nav/core/context/NavigationContext";
 
 const handleClickOutside = (
     event: MouseEvent,
-    navRef: React.RefObject<HTMLElement | null>,
+    navRef: RefObject<HTMLElement | null>,
     setOpenSubMenu: (value: string | null) => void
 ) => {
     if (navRef.current && !navRef.current.contains(event.target as Node)) {
@@ -40,7 +41,7 @@ export const useAdaptableMenu = () => {
             document.removeEventListener("mousedown", onClickOutside);
             document.removeEventListener("keydown", onKeyDown);
         };
-    }, [openSubMenu, setOpenSubMenu]);
+    }, [setOpenSubMenu]);
 
     return { navRef, openSubMenu, setOpenSubMenu };
 };
