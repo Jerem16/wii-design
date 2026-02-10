@@ -4,8 +4,8 @@
   "entryCount": 31,
   "protectedCount": 0,
   "scssReachableCount": 16,
-  "keepCount": 184,
-  "deleteCandidatesCount": 349,
+  "keepCount": 187,
+  "deleteCandidatesCount": 88,
   "examples": {
     "entries": [
       "app/layout.tsx",
@@ -16,8 +16,8 @@
       "app/about/error.tsx",
       "app/about/loading.tsx",
       "app/about/page.tsx",
-      "app/achievements/error.tsx",
-      "app/achievements/loading.tsx"
+      "app/contact/error.tsx",
+      "app/contact/loading.tsx"
     ],
     "keep": [
       "app/MetaData.js",

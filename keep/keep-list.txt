@@ -32,14 +32,6 @@ app/search/page.tsx
 app/services/error.tsx
 app/services/loading.tsx
 app/services/page.tsx
-src/adaptable/src/components/button/ButtonLink.tsx
-src/adaptable/src/components/svg_Icon/social/Facebook.jsx
-src/adaptable/src/components/svg_Icon/social/Instagram.jsx
-src/adaptable/src/components/svg_Icon/social/Linkedin.jsx
-src/adaptable/src/components/svg_Icon/social/TikTok.jsx
-src/adaptable/src/components/svg_Icon/social/WhatsApp.jsx
-src/adaptable/src/components/svg_Icon/social/Youtube.jsx
-src/adaptable/src/home/contact-section/socialSvgComponents.ts
 src/assets/data/sideIcons.json
 src/assets/styles/00_utils/_fonts.scss
 src/assets/styles/00_utils/_functions.scss
@@ -91,6 +83,12 @@ src/components/99-Svg_Icon/sideBar/SideBodyIcon.tsx
 src/components/99-Svg_Icon/sideBar/SideIcon.jsx
 src/components/99-Svg_Icon/sideBar/StrategicFramework.jsx
 src/components/99-Svg_Icon/sideBar/SupportFollow.jsx
+src/components/99-Svg_Icon/social/Facebook.jsx
+src/components/99-Svg_Icon/social/Instagram.jsx
+src/components/99-Svg_Icon/social/Linkedin.jsx
+src/components/99-Svg_Icon/social/TikTok.jsx
+src/components/99-Svg_Icon/social/WhatsApp.jsx
+src/components/99-Svg_Icon/social/Youtube.jsx
 src/components/99-Svg_Icon/utils/MenuIcon.tsx
 src/components/Legal/ApplicableLaw.tsx
 src/components/Legal/CompanyDetailsInfo.tsx
@@ -102,6 +100,7 @@ src/components/Legal/SiteEditorCreator.tsx
 src/components/Legal/SiteHost.tsx
 src/components/PrivacyPolicy.tsx
 src/components/TermsOfUse.tsx
+src/components/button/ButtonLink.tsx
 src/components/error-404/Error404.jsx
 src/components/error-404/error.scss
 src/components/loader/Loader.jsx
@@ -120,9 +119,11 @@ src/features/desktop-nav/core/context/ScrollContext.tsx
 src/features/desktop-nav/core/context/SearchContext.tsx
 src/features/desktop-nav/core/hooks/useDesktopScrollAnchors.ts
 src/features/desktop-nav/core/utils/fnScrollUtils.ts
+src/features/desktop-nav/core/utils/handlers.ts
 src/features/desktop-nav/core/utils/initializeMenu.ts
 src/features/desktop-nav/core/utils/searchMenu.js
 src/features/desktop-nav/core/utils/searchUtils.ts
+src/features/desktop-nav/core/utils/sections.ts
 src/features/desktop-nav/core/utils/sessionStorage/useSessionStorage.tsx
 src/features/desktop-nav/core/utils/updateMenuUtils.ts
 src/features/desktop-nav/core/utils/useIsBrowser.ts
@@ -134,6 +135,7 @@ src/features/desktop-nav/data/content/index.ts
 src/features/desktop-nav/data/content/info.ts
 src/features/desktop-nav/data/content/services.ts
 src/features/desktop-nav/data/content/slider.ts
+src/features/desktop-nav/data/content/socialSvgComponents.ts
 src/features/desktop-nav/data/interfaces/content.ts
 src/features/desktop-nav/data/interfaces/menu.ts
 src/features/desktop-nav/data/menuItems.ts
@@ -164,6 +166,7 @@ src/features/mobile-nav/data/menuItems.ts
 src/features/mobile-nav/types/menu.ts
 src/features/navigation/core/context/NavigationContext.tsx
 src/features/navigation/core/context/ScrollContext.tsx
+src/features/navigation/core/context/utils/createUseContext.tsx
 src/features/navigation/core/hooks/useScrollAnchors.ts
 src/features/navigation/core/hooks/useSmoothScroll.ts
 src/features/navigation/core/utils/handlers.ts
