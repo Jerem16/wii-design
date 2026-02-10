@@ -1,0 +1,343 @@
+{
+  "stats": {
+    "totalSrcFiles": 218,
+    "used": 132,
+    "unusedConfirmed": 45,
+    "unusedProbable": 5,
+    "uncertain": 36
+  },
+  "usedFiles": [
+    "src/assets/data/sideIcons.json",
+    "src/assets/styles/main.scss",
+    "src/components/00-Header/Copyright.jsx",
+    "src/components/00-Header/Logo.jsx",
+    "src/components/00-Header/LogoContent.tsx",
+    "src/components/00-Header/NavInterface.jsx",
+    "src/components/00-Header/SideInterface.jsx",
+    "src/components/00-Header/Sidebar.jsx",
+    "src/components/99-Svg_Icon/Blog.jsx",
+    "src/components/99-Svg_Icon/Connection.jsx",
+    "src/components/99-Svg_Icon/Contact.jsx",
+    "src/components/99-Svg_Icon/Home.jsx",
+    "src/components/99-Svg_Icon/MyLogoBG.jsx",
+    "src/components/99-Svg_Icon/MyLogoTypo.jsx",
+    "src/components/99-Svg_Icon/MyLogoW.jsx",
+    "src/components/99-Svg_Icon/Reservation.jsx",
+    "src/components/99-Svg_Icon/Search.jsx",
+    "src/components/99-Svg_Icon/Services.jsx",
+    "src/components/99-Svg_Icon/SideBodyLogo.jsx",
+    "src/components/99-Svg_Icon/StpOf7.jsx",
+    "src/components/99-Svg_Icon/SvgDefBG.jsx",
+    "src/components/99-Svg_Icon/SvgDefBG2.jsx",
+    "src/components/99-Svg_Icon/SvgDefs.jsx",
+    "src/components/99-Svg_Icon/SvgFilter.jsx",
+    "src/components/99-Svg_Icon/SvgGradientWithFilter.jsx",
+    "src/components/99-Svg_Icon/SvgUse.jsx",
+    "src/components/99-Svg_Icon/Tarifs.jsx",
+    "src/components/99-Svg_Icon/sideBar/Design.jsx",
+    "src/components/99-Svg_Icon/sideBar/DevOps.jsx",
+    "src/components/99-Svg_Icon/sideBar/Development.jsx",
+    "src/components/99-Svg_Icon/sideBar/LazyIconContent.jsx",
+    "src/components/99-Svg_Icon/sideBar/PerfSeo.jsx",
+    "src/components/99-Svg_Icon/sideBar/SideBodyIcon.tsx",
+    "src/components/99-Svg_Icon/sideBar/SideIcon.jsx",
+    "src/components/99-Svg_Icon/sideBar/StrategicFramework.jsx",
+    "src/components/99-Svg_Icon/sideBar/SupportFollow.jsx",
+    "src/components/99-Svg_Icon/social/Facebook.jsx",
+    "src/components/99-Svg_Icon/social/Instagram.jsx",
+    "src/components/99-Svg_Icon/social/Linkedin.jsx",
+    "src/components/99-Svg_Icon/social/TikTok.jsx",
+    "src/components/99-Svg_Icon/social/WhatsApp.jsx",
+    "src/components/99-Svg_Icon/social/Youtube.jsx",
+    "src/components/99-Svg_Icon/utils/MenuIcon.tsx",
+    "src/components/Legal/ApplicableLaw.tsx",
+    "src/components/Legal/CompanyDetailsInfo.tsx",
+    "src/components/Legal/Cookies.tsx",
+    "src/components/Legal/LegalNotices.tsx",
+    "src/components/Legal/PublicationDirector.tsx",
+    "src/components/Legal/Rgpd.tsx",
+    "src/components/Legal/SiteEditorCreator.tsx",
+    "src/components/Legal/SiteHost.tsx",
+    "src/components/PrivacyPolicy.tsx",
+    "src/components/TermsOfUse.tsx",
+    "src/components/button/ButtonLink.tsx",
+    "src/components/error-404/Error404.jsx",
+    "src/components/error-404/error.scss",
+    "src/components/loader/Loader.jsx",
+    "src/components/loader/loader.css",
+    "src/features/desktop-nav/adapters/adaptableMenuData.ts",
+    "src/features/desktop-nav/adapters/adaptableSections.ts",
+    "src/features/desktop-nav/adapters/resetDesktopMenuClasses.ts",
+    "src/features/desktop-nav/adapters/useInitialScrollDesktop.ts",
+    "src/features/desktop-nav/components/AdaptableDesktopNav.tsx",
+    "src/features/desktop-nav/components/AdaptableDesktopNavInput.tsx",
+    "src/features/desktop-nav/components/AdaptableDesktopNavItem.tsx",
+    "src/features/desktop-nav/components/AdaptableDesktopSubMenu.tsx",
+    "src/features/desktop-nav/components/DesktopScrollSectionsWrapper.tsx",
+    "src/features/desktop-nav/core/navigation/context/NavigationContext.tsx",
+    "src/features/desktop-nav/core/navigation/context/ScrollContext.tsx",
+    "src/features/desktop-nav/core/navigation/hooks/useDesktopScrollAnchors.ts",
+    "src/features/desktop-nav/core/navigation/hooks/useResize.ts",
+    "src/features/desktop-nav/core/navigation/utils/fnScrollUtils.ts",
+    "src/features/desktop-nav/core/navigation/utils/handlers.ts",
+    "src/features/desktop-nav/core/navigation/utils/sections.ts",
+    "src/features/desktop-nav/core/navigation/utils/sessionStorage/useSessionStorage.tsx",
+    "src/features/desktop-nav/core/navigation/utils/useIsBrowser.ts",
+    "src/features/desktop-nav/core/navigation/utils/useURLParams.tsx",
+    "src/features/desktop-nav/core/search/context/SearchContext.tsx",
+    "src/features/desktop-nav/core/search/hooks/useSearchHandler.tsx",
+    "src/features/desktop-nav/core/search/utils/initializeMenu.ts",
+    "src/features/desktop-nav/core/search/utils/searchMenu.js",
+    "src/features/desktop-nav/core/search/utils/searchUtils.ts",
+    "src/features/desktop-nav/core/search/utils/updateMenuUtils.ts",
+    "src/features/desktop-nav/data/attachContent.ts",
+    "src/features/desktop-nav/data/content/about.ts",
+    "src/features/desktop-nav/data/content/contact.ts",
+    "src/features/desktop-nav/data/content/index.ts",
+    "src/features/desktop-nav/data/content/info.ts",
+    "src/features/desktop-nav/data/content/services.ts",
+    "src/features/desktop-nav/data/content/slider.ts",
+    "src/features/desktop-nav/data/content/socialSvgComponents.ts",
+    "src/features/desktop-nav/data/interfaces/content.ts",
+    "src/features/desktop-nav/data/interfaces/menu.ts",
+    "src/features/desktop-nav/data/menuItems.ts",
+    "src/features/desktop-nav/menuClassUtils.ts",
+    "src/features/mobile-nav/components/ButtonOpen.tsx",
+    "src/features/mobile-nav/components/MenuList.tsx",
+    "src/features/mobile-nav/components/MenuOpen.tsx",
+    "src/features/mobile-nav/components/MobileHeader.tsx",
+    "src/features/mobile-nav/components/MobileLogoLink.tsx",
+    "src/features/mobile-nav/components/MobileNav.tsx",
+    "src/features/mobile-nav/components/Nav.tsx",
+    "src/features/mobile-nav/components/NavLink.tsx",
+    "src/features/mobile-nav/components/SubMenu.tsx",
+    "src/features/mobile-nav/components/svgComponents.ts",
+    "src/features/mobile-nav/core/navigation/context/NavigationContext.tsx",
+    "src/features/mobile-nav/core/navigation/context/ScrollContext.tsx",
+    "src/features/mobile-nav/core/navigation/context/utils/createUseContext.tsx",
+    "src/features/mobile-nav/core/navigation/hooks/useScrollAnchors.ts",
+    "src/features/mobile-nav/core/navigation/hooks/useSmoothScroll.ts",
+    "src/features/mobile-nav/core/navigation/utils/handlers.ts",
+    "src/features/mobile-nav/core/navigation/utils/rafThrottle.ts",
+    "src/features/mobile-nav/core/navigation/utils/scrollSmooth.ts",
+    "src/features/mobile-nav/core/navigation/utils/scrollUtils.ts",
+    "src/features/mobile-nav/core/navigation/utils/sections.ts",
+    "src/features/mobile-nav/data/menuItems.ts",
+    "src/features/mobile-nav/types/menu.ts",
+    "src/features/navigation/core/context/utils/createUseContext.tsx",
+    "src/frames/Frames.tsx",
+    "src/generated/rmdl/manifest.ts",
+    "src/generated/rmdl/pages/etape-1.tsx",
+    "src/hooks/useIdPrefix.ts",
+    "src/hooks/useLazyIconData.jsx",
+    "src/hooks/useMobileBreakpoint.ts",
+    "src/rmdl/components/rmdl-heading.tsx",
+    "src/rmdl/components/rmdl-list.tsx",
+    "src/rmdl/components/rmdl-q.tsx",
+    "src/utils/functions/functions.js",
+    "src/utils/nav.ts",
+    "src/utils/updateMenuUtils.ts",
+    "src/workers/scrollSmoothWorker.js",
+    "src/workers/scrollWorker.js"
+  ],
+  "unusedConfirmed": [
+    "src/assets/data/utils/attachContent.ts",
+    "src/components/00-Header/NavLink.jsx",
+    "src/components/00-Header/Navbar.jsx",
+    "src/components/99-Svg_Icon/GlobalLogoDefs.jsx",
+    "src/components/99-Svg_Icon/SearchClose.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/R1.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/R2.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/R3.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/R4.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/R5.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/R6.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/W1.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/W2.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/W3.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/W4.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/W5.jsx",
+    "src/components/99-Svg_Icon/sideBar/preload/W6.jsx",
+    "src/components/99-Svg_Icon/social/Twitter.jsx",
+    "src/components/99-Svg_Icon/utils/Arrow.jsx",
+    "src/components/99-Svg_Icon/utils/CheckedIcon.jsx",
+    "src/components/Legal/DevLegalNotices.tsx",
+    "src/components/Legal/PrivacyPolicy.tsx",
+    "src/components/Legal/RegistrationAndVAT.tsx",
+    "src/components/Legal/TermsOfUse.tsx",
+    "src/components/button/Button.tsx",
+    "src/components/error-404/Error401.jsx",
+    "src/components/shared/data/index.ts",
+    "src/components/shared/index.ts",
+    "src/components/shared/logo/index.ts",
+    "src/components/shared/nav-link/index.ts",
+    "src/features/desktop-nav/adaptableMenuUtils.ts",
+    "src/features/desktop-nav/core/navigation/hooks/useDesktopInitialScroll.ts",
+    "src/features/desktop-nav/core/navigation/utils/addScrollListener.ts",
+    "src/features/desktop-nav/data/sections.ts",
+    "src/features/desktop-nav/index.ts",
+    "src/features/desktop-nav/useAdaptableMenu.ts",
+    "src/features/desktop-nav/useAdaptableResize.ts",
+    "src/features/mobile-nav/components/MobileNavWithProviders.tsx",
+    "src/features/mobile-nav/types/scrollSmoothWorker.ts",
+    "src/features/mobile-nav/types/scrollWorker.ts",
+    "src/hooks/useTimeoutWorker.ts",
+    "src/utils/addScrollListener.ts",
+    "src/utils/getSectionIds.ts",
+    "src/utils/localStorage/boolean-convertor/useLocalStorageBoolean.tsx",
+    "src/utils/useIsBrowser.ts"
+  ],
+  "unusedProbable": [
+    "src/assets/data/description-des services.txt",
+    "src/assets/data/rmdl/README.md",
+    "src/assets/data/rmdl/pages/etape-1.rmdl",
+    "src/assets/styles/04_rmdl/README.md",
+    "src/assets/styles/README.md"
+  ],
+  "uncertainFiles": [
+    {
+      "file": "src/assets/data/iconsPathsData.json",
+      "reason": "occurrences trouvées par nom de fichier"
+    },
+    {
+      "file": "src/assets/data/navLinks.json",
+      "reason": "occurrences trouvées par nom de fichier"
+    },
+    {
+      "file": "src/assets/data/rmdl/glossary.json",
+      "reason": "occurrences trouvées par nom de fichier"
+    },
+    {
+      "file": "src/rmdl/ast.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/compiler/emit-tsx.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/compiler/escape-tsx.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/components/rmdl-ab.tsx",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/components/rmdl-code.tsx",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/components/rmdl-link.tsx",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/lexer.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/parser.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/sanitize.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/schema.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/url-policy.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/rmdl/validate.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/workers/scrollSmoothWorker.d.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/workers/scrollWorker.d.ts",
+      "reason": "neutralisation casse yarn tsc/yarn build (imports scripts/types workers)"
+    },
+    {
+      "file": "src/assets/styles/00_utils/_fonts.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/00_utils/_functions.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/00_utils/_mixins.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/00_utils/_variables.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/01_base/_general.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/01_base/_media-query.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/01_base/_navToggler.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/_desktop-adaptable-nav.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/_header.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/_logo.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/_sidebar.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/mobile/_index.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/mobile/_mnav.logo.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/02_components/header/mobile/_nav.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/03_pages/_page.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/04_rmdl/_rmdl.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/05_animations/_animatios.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/assets/styles/main.css.map",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    },
+    {
+      "file": "src/components/button/_button.scss",
+      "reason": "hors périmètre de neutralisation (CSS/SCSS) ou artefact statique"
+    }
+  ]
+}
