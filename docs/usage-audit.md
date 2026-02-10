@@ -72,3 +72,4 @@
 
 ## Traçabilité brute
 - Résultats détaillés par fichier : `docs/uz-validation-results.json`
+Ok

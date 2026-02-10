@@ -1,0 +1,82 @@
+"use client";
+import { useCallback } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+
+const getParamsFromSearch = (
+    searchParams: URLSearchParams,
+    key: string
+): string | null => {
+    return searchParams.get(key);
+};
+
+const getWordURL = (): Location => {
+    return window.location;
+};
+
+const getURLHash = (): string => {
+    const hash = getWordURL().hash.split("?")[0];
+    return hash || "";
+};
+
+const getParamFromHash = (key: string): string | null => {
+    const { search, hash } = getWordURL();
+    let queryString = search;
+    const hashIndex = hash.indexOf("?");
+    if (hashIndex !== -1) {
+        queryString += hash.slice(hashIndex);
+    }
+    const params = new URLSearchParams(queryString);
+    return params.get(key);
+};
+
+export const useURLParams = () => {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+
+    const createQueryString = useCallback(
+        (searchParams: URLSearchParams, name: string, value: string) => {
+            const params = new URLSearchParams(searchParams.toString());
+            params.set(name, value);
+            return params.toString();
+        },
+        []
+    );
+
+    const deleteURLParam = (
+        router: ReturnType<typeof useRouter>,
+        searchParams: URLSearchParams,
+        key: string
+    ): void => {
+        const params = new URLSearchParams(searchParams.toString());
+        params.delete(key);
+        const currentHash = getURLHash();
+        const newUrl = params.toString()
+            ? `${currentHash}?${params.toString()}`
+            : currentHash;
+        router.push(newUrl);
+    };
+
+    const getParams = (key: string) => {
+        if (searchParams) {
+            return getParamsFromSearch(searchParams, key);
+        }
+        return null;
+    };
+
+    const getParam = (key: string) => getParamFromHash(key);
+
+    const setParam = (key: string, value: string) => {
+        if (searchParams) {
+            const newQueryString = createQueryString(searchParams, key, value);
+            router.push(`?${newQueryString}`);
+        }
+    };
+
+    const deleteParam = (key: string) => {
+        if (searchParams) {
+            deleteURLParam(router, searchParams, key);
+        }
+    };
+
+    return { getParams, getParam, setParam, deleteParam };
+};
