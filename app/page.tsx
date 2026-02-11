@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Frames from "@/frames/Frames";
+import ColorShiftOverlay from "@/components/99-Svg_Icon/ColorShiftOverlay";
 
 export default function Home() {
     return (
@@ -53,6 +54,36 @@ export default function Home() {
             <Frames className="section s2-bg" id="s2" />
             <Frames className="section" id="s3" />
             <Frames className="section" id="s4" />
+
+            <div
+                style={{
+                    position: "relative",
+                    minHeight: 240,
+                    overflow: "hidden",
+                    borderRadius: 16,
+                    margin: "24px",
+                    padding: "24px",
+                    border: "1px solid rgba(255,255,255,0.16)"
+                }}
+            >
+                <ColorShiftOverlay zIndex={0} />
+                <div
+                    style={{
+                        position: "relative",
+                        zIndex: 1,
+                        display: "grid",
+                        gap: 8,
+                        maxWidth: 520
+                    }}
+                >
+                    <h2 style={{ margin: 0 }}>Bloc pilote — ColorShiftOverlay</h2>
+                    <p style={{ margin: 0 }}>
+                        Ce conteneur démontre l&apos;overlay SVG en absolu, piloté
+                        uniquement par les animations déjà présentes dans
+                        deferCss.css.
+                    </p>
+                </div>
+            </div>
         </>
     );
 }
