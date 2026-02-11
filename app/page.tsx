@@ -42,14 +42,6 @@ export default function Home() {
                             <Link href="/services">Services</Link>
                         </li>
                         <li>
-                            <Link href="/debug/logo-test">
-                                Debug — Logo test
-                            </Link>
-                        </li>
-                        <li>
-                            <Link href="/debug/routes">Debug — Routes</Link>
-                        </li>
-                        <li>
                             <Link href="/rmdl/etape-1">
                                 RMDL — Exemple (slug: etape-1)
                             </Link>
