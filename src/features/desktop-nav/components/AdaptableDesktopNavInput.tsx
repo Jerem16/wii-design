@@ -18,6 +18,7 @@ interface AdaptableDesktopNavInputProps {
     onMenuToggle: (menuItemId: string) => void;
     onMouseEnter: () => void;
     onFocus: () => void;
+    overlayLayer?: boolean;
 }
 
 interface LiveResult {
@@ -34,6 +35,7 @@ const AdaptableDesktopNavInput = ({
     onMenuToggle,
     onMouseEnter,
     onFocus,
+    overlayLayer = false,
 }: AdaptableDesktopNavInputProps) => {
     const router = useRouter();
     const { menuData } = useSearch();
@@ -132,6 +134,11 @@ const AdaptableDesktopNavInput = ({
             role="menuitem"
             aria-label={`ouvrir le menu ${menuItem.title}`}
             tabIndex={0}
+            style={
+                overlayLayer
+                    ? { position: "relative", zIndex: 1 }
+                    : undefined
+            }
             onClick={() => onMenuToggle(menuItem.id)}
             onKeyDown={handleKeyDown}
             onMouseEnter={onMouseEnter}
