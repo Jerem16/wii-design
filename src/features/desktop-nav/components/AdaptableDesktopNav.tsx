@@ -108,6 +108,12 @@ const DesktopNavContent = () => {
             <div className="desktop-adaptable-nav">
                 <div className="header">
                     <div className="head-flex">
+                    <ColorShiftOverlay
+                                shape="rect"
+                                zIndex={0}
+                                clip
+                                className="nav-colorShift-bg"
+                            />
                         <nav
                             ref={navRef}
                             className="main-nav"
@@ -123,7 +129,7 @@ const DesktopNavContent = () => {
                                     : handleMainMouseOrFocus("")
                             }
                         >
-                            <ColorShiftOverlay shape="rect" zIndex={0} />
+
                             {updatedMenuItems.mainLink.map(menuItem => (
                                 <AdaptableDesktopNavItem
                                     openMainButton={openMainButton}
@@ -193,7 +199,12 @@ const DesktopNavContent = () => {
                             role="menubar"
                             style={overlayHostStyle}
                         >
-                            <ColorShiftOverlay shape="rect" zIndex={0} />
+                            <ColorShiftOverlay
+                                shape="rect"
+                                zIndex={0}
+                                clip
+                                className="nav-colorShift-bg"
+                            />
                             {updatedMenuItems.search.map(menuItem => (
                                 <AdaptableDesktopNavInput
                                     key={menuItem.id}
@@ -204,7 +215,9 @@ const DesktopNavContent = () => {
                                     onMouseEnter={() =>
                                         handleInteraction(menuItem.id)
                                     }
-                                    onFocus={() => handleInteraction(menuItem.id)}
+                                    onFocus={() =>
+                                        handleInteraction(menuItem.id)
+                                    }
                                     onMenuToggle={showLink}
                                     overlayLayer
                                 />
@@ -212,7 +225,12 @@ const DesktopNavContent = () => {
                         </nav>
 
                         <nav className="connection" style={overlayHostStyle}>
-                            <ColorShiftOverlay shape="rect" zIndex={0} />
+                            <ColorShiftOverlay
+                                shape="rect"
+                                zIndex={0}
+                                clip
+                                className="nav-colorShift-bg"
+                            />
                             {updatedMenuItems.connection.map(menuItem => (
                                 <AdaptableDesktopNavItem
                                     openMainButton={false}
@@ -234,7 +252,9 @@ const DesktopNavContent = () => {
                                     onMouseEnter={() =>
                                         handleInteraction(menuItem.id)
                                     }
-                                    onFocus={() => handleInteraction(menuItem.id)}
+                                    onFocus={() =>
+                                        handleInteraction(menuItem.id)
+                                    }
                                     onMenuToggle={showLink}
                                     overlayLayer
                                 />

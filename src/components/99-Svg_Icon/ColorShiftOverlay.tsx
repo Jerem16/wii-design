@@ -14,27 +14,34 @@ type RectShapeProps = {
 };
 
 type ColorShiftOverlayProps = {
+    /** Classe sur le wrapper absolute (historique) */
     className?: string;
+
+    /** Style sur le wrapper absolute (historique) */
     style?: CSSProperties;
+
+    /** Classe sur le <svg> (historique) */
     overlayClassName?: string;
+
+    /** Style sur le <svg> (historique) */
     overlayStyle?: CSSProperties;
+
+    /** ✅ Nouvelle classe optionnelle dédiée au wrapper (radius, inset, etc.) */
+    wrapperClassName?: string;
+
+    /** ✅ Nouvelle classe optionnelle dédiée au svg (si besoin) */
+    svgClassName?: string;
+
+    /** ✅ Active le clipping (overflow hidden) pour que border-radius fonctionne */
+    clip?: boolean;
+
     idPrefix?: string;
     zIndex?: number | string;
 
-    /**
-     * rect = fond plein conteneur (recommandé pour Home/sidebar/cards)
-     * diamond = losange historique
-     * path = forme custom via pathD
-     */
     shape?: "rect" | "diamond" | "path";
-
-    /** Personnalisation pour shape="rect" (rectangle/carré/arrondi) */
     rectProps?: RectShapeProps;
-
-    /** Personnalisation pour shape="path" */
     pathD?: string;
 
-    /** Pour garder les mêmes comportements CSS que ton existant */
     shapeOpacity?: number;
     shapeClassName?: string;
 };
@@ -60,6 +67,11 @@ function ColorShiftOverlay({
     style,
     overlayClassName,
     overlayStyle,
+
+    wrapperClassName,
+    svgClassName,
+    clip = false,
+
     idPrefix,
     zIndex,
 
@@ -73,7 +85,6 @@ function ColorShiftOverlay({
     const generatedPrefix = useIdPrefix("color-shift-overlay");
     const rootPrefix = idPrefix ?? generatedPrefix;
 
-    // Même convention que MyLogoBG
     const bgPrefix = `${rootPrefix}-bg`;
     const shapeId = `${bgPrefix}-Z`;
 
@@ -87,24 +98,27 @@ function ColorShiftOverlay({
     const diamondD = "M235 470L0 235 235 0 470 235z";
     const customD = pathD ?? diamondD;
 
+    const wrapperClasses = [className, wrapperClassName].filter(Boolean).join(" ");
+    const svgClasses = [overlayClassName, svgClassName].filter(Boolean).join(" ");
+
+    const clipStyle: CSSProperties = clip ? { overflow: "hidden" } : {};
+
     return (
         <div
             aria-hidden="true"
-            className={className}
-            style={{ ...defaultWrapperStyle, zIndex, ...style }}
+            className={wrapperClasses}
+            style={{ ...defaultWrapperStyle, ...clipStyle, zIndex, ...style }}
         >
             <svg
-                className={overlayClassName}
+                className={svgClasses || undefined}
                 style={{ ...defaultSvgStyle, ...overlayStyle }}
                 viewBox="0 0 470 470"
                 preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg"
                 focusable="false"
             >
-                {/* EXACT : defs MyLogoBG */}
                 <SvgDefBG idPrefix={bgPrefix} />
 
-                {/* Shape configurable, mais ID suffix -Z conservé */}
                 {shape === "rect" ? (
                     <rect
                         id={shapeId}
@@ -126,7 +140,6 @@ function ColorShiftOverlay({
                     />
                 )}
 
-                {/* EXACT : le <use> qui donne le rendu */}
                 <use
                     href={`#${shapeId}`}
                     fill={`url(#${bgPrefix}-A)`}
