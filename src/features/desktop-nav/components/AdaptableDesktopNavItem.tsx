@@ -20,6 +20,7 @@ interface AdaptableDesktopNavItemProps {
     openMainButton: boolean;
     onMouseEnter: () => void;
     onFocus: () => void;
+    overlayLayer?: boolean;
 }
 
 const AdaptableDesktopNavItem = ({
@@ -33,6 +34,7 @@ const AdaptableDesktopNavItem = ({
     openMainButton,
     onMouseEnter,
     onFocus,
+    overlayLayer = false,
 }: AdaptableDesktopNavItemProps) => {
     const SvgIcon = useMemo(
         () => svgComponents[menuItem.svg as keyof typeof svgComponents],
@@ -144,6 +146,11 @@ const AdaptableDesktopNavItem = ({
                 className={`group_link-submenu ${menuItem.id} ${
                     !openMainButton ? "nav-padding" : ""
                 }`}
+                style={
+                    overlayLayer
+                        ? { position: "relative", zIndex: 1 }
+                        : undefined
+                }
             >
                 {renderLink()}
                 {renderSubMenu()}
@@ -157,6 +164,11 @@ const AdaptableDesktopNavItem = ({
             role="menubar"
             aria-label={`ouvrir le menu ${menuItem.title}`}
             tabIndex={0}
+            style={
+                overlayLayer
+                    ? { position: "relative", zIndex: 1 }
+                    : undefined
+            }
             onClick={handleInteraction}
             onKeyDown={(event) => {
                 if (!isActivationKey(event.key)) return;

@@ -33,11 +33,6 @@ const overlayHostStyle: CSSProperties = {
     isolation: "isolate"
 };
 
-const overlayContentStyle: CSSProperties = {
-    position: "relative",
-    zIndex: 1
-};
-
 const DesktopNavContent = () => {
     const {
         currentRoute,
@@ -129,37 +124,36 @@ const DesktopNavContent = () => {
                             }
                         >
                             <ColorShiftOverlay shape="rect" zIndex={0} />
-                            <div style={overlayContentStyle}>
-                                {updatedMenuItems.mainLink.map(menuItem => (
-                                    <AdaptableDesktopNavItem
-                                        openMainButton={openMainButton}
-                                        openButton={openButton}
-                                        key={menuItem.id}
-                                        menuItem={menuItem}
-                                        onNavigationClick={handleNavigationClick}
-                                        isOpen={openSubMenu === menuItem.id}
-                                        handleMenuClick={menuItemId =>
-                                            setOpenSubMenu(
-                                                openSubMenu === menuItemId
-                                                    ? null
-                                                    : menuItemId
-                                            )
-                                        }
-                                        showNavLinks={
-                                            openMainButton ||
-                                            openButton ||
-                                            openMenu === menuItem.id
-                                        }
-                                        onMouseEnter={() =>
-                                            handleMouseOrFocus(menuItem.id)
-                                        }
-                                        onFocus={() =>
-                                            handleMouseOrFocus(menuItem.id)
-                                        }
-                                        onMenuToggle={showLink}
-                                    />
-                                ))}
-                            </div>
+                            {updatedMenuItems.mainLink.map(menuItem => (
+                                <AdaptableDesktopNavItem
+                                    openMainButton={openMainButton}
+                                    openButton={openButton}
+                                    key={menuItem.id}
+                                    menuItem={menuItem}
+                                    onNavigationClick={handleNavigationClick}
+                                    isOpen={openSubMenu === menuItem.id}
+                                    handleMenuClick={menuItemId =>
+                                        setOpenSubMenu(
+                                            openSubMenu === menuItemId
+                                                ? null
+                                                : menuItemId
+                                        )
+                                    }
+                                    showNavLinks={
+                                        openMainButton ||
+                                        openButton ||
+                                        openMenu === menuItem.id
+                                    }
+                                    onMouseEnter={() =>
+                                        handleMouseOrFocus(menuItem.id)
+                                    }
+                                    onFocus={() =>
+                                        handleMouseOrFocus(menuItem.id)
+                                    }
+                                    onMenuToggle={showLink}
+                                    overlayLayer
+                                />
+                            ))}
                         </nav>
 
                         {openButton ? null : <div className="head-space"></div>}
@@ -200,57 +194,51 @@ const DesktopNavContent = () => {
                             style={overlayHostStyle}
                         >
                             <ColorShiftOverlay shape="rect" zIndex={0} />
-                            <div style={overlayContentStyle}>
-                                {updatedMenuItems.search.map(menuItem => (
-                                    <AdaptableDesktopNavInput
-                                        key={menuItem.id}
-                                        menuItem={menuItem}
-                                        showNavLinks={shouldShowNavLinks(
-                                            menuItem.id
-                                        )}
-                                        onMouseEnter={() =>
-                                            handleInteraction(menuItem.id)
-                                        }
-                                        onFocus={() =>
-                                            handleInteraction(menuItem.id)
-                                        }
-                                        onMenuToggle={showLink}
-                                    />
-                                ))}
-                            </div>
+                            {updatedMenuItems.search.map(menuItem => (
+                                <AdaptableDesktopNavInput
+                                    key={menuItem.id}
+                                    menuItem={menuItem}
+                                    showNavLinks={shouldShowNavLinks(
+                                        menuItem.id
+                                    )}
+                                    onMouseEnter={() =>
+                                        handleInteraction(menuItem.id)
+                                    }
+                                    onFocus={() => handleInteraction(menuItem.id)}
+                                    onMenuToggle={showLink}
+                                    overlayLayer
+                                />
+                            ))}
                         </nav>
 
                         <nav className="connection" style={overlayHostStyle}>
                             <ColorShiftOverlay shape="rect" zIndex={0} />
-                            <div style={overlayContentStyle}>
-                                {updatedMenuItems.connection.map(menuItem => (
-                                    <AdaptableDesktopNavItem
-                                        openMainButton={false}
-                                        openButton
-                                        key={menuItem.id}
-                                        menuItem={menuItem}
-                                        onNavigationClick={handleNavigationClick}
-                                        isOpen={openSubMenu === menuItem.id}
-                                        handleMenuClick={menuItemId =>
-                                            setOpenSubMenu(
-                                                openSubMenu === menuItemId
-                                                    ? null
-                                                    : menuItemId
-                                            )
-                                        }
-                                        showNavLinks={shouldShowNavLinks(
-                                            menuItem.id
-                                        )}
-                                        onMouseEnter={() =>
-                                            handleInteraction(menuItem.id)
-                                        }
-                                        onFocus={() =>
-                                            handleInteraction(menuItem.id)
-                                        }
-                                        onMenuToggle={showLink}
-                                    />
-                                ))}
-                            </div>
+                            {updatedMenuItems.connection.map(menuItem => (
+                                <AdaptableDesktopNavItem
+                                    openMainButton={false}
+                                    openButton
+                                    key={menuItem.id}
+                                    menuItem={menuItem}
+                                    onNavigationClick={handleNavigationClick}
+                                    isOpen={openSubMenu === menuItem.id}
+                                    handleMenuClick={menuItemId =>
+                                        setOpenSubMenu(
+                                            openSubMenu === menuItemId
+                                                ? null
+                                                : menuItemId
+                                        )
+                                    }
+                                    showNavLinks={shouldShowNavLinks(
+                                        menuItem.id
+                                    )}
+                                    onMouseEnter={() =>
+                                        handleInteraction(menuItem.id)
+                                    }
+                                    onFocus={() => handleInteraction(menuItem.id)}
+                                    onMenuToggle={showLink}
+                                    overlayLayer
+                                />
+                            ))}
                         </nav>
                     </div>
                 </div>
