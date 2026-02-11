@@ -2,7 +2,16 @@
 
 import { memo, type CSSProperties } from "react";
 import { useIdPrefix } from "@/hooks/useIdPrefix";
-import SvgGradientWithFilter from "./SvgGradientWithFilter";
+import SvgDefBG from "./SvgDefBG";
+
+type RectShapeProps = {
+    x?: number;
+    y?: number;
+    width?: number;
+    height?: number;
+    rx?: number;
+    ry?: number;
+};
 
 type ColorShiftOverlayProps = {
     className?: string;
@@ -12,11 +21,22 @@ type ColorShiftOverlayProps = {
     idPrefix?: string;
     zIndex?: number | string;
 
-    shape?: "rect" | "roundedRect" | "circle" | "path";
-    rx?: number;
-    ry?: number;
+    /**
+     * rect = fond plein conteneur (recommandé pour Home/sidebar/cards)
+     * diamond = losange historique
+     * path = forme custom via pathD
+     */
+    shape?: "rect" | "diamond" | "path";
+
+    /** Personnalisation pour shape="rect" (rectangle/carré/arrondi) */
+    rectProps?: RectShapeProps;
+
+    /** Personnalisation pour shape="path" */
     pathD?: string;
-    opacity?: number;
+
+    /** Pour garder les mêmes comportements CSS que ton existant */
+    shapeOpacity?: number;
+    shapeClassName?: string;
 };
 
 const defaultWrapperStyle: CSSProperties = {
@@ -33,53 +53,7 @@ const defaultSvgStyle: CSSProperties = {
     display: "block"
 };
 
-const DEFAULT_VIEWBOX_SIZE = 100;
-
-const renderShape = ({
-    id,
-    shape,
-    rx,
-    ry,
-    pathD
-}: {
-    id: string;
-    shape: NonNullable<ColorShiftOverlayProps["shape"]>;
-    rx?: number;
-    ry?: number;
-    pathD?: string;
-}) => {
-    if (shape === "circle") {
-        return <circle id={id} cx="50" cy="50" r="50" />;
-    }
-
-    if (shape === "roundedRect") {
-        return (
-            <rect
-                id={id}
-                x="0"
-                y="0"
-                width={DEFAULT_VIEWBOX_SIZE}
-                height={DEFAULT_VIEWBOX_SIZE}
-                rx={rx}
-                ry={ry}
-            />
-        );
-    }
-
-    if (shape === "path" && pathD) {
-        return <path id={id} d={pathD} />;
-    }
-
-    return (
-        <rect
-            id={id}
-            x="0"
-            y="0"
-            width={DEFAULT_VIEWBOX_SIZE}
-            height={DEFAULT_VIEWBOX_SIZE}
-        />
-    );
-};
+const DEFAULT_VIEWBOX_SIZE = 470;
 
 function ColorShiftOverlay({
     className,
@@ -90,14 +64,28 @@ function ColorShiftOverlay({
     zIndex,
 
     shape = "rect",
-    rx,
-    ry,
+    rectProps,
     pathD,
-    opacity = 0.5
+
+    shapeOpacity = 0.5,
+    shapeClassName = "animated-z"
 }: ColorShiftOverlayProps) {
     const generatedPrefix = useIdPrefix("color-shift-overlay");
-    const prefix = idPrefix ?? generatedPrefix;
-    const shapeId = `${prefix}-S`;
+    const rootPrefix = idPrefix ?? generatedPrefix;
+
+    // Même convention que MyLogoBG
+    const bgPrefix = `${rootPrefix}-bg`;
+    const shapeId = `${bgPrefix}-Z`;
+
+    const rectX = rectProps?.x ?? 0;
+    const rectY = rectProps?.y ?? 0;
+    const rectW = rectProps?.width ?? DEFAULT_VIEWBOX_SIZE;
+    const rectH = rectProps?.height ?? DEFAULT_VIEWBOX_SIZE;
+    const rectRx = rectProps?.rx;
+    const rectRy = rectProps?.ry;
+
+    const diamondD = "M235 470L0 235 235 0 470 235z";
+    const customD = pathD ?? diamondD;
 
     return (
         <div
@@ -108,30 +96,42 @@ function ColorShiftOverlay({
             <svg
                 className={overlayClassName}
                 style={{ ...defaultSvgStyle, ...overlayStyle }}
-                viewBox="0 0 100 100"
+                viewBox="0 0 470 470"
                 preserveAspectRatio="none"
                 xmlns="http://www.w3.org/2000/svg"
                 focusable="false"
             >
-                <defs>
-                    <SvgGradientWithFilter
-                        idPrefix={prefix}
-                        resultId="A"
-                        x1="27"
-                        y1="27"
-                        x2="81"
-                        y2="81"
+                {/* EXACT : defs MyLogoBG */}
+                <SvgDefBG idPrefix={bgPrefix} />
+
+                {/* Shape configurable, mais ID suffix -Z conservé */}
+                {shape === "rect" ? (
+                    <rect
+                        id={shapeId}
+                        x={rectX}
+                        y={rectY}
+                        width={rectW}
+                        height={rectH}
+                        rx={rectRx}
+                        ry={rectRy}
+                        opacity={shapeOpacity}
+                        className={shapeClassName}
                     />
-                </defs>
+                ) : (
+                    <path
+                        id={shapeId}
+                        d={shape === "diamond" ? diamondD : customD}
+                        opacity={shapeOpacity}
+                        className={shapeClassName}
+                    />
+                )}
 
-                {renderShape({ id: shapeId, shape, rx, ry, pathD })}
-
+                {/* EXACT : le <use> qui donne le rendu */}
                 <use
                     href={`#${shapeId}`}
-                    fill={`url(#${prefix}-A)`}
-                    opacity={opacity}
+                    fill={`url(#${bgPrefix}-A)`}
                     style={{ mixBlendMode: "screen" }}
-                    filter={`url(#${prefix}-H)`}
+                    filter={`url(#${bgPrefix}-H)`}
                 />
             </svg>
         </div>
