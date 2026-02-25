@@ -87,6 +87,8 @@
   - Les numéros / puces restent alignés et lisibles
 */
 .rmdl-list {
+    margin: 0.75rem 0;
+    padding-inline-start: 1.25rem;
     padding-inline-start: 1.25rem;
     /* Décalage global de la liste (espace avant puce/numéro) */
     margin: 0.9rem 0 0.9rem 1.75rem;
