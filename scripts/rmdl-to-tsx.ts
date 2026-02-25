@@ -87,7 +87,7 @@ async function compileOne(
 
     const tokens = lex(raw);
     const doc = parse(tokens);
-    const errors = validate(doc);
+    const errors = validate(doc, tokens);
 
     if (errors.length > 0) {
         return { slug, errors: errors.map(e => e.message) };
