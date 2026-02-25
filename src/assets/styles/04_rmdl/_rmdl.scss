@@ -1,5 +1,16 @@
-/* RMDL — Typo & layout */
+/* ==========================================================================
+   FILE: src/assets/styles/04_rmdl/_rmdl.scss
+   ROLE: component
+   SCOPE: Styles RMDL (rendu éditorial)
+   DEPENDENCIES: variables CSS (fonts/typo)
+   NOTES: Conserver ce bloc isolé pour éviter les conflits avec le reste du site.
+   ========================================================================== */
 
+/* RMDL — Typo & layout
+   Objectif : rendu lisible, stable, sans impacter le reste du site.
+*/
+
+/* Titres */
 .rmdl-h1,
 .rmdl-h2,
 .rmdl-h3 {
@@ -26,6 +37,7 @@
     margin-top: 1.25rem;
 }
 
+/* Paragraphes */
 .rmdl-p {
     font-family: var(--font-content);
     font-size: var(--fs-body);
@@ -35,39 +47,63 @@
     max-inline-size: var(--measure);
 }
 
+/* Strong : on reste neutre (le navigateur gère déjà), mais on évite les surprises */
+.rmdl-p strong {
+    font-weight: 700;
+}
+
+/* Label */
 .rmdl-lb {
     font-weight: 700;
 }
 
-.rmdl-em,
-.rmdl-pi em {
-    font-style: italic;
-}
-
+/* Normal forcé (<n>) + symboles neutralisés (règle s0) */
 .rmdl-n {
     font-weight: 400 !important;
 }
 
+/* Parenthèses typographiques (<pi>)
+   - Les parenthèses restent normales (même dans <strong>)
+   - Le contenu (<em>) est italique et peut hériter du gras si englobé par <strong>
+*/
 .rmdl-pi {
     white-space: nowrap;
 }
 
 .rmdl-paren {
-    font-weight: 400 !important;
+    font-weight: 400 !important; /* Parenthèses toujours normales */
 }
 
+.rmdl-pi em {
+    font-style: italic;
+}
+
+/* --- LISTES --------------------------------------------------------------- */
+/*
+  Objectif (comme le PDF) :
+  - Les listes sont légèrement "à droite" par rapport au texte (indentation)
+  - Il y a un espace AVANT le marqueur (via margin-left)
+  - Il y a un espace APRÈS le marqueur (via padding-left + li padding)
+  - Les numéros / puces restent alignés et lisibles
+*/
 .rmdl-list {
     margin: 0.75rem 0;
     padding-inline-start: 1.25rem;
+    padding-inline-start: 1.25rem;
+    /* Décalage global de la liste (espace avant puce/numéro) */
+    margin: 0.9rem 0 0.9rem 1.75rem;
+    /* Zone de contenu (crée l'espace après marqueur) */
+    padding-left: 0.9rem;
     max-inline-size: var(--measure);
+    list-style-position: outside;
 }
 
 .rmdl-list.rmdl-l {
-    list-style: disc;
+    list-style-type: disc;
 }
 
 .rmdl-list.rmdl-ol {
-    list-style: decimal;
+    list-style-type: decimal;
 }
 
 .rmdl-list.rmdl-l2 {
@@ -78,10 +114,20 @@
 .rmdl-list.rmdl-ol2 {
     list-style: lower-alpha;
     padding-inline-start: 1.15rem;
+    list-style-type: circle;
+    margin-left: 1.35rem;
+    padding-left: 0.8rem;
+}
+
+.rmdl-list.rmdl-ol2 {
+    list-style-type: lower-alpha;
+    margin-left: 1.35rem;
+    padding-left: 0.8rem;
 }
 
 .rmdl-li {
-    margin: 0.35rem 0;
+    margin: 0.42rem 0;
+    padding-left: 0.15rem; /* espace supplémentaire après le marqueur */
     font-family: var(--font-content);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
@@ -105,16 +151,23 @@
     color: inherit;
 }
 
+/* Pour éviter des espacements parasites si un <p> est rendu dans <li> */
 .rmdl-li > .rmdl-p {
-    margin: 0.35rem 0;
+    margin: 0;
 }
 
+/* Harmonise le poids / style des marqueurs quand du gras est utilisé dans le contenu */
+.rmdl-list > .rmdl-li::marker {
+    font-weight: 400;
+}
+
+/* --- QUOTE --------------------------------------------------------------- */
 .rmdl-quote {
     margin: 1rem 0;
     padding: 0.85rem 1rem;
     border-left: 4px solid currentColor;
     border-radius: 14px;
-    background: rgb(0 0 0 / 4%);
+    background: rgba(0, 0, 0, 0.04);
     font-family: var(--font-content);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
@@ -125,17 +178,18 @@
     margin: 0;
 }
 
+/* --- CODE ---------------------------------------------------------------- */
 .rmdl-code {
     margin: 1rem 0;
     padding: 0.85rem 1rem;
     border-radius: 14px;
-    background: rgb(0 0 0 / 6%);
+    background: rgba(0, 0, 0, 0.06);
     overflow-x: auto;
     max-inline-size: var(--measure);
 }
 
 .rmdl-code code {
-    font-family: ui-monospace, sfmono-regular, menlo, monaco, consolas,
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
     font-size: 0.95em;
     line-height: 1.5;
@@ -143,6 +197,7 @@
     tab-size: 2;
 }
 
+/* --- LIENS / CTA ---------------------------------------------------------- */
 .rmdl-a {
     text-decoration: underline;
     text-underline-offset: 3px;
@@ -169,6 +224,7 @@
     transform: translateY(-1px);
 }
 
+/* --- GLOSSAIRE / AB ------------------------------------------------------- */
 .rmdl-ab {
     position: relative;
     cursor: help;
@@ -176,6 +232,7 @@
     text-underline-offset: 3px;
 }
 
+/* Tooltip : data-def (pas data-rmdl-definition) */
 .rmdl-ab[data-def]:hover::after {
     content: attr(data-def);
     position: absolute;
@@ -186,9 +243,35 @@
     max-width: 360px;
     padding: 0.6rem 0.75rem;
     border-radius: 12px;
-    background: rgb(0 0 0 / 90%);
+    background: rgba(0, 0, 0, 0.9);
     color: #fff;
     font-size: 0.95rem;
     line-height: 1.4;
     z-index: 50;
+}
+.rmdl-list {
+    margin: 0.75rem 0; /* espace autour des listes */
+    padding-inline-start: 1.5rem; /* décalage global (bulle/numéro légèrement à droite) */
+    max-inline-size: var(--measure);
+}
+
+/* Espace vertical entre items */
+.rmdl-li {
+    margin: 0.45rem 0;
+}
+
+/* Le “texte” de l’item (ton <p>) */
+.rmdl-li > .rmdl-p {
+    margin: 0; /* évite double marges */
+}
+
+/* Marker (bulle/numéro) hérite du style du LI */
+.rmdl-li::marker {
+    font-weight: inherit; /* si le <li> est en gras => numéro gras */
+    font-style: inherit; /* si le <li> est en italique => numéro italique */
+}
+
+/* Ajust fin pour “espace après la bulle/numéro” (via padding côté item) */
+.rmdl-li {
+    padding-inline-start: 0.35rem; /* crée un “gap” après marker */
 }

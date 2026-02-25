@@ -115,21 +115,6 @@ function walkListContainer(cur: Cursor, listTag: "l" | "ol" | "l2" | "ol2", erro
       return next(c)[1];
     }
 
-    if (token.kind === "eol") {
-      c = next(c)[1];
-      continue;
-    }
-
-    if (token.kind === "text") {
-      c = next(c)[1];
-      continue;
-    }
-
-    if (token.kind === "tag" && token.name === "i") {
-      c = skipUntilClosingTag(next(c)[1], "i");
-      continue;
-    }
-
     if (token.kind === "tag" && (token.name === "em" || token.name === "s" || token.name === "n")) {
       c = walkWrapperContainer(next(c)[1], token.name, errors, `${context} > <${token.name}>`);
       continue;
@@ -151,11 +136,6 @@ function walkWrapperContainer(cur: Cursor, wrapperTag: "em" | "s" | "n", errors:
     }
 
     if (token.kind === "eol") {
-      c = next(c)[1];
-      continue;
-    }
-
-    if (token.kind === "text" && token.value.trim().length === 0) {
       c = next(c)[1];
       continue;
     }

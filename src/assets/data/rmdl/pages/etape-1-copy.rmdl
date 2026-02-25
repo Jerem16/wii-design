@@ -9,11 +9,13 @@ Ici, on clarifie vos idées et vous repartez avec un plan d’action clair et pr
 <lb>Objectif<lb> : fixer le cap, planifier le projet, définir stratégiquement les priorités et ordonner leurs mises en œuvre.
 
 <lb>En résumé<lb> :
-<ol>
+
+<ol><em>
 <i>On pose un cadre et on se fixe un cap.<i>
 <i>On priorise les tâches.<i>
-<i>On planifie et on organise la suite.<i>
+<i>On planifie et on organise la suite.<i><em>
 <ol>
+
 
 <s>Déroulé des opérations<s> :
 
@@ -60,37 +62,34 @@ Lors de cette étape, on anticipe, on ajuste, on réduit les biais, on <s>imagin
 
 Un bon plan tient en trois briques : un <s>diagnostic lucide<s> → un <s>cap clair<s> → des <s>actions cohérentes<s>.
 
-<h3>Côté budget 👉<h3>
+<h3>Côté budget 👈<h3>
 
 En quoi cette approche modulaire de développement est-elle économique et pratique ?
 
 <ol>
-<i><s>Payez l’utile au moment « T ».<s>
+<i><s>Payez l’utile au moment « T »<s>.<br>
 Même si le projet est encore en cours de réalisation, votre site, lui, commence déjà à vivre.
 Les paiements et les développements liés aux nouvelles pages et fonctionnalités suivent le rythme réel du projet <pi>(vous ne payez que l’utile et jamais en avance)<pi>.<i>
 
-<i><s>Clarté des coûts.<s>
+<i><s>Clarté des coûts<s>.<br>
 Chaque « brique » a un prix et un périmètre précis, écrits noir sur blanc et vous payez uniquement ce qui vous sert.<i>
 
-<i><s>Souplesse & modularité.<s>
+<i><s>Souplesse & modularité<s>.<br>
 Les besoins, anticipés et intégrés au projet, garantissent une architecture modulaire qui vous laisse la liberté de réorienter la suite : vous pouvez décaler ou remplacer une brique en fonction des priorités du moment.<i>
 
-<i><s>Pas de refonte coûteuse de site.<s>
+<i><s>Pas de refonte coûteuse de site<s>.<br>
 En anticipant les besoins dès le départ, on identifie les fonctionnalités les plus adaptées et cohérentes avec vos objectifs à long terme. Ainsi, en cas d’ajout on n’aura pas à tout refaire.<i>
 
-<i><s>Pas de surprises.<s>
+<i><s>Pas de surprises<s>.<br>
 Les <s>étapes<s> ont été clairement <s>définis<s> avec des points de contrôle réguliers.<i>
 <ol>
 
-<h3>Paiements jalonnés (<em>zéro effet tunnel<em>)<h3>
-<h3>Paiements jalonnés <pi>zéro effet tunnel<pi><h3>
-<h3>Paiements jalonnés <s><pi>zéro effet tunnel<pi><s><h3>
-<h3>Paiements jalonnés <pi><s>zéro effet tunnel<s><pi><h3>
+<h3>Paiements jalonnés (zéro effet tunnel)<h3>
 
 <l>
-<i><s>Un jalon = un livrable<s> : À chaque étape validée, vous réglez <s>uniquement l’étape livrée<s>.<i>
-<i><s>Visibilité<s> : Vous savez <s>ce qui est livré, quand<s> et <s>combien<s> ça coûte.<i>
-<i><s>Maîtrise<s> : Si une priorité change, on <s>réordonne<s> les jalons sans casser l’existant.<i>
+<i><s>Un jalon = un livrable<s> :<br>À chaque étape validée, <s>vous réglez uniquement l’étape livrée<s>.<i>
+<i><s>Visibilité<s> :<br>Vous savez <s>ce qui est livré, quand<s> et <s>combien<s> ça coûte.<i>
+<i><s>Maîtrise<s> :<br>Si une priorité change, on <s>réordonne<s> les jalons sans casser l’existant.<i>
 <l>
 
 <h3>Qui sont nos clients ?<h3>
