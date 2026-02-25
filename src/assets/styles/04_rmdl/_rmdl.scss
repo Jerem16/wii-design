@@ -87,11 +87,11 @@
   - Les numéros / puces restent alignés et lisibles
 */
 .rmdl-list {
+    padding-inline-start: 1.25rem;
     /* Décalage global de la liste (espace avant puce/numéro) */
     margin: 0.9rem 0 0.9rem 1.75rem;
     /* Zone de contenu (crée l'espace après marqueur) */
     padding-left: 0.9rem;
-
     max-inline-size: var(--measure);
     list-style-position: outside;
 }
@@ -105,6 +105,13 @@
 }
 
 .rmdl-list.rmdl-l2 {
+    list-style: circle;
+    padding-inline-start: 1.15rem;
+}
+
+.rmdl-list.rmdl-ol2 {
+    list-style: lower-alpha;
+    padding-inline-start: 1.15rem;
     list-style-type: circle;
     margin-left: 1.35rem;
     padding-left: 0.8rem;
@@ -122,6 +129,24 @@
     font-family: var(--font-content);
     font-size: var(--fs-body);
     line-height: var(--lh-body);
+}
+
+.rmdl-li--em {
+    font-style: italic;
+}
+
+.rmdl-li--s {
+    font-weight: 700;
+}
+
+.rmdl-li--n {
+    font-weight: 400;
+}
+
+.rmdl-li::marker {
+    font-style: inherit;
+    font-weight: inherit;
+    color: inherit;
 }
 
 /* Pour éviter des espacements parasites si un <p> est rendu dans <li> */
