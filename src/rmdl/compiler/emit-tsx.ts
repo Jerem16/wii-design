@@ -142,7 +142,7 @@ export function emitTsxPage(input: EmitInput): string {
   
     
     if (n.kind === "em") {
-      return `<em key=${tsxKey(key)}>${renderInlineChildren(n.inlines)}</em>`;
+      return `<em key=${tsxKey(key)} className="rmdl-em">${renderInlineChildren(n.inlines)}</em>`;
     }
 
     if (n.kind === "normal") {
@@ -152,7 +152,7 @@ export function emitTsxPage(input: EmitInput): string {
 
     if (n.kind === "br") {
       const count = Math.max(1, Number.isFinite(n.n) ? n.n : 1);
-      const brs = Array.from({ length: count }, () => "<br />").join("");
+      const brs = Array.from({ length: count }, (_, i) => `<br key={${i}} />`).join("");
       return `<React.Fragment key=${tsxKey(key)}>${brs}</React.Fragment>`;
     }
 
