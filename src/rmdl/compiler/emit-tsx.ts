@@ -6,6 +6,7 @@ import type {
     RmdlLinkInline,
     RmdlListBlock,
     RmdlListItem,
+    RmdlListItemTone,
     RmdlQuoteBlock,
   } from "../ast";
   import { tsStringLiteral } from "./escape-tsx";
@@ -108,11 +109,16 @@ export function emitTsxPage(input: EmitInput): string {
     return `${pad}{null /* block inconnu */}`;
   }
   
+  function toneClassName(tone?: RmdlListItemTone): string {
+    if (!tone) return "rmdl-li";
+    return `rmdl-li rmdl-li--${tone}`;
+  }
+
   function renderListItems(items: ReadonlyArray<RmdlListItem>, depth: number): string {
     const pad = indent(depth);
     const out: string[] = [];
     items.forEach((it, idx) => {
-      out.push(`${pad}<li key=${tsxKey(idx)} className="rmdl-li">`);
+      out.push(`${pad}<li key=${tsxKey(idx)} className=${tsxLit(toneClassName(it.listItemTone))}>`);
       out.push(renderBlocks(it.blocks, depth + 1));
       out.push(`${pad}</li>`);
     });
