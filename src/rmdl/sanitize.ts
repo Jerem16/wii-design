@@ -1,4 +1,13 @@
-import type { RmdlDoc, RmdlInline, RmdlBlock, RmdlListItem } from "./ast";
+import type { RmdlBlock, RmdlDoc, RmdlInline, RmdlListItem } from "./ast";
+import { sanitizeUrl } from "./url-policy";
+
+function clampCount(n: number): number {
+  if (!Number.isFinite(n)) return 1;
+  const floored = Math.floor(n);
+  if (floored < 1) return 1;
+  if (floored > 20) return 20;
+  return floored;
+}
 
 function stripWrappingParens(inlines: ReadonlyArray<RmdlInline>): ReadonlyArray<RmdlInline> {
   if (inlines.length === 0) return inlines;
@@ -42,35 +51,49 @@ function stripWrappingParens(inlines: ReadonlyArray<RmdlInline>): ReadonlyArray<
 function mapInlines(inlines: ReadonlyArray<RmdlInline>, inStrong: boolean): ReadonlyArray<RmdlInline> {
   return inlines.map((n) => {
     if (n.kind === "strong") {
-      // strong impose le contexte gras
       return { ...n, inlines: mapInlines(n.inlines, true) };
     }
 
     if (n.kind === "normal") {
-      // normal forcé : reset du gras hérité
       return { ...n, inlines: mapInlines(n.inlines, false) };
     }
 
     if (n.kind === "em") {
-      // italique forcé : conserve le contexte gras si présent
       return { ...n, inlines: mapInlines(n.inlines, inStrong) };
     }
 
+    if (n.kind === "sp") {
+      return { ...n, n: clampCount(n.n) };
+    }
+
+    if (n.kind === "br") {
+      return { ...n, n: clampCount(n.n) };
+    }
+
     if (n.kind === "pi") {
-      // pi "hérite" du contexte strong, mais les parenthèses resteront normales au rendu
       const normalized = stripWrappingParens(mapInlines(n.inlines, inStrong));
       return { ...n, strong: inStrong, inlines: normalized };
     }
 
     if (n.kind === "label") return { ...n, inlines: mapInlines(n.inlines, inStrong) };
-    if (n.kind === "link") return { ...n, text: mapInlines(n.text, inStrong) };
-    if (n.kind === "ab") return { ...n, text: mapInlines(n.text, inStrong) };
+    if (n.kind === "link") {
+      return {
+        ...n,
+        href: sanitizeUrl(n.href) ?? "#",
+        text: mapInlines(n.text, inStrong),
+      };
+    }
+    if (n.kind === "ab") {
+      return {
+        ...n,
+        href: n.href ? (sanitizeUrl(n.href) ?? undefined) : undefined,
+        text: mapInlines(n.text, inStrong),
+      };
+    }
 
-    // sp / br / text : rien à mapper
     return n;
   });
 }
-
 
 function mapBlocks(blocks: ReadonlyArray<RmdlBlock>): ReadonlyArray<RmdlBlock> {
   return blocks.map((b) => {
@@ -81,7 +104,7 @@ function mapBlocks(blocks: ReadonlyArray<RmdlBlock>): ReadonlyArray<RmdlBlock> {
       const items: ReadonlyArray<RmdlListItem> = b.items.map((it) => ({ ...it, blocks: mapBlocks(it.blocks) }));
       return { ...b, items };
     }
-    return b; // code
+    return b;
   });
 }
 

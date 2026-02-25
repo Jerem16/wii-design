@@ -9,7 +9,10 @@ export function sanitizeUrl(raw: string): string | null {
   }
 
   if (trimmed.startsWith("/")) return trimmed;
+  if (trimmed.startsWith("#")) return trimmed;
   if (lower.startsWith("https://")) return trimmed;
+  if (lower.startsWith("http://")) return trimmed;
+  if (lower.startsWith("mailto:")) return trimmed;
 
   return null;
 }

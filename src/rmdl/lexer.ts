@@ -23,8 +23,7 @@ function parseAttrs(raw: string): Readonly<Record<string, string | boolean>> {
   let i = 0;
   const len = s.length;
 
-  const isWs = (ch: string): boolean =>
-    ch === " " || ch === "\t" || ch === "\n" || ch === "\r";
+  const isWs = (ch: string): boolean => ch === " " || ch === "\t" || ch === "\n" || ch === "\r";
 
   const skipWs = (): void => {
     while (i < len && isWs(s[i]!)) i += 1;
@@ -41,39 +40,32 @@ function parseAttrs(raw: string): Readonly<Record<string, string | boolean>> {
   };
 
   const readQuoted = (quote: '"' | "'"): string => {
-    // current char is quote
     i += 1;
-  
+
     let out = "";
     while (i < len) {
       const ch = s[i]!;
-  
+
       if (ch === "\\") {
-        const next = i + 1 < len ? s[i + 1]! : "";
-  
-        // escapes supportés: \"  \'  \\  (et on garde les autres tels quels)
-        if (next === quote || next === "\\") {
-          out += next;
-          i += 2;
-          continue;
+        const next = i + 1 < len ? s[i + 1] : null;
+        if (next === null) {
+          i += 1;
+          break;
         }
-  
-        // escape inconnu: on garde le backslash tel quel
-        out += ch;
-        i += 1;
+        out += next;
+        i += 2;
         continue;
       }
-  
+
       if (ch === quote) {
         i += 1;
         return out;
       }
-  
+
       out += ch;
       i += 1;
     }
-  
-    // si quote non refermée: on retourne ce qu’on a (ou tu peux throw si tu préfères)
+
     return out;
   };
 
@@ -93,12 +85,10 @@ function parseAttrs(raw: string): Readonly<Record<string, string | boolean>> {
     skipWs();
 
     if (i >= len || s[i] !== "=") {
-      // boolean attr
       attrs[key] = true;
       continue;
     }
 
-    // '='
     i += 1;
     skipWs();
 
@@ -108,16 +98,11 @@ function parseAttrs(raw: string): Readonly<Record<string, string | boolean>> {
     }
 
     const ch = s[i]!;
-    if (ch === '"' || ch === "'") {
-      attrs[key] = readQuoted(ch);
-    } else {
-      attrs[key] = readUnquoted();
-    }
+    attrs[key] = ch === '"' || ch === "'" ? readQuoted(ch) : readUnquoted();
   }
 
   return attrs;
 }
-
 
 function readUntilNewline(input: string, start: number): { line: string; next: number } {
   let i = start;
@@ -145,7 +130,6 @@ export function lex(inputRaw: string): ReadonlyArray<Token> {
   };
 
   while (i < input.length) {
-    // code fence: ```lang\n...\n```
     if (isLineStart(input, i) && input.startsWith("```", i)) {
       const header = readUntilNewline(input, i);
       const lang = header.line.slice(3).trim() || "text";

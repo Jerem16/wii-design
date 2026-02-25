@@ -6,16 +6,7 @@ type Cursor = Readonly<{
   idx: number;
 }>;
 
-const BLOCK_TAGS: ReadonlySet<string> = new Set([
-  "h1",
-  "h2",
-  "h3",
-  "l",
-  "ol",
-  "l2",
-  "ol2",
-  "q",
-]);
+const BLOCK_TAGS: ReadonlySet<string> = new Set(["h1", "h2", "h3", "l", "ol", "l2", "ol2", "q"]);
 
 function peek(cur: Cursor): Token | null {
   return cur.idx < cur.tokens.length ? cur.tokens[cur.idx] : null;
@@ -59,6 +50,14 @@ function mergeStopTags(a: ReadonlySet<string>, b: ReadonlySet<string>): Readonly
   for (const x of a) out.add(x);
   for (const x of b) out.add(x);
   return out;
+}
+
+function coerceCount(value: string | boolean | undefined): number {
+  if (typeof value !== "string") return 1;
+  const parsed = Number(value);
+  if (!Number.isFinite(parsed)) return 1;
+  const floored = Math.floor(parsed);
+  return floored >= 1 ? floored : 1;
 }
 
 function parseInlinesUntilTag(cur: Cursor, stopTag: string): { inlines: ReadonlyArray<RmdlInline>; cur: Cursor } {
@@ -105,47 +104,39 @@ function parseInline(cur: Cursor): { inline: RmdlInline; cur: Cursor } {
       return { inline: { kind: "strong", inlines: inner.inlines }, cur: afterClose };
     }
 
-    
     if (name === "em") {
-      const inner = parseInlinesUntilTag(cur, "em");
-      const afterClose = consumeClosingTag(inner.cur, "em");
+      const inner = parseInlinesUntilTag(afterOpen, "em");
+      const afterClose = consumeIfTag(inner.cur, "em");
       return { inline: { kind: "em", inlines: inner.inlines }, cur: afterClose };
     }
 
     if (name === "n") {
-      const inner = parseInlinesUntilTag(cur, "n");
-      const afterClose = consumeClosingTag(inner.cur, "n");
+      const inner = parseInlinesUntilTag(afterOpen, "n");
+      const afterClose = consumeIfTag(inner.cur, "n");
       return { inline: { kind: "normal", inlines: inner.inlines }, cur: afterClose };
     }
 
     if (name === "sp") {
-      // atomic inline: produces nbsp repetitions
-      const nAttr = typeof tag.attrs["n"] === "string" ? Number(tag.attrs["n"]) : 1;
-      const count = Number.isFinite(nAttr) ? Math.max(1, Math.floor(nAttr)) : 1;
-      const afterClose = consumeClosingTag(cur, "sp");
-      return { inline: { kind: "sp", n: count }, cur: afterClose };
+      const afterClose = consumeIfTag(afterOpen, "sp");
+      return { inline: { kind: "sp", n: coerceCount(attrs.n) }, cur: afterClose };
     }
 
     if (name === "br") {
-      // atomic inline: produces <br /> repetitions
-      const nAttr = typeof tag.attrs["n"] === "string" ? Number(tag.attrs["n"]) : 1;
-      const count = Number.isFinite(nAttr) ? Math.max(1, Math.floor(nAttr)) : 1;
-      const afterClose = consumeClosingTag(cur, "br");
-      return { inline: { kind: "br", n: count }, cur: afterClose };
+      const afterClose = consumeIfTag(afterOpen, "br");
+      return { inline: { kind: "br", n: coerceCount(attrs.n) }, cur: afterClose };
     }
 
-if (name === "lb") {
+    if (name === "lb") {
       const inner = parseInlinesUntilTag(afterOpen, "lb");
       const afterClose = consumeIfTag(inner.cur, "lb");
       return { inline: { kind: "label", inlines: inner.inlines }, cur: afterClose };
     }
 
     if (name === "pi") {
-        const inner = parseInlinesUntilTag(afterOpen, "pi");
-        const afterClose = consumeIfTag(inner.cur, "pi");
-        return { inline: { kind: "pi", inlines: inner.inlines, strong: false }, cur: afterClose };
-      }
-      
+      const inner = parseInlinesUntilTag(afterOpen, "pi");
+      const afterClose = consumeIfTag(inner.cur, "pi");
+      return { inline: { kind: "pi", inlines: inner.inlines, strong: false }, cur: afterClose };
+    }
 
     if (name === "a") {
       const h = typeof attrs.h === "string" ? attrs.h : "";
@@ -300,7 +291,6 @@ function parseQuote(cur: Cursor): { block: RmdlBlock; cur: Cursor } {
 }
 
 function parseList(cur: Cursor, listKind: RmdlListKind): { block: RmdlBlock; cur: Cursor } {
-  const listTag = listKind;
   const [, afterOpen] = next(cur);
   let c = skipEols(afterOpen);
 
@@ -310,7 +300,7 @@ function parseList(cur: Cursor, listKind: RmdlListKind): { block: RmdlBlock; cur
     const t = peek(c);
     if (!t) break;
 
-    if (t.kind === "tag" && t.name === listTag) {
+    if (t.kind === "tag" && t.name === listKind) {
       const [, afterClose] = next(c);
       c = afterClose;
       break;
@@ -322,22 +312,15 @@ function parseList(cur: Cursor, listKind: RmdlListKind): { block: RmdlBlock; cur
     }
 
     if (t.kind === "tag" && t.name === "i") {
-        // consume <i> opening
-        const [, afterItemOpen] = next(c);
-      
-        // parse item blocks until closing <i> OR closing list tag
-        const inner = parseBlocks(afterItemOpen, new Set<string>(["i", listTag]));
-      
-        // consume closing <i> if present (sinon item fermé par fin de liste)
-        const afterItemClose = consumeIfTag(inner.cur, "i");
-      
-        items.push({ kind: "item", blocks: inner.blocks });
-        c = afterItemClose;
-        continue;
-      }
-      
+      const [, afterItemOpen] = next(c);
+      const inner = parseBlocks(afterItemOpen, new Set<string>(["i", listKind]));
+      const afterItemClose = consumeIfTag(inner.cur, "i");
+      items.push({ kind: "item", blocks: inner.blocks });
+      c = afterItemClose;
+      continue;
+    }
 
-    const fallback = parseParagraph(c, new Set<string>(["i", listTag]));
+    const fallback = parseParagraph(c, new Set<string>(["i", listKind]));
     items.push({ kind: "item", blocks: [fallback.block] });
     c = fallback.cur;
   }
