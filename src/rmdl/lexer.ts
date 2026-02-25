@@ -17,28 +17,107 @@ function isLowerAscii(s: string): boolean {
 
 function parseAttrs(raw: string): Readonly<Record<string, string | boolean>> {
   const attrs: Record<string, string | boolean> = {};
-  const parts = raw.trim().length === 0 ? [] : raw.trim().split(/\s+/);
+  const s = raw.trim();
+  if (s.length === 0) return attrs;
 
-  for (const part of parts) {
-    const eq = part.indexOf("=");
-    if (eq === -1) {
-      attrs[part] = true;
+  let i = 0;
+  const len = s.length;
+
+  const isWs = (ch: string): boolean =>
+    ch === " " || ch === "\t" || ch === "\n" || ch === "\r";
+
+  const skipWs = (): void => {
+    while (i < len && isWs(s[i]!)) i += 1;
+  };
+
+  const readName = (): string => {
+    const start = i;
+    while (i < len) {
+      const ch = s[i]!;
+      if (isWs(ch) || ch === "=") break;
+      i += 1;
+    }
+    return s.slice(start, i);
+  };
+
+  const readQuoted = (quote: '"' | "'"): string => {
+    // current char is quote
+    i += 1;
+  
+    let out = "";
+    while (i < len) {
+      const ch = s[i]!;
+  
+      if (ch === "\\") {
+        const next = i + 1 < len ? s[i + 1]! : "";
+  
+        // escapes supportés: \"  \'  \\  (et on garde les autres tels quels)
+        if (next === quote || next === "\\") {
+          out += next;
+          i += 2;
+          continue;
+        }
+  
+        // escape inconnu: on garde le backslash tel quel
+        out += ch;
+        i += 1;
+        continue;
+      }
+  
+      if (ch === quote) {
+        i += 1;
+        return out;
+      }
+  
+      out += ch;
+      i += 1;
+    }
+  
+    // si quote non refermée: on retourne ce qu’on a (ou tu peux throw si tu préfères)
+    return out;
+  };
+
+  const readUnquoted = (): string => {
+    const start = i;
+    while (i < len && !isWs(s[i]!)) i += 1;
+    return s.slice(start, i);
+  };
+
+  while (i < len) {
+    skipWs();
+    if (i >= len) break;
+
+    const key = readName();
+    if (key.length === 0) break;
+
+    skipWs();
+
+    if (i >= len || s[i] !== "=") {
+      // boolean attr
+      attrs[key] = true;
       continue;
     }
-    const key = part.slice(0, eq);
-    let val = part.slice(eq + 1);
 
-    if (
-      (val.startsWith('"') && val.endsWith('"') && val.length >= 2) ||
-      (val.startsWith("'") && val.endsWith("'") && val.length >= 2)
-    ) {
-      val = val.slice(1, -1);
+    // '='
+    i += 1;
+    skipWs();
+
+    if (i >= len) {
+      attrs[key] = "";
+      break;
     }
-    attrs[key] = val;
+
+    const ch = s[i]!;
+    if (ch === '"' || ch === "'") {
+      attrs[key] = readQuoted(ch);
+    } else {
+      attrs[key] = readUnquoted();
+    }
   }
 
   return attrs;
 }
+
 
 function readUntilNewline(input: string, start: number): { line: string; next: number } {
   let i = start;

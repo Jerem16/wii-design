@@ -11,7 +11,7 @@ export type RmdlLinkProps = Readonly<{
 
 export function RmdlLink(props: RmdlLinkProps): React.ReactElement {
   const { href, ext, cta, dl, children } = props;
-  const className = cta ? "rmdl-cta" : "rmdl-link";
+  const className = cta ? "rmdl-a rmdl-cta" : "rmdl-a";
 
   if (ext) {
     return (

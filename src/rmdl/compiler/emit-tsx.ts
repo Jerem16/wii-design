@@ -140,7 +140,29 @@ export function emitTsxPage(input: EmitInput): string {
       return `<strong key=${tsxKey(key)}>${renderInlineChildren(n.inlines)}</strong>`;
     }
   
-    if (n.kind === "label") {
+    
+    if (n.kind === "em") {
+      return `<em key=${tsxKey(key)}>${renderInlineChildren(n.inlines)}</em>`;
+    }
+
+    if (n.kind === "normal") {
+      // normal forcé : annule le gras (CSS via .rmdl-n)
+      return `<span key=${tsxKey(key)} className="rmdl-n">${renderInlineChildren(n.inlines)}</span>`;
+    }
+
+    if (n.kind === "br") {
+      const count = Math.max(1, Number.isFinite(n.n) ? n.n : 1);
+      const brs = Array.from({ length: count }, () => "<br />").join("");
+      return `<React.Fragment key=${tsxKey(key)}>${brs}</React.Fragment>`;
+    }
+
+    if (n.kind === "sp") {
+      const count = Math.max(1, Number.isFinite(n.n) ? n.n : 1);
+      const nbsp = "\u00A0".repeat(count);
+      return `{${tsStringLiteral(nbsp)}}`;
+    }
+
+if (n.kind === "label") {
       // label sémantique : rendu simple (le ":" est hors balise côté source)
       return `<span key=${tsxKey(key)} className="rmdl-lb">${renderInlineChildren(n.inlines)}</span>`;
     }
@@ -153,7 +175,7 @@ export function emitTsxPage(input: EmitInput): string {
         ? `<strong><em>${renderInlineChildren(n.inlines)}</em></strong>`
         : `<em>${renderInlineChildren(n.inlines)}</em>`;
   
-      return `<span key=${tsxKey(key)} className="rmdl-pi"><span>(</span>${inner}<span>)</span></span>`;
+      return `<span key=${tsxKey(key)} className="rmdl-pi"><span className="rmdl-paren">(</span>${inner}<span className="rmdl-paren">)</span></span>`;
     }
   
     if (n.kind === "link") {

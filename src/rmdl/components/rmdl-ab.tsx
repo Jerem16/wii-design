@@ -10,7 +10,7 @@ export function RmdlAb(props: RmdlAbProps): React.ReactElement {
   const { definition, href, children } = props;
 
   const inner = (
-    <span className="rmdl-ab" data-rmdl-definition={definition ?? ""}>
+    <span className="rmdl-ab" data-def={definition ?? ""}>
       {children}
     </span>
   );

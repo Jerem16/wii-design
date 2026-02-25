@@ -1,33 +1,161 @@
-<h1>Phase 1 — Cadrage & stratégie<h1>
+<h1>RMDL v1.3 — Démo complète<h1>
 
-<lb>Objectif<lb> : Poser un cap clair, cadrer le besoin, et définir une stratégie actionnable.
+<lb>But<lb><sp n="1"><sp><n>:<n> Montrer tous les cas d’usage (titres, styles inline, espaces, sauts de ligne, listes, liens, glossaire, quote, code opaque).
 
-<s>Livrables<s> <pi>(selon formule)<pi> :
-<l>
-<i><lb>1. Entretien de cadrage<lb> : 60–90 min <pi>(visio ou présentiel)<pi><i>
-<i><lb>2. Analyse de l’existant<lb> : Audit rapide (UX/UI, contenu, perf) <pi>(si support fourni)<pi><i>
-<i><lb>3. Synthèse & recommandations<lb> : Priorités, quick wins, plan d’action <pi>(1 page)<pi><i>
-<l>
-
-<lb>Ce que vous obtenez<lb> :
-<l>
-<i><s>Un récapitulatif clair<s> <pi>(1 page)<pi><i>
-<i><s>Une direction stratégique<s> <pi>(objectifs + étapes)<pi><i>
-<i><s>Un plan d’action<s> <pi>(priorisé)<pi><i>
-<l>
-
-<lb>Notes<lb> :
 <q>
-Un bon cadrage réduit les allers-retours et sécurise le budget.
-<pi>(On évite de “coder à l’aveugle”.)<pi>
+<s>Rappel<s><sp n="1"><sp><n>:<n> Le rendu HTML est reconstruit par le moteur, aucun HTML utilisateur n’est exécuté.
 <q>
 
-<lb>Exemple (règle pi + strong)<lb> :
-<s>Un récapitulatif clair<s> <pi>(1 page)<pi>
-<s>Un récapitulatif clair <pi>(1 page)<pi><s>
+<h2>Étape 1 — Cadrage & Stratégie<h2>
 
-<lb>Bloc de code (doit rester brut)<lb> :
+<lb>Tests parenthèses (même titre, mêmes mots)<lb><sp n="1"><sp><n>:<n>
+
+<lb>A — Parenthèses normales + intérieur normal (pas italique, pas gras)<lb>
+<h2>Étape A — Cadrage & Stratégie (1–2 h)<h2>
+
+<lb>B — Parenthèses normales + intérieur gras (pas italique)<lb>
+<h2>Étape B — Cadrage & Stratégie (<s>1–2 h<s>)<h2>
+
+<lb>C — Parenthèses normales + intérieur italique (pas gras)<lb>
+<h2>Étape C — Cadrage & Stratégie (<em>1–2 h<em>)<h2>
+
+<lb>D — Parenthèses normales + intérieur gras + italique (forcé)<lb>
+<h2>Étape D — Cadrage & Stratégie (<s><em>1–2 h<em><s>)<h2>
+
+<lb>E — Parenthèses typographiques auto + intérieur italique (pi)<lb>
+<h2>Étape E — Cadrage & Stratégie <pi>1–2 h<pi><h2>
+
+<lb>F — Parenthèses typographiques auto + intérieur gras + italique (pi sous strong)<lb>
+<h2>Étape F — Cadrage & Stratégie <s><pi>1–2 h<pi><s><h2>
+
+<lb>G — Parenthèses auto (pi) sous gras + reset normal à l’intérieur (utile si parent en gras)<lb>
+<h2><s>Étape G — Cadrage & Stratégie <pi><n>1–2 h<n><pi><s><h2>
+
+
+<h2>Tests espaces (même phrase, même ligne)<h2>
+
+<lb>Référence (0 espace forcé)<lb>
+<h2>Étape E0 — Cadrage & Stratégie <pi>1–2 h<pi><h2>
+
+<lb>Espace 1 (sp n="1")<lb>
+<h2>Étape E1 — Cadrage & Stratégie<sp n="1"><sp><pi>1–2 h<pi><h2>
+
+<lb>Espace 2 (sp n="2")<lb>
+<h2>Étape E2 — Cadrage & Stratégie<sp n="2"><sp><pi>1–2 h<pi><h2>
+
+<lb>Espace 3 (sp n="3")<lb>
+<h2>Étape E3 — Cadrage & Stratégie<sp n="3"><sp><pi>1–2 h<pi><h2>
+
+<lb>Espace 4 (sp n="4")<lb>
+<h2>Étape E4 — Cadrage & Stratégie<sp n="4"><sp><pi>1–2 h<pi><h2>
+
+
+<h2>Tests combinés (espaces + parenthèses) — mêmes mots<h2>
+
+<lb>1 — Parenthèses normales + intérieur italique + espace 1 avant parenthèse<lb>
+<h2>Étape C1 — Cadrage & Stratégie<sp n="1"><sp>(<em>1–2 h<em>)<h2>
+
+<lb>2 — Parenthèses normales + intérieur gras + espace 2 avant parenthèse<lb>
+<h2>Étape C2 — Cadrage & Stratégie<sp n="2"><sp>(<s>1–2 h<s>)<h2>
+
+<lb>3 — Parenthèses auto (pi) + espace 3 avant pi<lb>
+<h2>Étape C3 — Cadrage & Stratégie<sp n="3"><sp><pi>1–2 h<pi><h2>
+
+<lb>4 — Parenthèses auto (pi) sous gras + reset normal à l’intérieur + espace 4 avant pi<lb>
+<h2><s>Étape C4 — Cadrage & Stratégie<sp n="4"><sp><pi><n>1–2 h<n><pi><s><h2>
+
+
+<h2>2 — Typo inline (gras / italique / normal forcé)<h2>
+
+Voici un mot en <s>gras<s>, puis un mot en <em>italique<em>, puis on force le <n>normal<n>.
+
+<s>Zone en gras<s><sp n="1"><sp><n>:<n><sp n="1"><sp>Tout est fort sauf <n>ce segment<n> et la ponctuation <n>:<n>
+
+<s>Mix<s><sp n="1"><sp><em>gras + italique<em><sp n="1"><sp>avec un reset <n>normal<n> au milieu.
+
+
+<h2>3 — Espaces forcés & sauts de ligne forcés<h2>
+
+<lb>Espaces forcés<lb><sp n="1"><sp><n>:<n> Avant ce deux-points on insère 2 espaces -><sp n="2"><sp><n>:<n> OK.
+
+Adresse<sp n="1"><sp><n>:<n><br n="2"><br>
+69 rue Maurice Tronel<br n="1"><br>
+67620 Le Havre
+
+
+<h2>4 — Labels (préfixes sémantiques)<h2>
+
+<lb>Objectif<lb><sp n="1"><sp><n>:<n> Poser un cap clair, cadrer le besoin, définir des priorités et un plan d’action.
+<lb>Résultat<lb><sp n="1"><sp><n>:<n> Une feuille de route exploitable immédiatement.
+
+
+<h2>5 — Parenthèses typographiques (auto)<h2>
+
+<s>Livrables<s><sp n="1"><sp><pi>selon formule<pi><sp n="1"><sp><n>:<n>
+
+<s>Un récapitulatif clair<s><sp n="1"><sp><pi>1 page<pi>
+<s>Un récapitulatif clair <pi>1 page<pi><s>
+
+
+<h2>6 — Liens / CTA / Externe / Téléchargement<h2>
+
+Lien interne<sp n="1"><sp><n>:<n> <a h="/contact">Me contacter<a><br n="1"><br>
+Lien externe<sp n="1"><sp><n>:<n> <a h="https://wii-design.com" ext>Voir le site<a><br n="1"><br>
+CTA<sp n="1"><sp><n>:<n> <a h="/rendez-vous" cta>Prendre rendez-vous<a><br n="1"><br>
+Téléchargement<sp n="1"><sp><n>:<n> <a h="/docs/plaquette.pdf" dl>Télécharger la plaquette<a>
+
+
+<h2>7 — Glossaire / abréviations (infobulle)<h2>
+
+Le <ab d="Robot d’indexation des moteurs.">crawler<ab> explore les pages.
+Voir aussi<sp n="1"><sp><n>:<n> <ab d="Robot d’indexation des moteurs." h="/glossaire#crawler">crawler<ab>.
+
+
+<h2>8 — Quote (bloc de mise en avant)<h2>
+
+<q>
+Un bon cadrage réduit les allers-retours et sécurise le budget.<br n="1"><br>
+<pi>On évite de coder à l’aveugle.<pi><br n="1"><br>
+<s>Clarté<s><sp n="1"><sp><n>:<n><sp n="1"><sp>moins de friction, plus d’impact.
+<q>
+
+
+<h2>9 — Listes (simples, riches, sous-listes)<h2>
+
+<lb>Liste à puces simple<lb><sp n="1"><sp><n>:<n>
+<l>
+<i>On pose un cadre.<i>
+<i>On priorise.<i>
+<i>On planifie la suite.<i>
+<l>
+
+<lb>Liste numérotée (étapes)<lb><sp n="1"><sp><n>:<n>
+<ol>
+<i><lb>1. Cadrage<lb><sp n="1"><sp><n>:<n> Définir le cap.<i>
+<i><lb>2. Design<lb><sp n="1"><sp><n>:<n> Donner forme à l’interface.<i>
+<i><lb>3. Dev<lb><sp n="1"><sp><n>:<n> Construire et itérer.<i>
+<ol>
+
+<lb>Sous-liste (niveau 2)<lb><sp n="1"><sp><n>:<n>
+<l>
+<i>Pré-requis
+<l2>
+<i>Logo <pi>même provisoire<pi><i>
+<i>5 à 10 photos<i>
+<i>2 ou 3 sites d’inspiration<i>
+<l2>
+<i>
+<l>
+
+
+<h2>10 — Bloc de code (opaque, non parsé)<h2>
+
+<lb>Exemple (doit rester brut)<lb><sp n="1"><sp><n>:<n>
 ```text
 <s>pas un strong<s>
-<pi>(pas une parenthèse italique)<pi>
+<em>pas un italique<em>
+<pi>pas une parenthèse auto<pi>
+<n>pas un reset normal<n>
+<br n="2"><br>
+<sp n="3"><sp>
 <script>alert("XSS")</script>

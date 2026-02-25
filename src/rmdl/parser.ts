@@ -105,7 +105,36 @@ function parseInline(cur: Cursor): { inline: RmdlInline; cur: Cursor } {
       return { inline: { kind: "strong", inlines: inner.inlines }, cur: afterClose };
     }
 
-    if (name === "lb") {
+    
+    if (name === "em") {
+      const inner = parseInlinesUntilTag(cur, "em");
+      const afterClose = consumeClosingTag(inner.cur, "em");
+      return { inline: { kind: "em", inlines: inner.inlines }, cur: afterClose };
+    }
+
+    if (name === "n") {
+      const inner = parseInlinesUntilTag(cur, "n");
+      const afterClose = consumeClosingTag(inner.cur, "n");
+      return { inline: { kind: "normal", inlines: inner.inlines }, cur: afterClose };
+    }
+
+    if (name === "sp") {
+      // atomic inline: produces nbsp repetitions
+      const nAttr = typeof tag.attrs["n"] === "string" ? Number(tag.attrs["n"]) : 1;
+      const count = Number.isFinite(nAttr) ? Math.max(1, Math.floor(nAttr)) : 1;
+      const afterClose = consumeClosingTag(cur, "sp");
+      return { inline: { kind: "sp", n: count }, cur: afterClose };
+    }
+
+    if (name === "br") {
+      // atomic inline: produces <br /> repetitions
+      const nAttr = typeof tag.attrs["n"] === "string" ? Number(tag.attrs["n"]) : 1;
+      const count = Number.isFinite(nAttr) ? Math.max(1, Math.floor(nAttr)) : 1;
+      const afterClose = consumeClosingTag(cur, "br");
+      return { inline: { kind: "br", n: count }, cur: afterClose };
+    }
+
+if (name === "lb") {
       const inner = parseInlinesUntilTag(afterOpen, "lb");
       const afterClose = consumeIfTag(inner.cur, "lb");
       return { inline: { kind: "label", inlines: inner.inlines }, cur: afterClose };

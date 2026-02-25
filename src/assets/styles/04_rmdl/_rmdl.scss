@@ -88,7 +88,7 @@
 }
 
 /* Symboles neutres (règle s0) — nécessite que le renderer wrap les symboles */
-.rmdl-neutral {
+.rmdl-n {
     font-weight: 400 !important;
 }
 
@@ -199,6 +199,54 @@
     text-underline-offset: 3px;
 }
 
+.rmdl-ab[data-def]:hover::after {
+    content: attr(data-def);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: 0.55rem;
+    min-width: 220px;
+    max-width: 360px;
+    padding: 0.6rem 0.75rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    z-index: 50;
+}
+.rmdl-a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.rmdl-a:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+    border-radius: 8px;
+}
+
+.rmdl-a.rmdl-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 999px;
+    border: 1px solid currentColor;
+    text-decoration: none;
+    transition: transform 120ms ease, background-color 120ms ease;
+}
+
+.rmdl-a.rmdl-cta:hover {
+    transform: translateY(-1px);
+}
+
+/* Parentheses styling for <pi> */
+.rmdl-paren {
+    font-weight: 400 !important;
+}
+
+/* Glossary tooltip: attribute is data-def */
 .rmdl-ab[data-def]:hover::after {
     content: attr(data-def);
     position: absolute;

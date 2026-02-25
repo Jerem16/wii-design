@@ -28,8 +28,12 @@ export type AllowedTag =
     | "h2"
     | "h3"
     | "s"
+    | "em"
+    | "n"
     | "lb"
     | "pi"
+    | "br"
+    | "sp"
     | "l"
     | "ol"
     | "l2"
@@ -44,8 +48,12 @@ export const ALLOWED_TAGS: ReadonlySet<AllowedTag> = new Set<AllowedTag>([
     "h2",
     "h3",
     "s",
+    "em",
+    "n",
     "lb",
     "pi",
+    "br",
+    "sp",
     "l",
     "ol",
     "l2",

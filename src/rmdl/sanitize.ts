@@ -42,20 +42,35 @@ function stripWrappingParens(inlines: ReadonlyArray<RmdlInline>): ReadonlyArray<
 function mapInlines(inlines: ReadonlyArray<RmdlInline>, inStrong: boolean): ReadonlyArray<RmdlInline> {
   return inlines.map((n) => {
     if (n.kind === "strong") {
-        return { ...n, inlines: mapInlines(n.inlines, true) }; // strong impose true
-      }
-      
+      // strong impose le contexte gras
+      return { ...n, inlines: mapInlines(n.inlines, true) };
+    }
+
+    if (n.kind === "normal") {
+      // normal forcé : reset du gras hérité
+      return { ...n, inlines: mapInlines(n.inlines, false) };
+    }
+
+    if (n.kind === "em") {
+      // italique forcé : conserve le contexte gras si présent
+      return { ...n, inlines: mapInlines(n.inlines, inStrong) };
+    }
+
     if (n.kind === "pi") {
       // pi "hérite" du contexte strong, mais les parenthèses resteront normales au rendu
       const normalized = stripWrappingParens(mapInlines(n.inlines, inStrong));
       return { ...n, strong: inStrong, inlines: normalized };
     }
+
     if (n.kind === "label") return { ...n, inlines: mapInlines(n.inlines, inStrong) };
     if (n.kind === "link") return { ...n, text: mapInlines(n.text, inStrong) };
     if (n.kind === "ab") return { ...n, text: mapInlines(n.text, inStrong) };
+
+    // sp / br / text : rien à mapper
     return n;
   });
 }
+
 
 function mapBlocks(blocks: ReadonlyArray<RmdlBlock>): ReadonlyArray<RmdlBlock> {
   return blocks.map((b) => {

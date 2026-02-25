@@ -57,10 +57,15 @@ export type RmdlCodeBlock = Readonly<{
 export type RmdlInline =
     | RmdlTextInline
     | RmdlStrongInline
+    | RmdlEmInline
+    | RmdlNormalInline
+    | RmdlSpaceInline
+    | RmdlBreakInline
     | RmdlLabelInline
     | RmdlParenItalicInline
     | RmdlLinkInline
     | RmdlAbInline;
+
 
 export type RmdlTextInline = Readonly<{
     kind: "text";
@@ -71,6 +76,27 @@ export type RmdlStrongInline = Readonly<{
     kind: "strong";
     inlines: ReadonlyArray<RmdlInline>;
 }>;
+
+export type RmdlEmInline = Readonly<{
+    kind: "em";
+    inlines: ReadonlyArray<RmdlInline>;
+}>;
+
+export type RmdlNormalInline = Readonly<{
+    kind: "normal";
+    inlines: ReadonlyArray<RmdlInline>;
+}>;
+
+export type RmdlSpaceInline = Readonly<{
+    kind: "sp";
+    n: number;
+}>;
+
+export type RmdlBreakInline = Readonly<{
+    kind: "br";
+    n: number;
+}>;
+
 
 export type RmdlLabelInline = Readonly<{
     kind: "label";
