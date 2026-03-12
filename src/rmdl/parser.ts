@@ -1,4 +1,4 @@
-import type { RmdlBlock, RmdlDoc, RmdlInline, RmdlListItem, RmdlListItemTone, RmdlListKind } from "./ast";
+import type { RmdlBlock, RmdlDoc, RmdlInline, RmdlListKind } from "./ast";
 import type { Token } from "./lexer";
 
 type Cursor = Readonly<{
@@ -292,34 +292,15 @@ function parseQuote(cur: Cursor): { block: RmdlBlock; cur: Cursor } {
 
 function parseList(cur: Cursor, listKind: RmdlListKind): { block: RmdlBlock; cur: Cursor } {
   const [, afterOpen] = next(cur);
-  const parsed = parseListChildren(skipEols(afterOpen), listKind);
-  return { block: { kind: "list", listKind, items: parsed.items }, cur: parsed.cur };
-}
+  let c = skipEols(afterOpen);
 
-function tagToTone(name: "em" | "s" | "n"): RmdlListItemTone {
-  return name;
-}
-
-function parseListChildren(
-  cur: Cursor,
-  listKind: RmdlListKind,
-  inheritedTone?: RmdlListItemTone,
-  wrapperCloseTag?: "em" | "s" | "n",
-): { items: ReadonlyArray<RmdlListItem>; cur: Cursor } {
-  let c = cur;
-  const items: RmdlListItem[] = [];
+  const items: Array<Readonly<{ kind: "item"; blocks: ReadonlyArray<RmdlBlock> }>> = [];
 
   while (true) {
     const t = peek(c);
     if (!t) break;
 
     if (t.kind === "tag" && t.name === listKind) {
-      const [, afterClose] = next(c);
-      c = afterClose;
-      break;
-    }
-
-    if (wrapperCloseTag && t.kind === "tag" && t.name === wrapperCloseTag) {
       const [, afterClose] = next(c);
       c = afterClose;
       break;
@@ -332,38 +313,19 @@ function parseListChildren(
 
     if (t.kind === "tag" && t.name === "i") {
       const [, afterItemOpen] = next(c);
-      const stopTags = new Set<string>(["i", listKind]);
-      if (wrapperCloseTag) stopTags.add(wrapperCloseTag);
-      const inner = parseBlocks(afterItemOpen, stopTags);
+      const inner = parseBlocks(afterItemOpen, new Set<string>(["i", listKind]));
       const afterItemClose = consumeIfTag(inner.cur, "i");
-      const item: RmdlListItem = inheritedTone
-        ? { kind: "item", blocks: inner.blocks, listItemTone: inheritedTone }
-        : { kind: "item", blocks: inner.blocks };
-      items.push(item);
+      items.push({ kind: "item", blocks: inner.blocks });
       c = afterItemClose;
       continue;
     }
 
-    if (t.kind === "tag" && (t.name === "em" || t.name === "s" || t.name === "n")) {
-      const [, afterWrapperOpen] = next(c);
-      const wrapperTone = tagToTone(t.name);
-      const nested = parseListChildren(afterWrapperOpen, listKind, wrapperTone, t.name);
-      items.push(...nested.items);
-      c = nested.cur;
-      continue;
-    }
-
-    const stopTags = new Set<string>(["i", listKind]);
-    if (wrapperCloseTag) stopTags.add(wrapperCloseTag);
-    const fallback = parseParagraph(c, stopTags);
-    const item: RmdlListItem = inheritedTone
-      ? { kind: "item", blocks: [fallback.block], listItemTone: inheritedTone }
-      : { kind: "item", blocks: [fallback.block] };
-    items.push(item);
+    const fallback = parseParagraph(c, new Set<string>(["i", listKind]));
+    items.push({ kind: "item", blocks: [fallback.block] });
     c = fallback.cur;
   }
 
-  return { items, cur: c };
+  return { block: { kind: "list", listKind, items }, cur: c };
 }
 
 export function parse(tokens: ReadonlyArray<Token>): RmdlDoc {

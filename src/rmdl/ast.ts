@@ -37,12 +37,9 @@ export type RmdlListBlock = Readonly<{
     items: ReadonlyArray<RmdlListItem>;
 }>;
 
-export type RmdlListItemTone = "em" | "s" | "n";
-
 export type RmdlListItem = Readonly<{
     kind: "item";
     blocks: ReadonlyArray<RmdlBlock>;
-    listItemTone?: RmdlListItemTone;
 }>;
 
 export type RmdlQuoteBlock = Readonly<{
